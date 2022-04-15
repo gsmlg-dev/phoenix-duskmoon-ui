@@ -1,1 +1,18 @@
+# 1.0.0-alpha.1 (2022-04-15)
+
+
+### Bug Fixes
+
+* Finish test. ([7a72801](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/7a72801f76ff8e660204c328813fa6e692b443fc))
+* Fix import. ([4277eaf](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/4277eaf6a872dc1888ed15f471eb476a3c909046))
+* Fix link_attributes. ([9d55077](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/9d5507726de36dacb60414353e139dbee8fdca77))
+* Format code. ([7a37b11](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/7a37b11abe484a3e5cf669e67a042d4afc961a84))
+
+
+### Features
+
+* Add phoenix_html to deps. ([d8ea8a4](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/d8ea8a4903018bd29432f365e4c5f4b283158f43))
+* Initital package. ([090475d](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/090475d2be5b290d9de1f24a4854f3b1d9bfa91a))
+* Set web compoent form. ([ba3bf68](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/ba3bf6883491945f3d3bd095f2fa3b47f091384c))
+
 # Changelog
