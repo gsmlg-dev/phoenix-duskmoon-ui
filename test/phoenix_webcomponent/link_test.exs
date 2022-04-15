@@ -1,149 +1,149 @@
 defmodule Phoenix.WebComponent.LinkTest do
   use ExUnit.Case, async: true
 
-  import Phoenix.WebComponent
+  import Phoenix.HTML
   import Phoenix.WebComponent.Link
 
   test "link with post" do
     csrf_token = Plug.CSRFProtection.get_csrf_token()
 
-    assert safe_to_string(link("hello", to: "/world", method: :post)) ==
+    assert safe_to_string(wc_link("hello", to: "/world", method: :post)) ==
              ~s[<a data-csrf="#{csrf_token}" data-method="post" data-to="/world" href="/world" rel="nofollow">hello</a>]
   end
 
   test "link with %URI{}" do
     url = "https://elixir-lang.org/"
 
-    assert safe_to_string(link("elixir", to: url)) ==
-             safe_to_string(link("elixir", to: URI.parse(url)))
+    assert safe_to_string(wc_link("elixir", to: url)) ==
+             safe_to_string(wc_link("elixir", to: URI.parse(url)))
 
     path = "/elixir"
 
-    assert safe_to_string(link("elixir", to: path)) ==
-             safe_to_string(link("elixir", to: URI.parse(path)))
+    assert safe_to_string(wc_link("elixir", to: path)) ==
+             safe_to_string(wc_link("elixir", to: URI.parse(path)))
   end
 
   test "link with put/delete" do
     csrf_token = Plug.CSRFProtection.get_csrf_token()
 
-    assert safe_to_string(link("hello", to: "/world", method: :put)) ==
+    assert safe_to_string(wc_link("hello", to: "/world", method: :put)) ==
              ~s[<a data-csrf="#{csrf_token}" data-method="put" data-to="/world" href="/world" rel="nofollow">hello</a>]
   end
 
   test "link with put/delete without csrf_token" do
-    assert safe_to_string(link("hello", to: "/world", method: :put, csrf_token: false)) ==
+    assert safe_to_string(wc_link("hello", to: "/world", method: :put, csrf_token: false)) ==
              ~s[<a data-method="put" data-to="/world" href="/world" rel="nofollow">hello</a>]
   end
 
   test "link with :do contents" do
     assert ~s[<a href="/hello"><p>world</p></a>] ==
              safe_to_string(
-               link to: "/hello" do
+               wc_link to: "/hello" do
                  Phoenix.WebComponent.Tag.content_tag(:p, "world")
                end
              )
 
     assert safe_to_string(
-             link(to: "/hello") do
+             wc_link(to: "/hello") do
                "world"
              end
            ) == ~s[<a href="/hello">world</a>]
   end
 
   test "link with scheme" do
-    assert safe_to_string(link("foo", to: "/javascript:alert(<1>)")) ==
+    assert safe_to_string(wc_link("foo", to: "/javascript:alert(<1>)")) ==
              ~s[<a href="/javascript:alert(&lt;1&gt;)">foo</a>]
 
-    assert safe_to_string(link("foo", to: {:safe, "/javascript:alert(<1>)"})) ==
+    assert safe_to_string(wc_link("foo", to: {:safe, "/javascript:alert(<1>)"})) ==
              ~s[<a href="/javascript:alert(<1>)">foo</a>]
 
-    assert safe_to_string(link("foo", to: {:javascript, "alert(<1>)"})) ==
+    assert safe_to_string(wc_link("foo", to: {:javascript, "alert(<1>)"})) ==
              ~s[<a href="javascript:alert(&lt;1&gt;)">foo</a>]
 
-    assert safe_to_string(link("foo", to: {:javascript, 'alert(<1>)'})) ==
+    assert safe_to_string(wc_link("foo", to: {:javascript, 'alert(<1>)'})) ==
              ~s[<a href="javascript:alert(&lt;1&gt;)">foo</a>]
 
-    assert safe_to_string(link("foo", to: {:javascript, {:safe, "alert(<1>)"}})) ==
+    assert safe_to_string(wc_link("foo", to: {:javascript, {:safe, "alert(<1>)"}})) ==
              ~s[<a href="javascript:alert(<1>)">foo</a>]
 
-    assert safe_to_string(link("foo", to: {:javascript, {:safe, 'alert(<1>)'}})) ==
+    assert safe_to_string(wc_link("foo", to: {:javascript, {:safe, 'alert(<1>)'}})) ==
              ~s[<a href="javascript:alert(<1>)">foo</a>]
   end
 
   test "link with invalid args" do
-    msg = "expected non-nil value for :to in link/2"
+    msg = "expected non-nil value for :to in wc_link/2"
 
     assert_raise ArgumentError, msg, fn ->
-      link("foo", bar: "baz")
+      wc_link("foo", bar: "baz")
     end
 
     msg = "link/2 requires a keyword list as second argument"
 
     assert_raise ArgumentError, msg, fn ->
-      link("foo", "/login")
+      wc_link("foo", "/login")
     end
 
     assert_raise ArgumentError, ~r"unsupported scheme given as link", fn ->
-      link("foo", to: "javascript:alert(1)")
+      wc_link("foo", to: "javascript:alert(1)")
     end
 
     assert_raise ArgumentError, ~r"unsupported scheme given as link", fn ->
-      link("foo", to: {:safe, "javascript:alert(1)"})
+      wc_link("foo", to: {:safe, "javascript:alert(1)"})
     end
 
     assert_raise ArgumentError, ~r"unsupported scheme given as link", fn ->
-      link("foo", to: {:safe, 'javascript:alert(1)'})
+      wc_link("foo", to: {:safe, 'javascript:alert(1)'})
     end
   end
 
-  test "button with post (default)" do
+  test "wc_button with post (default)" do
     csrf_token = Plug.CSRFProtection.get_csrf_token()
 
-    assert safe_to_string(button("hello", to: "/world")) ==
-             ~s[<button data-csrf="#{csrf_token}" data-method="post" data-to="/world">hello</button>]
+    assert safe_to_string(wc_button("hello", to: "/world")) ==
+             ~s[<mwc-button data-csrf="#{csrf_token}" data-method="post" data-to="/world">hello</mwc-button>]
   end
 
-  test "button with %URI{}" do
+  test "wc_button with %URI{}" do
     url = "https://elixir-lang.org/"
 
-    assert safe_to_string(button("elixir", to: url, csrf_token: false)) ==
-             safe_to_string(button("elixir", to: URI.parse(url), csrf_token: false))
+    assert safe_to_string(wc_button("elixir", to: url, csrf_token: false)) ==
+             safe_to_string(wc_button("elixir", to: URI.parse(url), csrf_token: false))
   end
 
-  test "button with post without csrf_token" do
-    assert safe_to_string(button("hello", to: "/world", csrf_token: false)) ==
-             ~s[<button data-method="post" data-to="/world">hello</button>]
+  test "wc_button with post without csrf_token" do
+    assert safe_to_string(wc_button("hello", to: "/world", csrf_token: false)) ==
+             ~s[<mwc-button data-method="post" data-to="/world">hello</mwc-button>]
   end
 
-  test "button with get does not generate CSRF" do
-    assert safe_to_string(button("hello", to: "/world", method: :get)) ==
-             ~s[<button data-method="get" data-to="/world">hello</button>]
+  test "wc_button with get does not generate CSRF" do
+    assert safe_to_string(wc_button("hello", to: "/world", method: :get)) ==
+             ~s[<mwc-button data-method="get" data-to="/world">hello</mwc-button>]
   end
 
-  test "button with do" do
+  test "wc_button with do" do
     csrf_token = Plug.CSRFProtection.get_csrf_token()
 
     output =
       safe_to_string(
-        button to: "/world", class: "small" do
+        wc_button to: "/world", class: "small" do
           raw("<span>Hi</span>")
         end
       )
 
     assert output ==
-             ~s[<button class="small" data-csrf="#{csrf_token}" data-method="post" data-to="/world"><span>Hi</span></button>]
+             ~s[<mwc-button class="small" data-csrf="#{csrf_token}" data-method="post" data-to="/world"><span>Hi</span></mwc-button>]
   end
 
-  test "button with class overrides default" do
+  test "wc_button with class overrides default" do
     csrf_token = Plug.CSRFProtection.get_csrf_token()
 
-    assert safe_to_string(button("hello", to: "/world", class: "btn rounded", id: "btn")) ==
-             ~s[<button class="btn rounded" data-csrf="#{csrf_token}" data-method="post" data-to="/world" id="btn">hello</button>]
+    assert safe_to_string(wc_button("hello", to: "/world", class: "btn rounded", id: "btn")) ==
+             ~s[<mwc-button class="btn rounded" data-csrf="#{csrf_token}" data-method="post" data-to="/world" id="btn">hello</mwc-button>]
   end
 
-  test "button with invalid args" do
+  test "wc_button with invalid args" do
     assert_raise ArgumentError, ~r/unsupported scheme given as link/, fn ->
-      button("foo", to: "javascript:alert(1)", method: :get)
+      wc_button("foo", to: "javascript:alert(1)", method: :get)
     end
   end
 end

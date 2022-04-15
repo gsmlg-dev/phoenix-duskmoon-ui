@@ -78,14 +78,14 @@ defmodule Phoenix.WebComponent.Link do
 
     if method == :get do
       # Call link attributes to validate `to`
-      [data: data] = Phoenix.HTML.link_attributes(to, [])
+      [data: data] = Phoenix.WebComponent.link_attributes(to, [])
       content_tag(:a, text, [href: data[:to]] ++ Keyword.delete(opts, :csrf_token))
     else
       {csrf_token, opts} = Keyword.pop(opts, :csrf_token, true)
       opts = Keyword.put_new(opts, :rel, "nofollow")
 
       [data: data] =
-      Phoenix.HTML.link_attributes(to, method: method, csrf_token: csrf_token)
+      Phoenix.WebComponent.link_attributes(to, method: method, csrf_token: csrf_token)
 
       content_tag(:a, text, [data: data, href: data[:to]] ++ opts)
     end
@@ -139,7 +139,7 @@ defmodule Phoenix.WebComponent.Link do
       |> Keyword.put_new(:method, :post)
       |> Keyword.split([:method, :csrf_token])
 
-    link_attributes = Phoenix.HTML.link_attributes(to, link_opts)
+    link_attributes = Phoenix.WebComponent.link_attributes(to, link_opts)
     content_tag(:"mwc-button", text, link_attributes ++ opts)
   end
 

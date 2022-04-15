@@ -1,7 +1,8 @@
 defmodule Phoenix.WebComponent.FormTest do
   use ExUnit.Case, async: true
 
-  import Phoenix.WebComponent
+  import Phoenix.HTML
+  import Phoenix.HTML.Form
   import Phoenix.WebComponent.Form
   doctest Phoenix.WebComponent.Form
 
