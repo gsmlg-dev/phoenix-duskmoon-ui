@@ -1,8 +1,18 @@
-repositoryUrl: https://github.com/gsmlg-dev/phoenix_webcomponent
+repositoryUrl: https://github.com/gsmlg-dev/phoenix_webcomponent.git
+branches:
+  - main
+  - next
+  - next-major
+  - {name: 'beta', prerelease: true}
+  - {name: 'alpha', prerelease: true}
 plugins:
   - '@semantic-release/commit-analyzer'
   - '@semantic-release/release-notes-generator'
   - '@semantic-release/changelog'
+  - - "@semantic-release/git"
+    - "assets":
+      - "CHANGELOG.md"
+    - "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
   - '@semantic-release/github'
   - - '@semantic-release/exec'
     - 'prepareCmd' : |
@@ -11,9 +21,3 @@ plugins:
         sed -i 's%semantic-release-0.0.0%${nextRelease.version}%' package.json
       'publishCmd' : |
         echo pubhlish phoenix_webcomponent ${nextRelease.version}
-branches:
-  - main
-  - next
-  - next-major
-  - {name: 'beta', prerelease: true}
-  - {name: 'alpha', prerelease: true}
