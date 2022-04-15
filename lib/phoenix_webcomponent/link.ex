@@ -62,17 +62,17 @@ defmodule Phoenix.WebComponent.Link do
 
   By default, CSRF tokens are generated through `Plug.CSRFProtection`.
   """
-  def link(text, opts)
+  def wc_link(text, opts)
 
-  def link(opts, do: contents) when is_list(opts) do
-    link(contents, opts)
+  def wc_link(opts, do: contents) when is_list(opts) do
+    wc_link(contents, opts)
   end
 
-  def link(_text, opts) when not is_list(opts) do
+  def wc_link(_text, opts) when not is_list(opts) do
     raise ArgumentError, "link/2 requires a keyword list as second argument"
   end
 
-  def link(text, opts) do
+  def wc_link(text, opts) do
     {to, opts} = pop_required_option!(opts, :to, "expected non-nil value for :to in link/2")
     {method, opts} = Keyword.pop(opts, :method, :get)
 
@@ -124,11 +124,11 @@ defmodule Phoenix.WebComponent.Link do
     * `data-confirm` - shows a confirmation prompt before generating and
       submitting the form.
   """
-  def button(opts, do: contents) do
-    button(contents, opts)
+  def wc_button(opts, do: contents) do
+    wc_button(contents, opts)
   end
 
-  def button(text, opts) do
+  def wc_button(text, opts) do
     {to, opts} = pop_required_option!(opts, :to, "option :to is required in button/2")
 
     {link_opts, opts} =
@@ -137,7 +137,7 @@ defmodule Phoenix.WebComponent.Link do
       |> Keyword.split([:method, :csrf_token])
 
     link_attributes = Phoenix.WebComponent.link_attributes(to, link_opts)
-    content_tag(:button, text, link_attributes ++ opts)
+    content_tag(:"mwc-button", text, link_attributes ++ opts)
   end
 
   defp pop_required_option!(opts, key, error_message) do

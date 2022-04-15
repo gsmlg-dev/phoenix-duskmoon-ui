@@ -95,11 +95,8 @@ defmodule Phoenix.WebComponent do
   @doc false
   defmacro __using__(_) do
     quote do
-      import Phoenix.WebComponent
       import Phoenix.WebComponent.Form
       import Phoenix.WebComponent.Link
-      import Phoenix.WebComponent.Tag, except: [attributes_escape: 1]
-      import Phoenix.WebComponent.Format
     end
   end
 

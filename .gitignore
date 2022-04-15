@@ -1,6 +1,7 @@
 /_build
 /cover
 /node_modules
+/package-lock.json
 /deps
 /doc
 erl_crash.dump

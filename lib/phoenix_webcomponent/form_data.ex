@@ -147,6 +147,11 @@ defimpl Phoenix.WebComponent.FormData, for: [Plug.Conn, Atom] do
     end
   end
 
+  @spec input_value(
+          Plug.Conn.t(),
+          %{:data => any, :params => map, optional(any) => any},
+          atom | binary
+        ) :: any
   def input_value(_conn_or_atom, %{data: data, params: params}, field)
       when is_atom(field) or is_binary(field) do
     key = field_to_string(field)
