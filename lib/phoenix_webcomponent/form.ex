@@ -257,18 +257,6 @@ defmodule Phoenix.WebComponent.Form do
 
   @type field :: atom | String.t()
 
-  defimpl Phoenix.WebComponent.Safe do
-    def to_iodata(%{action: action, options: options}) do
-      IO.warn(
-        "form_for/3 without an anonymous function is deprecated. " <>
-          "If you are using Phoenix.LiveView, use the new Phoenix.LiveView.Helpers.form/1 component"
-      )
-
-      {:safe, contents} = form_tag(action, options)
-      contents
-    end
-  end
-
   ## Form helpers
 
   @doc """
