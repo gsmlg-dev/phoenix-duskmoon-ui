@@ -324,7 +324,10 @@ defmodule Phoenix.WebComponent do
 
   defp attr_escape({:safe, data}), do: data
   defp attr_escape(nil), do: []
-  defp attr_escape(other) when is_binary(other), do: Phoenix.WebComponent.Engine.encode_to_iodata!(other)
+
+  defp attr_escape(other) when is_binary(other),
+    do: Phoenix.WebComponent.Engine.encode_to_iodata!(other)
+
   defp attr_escape(other), do: Phoenix.WebComponent.Safe.to_iodata(other)
 
   @doc """

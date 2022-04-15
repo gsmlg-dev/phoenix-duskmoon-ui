@@ -663,6 +663,7 @@ defmodule Phoenix.WebComponent.Form do
   """
   def wc_textarea(form, field, opts \\ []) do
     {value, opts} = Keyword.pop(opts, :value, input_value(form, field))
+
     opts =
       opts
       |> Keyword.put_new(:id, input_id(form, field))

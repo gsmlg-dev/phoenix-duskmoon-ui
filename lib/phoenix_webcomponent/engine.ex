@@ -21,7 +21,10 @@ defmodule Phoenix.WebComponent.Engine do
   def encode_to_iodata!({:safe, body}), do: body
   def encode_to_iodata!(nil), do: ""
   def encode_to_iodata!(bin) when is_binary(bin), do: html_escape(bin)
-  def encode_to_iodata!(list) when is_list(list), do: Phoenix.WebComponent.Safe.List.to_iodata(list)
+
+  def encode_to_iodata!(list) when is_list(list),
+    do: Phoenix.WebComponent.Safe.List.to_iodata(list)
+
   def encode_to_iodata!(other), do: Phoenix.WebComponent.Safe.to_iodata(other)
 
   @doc false

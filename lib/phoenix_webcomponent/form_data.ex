@@ -37,14 +37,16 @@ defprotocol Phoenix.WebComponent.FormData do
   Returns the HTML5 validations that would apply to
   the given field.
   """
-  @spec input_validations(t, Phoenix.WebComponent.Form.t(), Phoenix.WebComponent.Form.field()) :: Keyword.t()
+  @spec input_validations(t, Phoenix.WebComponent.Form.t(), Phoenix.WebComponent.Form.field()) ::
+          Keyword.t()
   def input_validations(data, form, field)
 
   @doc """
   Receives the given field and returns its input type (:text_input,
   :select, etc). Returns `nil` if the type is unknown.
   """
-  @spec input_type(t, Phoenix.WebComponent.Form.t(), Phoenix.WebComponent.Form.field()) :: atom | nil
+  @spec input_type(t, Phoenix.WebComponent.Form.t(), Phoenix.WebComponent.Form.field()) ::
+          atom | nil
   def input_type(data, form, field)
 end
 

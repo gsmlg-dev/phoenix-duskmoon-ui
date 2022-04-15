@@ -426,7 +426,10 @@ defmodule Phoenix.WebComponent.FormTest do
     end
 
     test "generates hidden fields for lists from the given form" do
-      form = %{Phoenix.WebComponent.FormData.to_form(conn(), []) | hidden: [field: ["a", "b", "c"]]}
+      form = %{
+        Phoenix.WebComponent.FormData.to_form(conn(), [])
+        | hidden: [field: ["a", "b", "c"]]
+      }
 
       assert hidden_inputs_for(form) ==
                [

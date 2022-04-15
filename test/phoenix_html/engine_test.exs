@@ -5,7 +5,11 @@ defmodule Phoenix.WebComponent.EngineTest do
   def unsafe(do: {:safe, content}), do: content
 
   test "encode_to_iodata!" do
-    assert Phoenix.WebComponent.Engine.encode_to_iodata!("<foo>") == [[[] | "&lt;"], "foo" | "&gt;"]
+    assert Phoenix.WebComponent.Engine.encode_to_iodata!("<foo>") == [
+             [[] | "&lt;"],
+             "foo" | "&gt;"
+           ]
+
     assert Phoenix.WebComponent.Engine.encode_to_iodata!({:safe, "<foo>"}) == "<foo>"
     assert Phoenix.WebComponent.Engine.encode_to_iodata!(123) == "123"
   end
@@ -71,7 +75,10 @@ defmodule Phoenix.WebComponent.EngineTest do
 
   defp eval(string, assigns \\ %{}) do
     {:safe, io} =
-      EEx.eval_string(string, [assigns: assigns], file: __ENV__.file, engine: Phoenix.WebComponent.Engine)
+      EEx.eval_string(string, [assigns: assigns],
+        file: __ENV__.file,
+        engine: Phoenix.WebComponent.Engine
+      )
 
     IO.iodata_to_binary(io)
   end
