@@ -194,6 +194,7 @@ defmodule Phoenix.WebComponent.Form do
   alias Phoenix.WebComponent.Form
   import Phoenix.WebComponent
   import Phoenix.WebComponent.Tag
+  import Phoenix.HTML.Form, except: [options_for_select: 2]
 
   @doc """
   Defines the Phoenix.WebComponent.Form struct.
@@ -265,165 +266,6 @@ defmodule Phoenix.WebComponent.Form do
 
       {:safe, contents} = form_tag(action, options)
       contents
-    end
-  end
-
-  @doc """
-  Converts an attribute/form field into its humanize version.
-
-      iex> humanize(:username)
-      "Username"
-      iex> humanize(:created_at)
-      "Created at"
-      iex> humanize("user_id")
-      "User"
-
-  """
-  defp humanize(atom) when is_atom(atom), do: humanize(Atom.to_string(atom))
-
-  defp humanize(bin) when is_binary(bin) do
-    bin =
-      if String.ends_with?(bin, "_id") do
-        binary_part(bin, 0, byte_size(bin) - 3)
-      else
-        bin
-      end
-
-    bin |> String.replace("_", " ") |> String.capitalize()
-  end
-
-  @doc """
-  Returns a value of a corresponding form field.
-
-  The `form` should either be a `Phoenix.WebComponent.Form` emitted
-  by `form_for` or an atom.
-
-  When a form is given, it will lookup for changes and then
-  fallback to parameters and finally fallback to the default
-  struct/map value.
-
-  Since the function looks up parameter values too, there is
-  no guarantee that the value will have a certain type. For
-  example, a boolean field will be sent as "false" as a
-  parameter, and this function will return it as is. If you
-  need to normalize the result of `input_value`, the best
-  option is to call `html_escape` on it and compare the
-  resulting string.
-  """
-  @spec input_value(t | atom, field) :: term
-  def input_value(%{source: source, impl: impl} = form, field)
-      when is_atom(field) or is_binary(field) do
-    try do
-      impl.input_value(source, form, field)
-    rescue
-      UndefinedFunctionError ->
-        case Map.fetch(form.params, field_to_string(field)) do
-          {:ok, value} ->
-            value
-
-          :error ->
-            Map.get(form.data, field)
-        end
-    end
-  end
-
-  def input_value(name, _field) when is_atom(name), do: nil
-
-  @doc """
-  Returns an id of a corresponding form field.
-
-  The form should either be a `Phoenix.WebComponent.Form` emitted
-  by `form_for` or an atom.
-  """
-  @spec input_id(t | atom, field) :: String.t()
-  def input_id(%{id: nil}, field), do: "#{field}"
-
-  def input_id(%{id: id}, field) when is_atom(field) or is_binary(field) do
-    "#{id}_#{field}"
-  end
-
-  def input_id(name, field) when (is_atom(name) and is_atom(field)) or is_binary(field) do
-    "#{name}_#{field}"
-  end
-
-  @doc """
-  Returns an id of a corresponding form field and value attached to it.
-
-  Useful for radio buttons and inputs like multiselect wc_checkboxes.
-  """
-  @spec input_id(t | atom, field, Phoenix.WebComponent.Safe.t()) :: String.t()
-  def input_id(name, field, value) do
-    {:safe, value} = html_escape(value)
-    value_id = value |> IO.iodata_to_binary() |> String.replace(~r/\W/u, "_")
-    input_id(name, field) <> "_" <> value_id
-  end
-
-  @doc """
-  Returns a name of a corresponding form field.
-
-  The first argument should either be a `Phoenix.WebComponent.Form` emitted
-  by `form_for` or an atom.
-
-  ## Examples
-
-      iex> Phoenix.WebComponent.Form.input_name(:user, :first_name)
-      "user[first_name]"
-  """
-  @spec input_name(t | atom, field) :: String.t()
-  def input_name(form_or_name, field)
-
-  def input_name(%{name: nil}, field), do: to_string(field)
-
-  def input_name(%{name: name}, field) when is_atom(field) or is_binary(field),
-    do: "#{name}[#{field}]"
-
-  def input_name(name, field) when (is_atom(name) and is_atom(field)) or is_binary(field),
-    do: "#{name}[#{field}]"
-
-  @doc """
-  Returns the HTML5 validations that would apply to
-  the given field.
-  """
-  @spec input_validations(t, field) :: Keyword.t()
-  def input_validations(%{source: source, impl: impl} = form, field)
-      when is_atom(field) or is_binary(field) do
-    impl.input_validations(source, form, field)
-  end
-
-  @mapping %{
-    "url" => :url_input,
-    "email" => :email_input,
-    "search" => :search_input,
-    "password" => :password_input
-  }
-
-  @doc """
-  Gets the input type for a given field.
-
-  If the underlying input type is a `:text_field`,
-  a mapping could be given to further inflect
-  the input type based solely on the field name.
-  The default mapping is:
-
-      %{"url"      => :url_input,
-        "email"    => :email_input,
-        "search"   => :search_input,
-        "password" => :password_input}
-
-  """
-  @spec input_type(t, field) :: atom
-  def input_type(%{impl: impl, source: source} = form, field, mapping \\ @mapping)
-      when is_atom(field) or is_binary(field) do
-    type = impl.input_type(source, form, field)
-
-    if type == :text_input do
-      field = field_to_string(field)
-
-      Enum.find_value(mapping, type, fn {k, v} ->
-        String.contains?(field, k) && v
-      end)
-    else
-      type
     end
   end
 
@@ -909,64 +751,64 @@ defmodule Phoenix.WebComponent.Form do
 
       # Assuming form contains a User schema
       select(form, :age, 0..120)
-      #=> <select id="user_age" name="user[age]">
+      #=> <mwc-select id="user_age" name="user[age]">
       #=>   <option value="0">0</option>
       #=>   ...
       #=>   <option value="120">120</option>
-      #=> </select>
+      #=> </mwc-select>
 
       select(form, :role, ["Admin": "admin", "User": "user"])
-      #=> <select id="user_role" name="user[role]">
+      #=> <mwc-select id="user_role" name="user[role]">
       #=>   <option value="admin">Admin</option>
       #=>   <option value="user">User</option>
-      #=> </select>
+      #=> </mwc-select>
 
       select(form, :role, [[key: "Admin", value: "admin", disabled: true],
                            [key: "User", value: "user"]])
-      #=> <select id="user_role" name="user[role]">
+      #=> <mwc-select id="user_role" name="user[role]">
       #=>   <option value="admin" disabled="disabled">Admin</option>
       #=>   <option value="user">User</option>
-      #=> </select>
+      #=> </mwc-select>
 
   You can also pass a prompt:
 
       select(form, :role, ["Admin": "admin", "User": "user"], prompt: "Choose your role")
-      #=> <select id="user_role" name="user[role]">
+      #=> <mwc-select id="user_role" name="user[role]">
       #=>   <option value="">Choose your role</option>
       #=>   <option value="admin">Admin</option>
       #=>   <option value="user">User</option>
-      #=> </select>
+      #=> </mwc-select>
 
   And customize the prompt as any other entry:
 
       select(form, :role, ["Admin": "admin", "User": "user"], prompt: [key: "Choose your role", disabled: true])
-      #=> <select id="user_role" name="user[role]">
+      #=> <mwc-select id="user_role" name="user[role]">
       #=>   <option value="" disabled="">Choose your role</option>
       #=>   <option value="admin">Admin</option>
       #=>   <option value="user">User</option>
-      #=> </select>
+      #=> </mwc-select>
 
   If you want to select an option that comes from the database,
   such as a manager for a given project, you may write:
 
       select(form, :manager_id, Enum.map(@managers, &{&1.name, &1.id}))
-      #=> <select id="manager_id" name="project[manager_id]">
+      #=> <mwc-select id="manager_id" name="project[manager_id]">
       #=>   <option value="1">Mary Jane</option>
       #=>   <option value="2">John Doe</option>
-      #=> </select>
+      #=> </mwc-select>
 
   Finally, if the values are a list or a map, we use the keys for
   grouping:
 
       select(form, :country, ["Europe": ["UK", "Sweden", "France"]], ...)
-      #=> <select id="user_country" name="user[country]">
+      #=> <mwc-select id="user_country" name="user[country]">
       #=>   <optgroup label="Europe">
       #=>     <option>UK</option>
       #=>     <option>Sweden</option>
       #=>     <option>France</option>
       #=>   </optgroup>
       #=>   ...
-      #=> </select>
+      #=> </mwc-select>
 
   ## Options
 
@@ -980,7 +822,7 @@ defmodule Phoenix.WebComponent.Form do
 
   All other options are forwarded to the underlying HTML tag.
   """
-  def select(form, field, options, opts \\ []) when is_atom(field) or is_binary(field) do
+  def wc_select(form, field, options, opts \\ []) when is_atom(field) or is_binary(field) do
     {selected, opts} = selected(form, field, opts)
     options_html = options_for_select(options, selected)
 
