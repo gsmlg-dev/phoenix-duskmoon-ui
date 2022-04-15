@@ -1,0 +1,19 @@
+repositoryUrl: https://github.com/gsmlg-dev/phoenix_webcomponent
+plugins:
+  - '@semantic-release/commit-analyzer'
+  - '@semantic-release/release-notes-generator'
+  - '@semantic-release/changelog'
+  - '@semantic-release/npm'
+  - '@semantic-release/github'
+  - - "@semantic-release/exec"
+    - "prepareCmd" : |
+        echo ${nextRelease.version}
+        sed -i 's%@version "0.0.0"%@version "${nextRelease.version}"%' mix.exs
+      "publishCmd" : "echo pubhlish gsmlg ${nextRelease.version}"
+branches:
+  - +([0-9])?(.{+([0-9]),x}).x
+  - main
+  - next
+  - next-major
+  - {name: 'beta', prerelease: true}
+  - {name: 'alpha', prerelease: true}

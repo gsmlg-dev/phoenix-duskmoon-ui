@@ -1,0 +1,69 @@
+name: elixir-gsmlg-build-and-release
+on:
+  push:
+    branches:
+      - +([0-9])?(.{+([0-9]),x}).x
+      - main
+      - alpha
+      - beta
+      - next
+      - next-major
+jobs:
+  release:
+    name: Create semantic release
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.semantic.outputs.new_release_version }}
+    steps:
+      - name: 🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v2
+
+      - name: 🚀 Release
+        uses: cycjimmy/semantic-release-action@v3
+        id: semantic
+        with:
+          extra_plugins: |
+            @semantic-release/exec
+            @semantic-release/changelog
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Stop if NO NEW release
+        run: |
+          cat <<EOF
+          Published: ${{ steps.semantic.outputs.new_release_published }}
+          New Release Version: ${{ steps.semantic.outputs.new_release_version }}
+          New Release Major Version: ${{ steps.semantic.outputs.new_release_major_version }}
+          New Release Minor Version: ${{ steps.semantic.outputs.new_release_minor_version }}
+          New Release Patch Version: ${{ steps.semantic.outputs.new_release_patch_version }}
+          New Release Channel: ${{ steps.semantic.outputs.new_release_channel }}
+          New Release Notes: 
+          ${{ steps.semantic.outputs.new_release_notes }}
+          EOF
+          test -z "${{ steps.semantic.outputs.new_release_version }}" && exit 1 || exit 0
+
+  build-package:
+    name: Build otp relase package linux amd64
+    runs-on: ubuntu-latest
+    needs: [ release ]
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v2
+
+      - name: 💊 Setup Elixir
+        uses: erlef/setup-beam@v1
+        with:
+          otp-version: '24'
+          elixir-version: '1.12.3'
+
+      - name: ⚙️ Run build
+        env:
+          MIX_ENV: prod
+          RELEASE_VSN: ${{ needs.release.outputs.version }}
+        run: mix compile --force

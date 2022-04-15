@@ -1,0 +1,8 @@
+{
+  "name": "phoenix_webcomponent",
+  "version": "semantic-release-0.0.0",
+  "main": "./priv/static/phoenix_webcomponent.js",
+  "repository": {
+  },
+  "files": ["README.md", "CHANGELOG.md", "LICENSE", "package.json", "priv/static/phoenix_webcomponent.js"]
+}
