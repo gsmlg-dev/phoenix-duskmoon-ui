@@ -111,83 +111,6 @@ defmodule Phoenix.WebComponent.Form do
 
       <%= text_input :user, :name, value: "This is a prepopulated value" %>
 
-  ## Nested inputs
-
-  If your data layer supports embedding or nested associations,
-  you can use `inputs_for` to attach nested data to the form.
-
-  Imagine the following Ecto schemas:
-
-      defmodule User do
-        use Ecto.Schema
-
-        schema "users" do
-          field :name
-          embeds_one :permalink, Permalink
-        end
-      end
-
-      defmodule Permalink do
-        use Ecto.Schema
-
-        embedded_schema do
-          field :url
-        end
-      end
-
-  In the form, you now can:
-
-      <%= form_for @changeset, Routes.user_path(@conn, :create), fn f -> %>
-        <%= text_input f, :name %>
-
-        <%= inputs_for f, :permalink, fn fp -> %>
-          <%= text_input fp, :url %>
-        <% end %>
-      <% end %>
-
-  The default option can be given to populate the fields if none
-  is given:
-
-      <%= inputs_for f, :permalink, [default: %Permalink{title: "default"}], fn fp -> %>
-        <%= text_input fp, :url %>
-      <% end %>
-
-  `inputs_for/4` can be used to work with single entities or
-  collections. When working with collections, `:prepend` and
-  `:append` can be used to add entries to the collection
-  stored in the changeset.
-
-  ## CSRF protection
-
-  CSRF protection is a mechanism to ensure that the user who rendered
-  the form is the one actually submitting it. This module generates a
-  CSRF token by default. Your application should check this token on
-  the server to avoid attackers from making requests on your server on
-  behalf of other users. Phoenix by default checks this token.
-
-  When posting a form with a host in its address, such as "//host.com/path"
-  instead of only "/path", Phoenix will include the host signature in the
-  token and validate the token only if the accessed host is the same as
-  the host in the token. This is to avoid tokens from leaking to third
-  party applications. If this behaviour is problematic, you can generate
-  a non-host specific token with `Plug.CSRFProtection.get_csrf_token/0` and
-  pass it to the form generator via the `:csrf_token` option.
-
-  ## Phoenix.LiveView integration
-
-  Phoenix.LiveView builds on top of this function to [provide a function
-  component named `form`](https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.Helpers.html#form/1).
-  Inside your HEEx templates, instead of doing this:
-
-      <%= form_for @changeset, url, opts, fn f -> %>
-        <%= text_input f, :name %>
-      <% end %>
-
-  you should import `Phoenix.LiveView.Helpers` and then write:
-
-      <.form let={f} for={@changeset}>
-        <%= text_input f, :name %>
-      </.form>
 
   """
 
@@ -242,7 +165,7 @@ defmodule Phoenix.WebComponent.Form do
             action: nil
 
   @type t :: %Form{
-          source: Phoenix.WebComponent.FormData.t(),
+          source: Phoenix.HTML.FormData.t(),
           name: String.t(),
           data: %{field => term},
           params: %{binary => term},
@@ -272,11 +195,11 @@ defmodule Phoenix.WebComponent.Form do
   ## Examples
 
       # Assuming form contains a User schema
-      text_input(form, :name)
-      #=> <input id="user_name" name="user[name]" type="text" value="">
+      wc_text_input(form, :name)
+      #=> <mwc-textfield id="user_name" name="user[name]" type="text" value="" />
 
-      text_input(:user, :name)
-      #=> <input id="user_name" name="user[name]" type="text" value="">
+      wc_text_input(:user, :name)
+      #=> <mwc-textfield id="user_name" name="user[name]" type="text" value="" />
 
   """
   def wc_text_input(form, field, opts \\ []) do
@@ -313,6 +236,7 @@ defmodule Phoenix.WebComponent.Form do
   def wc_password_input(form, field, opts \\ []) do
     opts =
       opts
+      |> Keyword.put_new(:label, humanize(field))
       |> Keyword.put_new(:type, "password")
       |> Keyword.put_new(:id, input_id(form, field))
       |> Keyword.put_new(:name, input_name(form, field))
@@ -509,10 +433,10 @@ defmodule Phoenix.WebComponent.Form do
   It requires the given form to be configured with `multipart: true`
   when invoking `form_for/4`, otherwise it fails with `ArgumentError`.
 
-  See `mc_text_input/3` for example and docs.
+  See `wc_text_input/3` for example and docs.
   """
-  def mc_file_input(form, field, opts \\ []) do
-    if match?(%Form{}, form) and !form.options[:multipart] do
+  def wc_file_input(form, field, opts \\ []) do
+    if match?(%Phoenix.HTML.Form{}, form) and !form.options[:multipart] do
       raise ArgumentError,
             "file_input/3 requires the enclosing form_for/4 " <>
               "to be configured with multipart: true"
@@ -993,7 +917,7 @@ defmodule Phoenix.WebComponent.Form do
   ## Examples
 
       # Assuming form contains a User schema
-      wc_datewc_time_select form, :born_at
+      wc_datetime_select form, :born_at
       #=> <select id="user_born_at_year" name="user[born_at][year]">...</select> /
       #=> <select id="user_born_at_month" name="user[born_at][month]">...</select> /
       #=> <select id="user_born_at_day" name="user[born_at][day]">...</select> —
@@ -1003,12 +927,12 @@ defmodule Phoenix.WebComponent.Form do
   If you want to include the seconds field (hidden by default), pass `second: []`:
 
       # Assuming form contains a User schema
-      wc_datewc_time_select form, :born_at, second: []
+      wc_datetime_select form, :born_at, second: []
 
   If you want to configure the years range:
 
       # Assuming form contains a User schema
-      wc_datewc_time_select form, :born_at, year: [options: 1900..2100]
+      wc_datetime_select form, :born_at, year: [options: 1900..2100]
 
   You are also able to configure `:month`, `:day`, `:hour`, `:minute` and
   `:second`. All options given to those keys will be forwarded to the
@@ -1018,7 +942,7 @@ defmodule Phoenix.WebComponent.Form do
   the list of months, you can pass `:options` to the `:month` key:
 
       # Assuming form contains a User schema
-      wc_datewc_time_select form, :born_at, month: [
+      wc_datetime_select form, :born_at, month: [
         options: [
           {gettext("January"), "1"},
           {gettext("February"), "2"},
@@ -1035,10 +959,10 @@ defmodule Phoenix.WebComponent.Form do
         ]
       ]
 
-  You may even provide your own `localized_wc_datewc_time_select/3` built on top of
-  `wc_datewc_time_select/3`:
+  You may even provide your own `localized_wc_datetime_select/3` built on top of
+  `wc_datetime_select/3`:
 
-      defp localized_wc_datewc_time_select(form, field, opts \\ []) do
+      defp localized_wc_datetime_select(form, field, opts \\ []) do
         opts =
           Keyword.put(opts, :month, options: [
             {gettext("January"), "1"},
@@ -1055,7 +979,7 @@ defmodule Phoenix.WebComponent.Form do
             {gettext("December"), "12"},
           ])
 
-        wc_datewc_time_select(form, field, opts)
+        wc_datetime_select(form, field, opts)
       end
 
   ## Options
@@ -1076,10 +1000,10 @@ defmodule Phoenix.WebComponent.Form do
 
   ## Builder
 
-  The generated wc_datewc_time_select can be customized at will by providing a
+  The generated wc_datetime_select can be customized at will by providing a
   builder option. Here is an example from EEx:
 
-      <%= wc_datewc_time_select form, :born_at, builder: fn b -> %>
+      <%= wc_datetime_select form, :born_at, builder: fn b -> %>
         Date: <%= b.(:day, []) %> / <%= b.(:month, []) %> / <%= b.(:year, []) %>
         Time: <%= b.(:hour, []) %> : <%= b.(:minute, []) %>
       <% end %>
@@ -1091,7 +1015,7 @@ defmodule Phoenix.WebComponent.Form do
   In practice, we recommend you to create your own helper with your default
   builder:
 
-      def my_wc_datewc_time_select(form, field, opts \\ []) do
+      def my_wc_datetime_select(form, field, opts \\ []) do
         builder = fn b ->
           assigns = %{b: b}
 
@@ -1101,10 +1025,10 @@ defmodule Phoenix.WebComponent.Form do
           """
         end
 
-        wc_datewc_time_select(form, field, [builder: builder] ++ opts)
+        wc_datetime_select(form, field, [builder: builder] ++ opts)
       end
 
-  Then you are able to use your own wc_datewc_time_select throughout your whole
+  Then you are able to use your own wc_datetime_select throughout your whole
   application.
 
   ## Supported date values
@@ -1126,7 +1050,7 @@ defmodule Phoenix.WebComponent.Form do
     * `nil`
 
   '''
-  def wc_datewc_time_select(form, field, opts \\ []) do
+  def wc_datetime_select(form, field, opts \\ []) do
     value = Keyword.get(opts, :value, input_value(form, field) || Keyword.get(opts, :default))
 
     builder =
@@ -1143,7 +1067,7 @@ defmodule Phoenix.WebComponent.Form do
   @doc """
   Generates select tags for date.
 
-  Check `wc_datewc_time_select/3` for more information on options and supported values.
+  Check `wc_datetime_select/3` for more information on options and supported values.
   """
   def wc_date_select(form, field, opts \\ []) do
     value = Keyword.get(opts, :value, input_value(form, field) || Keyword.get(opts, :default))
@@ -1177,7 +1101,7 @@ defmodule Phoenix.WebComponent.Form do
   @doc """
   Generates select tags for time.
 
-  Check `wc_datewc_time_select/3` for more information on options and supported values.
+  Check `wc_datetime_select/3` for more information on options and supported values.
   """
   def wc_time_select(form, field, opts \\ []) do
     value = Keyword.get(opts, :value, input_value(form, field) || Keyword.get(opts, :default))

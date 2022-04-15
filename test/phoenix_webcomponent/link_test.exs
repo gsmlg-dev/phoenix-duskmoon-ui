@@ -39,7 +39,7 @@ defmodule Phoenix.WebComponent.LinkTest do
     assert ~s[<a href="/hello"><p>world</p></a>] ==
              safe_to_string(
                wc_link to: "/hello" do
-                 Phoenix.WebComponent.Tag.content_tag(:p, "world")
+                 Phoenix.HTML.Tag.content_tag(:p, "world")
                end
              )
 
@@ -77,7 +77,7 @@ defmodule Phoenix.WebComponent.LinkTest do
       wc_link("foo", bar: "baz")
     end
 
-    msg = "link/2 requires a keyword list as second argument"
+    msg = "wc_link/2 requires a keyword list as second argument"
 
     assert_raise ArgumentError, msg, fn ->
       wc_link("foo", "/login")

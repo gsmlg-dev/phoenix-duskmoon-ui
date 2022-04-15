@@ -69,11 +69,11 @@ defmodule Phoenix.WebComponent.Link do
   end
 
   def wc_link(_text, opts) when not is_list(opts) do
-    raise ArgumentError, "link/2 requires a keyword list as second argument"
+    raise ArgumentError, "wc_link/2 requires a keyword list as second argument"
   end
 
   def wc_link(text, opts) do
-    {to, opts} = pop_required_option!(opts, :to, "expected non-nil value for :to in link/2")
+    {to, opts} = pop_required_option!(opts, :to, "expected non-nil value for :to in wc_link/2")
     {method, opts} = Keyword.pop(opts, :method, :get)
 
     if method == :get do
@@ -132,7 +132,7 @@ defmodule Phoenix.WebComponent.Link do
   end
 
   def wc_button(text, opts) do
-    {to, opts} = pop_required_option!(opts, :to, "option :to is required in button/2")
+    {to, opts} = pop_required_option!(opts, :to, "option :to is required in wc_button/2")
 
     {link_opts, opts} =
       opts
