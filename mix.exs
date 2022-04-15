@@ -1,4 +1,4 @@
-defmodule PhoenixHtml.Mixfile do
+defmodule PhoenixWebComponent.Mixfile do
   use Mix.Project
 
   # Also change package.json version
@@ -33,6 +33,7 @@ defmodule PhoenixHtml.Mixfile do
 
   defp deps do
     [
+      {:phoenix_html, "~> 3.0"},
       {:plug, "~> 1.5", optional: true},
       {:ex_doc, ">= 0.0.0", only: :docs}
     ]
