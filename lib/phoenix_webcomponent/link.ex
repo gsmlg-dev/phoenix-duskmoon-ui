@@ -3,7 +3,7 @@ defmodule Phoenix.WebComponent.Link do
   Conveniences for working with links and URLs in HTML.
   """
 
-  import Phoenix.WebComponent.Tag
+  import Phoenix.HTML.Tag
 
   @doc """
   Generates a link to the given URL.

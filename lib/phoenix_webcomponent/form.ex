@@ -192,8 +192,8 @@ defmodule Phoenix.WebComponent.Form do
   """
 
   alias Phoenix.WebComponent.Form
-  import Phoenix.WebComponent
-  import Phoenix.WebComponent.Tag
+  import Phoenix.HTML
+  import Phoenix.HTML.Tag
   import Phoenix.HTML.Form, except: [options_for_select: 2]
 
   @doc """
