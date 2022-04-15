@@ -52,7 +52,8 @@ defmodule Phoenix.WebComponent.FormTest do
 
     assert safe_to_string(
              wc_text_input(:search, :key, value: "foo", id: "key", name: "search[key][]")
-           ) == ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="text" value="foo">)
+           ) ==
+             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="text" value="foo">)
   end
 
   test "wc_text_input/3 with form" do
@@ -105,7 +106,8 @@ defmodule Phoenix.WebComponent.FormTest do
 
     assert safe_to_string(
              wc_number_input(:search, :key, value: "foo", id: "key", name: "search[key][]")
-           ) == ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="number" value="foo">)
+           ) ==
+             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="number" value="foo">)
   end
 
   test "wc_number_input/3 with form" do
@@ -124,7 +126,8 @@ defmodule Phoenix.WebComponent.FormTest do
 
     assert safe_to_string(
              wc_email_input(:search, :key, value: "foo", id: "key", name: "search[key][]")
-           ) == ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="email" value="foo">)
+           ) ==
+             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="email" value="foo">)
   end
 
   test "wc_email_input/3 with form" do
@@ -143,7 +146,8 @@ defmodule Phoenix.WebComponent.FormTest do
 
     assert safe_to_string(
              wc_password_input(:search, :key, value: "foo", id: "key", name: "search[key][]")
-           ) == ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="password" value="foo">)
+           ) ==
+             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="password" value="foo">)
   end
 
   test "wc_password_input/3 with form" do
@@ -184,7 +188,8 @@ defmodule Phoenix.WebComponent.FormTest do
 
     assert safe_to_string(
              wc_url_input(:search, :key, value: "foo", id: "key", name: "search[key][]")
-           ) == ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="url" value="foo">)
+           ) ==
+             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="url" value="foo">)
   end
 
   test "wc_url_input/3 with form" do
@@ -203,7 +208,8 @@ defmodule Phoenix.WebComponent.FormTest do
 
     assert safe_to_string(
              wc_search_input(:search, :key, value: "foo", id: "key", name: "search[key][]")
-           ) == ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="search" value="foo">)
+           ) ==
+             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="search" value="foo">)
   end
 
   test "wc_search_input/3 with form" do
@@ -222,7 +228,8 @@ defmodule Phoenix.WebComponent.FormTest do
 
     assert safe_to_string(
              wc_color_input(:search, :key, value: "#123456", id: "key", name: "search[key][]")
-           ) == ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="color" value="#123456">)
+           ) ==
+             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="color" value="#123456">)
   end
 
   test "wc_color_input/3 with form" do
@@ -241,14 +248,17 @@ defmodule Phoenix.WebComponent.FormTest do
 
     assert safe_to_string(
              wc_telephone_input(:search, :key, value: "foo", id: "key", name: "search[key][]")
-           ) == ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="tel" value="foo">)
+           ) ==
+             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="tel" value="foo">)
   end
 
   test "wc_telephone_input/3 with form" do
     assert safe_form(&wc_telephone_input(&1, :key)) ==
              ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="tel" value="value">)
 
-    assert safe_form(&wc_telephone_input(&1, :key, value: "foo", id: "key", name: "search[key][]")) ==
+    assert safe_form(
+             &wc_telephone_input(&1, :key, value: "foo", id: "key", name: "search[key][]")
+           ) ==
              ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="tel" value="foo">)
   end
 
@@ -260,7 +270,8 @@ defmodule Phoenix.WebComponent.FormTest do
 
     assert safe_to_string(
              wc_range_input(:search, :key, value: "foo", id: "key", name: "search[key][]")
-           ) == ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="range" value="foo">)
+           ) ==
+             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="range" value="foo">)
   end
 
   test "wc_range_input/3 with form" do
@@ -279,11 +290,13 @@ defmodule Phoenix.WebComponent.FormTest do
 
     assert safe_to_string(
              wc_date_input(:search, :key, value: "foo", id: "key", name: "search[key][]")
-           ) == ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="date" value="foo">)
+           ) ==
+             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="date" value="foo">)
 
     assert safe_to_string(
              wc_date_input(:search, :key, value: ~D[2017-09-21], id: "key", name: "search[key][]")
-           ) == ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="date" value="2017-09-21">)
+           ) ==
+             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="date" value="2017-09-21">)
   end
 
   test "wc_date_input/3 with form" do
@@ -295,7 +308,8 @@ defmodule Phoenix.WebComponent.FormTest do
 
     assert safe_form(
              &wc_date_input(&1, :key, value: ~D[2017-09-21], id: "key", name: "search[key][]")
-           ) == ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="date" value="2017-09-21">)
+           ) ==
+             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="date" value="2017-09-21">)
   end
 
   ## wc_datewc_time_input/3
@@ -309,7 +323,8 @@ defmodule Phoenix.WebComponent.FormTest do
 
     assert safe_to_string(
              wc_datetime_local_input(:search, :key, value: "foo", id: "key", name: "search[key][]")
-           ) == ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="datetime-local" value="foo">)
+           ) ==
+             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="datetime-local" value="foo">)
 
     assert safe_to_string(
              wc_datetime_local_input(
@@ -342,7 +357,8 @@ defmodule Phoenix.WebComponent.FormTest do
 
     assert safe_form(
              &wc_datetime_local_input(&1, :key, value: "foo", id: "key", name: "search[key][]")
-           ) == ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="datetime-local" value="foo">)
+           ) ==
+             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="datetime-local" value="foo">)
 
     assert safe_form(
              &wc_datetime_local_input(
@@ -364,11 +380,17 @@ defmodule Phoenix.WebComponent.FormTest do
 
     assert safe_to_string(
              wc_time_input(:search, :key, value: "foo", id: "key", name: "search[key][]")
-           ) == ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="time" value="foo">)
+           ) ==
+             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="time" value="foo">)
 
     assert safe_to_string(
-             wc_time_input(:search, :key, value: ~T[23:00:07.001], id: "key", name: "search[key][]")
-           ) == ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="time" value="23:00">)
+             wc_time_input(:search, :key,
+               value: ~T[23:00:07.001],
+               id: "key",
+               name: "search[key][]"
+             )
+           ) ==
+             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="time" value="23:00">)
   end
 
   test "wc_time_input/3 with form" do
@@ -389,13 +411,15 @@ defmodule Phoenix.WebComponent.FormTest do
 
     assert safe_form(
              &wc_time_input(&1, :key, value: ~T[23:00:07.001], id: "key", name: "search[key][]")
-           ) == ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="time" value="23:00">)
+           ) ==
+             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="time" value="23:00">)
   end
 
   ## wc_submit/2
 
   test "wc_submit/2" do
-    assert safe_to_string(wc_submit("Submit")) == ~s(<mwc-button type="submit">Submit</mwc-button>)
+    assert safe_to_string(wc_submit("Submit")) ==
+             ~s(<mwc-button type="submit">Submit</mwc-button>)
 
     assert safe_to_string(wc_submit("Submit", class: "btn")) ==
              ~s(<mwc-button class="btn" type="submit">Submit</mwc-button>)
@@ -403,9 +427,11 @@ defmodule Phoenix.WebComponent.FormTest do
     assert safe_to_string(wc_submit([class: "btn"], do: "Submit")) ==
              ~s(<mwc-button class="btn" type="submit">Submit</mwc-button>)
 
-    assert safe_to_string(wc_submit(do: "Submit")) == ~s(<mwc-button type="submit">Submit</mwc-button>)
+    assert safe_to_string(wc_submit(do: "Submit")) ==
+             ~s(<mwc-button type="submit">Submit</mwc-button>)
 
-    assert safe_to_string(wc_submit("<Submit>")) == ~s(<mwc-button type="submit">&lt;Submit&gt;</mwc-button>)
+    assert safe_to_string(wc_submit("<Submit>")) ==
+             ~s(<mwc-button type="submit">&lt;Submit&gt;</mwc-button>)
 
     assert safe_to_string(wc_submit("<Submit>", class: "btn")) ==
              ~s(<mwc-button class="btn" type="submit">&lt;Submit&gt;</mwc-button>)
@@ -476,11 +502,15 @@ defmodule Phoenix.WebComponent.FormTest do
              ~s(<input name="search[key]" type="hidden" value="false">) <>
                ~s(<input id="search_key" name="search[key]" type="checkbox" value="true">)
 
-    assert safe_to_string(wc_checkbox(:search, :key, value: 0, checked_value: 1, unchecked_value: 0)) ==
+    assert safe_to_string(
+             wc_checkbox(:search, :key, value: 0, checked_value: 1, unchecked_value: 0)
+           ) ==
              ~s(<input name="search[key]" type="hidden" value="0">) <>
                ~s(<input id="search_key" name="search[key]" type="checkbox" value="1">)
 
-    assert safe_to_string(wc_checkbox(:search, :key, value: 1, checked_value: 1, unchecked_value: 0)) ==
+    assert safe_to_string(
+             wc_checkbox(:search, :key, value: 1, checked_value: 1, unchecked_value: 0)
+           ) ==
              ~s(<input name="search[key]" type="hidden" value="0">) <>
                ~s(<input checked id="search_key" name="search[key]" type="checkbox" value="1">)
 
@@ -528,7 +558,7 @@ defmodule Phoenix.WebComponent.FormTest do
                ~s(<option value="bar">Bar</option>) <> ~s(</mwc-select>)
 
     assert safe_to_string(
-      wc_select(:search, :key, [
+             wc_select(:search, :key, [
                [key: "Foo", value: "foo"],
                [key: "Bar", value: "bar", disabled: true]
              ])
@@ -538,7 +568,7 @@ defmodule Phoenix.WebComponent.FormTest do
                ~s(<option disabled value="bar">Bar</option>) <> ~s(</mwc-select>)
 
     assert safe_to_string(
-      wc_select(:search, :key, [Foo: "foo", Bar: "bar"], prompt: "Choose your destiny")
+             wc_select(:search, :key, [Foo: "foo", Bar: "bar"], prompt: "Choose your destiny")
            ) ==
              ~s(<mwc-select id="search_key" name="search[key]">) <>
                ~s(<option value="">Choose your destiny</option>) <>
@@ -546,7 +576,7 @@ defmodule Phoenix.WebComponent.FormTest do
                ~s(<option value="bar">Bar</option>) <> ~s(</mwc-select>)
 
     assert safe_to_string(
-      wc_select(:search, :key, [Foo: "foo", Bar: "bar"],
+             wc_select(:search, :key, [Foo: "foo", Bar: "bar"],
                prompt: [key: "Choose your destiny", disabled: true]
              )
            ) ==
@@ -695,11 +725,16 @@ defmodule Phoenix.WebComponent.FormTest do
              wc_multiple_select(:search, :key, [{"foo", "1"}, {"bar", "2"}], value: [1])
            ) =~ ~s(<option selected value="1">foo</option>)
 
-    assert safe_to_string(wc_multiple_select(:search, :key, [{"foo", 1}, {"bar", 2}], selected: [1])) =~
+    assert safe_to_string(
+             wc_multiple_select(:search, :key, [{"foo", 1}, {"bar", 2}], selected: [1])
+           ) =~
              ~s(<option selected value="1">foo</option>)
 
     assert safe_to_string(
-             wc_multiple_select(:search, :key, %{"foo" => [{"One", 1}, {"Two", 2}], "bar" => ~w(3 4)})
+             wc_multiple_select(:search, :key, %{
+               "foo" => [{"One", 1}, {"Two", 2}],
+               "bar" => ~w(3 4)
+             })
            ) ==
              ~s(<select id="search_key" multiple="" name="search[key][]">) <>
                ~s(<optgroup label="bar">) <>
@@ -936,7 +971,9 @@ defmodule Phoenix.WebComponent.FormTest do
     assert content =~ ~s(<option selected value="9">09</option>)
     assert content =~ ~s(<option selected value="9">09</option>)
 
-    content = safe_to_string(wc_time_select(:search, :datetime, value: "02:11:13.123Z", second: []))
+    content =
+      safe_to_string(wc_time_select(:search, :datetime, value: "02:11:13.123Z", second: []))
+
     assert content =~ ~s(<option selected value="2">02</option>)
     assert content =~ ~s(<option selected value="11">11</option>)
     assert content =~ ~s(<option selected value="13">13</option>)
@@ -1046,7 +1083,9 @@ defmodule Phoenix.WebComponent.FormTest do
 
   test "wc_datetime_select/4 with form" do
     content =
-      safe_form(&wc_datetime_select(&1, :datetime, default: {{2020, 10, 13}, {1, 2, 3}}, second: []))
+      safe_form(
+        &wc_datetime_select(&1, :datetime, default: {{2020, 10, 13}, {1, 2, 3}}, second: [])
+      )
 
     assert content =~ ~s(<select id="search_datetime_year" name="search[datetime][year]">)
     assert content =~ ~s(<select id="search_datetime_month" name="search[datetime][month]">)
@@ -1063,7 +1102,9 @@ defmodule Phoenix.WebComponent.FormTest do
     assert content =~ ~s(<option selected value="13">13</option>)
 
     content =
-      safe_form(&wc_datetime_select(&1, :unknown, default: {{2020, 10, 9}, {1, 2, 3}}, second: []))
+      safe_form(
+        &wc_datetime_select(&1, :unknown, default: {{2020, 10, 9}, {1, 2, 3}}, second: [])
+      )
 
     assert content =~ ~s(<option selected value="2020">2020</option>)
     assert content =~ ~s(<option selected value="10">October</option>)
@@ -1073,7 +1114,9 @@ defmodule Phoenix.WebComponent.FormTest do
     assert content =~ ~s(<option selected value="3">03</option>)
 
     content =
-      safe_form(&wc_datetime_select(&1, :unknown, default: {{2020, 10, 13}, {1, 2, 3}}, second: []))
+      safe_form(
+        &wc_datetime_select(&1, :unknown, default: {{2020, 10, 13}, {1, 2, 3}}, second: [])
+      )
 
     assert content =~ ~s(<option selected value="2020">2020</option>)
     assert content =~ ~s(<option selected value="10">October</option>)
@@ -1083,7 +1126,9 @@ defmodule Phoenix.WebComponent.FormTest do
     assert content =~ ~s(<option selected value="3">03</option>)
 
     content =
-      safe_form(&wc_datetime_select(&1, :datetime, value: {{2020, 10, 13}, {1, 2, 3}}, second: []))
+      safe_form(
+        &wc_datetime_select(&1, :datetime, value: {{2020, 10, 13}, {1, 2, 3}}, second: [])
+      )
 
     assert content =~ ~s(<option selected value="2020">2020</option>)
     assert content =~ ~s(<option selected value="10">October</option>)
@@ -1133,5 +1178,4 @@ defmodule Phoenix.WebComponent.FormTest do
     assert content =~ ~s(Min: <select class="min" id="min" name="search[datetime][minute]">)
     assert content =~ ~s(Sec: <select class="sec" id="sec" name="search[datetime][second]">)
   end
-
 end

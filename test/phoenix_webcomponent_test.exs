@@ -3,5 +3,4 @@ defmodule Phoenix.WebComponentTest do
 
   use Phoenix.WebComponent
   # doctest Phoenix.WebComponent
-
 end

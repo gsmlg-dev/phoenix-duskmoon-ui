@@ -85,7 +85,7 @@ defmodule Phoenix.WebComponent.Link do
       opts = Keyword.put_new(opts, :rel, "nofollow")
 
       [data: data] =
-      Phoenix.WebComponent.link_attributes(to, method: method, csrf_token: csrf_token)
+        Phoenix.WebComponent.link_attributes(to, method: method, csrf_token: csrf_token)
 
       content_tag(:a, text, [data: data, href: data[:to]] ++ opts)
     end
