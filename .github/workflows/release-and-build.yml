@@ -23,6 +23,17 @@ jobs:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v2
 
+      - name: 💊 Setup Elixir
+        uses: erlef/setup-beam@v1
+        with:
+          otp-version: '24'
+          elixir-version: '1.12.3'
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+
       - name: 🚀 Release
         uses: cycjimmy/semantic-release-action@v3
         id: semantic
@@ -47,23 +58,3 @@ jobs:
           ${{ steps.semantic.outputs.new_release_notes }}
           EOF
           test -z "${{ steps.semantic.outputs.new_release_version }}" && exit 1 || exit 0
-
-  build-package:
-    name: Build otp relase package linux amd64
-    runs-on: ubuntu-latest
-    needs: [ release ]
-    steps:
-      - name: ⬇️ Checkout repo
-        uses: actions/checkout@v2
-
-      - name: 💊 Setup Elixir
-        uses: erlef/setup-beam@v1
-        with:
-          otp-version: '24'
-          elixir-version: '1.12.3'
-
-      - name: ⚙️ Run build
-        env:
-          MIX_ENV: prod
-          RELEASE_VSN: ${{ needs.release.outputs.version }}
-        run: mix compile --force

@@ -1,4 +1,5 @@
 repositoryUrl: https://github.com/gsmlg-dev/phoenix_webcomponent
+name: phoenix_webcomponent
 plugins:
   - '@semantic-release/commit-analyzer'
   - '@semantic-release/release-notes-generator'
