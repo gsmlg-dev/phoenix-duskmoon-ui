@@ -70,6 +70,13 @@ defmodule Phoenix.WebComponent.LinkTest do
              ~s[<a href="javascript:alert(<1>)"><mwc-button>foo</mwc-button></a>]
   end
 
+  test "wc_link with confirm" do
+    csrf_token = Plug.CSRFProtection.get_csrf_token()
+
+    assert safe_to_string(wc_link("hello", to: "/world", method: :delete, data: [confirm: "Are you sure?"])) ==
+             ~s[<a data-confirm="Are you sure?" data-csrf="#{csrf_token}" data-method="delete" data-to="/world" href="/world" rel="nofollow"><mwc-button>hello</mwc-button></a>]
+  end
+
   test "wc_link with invalid args" do
     msg = "expected non-nil value for :to in wc_link/2"
 

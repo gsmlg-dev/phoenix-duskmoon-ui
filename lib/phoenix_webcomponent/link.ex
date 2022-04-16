@@ -160,7 +160,7 @@ defmodule Phoenix.WebComponent.Link do
     {value, opts}
   end
   defp pop_link_attr(opts) do
-    list = [:download,:href, :hreflang, :media, :ping, :referrerpolicy, :rel, :target, :type]
+    list = [:data, :download,:href, :hreflang, :media, :ping, :referrerpolicy, :rel, :target, :type]
     Enum.reduce(list, {[], opts}, fn (name, {pop, list}) ->
       case Keyword.pop(list, name) do
         {val, list} when is_nil(val) -> {pop, list}
