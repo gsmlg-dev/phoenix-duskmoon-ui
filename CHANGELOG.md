@@ -1,3 +1,10 @@
+# [1.0.0-alpha.2](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.0.0-alpha.1...v1.0.0-alpha.2) (2022-04-16)
+
+
+### Features
+
+* Add `wc_remark`. ([9714a45](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/9714a454aefa5a51964242a3166f8a387e814908))
+
 # 1.0.0-alpha.1 (2022-04-15)
 
 
