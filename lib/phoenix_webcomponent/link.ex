@@ -4,6 +4,7 @@ defmodule Phoenix.WebComponent.Link do
   """
 
   import Phoenix.HTML.Tag
+  alias Phoenix.LiveView.Socket
 
   @doc """
   Generates a link to the given URL.
@@ -79,7 +80,8 @@ defmodule Phoenix.WebComponent.Link do
     if method == :get do
       # Call link attributes to validate `to`
       [data: data] = Phoenix.WebComponent.link_attributes(to, [])
-      {linkOpts, opts } = pop_link_attr(Keyword.delete(opts, :csrf_token))
+      {linkOpts, opts} = pop_link_attr(Keyword.delete(opts, :csrf_token))
+
       content_tag(:a, [href: data[:to]] ++ linkOpts) do
         content_tag(:"mwc-button", text, opts)
       end
@@ -90,7 +92,7 @@ defmodule Phoenix.WebComponent.Link do
       [data: data] =
         Phoenix.WebComponent.link_attributes(to, method: method, csrf_token: csrf_token)
 
-      {linkOpts, opts } = pop_link_attr(opts)
+      {linkOpts, opts} = pop_link_attr(opts)
 
       content_tag(:a, [data: data, href: data[:to]] ++ linkOpts) do
         content_tag(:"mwc-button", text, opts)
@@ -159,14 +161,136 @@ defmodule Phoenix.WebComponent.Link do
 
     {value, opts}
   end
+
   defp pop_link_attr(opts) do
-    list = [:data, :download,:href, :hreflang, :media, :ping, :referrerpolicy, :rel, :target, :type]
-    Enum.reduce(list, {[], opts}, fn (name, {pop, list}) ->
+    list = [
+      :data,
+      :download,
+      :href,
+      :hreflang,
+      :media,
+      :ping,
+      :referrerpolicy,
+      :rel,
+      :target,
+      :type
+    ]
+
+    Enum.reduce(list, {[], opts}, fn name, {pop, list} ->
       case Keyword.pop(list, name) do
-        {val, list} when is_nil(val) -> {pop, list}
+        {val, list} when is_nil(val) ->
+          {pop, list}
+
         {val, list} ->
           {Keyword.put(pop, name, val), list}
       end
     end)
+  end
+
+  @doc false
+  def wc_live_patch(opts) when is_list(opts) do
+    wc_live_link("patch", Keyword.fetch!(opts, :do), Keyword.delete(opts, :do))
+  end
+
+  @doc """
+  Generates a link that will patch the current LiveView.
+  When navigating to the current LiveView,
+  `c:Phoenix.LiveView.handle_params/3` is
+  immediately invoked to handle the change of params and URL state.
+  Then the new state is pushed to the client, without reloading the
+  whole page while also maintaining the current scroll position.
+  For live redirects to another LiveView, use `wc_live_redirect/2`.
+  ## Options
+    * `:to` - the required path to link to.
+    * `:replace` - the flag to replace the current history or push a new state.
+      Defaults `false`.
+  All other options are forwarded to the anchor tag.
+  ## Examples
+      <%= wc_live_patch "home", to: Routes.page_path(@socket, :index) %>
+      <%= wc_live_patch "next", to: Routes.live_path(@socket, MyLive, @page + 1) %>
+      <%= wc_live_patch to: Routes.live_path(@socket, MyLive, dir: :asc), replace: false do %>
+        Sort By Price
+      <% end %>
+  """
+  def wc_live_patch(text, opts)
+
+  def wc_live_patch(%Socket{}, _) do
+    raise """
+    you are invoking wc_live_patch/2 with a socket but a socket is not expected.
+    If you want to wc_live_patch/2 inside a LiveView, use push_patch/2 instead.
+    If you are inside a template, make the sure the first argument is a string.
+    """
+  end
+
+  def wc_live_patch(opts, do: block) when is_list(opts) do
+    wc_live_link("patch", block, opts)
+  end
+
+  def wc_live_patch(text, opts) when is_list(opts) do
+    wc_live_link("patch", text, opts)
+  end
+
+  @doc false
+  def wc_live_redirect(opts) when is_list(opts) do
+    wc_live_link("redirect", Keyword.fetch!(opts, :do), Keyword.delete(opts, :do))
+  end
+
+  @doc """
+  Generates a link that will redirect to a new LiveView of the same live session.
+  The current LiveView will be shut down and a new one will be mounted
+  in its place, without reloading the whole page. This can
+  also be used to remount the same LiveView, in case you want to start
+  fresh. If you want to navigate to the same LiveView without remounting
+  it, use `wc_live_patch/2` instead.
+  *Note*: The live redirects are only supported between two LiveViews defined
+  under the same live session. See `Phoenix.LiveView.Router.live_session/3` for
+  more details.
+  ## Options
+    * `:to` - the required path to link to.
+    * `:replace` - the flag to replace the current history or push a new state.
+      Defaults `false`.
+  All other options are forwarded to the anchor tag.
+  ## Examples
+      <%= wc_live_redirect "home", to: Routes.page_path(@socket, :index) %>
+      <%= wc_live_redirect "next", to: Routes.live_path(@socket, MyLive, @page + 1) %>
+      <%= wc_live_redirect to: Routes.live_path(@socket, MyLive, dir: :asc), replace: false do %>
+        Sort By Price
+      <% end %>
+  """
+  def wc_live_redirect(text, opts)
+
+  def wc_live_redirect(%Socket{}, _) do
+    raise """
+    you are invoking wc_live_redirect/2 with a socket but a socket is not expected.
+    If you want to wc_live_redirect/2 inside a LiveView, use push_redirect/2 instead.
+    If you are inside a template, make the sure the first argument is a string.
+    """
+  end
+
+  def wc_live_redirect(opts, do: block) when is_list(opts) do
+    wc_live_link("redirect", block, opts)
+  end
+
+  def wc_live_redirect(text, opts) when is_list(opts) do
+    wc_live_link("redirect", text, opts)
+  end
+
+  defp wc_live_link(type, block_or_text, opts) do
+    {uri, opts} = pop_required_option!(opts, :to, "option :to is required in wc_live_link/2")
+    replace = Keyword.get(opts, :replace, false)
+    kind = if replace, do: "replace", else: "push"
+
+    data = [phx_link: type, phx_link_state: kind]
+
+    opts =
+      opts
+      |> Keyword.update(:data, data, &Keyword.merge(&1, data))
+      |> Keyword.put(:href, uri)
+
+    {linkOpts, opts} = pop_link_attr(opts)
+
+    content_tag(:a, linkOpts) do
+      content_tag(:"mwc-button", opts, do: block_or_text)
+    end
   end
 end

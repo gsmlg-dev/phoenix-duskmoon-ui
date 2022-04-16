@@ -73,7 +73,9 @@ defmodule Phoenix.WebComponent.LinkTest do
   test "wc_link with confirm" do
     csrf_token = Plug.CSRFProtection.get_csrf_token()
 
-    assert safe_to_string(wc_link("hello", to: "/world", method: :delete, data: [confirm: "Are you sure?"])) ==
+    assert safe_to_string(
+             wc_link("hello", to: "/world", method: :delete, data: [confirm: "Are you sure?"])
+           ) ==
              ~s[<a data-confirm="Are you sure?" data-csrf="#{csrf_token}" data-method="delete" data-to="/world" href="/world" rel="nofollow"><mwc-button>hello</mwc-button></a>]
   end
 
@@ -151,6 +153,18 @@ defmodule Phoenix.WebComponent.LinkTest do
   test "wc_button with invalid args" do
     assert_raise ArgumentError, ~r/unsupported scheme given as link/, fn ->
       wc_button("foo", to: "javascript:alert(1)", method: :get)
+    end
+  end
+
+  describe "live view link" do
+    test "wc_live_patch" do
+      assert safe_to_string(wc_live_patch("hello", to: "/world")) ==
+               ~s[<a data-phx-link="patch" data-phx-link-state="push" href="/world"><mwc-button>hello</mwc-button></a>]
+    end
+
+    test "wc_live_redirect" do
+      assert safe_to_string(wc_live_redirect("hello", to: "/world")) ==
+               ~s[<a data-phx-link="redirect" data-phx-link-state="push" href="/world"><mwc-button>hello</mwc-button></a>]
     end
   end
 end
