@@ -14,6 +14,7 @@ defmodule PhoenixWebComponent.Mixfile do
       name: "Phoenix.WebComponent",
       description: "Phoenix view functions for working with WebComponent",
       package: package(),
+      aliases: aliases(),
       docs: [
         extras: ["CHANGELOG.md"],
         source_url: @source_url,
@@ -49,6 +50,12 @@ defmodule PhoenixWebComponent.Mixfile do
         Changelog: "https://hexdocs.pm/phoenix_webcomponent/changelog.html",
         GitHub: @source_url
       }
+    ]
+  end
+
+  defp aliases do
+    [
+      prepublish: ["esbuild default"]
     ]
   end
 end
