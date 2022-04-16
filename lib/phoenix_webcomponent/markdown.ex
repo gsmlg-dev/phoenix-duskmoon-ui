@@ -1,13 +1,20 @@
 defmodule Phoenix.WebComponent.Markdown do
   @moduledoc """
-  Conveniences for working with links and URLs in HTML.
+  Render markdown in to remark-element.
+
+  The remark-element supported markdown featrues:
+    * github flavor
+    * auto highlight code with lowlight.js and auto detect system light/dark themes.
+    * charts render by mermaid.js
+
   """
 
   import Phoenix.HTML.Tag
 
   @doc """
   Generates a html customElement remark-element to preview markdown.
-  (Docs of remark-element see https://gsmlg-dev.github.io/lit/?path=/story/gsmlg-remark-element--basic).
+
+  Docs of remark-element (See https://gsmlg-dev.github.io/lit/?path=/story/gsmlg-remark-element--basic).
 
   Useful to ensure that links that change data are not triggered by
   search engines and other spidering software.
