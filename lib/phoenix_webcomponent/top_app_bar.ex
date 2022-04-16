@@ -10,8 +10,8 @@ defmodule Phoenix.WebComponent.TopAppBar do
 
   ## Examples
 
-      wc_link("hello", to: "/world")
-      #=> <a href="/world"><mwc-button>hello</mwc-button></a>
+      wc_top_app_bar([fixed: true], do: "/world")
+      #=> <mwc-top-app-bar-fixed>/world</mwc-top-app-bar-fixed>
 
   ## Options
 
@@ -31,7 +31,7 @@ defmodule Phoenix.WebComponent.TopAppBar do
   | `centerTitle` | `boolean` | `false` | Centers the title horizontally. Only meant to be used with 0 or 1 `actionItems`.
   | `dense` | `boolean` | `false` | Makes the bar a little smaller for higher density applications.
   | `prominent` | `boolean` | `false` | Makes the bar much taller, can be combined with `dense`.
-  | `scrollTarget` | `HTMLElement` \| `Window` | `window` | Element used to listen for `scroll` events.
+  | `scrollTarget` | `HTMLElement` | `Window` | `window` | Element used to listen for `scroll` events.
 
   """
   def wc_top_app_bar(opts, do: contents) when is_list(opts) do
