@@ -36,6 +36,20 @@
 
 ### Features
 
+* Add pattern to validte email input. ([1f33349](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/1f333493f8e4b3e12cf5d720db15458ffb4ee30d))
+* First release. ([#1](https://github.com/gsmlg-dev/phoenix_webcomponent/issues/1)) ([3294354](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/3294354527fb6fc655ca95a41df729ce159673a1))
+* Initital package. ([090475d](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/090475d2be5b290d9de1f24a4854f3b1d9bfa91a))
+
+# 1.0.0 (2022-04-16)
+
+
+### Bug Fixes
+
+* Avoid warning about jason. ([03182c3](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/03182c3bf692502789eaf81446b4c8a6e9daa459))
+
+
+### Features
+
 * First release. ([#1](https://github.com/gsmlg-dev/phoenix_webcomponent/issues/1)) ([3294354](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/3294354527fb6fc655ca95a41df729ce159673a1))
 * Initital package. ([090475d](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/090475d2be5b290d9de1f24a4854f3b1d9bfa91a))
 
