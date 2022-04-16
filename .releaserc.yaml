@@ -17,12 +17,13 @@ plugins:
   - - '@semantic-release/exec'
     - 'prepareCmd' : |
         echo ${nextRelease.version}
+        export CHANNEL="${"${nextRelease.channel}":-latest}"
         sed -i 's%@version "[0-9\.]\+"%@version "${nextRelease.version}"%' mix.exs
         mix deps.get
         npm install
         sed -i 's%"version": "[0-9\.]\+"%"version": "${nextRelease.version}"%' package.json
         npm config set '//registry.npmjs.org/:_authToken' $NPM_TOKEN
-        npm publish --tag "${nextRelease.channel}"
+        npm publish --tag $CHANNEL
       'publishCmd' : |
         mix prepublish
         echo pubhlish phoenix_webcomponent ${nextRelease.version}
