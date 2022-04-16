@@ -178,7 +178,8 @@ defmodule Phoenix.WebComponent.FormHelper do
       |> Keyword.put_new(:type, "password")
       |> Keyword.put_new(:id, input_id(form, field))
       |> Keyword.put_new(:name, input_name(form, field))
-      # |> Keyword.put_new(:icontrailing, "eye-off")
+
+    # |> Keyword.put_new(:icontrailing, "eye-off")
 
     errors =
       case form do
