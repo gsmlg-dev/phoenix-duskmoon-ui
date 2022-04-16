@@ -1,3 +1,10 @@
+# [1.0.0-beta.3](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2022-04-16)
+
+
+### Bug Fixes
+
+* Fix docs. ([b0806ca](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/b0806cac8b37b653444a584f38ff07698a9e8dab))
+
 # [1.0.0-beta.2](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2022-04-16)
 
 
