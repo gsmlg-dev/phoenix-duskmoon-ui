@@ -4,14 +4,14 @@ defmodule Phoenix.WebComponent.LinkTest do
   import Phoenix.HTML
   import Phoenix.WebComponent.Link
 
-  test "link with post" do
+  test "wc_link with post" do
     csrf_token = Plug.CSRFProtection.get_csrf_token()
 
     assert safe_to_string(wc_link("hello", to: "/world", method: :post)) ==
              ~s[<a data-csrf="#{csrf_token}" data-method="post" data-to="/world" href="/world" rel="nofollow">hello</a>]
   end
 
-  test "link with %URI{}" do
+  test "wc_link with %URI{}" do
     url = "https://elixir-lang.org/"
 
     assert safe_to_string(wc_link("elixir", to: url)) ==
@@ -23,19 +23,19 @@ defmodule Phoenix.WebComponent.LinkTest do
              safe_to_string(wc_link("elixir", to: URI.parse(path)))
   end
 
-  test "link with put/delete" do
+  test "wc_link with put/delete" do
     csrf_token = Plug.CSRFProtection.get_csrf_token()
 
     assert safe_to_string(wc_link("hello", to: "/world", method: :put)) ==
              ~s[<a data-csrf="#{csrf_token}" data-method="put" data-to="/world" href="/world" rel="nofollow">hello</a>]
   end
 
-  test "link with put/delete without csrf_token" do
+  test "wc_link with put/delete without csrf_token" do
     assert safe_to_string(wc_link("hello", to: "/world", method: :put, csrf_token: false)) ==
              ~s[<a data-method="put" data-to="/world" href="/world" rel="nofollow">hello</a>]
   end
 
-  test "link with :do contents" do
+  test "wc_link with :do contents" do
     assert ~s[<a href="/hello"><p>world</p></a>] ==
              safe_to_string(
                wc_link to: "/hello" do
@@ -50,7 +50,7 @@ defmodule Phoenix.WebComponent.LinkTest do
            ) == ~s[<a href="/hello">world</a>]
   end
 
-  test "link with scheme" do
+  test "wc_link with scheme" do
     assert safe_to_string(wc_link("foo", to: "/javascript:alert(<1>)")) ==
              ~s[<a href="/javascript:alert(&lt;1&gt;)">foo</a>]
 
@@ -70,7 +70,7 @@ defmodule Phoenix.WebComponent.LinkTest do
              ~s[<a href="javascript:alert(<1>)">foo</a>]
   end
 
-  test "link with invalid args" do
+  test "wc_link with invalid args" do
     msg = "expected non-nil value for :to in wc_link/2"
 
     assert_raise ArgumentError, msg, fn ->

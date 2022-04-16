@@ -6,3 +6,4 @@ import '@material/mwc-checkbox';
 import '@material/mwc-select';
 import '@material/mwc-switch';
 
+import '@gsmlg/lit';
