@@ -4,14 +4,14 @@
   "main": "./priv/static/phoenix_webcomponent.js",
   "repository": {},
   "scripts": {
-    "prepublish": "babel priv/src/phoenix_webcomponent.js --out-dir priv/static/"
+    "prepublish": "babel priv/src/ --out-dir priv/static/"
   },
   "files": [
     "README.md",
     "CHANGELOG.md",
     "LICENSE",
     "package.json",
-    "priv/static/phoenix_webcomponent.js"
+    "priv/static/"
   ],
   "dependencies": {
     "@gsmlg/lit": "^1.14.0",
