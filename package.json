@@ -4,7 +4,7 @@
   "main": "./priv/static/phoenix_webcomponent.js",
   "repository": {},
   "scripts": {
-    "prepublish": "cp priv/src/phoenix_webcomponent.js priv/static/phoenix_webcomponent.js"
+    "prepublish": "babel priv/src/phoenix_webcomponent.js --out-dir priv/static/"
   },
   "files": [
     "README.md",
@@ -22,5 +22,10 @@
     "@material/mwc-switch": "^0.25.3",
     "@material/mwc-textarea": "^0.25.3",
     "@material/mwc-textfield": "^0.25.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11"
   }
 }
