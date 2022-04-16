@@ -20,6 +20,7 @@ plugins:
         echo ${nextRelease.version}
         sed -i 's%@version "[0-9\.]\+"%@version "${nextRelease.version}"%' mix.exs
         mix deps.get
+        npm install
         mix prepublish
       'publishCmd' : |
         echo pubhlish phoenix_webcomponent ${nextRelease.version}
