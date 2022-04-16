@@ -10,30 +10,30 @@ defmodule Phoenix.WebComponent.Link do
 
   ## Examples
 
-      link("hello", to: "/world")
-      #=> <a href="/world">hello</a>
+      wc_link("hello", to: "/world")
+      #=> <a href="/world"><mwc-button>hello</mwc-button></a>
 
-      link("hello", to: URI.parse("https://elixir-lang.org"))
-      #=> <a href="https://elixir-lang.org">hello</a>
+      wc_link("hello", to: URI.parse("https://elixir-lang.org"))
+      #=> <a href="https://elixir-lang.org"><mwc-button>hello</mwc-button></a>
 
-      link("<hello>", to: "/world")
-      #=> <a href="/world">&lt;hello&gt;</a>
+      wc_link("<hello>", to: "/world")
+      #=> <a href="/world"><mwc-button>&lt;hello&gt;</mwc-button></a>
 
-      link("<hello>", to: "/world", class: "btn")
-      #=> <a class="btn" href="/world">&lt;hello&gt;</a>
+      wc_link("<hello>", to: "/world", class: "btn")
+      #=> <a class="btn" href="/world"><mwc-button>&lt;hello&gt;</mwc-button></a>
 
-      link("delete", to: "/the_world", data: [confirm: "Really?"])
-      #=> <a data-confirm="Really?" href="/the_world">delete</a>
+      wc_link("delete", to: "/the_world", data: [confirm: "Really?"])
+      #=> <a data-confirm="Really?" href="/the_world"><mwc-button>delete</mwc-button></a>
 
       # If you supply a method other than `:get`:
-      link("delete", to: "/everything", method: :delete)
-      #=> <a href="/everything" data-csrf="csrf_token" data-method="delete" data-to="/everything">delete</a>
+      wc_link("delete", to: "/everything", method: :delete)
+      #=> <a href="/everything" data-csrf="csrf_token" data-method="delete" data-to="/everything"><mwc-button>delete</mwc-button></a>
 
       # You can use a `do ... end` block too:
       link to: "/hello" do
         "world"
       end
-      #=> <a href="/hello">world<a>
+      #=> <a href="/hello"><mwc-button>world</mwc-button><a>
 
   ## Options
 
