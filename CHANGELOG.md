@@ -1,3 +1,11 @@
+# 1.0.0 (2022-04-16)
+
+
+### Features
+
+* First release. ([#1](https://github.com/gsmlg-dev/phoenix_webcomponent/issues/1)) ([3294354](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/3294354527fb6fc655ca95a41df729ce159673a1))
+* Initital package. ([090475d](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/090475d2be5b290d9de1f24a4854f3b1d9bfa91a))
+
 # [1.0.0-beta.4](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2022-04-16)
 
 
