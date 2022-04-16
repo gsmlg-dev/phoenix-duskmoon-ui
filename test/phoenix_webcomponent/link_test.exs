@@ -8,7 +8,7 @@ defmodule Phoenix.WebComponent.LinkTest do
     csrf_token = Plug.CSRFProtection.get_csrf_token()
 
     assert safe_to_string(wc_link("hello", to: "/world", method: :post)) ==
-             ~s[<a data-csrf="#{csrf_token}" data-method="post" data-to="/world" href="/world" rel="nofollow">hello</a>]
+             ~s[<a data-csrf="#{csrf_token}" data-method="post" data-to="/world" href="/world" rel="nofollow"><mwc-button>hello</mwc-button></a>]
   end
 
   test "wc_link with %URI{}" do
@@ -27,16 +27,16 @@ defmodule Phoenix.WebComponent.LinkTest do
     csrf_token = Plug.CSRFProtection.get_csrf_token()
 
     assert safe_to_string(wc_link("hello", to: "/world", method: :put)) ==
-             ~s[<a data-csrf="#{csrf_token}" data-method="put" data-to="/world" href="/world" rel="nofollow">hello</a>]
+             ~s[<a data-csrf="#{csrf_token}" data-method="put" data-to="/world" href="/world" rel="nofollow"><mwc-button>hello</mwc-button></a>]
   end
 
   test "wc_link with put/delete without csrf_token" do
     assert safe_to_string(wc_link("hello", to: "/world", method: :put, csrf_token: false)) ==
-             ~s[<a data-method="put" data-to="/world" href="/world" rel="nofollow">hello</a>]
+             ~s[<a data-method="put" data-to="/world" href="/world" rel="nofollow"><mwc-button>hello</mwc-button></a>]
   end
 
   test "wc_link with :do contents" do
-    assert ~s[<a href="/hello"><p>world</p></a>] ==
+    assert ~s[<a href="/hello"><mwc-button><p>world</p></mwc-button></a>] ==
              safe_to_string(
                wc_link to: "/hello" do
                  Phoenix.HTML.Tag.content_tag(:p, "world")
@@ -47,27 +47,27 @@ defmodule Phoenix.WebComponent.LinkTest do
              wc_link(to: "/hello") do
                "world"
              end
-           ) == ~s[<a href="/hello">world</a>]
+           ) == ~s[<a href="/hello"><mwc-button>world</mwc-button></a>]
   end
 
   test "wc_link with scheme" do
     assert safe_to_string(wc_link("foo", to: "/javascript:alert(<1>)")) ==
-             ~s[<a href="/javascript:alert(&lt;1&gt;)">foo</a>]
+             ~s[<a href="/javascript:alert(&lt;1&gt;)"><mwc-button>foo</mwc-button></a>]
 
     assert safe_to_string(wc_link("foo", to: {:safe, "/javascript:alert(<1>)"})) ==
-             ~s[<a href="/javascript:alert(<1>)">foo</a>]
+             ~s[<a href="/javascript:alert(<1>)"><mwc-button>foo</mwc-button></a>]
 
     assert safe_to_string(wc_link("foo", to: {:javascript, "alert(<1>)"})) ==
-             ~s[<a href="javascript:alert(&lt;1&gt;)">foo</a>]
+             ~s[<a href="javascript:alert(&lt;1&gt;)"><mwc-button>foo</mwc-button></a>]
 
     assert safe_to_string(wc_link("foo", to: {:javascript, 'alert(<1>)'})) ==
-             ~s[<a href="javascript:alert(&lt;1&gt;)">foo</a>]
+             ~s[<a href="javascript:alert(&lt;1&gt;)"><mwc-button>foo</mwc-button></a>]
 
     assert safe_to_string(wc_link("foo", to: {:javascript, {:safe, "alert(<1>)"}})) ==
-             ~s[<a href="javascript:alert(<1>)">foo</a>]
+             ~s[<a href="javascript:alert(<1>)"><mwc-button>foo</mwc-button></a>]
 
     assert safe_to_string(wc_link("foo", to: {:javascript, {:safe, 'alert(<1>)'}})) ==
-             ~s[<a href="javascript:alert(<1>)">foo</a>]
+             ~s[<a href="javascript:alert(<1>)"><mwc-button>foo</mwc-button></a>]
   end
 
   test "wc_link with invalid args" do

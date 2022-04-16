@@ -79,7 +79,10 @@ defmodule Phoenix.WebComponent.Link do
     if method == :get do
       # Call link attributes to validate `to`
       [data: data] = Phoenix.WebComponent.link_attributes(to, [])
-      content_tag(:a, text, [href: data[:to]] ++ Keyword.delete(opts, :csrf_token))
+      {linkOpts, opts } = pop_link_attr(Keyword.delete(opts, :csrf_token))
+      content_tag(:a, [href: data[:to]] ++ linkOpts) do
+        content_tag(:"mwc-button", text, opts)
+      end
     else
       {csrf_token, opts} = Keyword.pop(opts, :csrf_token, true)
       opts = Keyword.put_new(opts, :rel, "nofollow")
@@ -87,7 +90,11 @@ defmodule Phoenix.WebComponent.Link do
       [data: data] =
         Phoenix.WebComponent.link_attributes(to, method: method, csrf_token: csrf_token)
 
-      content_tag(:a, text, [data: data, href: data[:to]] ++ opts)
+      {linkOpts, opts } = pop_link_attr(opts)
+
+      content_tag(:a, [data: data, href: data[:to]] ++ linkOpts) do
+        content_tag(:"mwc-button", text, opts)
+      end
     end
   end
 
@@ -151,5 +158,15 @@ defmodule Phoenix.WebComponent.Link do
     end
 
     {value, opts}
+  end
+  defp pop_link_attr(opts) do
+    list = [:download,:href, :hreflang, :media, :ping, :referrerpolicy, :rel, :target, :type]
+    Enum.reduce(list, {[], opts}, fn (name, {pop, list}) ->
+      case Keyword.pop(list, name) do
+        {val, list} when is_nil(val) -> {pop, list}
+        {val, list} ->
+          {Keyword.put(pop, name, val), list}
+      end
+    end)
   end
 end
