@@ -3,6 +3,9 @@
   "version": "0.0.0",
   "main": "./priv/static/phoenix_webcomponent.js",
   "repository": {},
+  "scripts": {
+    "prepublish": "cp priv/src/phoenix_webcomponent.js priv/static/phoenix_webcomponent.js"
+  },
   "files": [
     "README.md",
     "CHANGELOG.md",
