@@ -1,3 +1,16 @@
+# [1.0.0-beta.4](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2022-04-16)
+
+
+### Bug Fixes
+
+* Fix data-confirm. ([3b14108](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/3b14108db7ea175e1adafea8566fa6594b2701f7))
+* Optimize link. ([8686596](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/8686596f0adbbecb9c88648fde8c8b072c477970))
+
+
+### Features
+
+* Add live view link helper, `wc_live_patch`, `wc_live_redirect`. ([323347f](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/323347fa858ab209f3649b50f2fbad9719d9cf2a))
+
 # [1.0.0-beta.3](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2022-04-16)
 
 
