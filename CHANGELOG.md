@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.1.0...v1.1.1) (2022-04-16)
+
+
+### Bug Fixes
+
+* Add all js components. ([95bcc5f](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/95bcc5f4c7c13dbd03c48c973a2b5b1a23d4fbb9))
+
 # [1.1.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.0.0...v1.1.0) (2022-04-16)
 
 
