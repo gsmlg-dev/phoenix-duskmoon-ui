@@ -107,6 +107,7 @@ jobs:
             @semantic-release/exec
             @semantic-release/git
         env:
+          MIX_ENV: prod
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           HEX_API_KEY: ${{ secrets.HEX_API_KEY }}

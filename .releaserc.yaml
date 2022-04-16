@@ -18,7 +18,8 @@ plugins:
   - - '@semantic-release/exec'
     - 'prepareCmd' : |
         echo ${nextRelease.version}
-        sed -i 's%@version "[0-9\.]\+"%@version "1.2.2"%' mix.exs
+        sed -i 's%@version "[0-9\.]\+"%@version "${nextRelease.version}"%' mix.exs
+        mix deps.get
       'publishCmd' : |
         echo pubhlish phoenix_webcomponent ${nextRelease.version}
         mix hex.publish --yes
