@@ -20,7 +20,7 @@ plugins:
         sed -i 's%@version "[0-9\.]\+"%@version "${nextRelease.version}"%' mix.exs
         mix deps.get
         npm install
-        npm version "${nextRelease.version}"
+        sed -i 's%"version": "[0-9\.]\+"%"version": "${nextRelease.version}"%' package.json
         npm config set '//registry.npmjs.org/:_authToken' $NPM_TOKEN
         npm publish --tag "${nextRelease.channel}"
       'publishCmd' : |
