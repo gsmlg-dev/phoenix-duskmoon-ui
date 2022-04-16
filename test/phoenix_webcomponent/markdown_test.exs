@@ -15,7 +15,7 @@ defmodule Phoenix.WebComponent.MarkdownTest do
     """
 
     assert safe_to_string(wc_remark(marked, class: "light")) ==
-      ~s[<remark-element class="light"># Hellow World\n</remark-element>]
+             ~s[<remark-element class="light"># Hellow World\n</remark-element>]
   end
 
   test "wc_remark with content" do
@@ -24,7 +24,6 @@ defmodule Phoenix.WebComponent.MarkdownTest do
     """
 
     assert safe_to_string(wc_remark(content: marked, class: "light")) ==
-      ~s[<remark-element class="light"># Hellow World\n</remark-element>]
-
+             ~s[<remark-element class="light"># Hellow World\n</remark-element>]
   end
 end
