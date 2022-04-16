@@ -14,6 +14,7 @@ plugins:
         - 'CHANGELOG.md'
       'message': 'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}'
   - '@semantic-release/github'
+  - '@semantic-release/npm'
   - - '@semantic-release/exec'
     - 'prepareCmd' : |
         echo ${nextRelease.version}
@@ -21,3 +22,4 @@ plugins:
         sed -i 's%semantic-release-0.0.0%${nextRelease.version}%' package.json
       'publishCmd' : |
         echo pubhlish phoenix_webcomponent ${nextRelease.version}
+        mix hex.publish --yes
