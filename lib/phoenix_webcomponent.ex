@@ -64,8 +64,9 @@ defmodule Phoenix.WebComponent do
   @doc false
   defmacro __using__(_) do
     quote do
-      import Phoenix.WebComponent.Form
+      import Phoenix.WebComponent.FormHelper
       import Phoenix.WebComponent.Link
+      import Phoenix.WebComponent.Markdown
     end
   end
 
@@ -108,8 +109,8 @@ defmodule Phoenix.WebComponent do
       [data: [method: :get, to: "https://elixir-lang.org"]]
       iex> link_attributes("/product/1", method: :delete)
       [data: [csrf: Plug.CSRFProtection.get_csrf_token(), method: :delete, to: "/product/1"]]
-  If the URL is absolute, only certain schemas are allowed to
-  avoid JavaScript injection. For example, the following will fail:
+  ## If the URL is absolute, only certain schemas are allowed to avoid JavaScript injection.
+    For example, the following will fail
       iex> link_attributes("javascript:alert('hacked!')")
       ** (ArgumentError) unsupported scheme given as link. In case you want to link to an
       unknown or unsafe scheme, such as javascript, use a tuple: {:javascript, rest}

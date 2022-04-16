@@ -1,10 +1,10 @@
-defmodule Phoenix.WebComponent.FormTest do
+defmodule Phoenix.WebComponent.FormHelperTest do
   use ExUnit.Case, async: true
 
   import Phoenix.HTML
   import Phoenix.HTML.Form, except: [options_for_select: 2]
-  import Phoenix.WebComponent.Form
-  doctest Phoenix.WebComponent.Form
+  import Phoenix.WebComponent.FormHelper
+  doctest Phoenix.WebComponent.FormHelper
 
   @doc """
   A function that executes `form_for/4` and

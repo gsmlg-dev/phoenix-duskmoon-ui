@@ -1,4 +1,4 @@
-defmodule Phoenix.WebComponent.Form do
+defmodule Phoenix.WebComponent.FormHelper do
   @moduledoc ~S"""
   Helpers related to producing HTML forms.
 
@@ -114,71 +114,9 @@ defmodule Phoenix.WebComponent.Form do
 
   """
 
-  alias Phoenix.WebComponent.Form
   import Phoenix.HTML
   import Phoenix.HTML.Tag
   import Phoenix.HTML.Form, except: [options_for_select: 2]
-
-  @doc """
-  Defines the Phoenix.WebComponent.Form struct.
-
-  Its fields are:
-
-    * `:source` - the data structure given to `form_for/4` that
-      implements the form data protocol
-
-    * `:impl` - the module with the form data protocol implementation.
-      This is used to avoid multiple protocol dispatches.
-
-    * `:id` - the id to be used when generating input fields
-
-    * `:index` - the index of the struct in the form
-
-    * `:name` - the name to be used when generating input fields
-
-    * `:data` - the field used to store lookup data
-
-    * `:params` - the parameters associated to this form in case
-      they were sent as part of a previous request
-
-    * `:hidden` - a keyword list of fields that are required for
-      submitting the form behind the scenes as hidden inputs
-
-    * `:options` - a copy of the options given when creating the
-      form via `form_for/4` without any form data specific key
-
-    * `:action` - the action the form is meant to wc_submit to
-
-    * `:errors` - a keyword list of errors that associated with
-      the form
-  """
-  defstruct source: nil,
-            impl: nil,
-            id: nil,
-            name: nil,
-            data: nil,
-            hidden: [],
-            params: %{},
-            errors: [],
-            options: [],
-            index: nil,
-            action: nil
-
-  @type t :: %Form{
-          source: Phoenix.HTML.FormData.t(),
-          name: String.t(),
-          data: %{field => term},
-          params: %{binary => term},
-          hidden: Keyword.t(),
-          options: Keyword.t(),
-          errors: Keyword.t(),
-          impl: module,
-          id: String.t(),
-          index: nil | non_neg_integer,
-          action: nil | String.t()
-        }
-
-  @type field :: atom | String.t()
 
   ## Form helpers
 
