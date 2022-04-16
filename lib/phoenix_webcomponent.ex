@@ -28,6 +28,7 @@ defmodule Phoenix.WebComponent do
       import Phoenix.WebComponent.FormHelper
       import Phoenix.WebComponent.Link
       import Phoenix.WebComponent.Markdown
+      import Phoenix.WebComponent.TopAppBar
     end
   end
 

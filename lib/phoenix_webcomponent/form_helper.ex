@@ -156,6 +156,8 @@ defmodule Phoenix.WebComponent.FormHelper do
     generic_input(:email, form, field, opts)
   end
 
+  @spec wc_number_input(atom | Phoenix.HTML.Form.t(), atom | binary, keyword) ::
+          {:safe, [binary | list | 60 | 62, ...]}
   @doc """
   Generates a number input.
 
