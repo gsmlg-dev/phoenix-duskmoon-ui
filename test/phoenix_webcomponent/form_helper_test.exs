@@ -76,26 +76,26 @@ defmodule Phoenix.WebComponent.FormHelperTest do
 
   test "wc_textarea/3" do
     assert safe_to_string(wc_textarea(:search, :key)) ==
-             ~s(<mwc-textarea id="search_key" name="search[key]"></mwc-textarea>)
+             ~s(<mwc-textarea id="search_key" label="Key" name="search[key]"></mwc-textarea>)
 
     assert safe_to_string(wc_textarea(:search, :key)) ==
-             ~s(<mwc-textarea id="search_key" name="search[key]"></mwc-textarea>)
+             ~s(<mwc-textarea id="search_key" label="Key" name="search[key]"></mwc-textarea>)
 
     assert safe_to_string(wc_textarea(:search, :key, id: "key", name: "search[key][]")) ==
-             ~s(<mwc-textarea id="key" name="search[key][]"></mwc-textarea>)
+             ~s(<mwc-textarea id="key" label="Key" name="search[key][]"></mwc-textarea>)
   end
 
   test "wc_textarea/3 with form" do
     assert safe_form(&wc_textarea(&1, :key)) ==
-             ~s(<mwc-textarea id="search_key" name="search[key]" value="value"></mwc-textarea>)
+             ~s(<mwc-textarea id="search_key" label="Key" name="search[key]" value="value"></mwc-textarea>)
 
     assert safe_form(&wc_textarea(&1, :key, value: "foo", id: "key", name: "search[key][]")) ==
-             ~s(<mwc-textarea id="key" name="search[key][]" value="foo"></mwc-textarea>)
+             ~s(<mwc-textarea id="key" label="Key" name="search[key][]" value="foo"></mwc-textarea>)
   end
 
   test "cw_textarea/3 with non-binary type" do
     assert safe_form(&wc_textarea(&1, :key, value: :atom_value)) ==
-             ~s(<mwc-textarea id="search_key" name="search[key]" value="atom_value"></mwc-textarea>)
+             ~s(<mwc-textarea id="search_key" label="Key" name="search[key]" value="atom_value"></mwc-textarea>)
   end
 
   ## wc_number_input/3
