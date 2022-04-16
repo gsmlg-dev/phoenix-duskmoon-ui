@@ -10,6 +10,7 @@ defmodule PhoenixWebComponent.Mixfile do
       app: :phoenix_webcomponent,
       version: @version,
       elixir: "~> 1.7",
+      config_path: "config/config.exs",
       deps: deps(),
       name: "Phoenix.WebComponent",
       description: "Phoenix view functions for working with WebComponent",
