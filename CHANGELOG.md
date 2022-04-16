@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.0.0...v1.1.0) (2022-04-16)
+
+
+### Features
+
+* Add top app bar element. ([6133c66](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/6133c66b509315acc648dd496082c9bd89f2d890))
+
 # 1.0.0 (2022-04-16)
 
 
