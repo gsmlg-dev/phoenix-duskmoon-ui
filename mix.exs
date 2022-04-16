@@ -1,4 +1,4 @@
-defmodule PhoenixHtml.Mixfile do
+defmodule PhoenixWebComponent.Mixfile do
   use Mix.Project
 
   # Also change package.json version
@@ -10,10 +10,12 @@ defmodule PhoenixHtml.Mixfile do
       app: :phoenix_webcomponent,
       version: @version,
       elixir: "~> 1.7",
+      config_path: "config/config.exs",
       deps: deps(),
       name: "Phoenix.WebComponent",
       description: "Phoenix view functions for working with WebComponent",
       package: package(),
+      aliases: aliases(),
       docs: [
         extras: ["CHANGELOG.md"],
         source_url: @source_url,
@@ -33,8 +35,11 @@ defmodule PhoenixHtml.Mixfile do
 
   defp deps do
     [
+      {:phoenix_html, "~> 3.0"},
+      {:phoenix_live_view, "~> 0.17.0"},
       {:plug, "~> 1.5", optional: true},
-      {:ex_doc, ">= 0.0.0", only: :docs}
+      {:esbuild, "~> 0.2", runtime: true},
+      {:ex_doc, ">= 0.0.0", only: :prod, runtime: false}
     ]
   end
 
@@ -47,6 +52,12 @@ defmodule PhoenixHtml.Mixfile do
         Changelog: "https://hexdocs.pm/phoenix_webcomponent/changelog.html",
         GitHub: @source_url
       }
+    ]
+  end
+
+  defp aliases do
+    [
+      prepublish: ["esbuild default"]
     ]
   end
 end

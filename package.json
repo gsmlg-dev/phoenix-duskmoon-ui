@@ -1,8 +1,31 @@
 {
   "name": "phoenix_webcomponent",
-  "version": "semantic-release-0.0.0",
+  "version": "0.0.0",
   "main": "./priv/static/phoenix_webcomponent.js",
-  "repository": {
+  "repository": {},
+  "scripts": {
+    "prepublish": "babel priv/src/ --out-dir priv/static/"
   },
-  "files": ["README.md", "CHANGELOG.md", "LICENSE", "package.json", "priv/static/phoenix_webcomponent.js"]
+  "files": [
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "package.json",
+    "priv/static/"
+  ],
+  "dependencies": {
+    "@gsmlg/lit": "^1.14.0",
+    "@material/mwc-button": "^0.25.3",
+    "@material/mwc-checkbox": "^0.25.3",
+    "@material/mwc-radio": "^0.25.3",
+    "@material/mwc-select": "^0.25.3",
+    "@material/mwc-switch": "^0.25.3",
+    "@material/mwc-textarea": "^0.25.3",
+    "@material/mwc-textfield": "^0.25.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11"
+  }
 }

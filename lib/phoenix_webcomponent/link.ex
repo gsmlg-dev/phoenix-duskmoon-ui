@@ -3,37 +3,38 @@ defmodule Phoenix.WebComponent.Link do
   Conveniences for working with links and URLs in HTML.
   """
 
-  import Phoenix.WebComponent.Tag
+  import Phoenix.HTML.Tag
+  alias Phoenix.LiveView.Socket
 
   @doc """
   Generates a link to the given URL.
 
   ## Examples
 
-      link("hello", to: "/world")
-      #=> <a href="/world">hello</a>
+      wc_link("hello", to: "/world")
+      #=> <a href="/world"><mwc-button>hello</mwc-button></a>
 
-      link("hello", to: URI.parse("https://elixir-lang.org"))
-      #=> <a href="https://elixir-lang.org">hello</a>
+      wc_link("hello", to: URI.parse("https://elixir-lang.org"))
+      #=> <a href="https://elixir-lang.org"><mwc-button>hello</mwc-button></a>
 
-      link("<hello>", to: "/world")
-      #=> <a href="/world">&lt;hello&gt;</a>
+      wc_link("<hello>", to: "/world")
+      #=> <a href="/world"><mwc-button>&lt;hello&gt;</mwc-button></a>
 
-      link("<hello>", to: "/world", class: "btn")
-      #=> <a class="btn" href="/world">&lt;hello&gt;</a>
+      wc_link("<hello>", to: "/world", class: "btn")
+      #=> <a class="btn" href="/world"><mwc-button>&lt;hello&gt;</mwc-button></a>
 
-      link("delete", to: "/the_world", data: [confirm: "Really?"])
-      #=> <a data-confirm="Really?" href="/the_world">delete</a>
+      wc_link("delete", to: "/the_world", data: [confirm: "Really?"])
+      #=> <a data-confirm="Really?" href="/the_world"><mwc-button>delete</mwc-button></a>
 
       # If you supply a method other than `:get`:
-      link("delete", to: "/everything", method: :delete)
-      #=> <a href="/everything" data-csrf="csrf_token" data-method="delete" data-to="/everything">delete</a>
+      wc_link("delete", to: "/everything", method: :delete)
+      #=> <a href="/everything" data-csrf="csrf_token" data-method="delete" data-to="/everything"><mwc-button>delete</mwc-button></a>
 
       # You can use a `do ... end` block too:
       link to: "/hello" do
         "world"
       end
-      #=> <a href="/hello">world<a>
+      #=> <a href="/hello"><mwc-button>world</mwc-button><a>
 
   ## Options
 
@@ -62,29 +63,40 @@ defmodule Phoenix.WebComponent.Link do
 
   By default, CSRF tokens are generated through `Plug.CSRFProtection`.
   """
-  def link(text, opts)
+  def wc_link(text, opts)
 
-  def link(opts, do: contents) when is_list(opts) do
-    link(contents, opts)
+  def wc_link(opts, do: contents) when is_list(opts) do
+    wc_link(contents, opts)
   end
 
-  def link(_text, opts) when not is_list(opts) do
-    raise ArgumentError, "link/2 requires a keyword list as second argument"
+  def wc_link(_text, opts) when not is_list(opts) do
+    raise ArgumentError, "wc_link/2 requires a keyword list as second argument"
   end
 
-  def link(text, opts) do
-    {to, opts} = pop_required_option!(opts, :to, "expected non-nil value for :to in link/2")
+  def wc_link(text, opts) do
+    {to, opts} = pop_required_option!(opts, :to, "expected non-nil value for :to in wc_link/2")
     {method, opts} = Keyword.pop(opts, :method, :get)
 
     if method == :get do
       # Call link attributes to validate `to`
       [data: data] = Phoenix.WebComponent.link_attributes(to, [])
-      content_tag(:a, text, [href: data[:to]] ++ Keyword.delete(opts, :csrf_token))
+      {linkOpts, opts} = pop_link_attr(Keyword.delete(opts, :csrf_token))
+
+      content_tag(:a, [href: data[:to]] ++ linkOpts) do
+        content_tag(:"mwc-button", text, opts)
+      end
     else
       {csrf_token, opts} = Keyword.pop(opts, :csrf_token, true)
       opts = Keyword.put_new(opts, :rel, "nofollow")
-      [data: data] = Phoenix.WebComponent.link_attributes(to, method: method, csrf_token: csrf_token)
-      content_tag(:a, text, [data: data, href: data[:to]] ++ opts)
+
+      [data: data] =
+        Phoenix.WebComponent.link_attributes(to, method: method, csrf_token: csrf_token)
+
+      {linkOpts, opts} = pop_link_attr(opts)
+
+      content_tag(:a, [data: data, href: data[:to]] ++ linkOpts) do
+        content_tag(:"mwc-button", text, opts)
+      end
     end
   end
 
@@ -124,12 +136,12 @@ defmodule Phoenix.WebComponent.Link do
     * `data-confirm` - shows a confirmation prompt before generating and
       submitting the form.
   """
-  def button(opts, do: contents) do
-    button(contents, opts)
+  def wc_button(opts, do: contents) do
+    wc_button(contents, opts)
   end
 
-  def button(text, opts) do
-    {to, opts} = pop_required_option!(opts, :to, "option :to is required in button/2")
+  def wc_button(text, opts) do
+    {to, opts} = pop_required_option!(opts, :to, "option :to is required in wc_button/2")
 
     {link_opts, opts} =
       opts
@@ -137,7 +149,7 @@ defmodule Phoenix.WebComponent.Link do
       |> Keyword.split([:method, :csrf_token])
 
     link_attributes = Phoenix.WebComponent.link_attributes(to, link_opts)
-    content_tag(:button, text, link_attributes ++ opts)
+    content_tag(:"mwc-button", text, link_attributes ++ opts)
   end
 
   defp pop_required_option!(opts, key, error_message) do
@@ -148,5 +160,137 @@ defmodule Phoenix.WebComponent.Link do
     end
 
     {value, opts}
+  end
+
+  defp pop_link_attr(opts) do
+    list = [
+      :data,
+      :download,
+      :href,
+      :hreflang,
+      :media,
+      :ping,
+      :referrerpolicy,
+      :rel,
+      :target,
+      :type
+    ]
+
+    Enum.reduce(list, {[], opts}, fn name, {pop, list} ->
+      case Keyword.pop(list, name) do
+        {val, list} when is_nil(val) ->
+          {pop, list}
+
+        {val, list} ->
+          {Keyword.put(pop, name, val), list}
+      end
+    end)
+  end
+
+  @doc false
+  def wc_live_patch(opts) when is_list(opts) do
+    wc_live_link("patch", Keyword.fetch!(opts, :do), Keyword.delete(opts, :do))
+  end
+
+  @doc """
+  Generates a link that will patch the current LiveView.
+  When navigating to the current LiveView,
+  `c:Phoenix.LiveView.handle_params/3` is
+  immediately invoked to handle the change of params and URL state.
+  Then the new state is pushed to the client, without reloading the
+  whole page while also maintaining the current scroll position.
+  For live redirects to another LiveView, use `wc_live_redirect/2`.
+  ## Options
+    * `:to` - the required path to link to.
+    * `:replace` - the flag to replace the current history or push a new state.
+      Defaults `false`.
+  All other options are forwarded to the anchor tag.
+  ## Examples
+      <%= wc_live_patch "home", to: Routes.page_path(@socket, :index) %>
+      <%= wc_live_patch "next", to: Routes.live_path(@socket, MyLive, @page + 1) %>
+      <%= wc_live_patch to: Routes.live_path(@socket, MyLive, dir: :asc), replace: false do %>
+        Sort By Price
+      <% end %>
+  """
+  def wc_live_patch(text, opts)
+
+  def wc_live_patch(%Socket{}, _) do
+    raise """
+    you are invoking wc_live_patch/2 with a socket but a socket is not expected.
+    If you want to wc_live_patch/2 inside a LiveView, use push_patch/2 instead.
+    If you are inside a template, make the sure the first argument is a string.
+    """
+  end
+
+  def wc_live_patch(opts, do: block) when is_list(opts) do
+    wc_live_link("patch", block, opts)
+  end
+
+  def wc_live_patch(text, opts) when is_list(opts) do
+    wc_live_link("patch", text, opts)
+  end
+
+  @doc false
+  def wc_live_redirect(opts) when is_list(opts) do
+    wc_live_link("redirect", Keyword.fetch!(opts, :do), Keyword.delete(opts, :do))
+  end
+
+  @doc """
+  Generates a link that will redirect to a new LiveView of the same live session.
+  The current LiveView will be shut down and a new one will be mounted
+  in its place, without reloading the whole page. This can
+  also be used to remount the same LiveView, in case you want to start
+  fresh. If you want to navigate to the same LiveView without remounting
+  it, use `wc_live_patch/2` instead.
+  *Note*: The live redirects are only supported between two LiveViews defined
+  under the same live session. See `Phoenix.LiveView.Router.live_session/3` for
+  more details.
+  ## Options
+    * `:to` - the required path to link to.
+    * `:replace` - the flag to replace the current history or push a new state.
+      Defaults `false`.
+  All other options are forwarded to the anchor tag.
+  ## Examples
+      <%= wc_live_redirect "home", to: Routes.page_path(@socket, :index) %>
+      <%= wc_live_redirect "next", to: Routes.live_path(@socket, MyLive, @page + 1) %>
+      <%= wc_live_redirect to: Routes.live_path(@socket, MyLive, dir: :asc), replace: false do %>
+        Sort By Price
+      <% end %>
+  """
+  def wc_live_redirect(text, opts)
+
+  def wc_live_redirect(%Socket{}, _) do
+    raise """
+    you are invoking wc_live_redirect/2 with a socket but a socket is not expected.
+    If you want to wc_live_redirect/2 inside a LiveView, use push_redirect/2 instead.
+    If you are inside a template, make the sure the first argument is a string.
+    """
+  end
+
+  def wc_live_redirect(opts, do: block) when is_list(opts) do
+    wc_live_link("redirect", block, opts)
+  end
+
+  def wc_live_redirect(text, opts) when is_list(opts) do
+    wc_live_link("redirect", text, opts)
+  end
+
+  defp wc_live_link(type, block_or_text, opts) do
+    {uri, opts} = pop_required_option!(opts, :to, "option :to is required in wc_live_link/2")
+    replace = Keyword.get(opts, :replace, false)
+    kind = if replace, do: "replace", else: "push"
+
+    data = [phx_link: type, phx_link_state: kind]
+
+    opts =
+      opts
+      |> Keyword.update(:data, data, &Keyword.merge(&1, data))
+      |> Keyword.put(:href, uri)
+
+    {linkOpts, opts} = pop_link_attr(opts)
+
+    content_tag(:a, linkOpts) do
+      content_tag(:"mwc-button", opts, do: block_or_text)
+    end
   end
 end

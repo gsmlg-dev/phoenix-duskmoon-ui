@@ -1,4 +1,4 @@
-defmodule Phoenix.WebComponent.Form do
+defmodule Phoenix.WebComponent.FormHelper do
   @moduledoc ~S"""
   Helpers related to producing HTML forms.
 
@@ -50,7 +50,7 @@ defmodule Phoenix.WebComponent.Form do
           Age: <%= select f, :age, 18..100 %>
         </label>
 
-        <%= submit "Submit" %>
+        <%= wc_submit "Submit" %>
       <% end %>
 
   `form_for/4` receives the `Ecto.Changeset` and converts it
@@ -88,7 +88,7 @@ defmodule Phoenix.WebComponent.Form do
 
       <%= form_for @conn, Routes.foo_path(@conn, :new), [as: :foo], fn f -> %>
         <%= text_input f, :for %>
-        <%= submit "Search" %>
+        <%= wc_submit "Search" %>
       <% end %>
 
   `form_for/4` uses the `Plug.Conn` to set input values from the
@@ -99,7 +99,7 @@ defmodule Phoenix.WebComponent.Form do
 
       <%= form_for :foo, Routes.foo_path(MyApp.Endpoint, :new), fn f -> %>
         <%= text_input f, :for, value: "current value" %>
-        <%= submit "Search" %>
+        <%= wc_submit "Search" %>
       <% end %>
 
   ## Without form data
@@ -111,493 +111,12 @@ defmodule Phoenix.WebComponent.Form do
 
       <%= text_input :user, :name, value: "This is a prepopulated value" %>
 
-  ## Nested inputs
-
-  If your data layer supports embedding or nested associations,
-  you can use `inputs_for` to attach nested data to the form.
-
-  Imagine the following Ecto schemas:
-
-      defmodule User do
-        use Ecto.Schema
-
-        schema "users" do
-          field :name
-          embeds_one :permalink, Permalink
-        end
-      end
-
-      defmodule Permalink do
-        use Ecto.Schema
-
-        embedded_schema do
-          field :url
-        end
-      end
-
-  In the form, you now can:
-
-      <%= form_for @changeset, Routes.user_path(@conn, :create), fn f -> %>
-        <%= text_input f, :name %>
-
-        <%= inputs_for f, :permalink, fn fp -> %>
-          <%= text_input fp, :url %>
-        <% end %>
-      <% end %>
-
-  The default option can be given to populate the fields if none
-  is given:
-
-      <%= inputs_for f, :permalink, [default: %Permalink{title: "default"}], fn fp -> %>
-        <%= text_input fp, :url %>
-      <% end %>
-
-  `inputs_for/4` can be used to work with single entities or
-  collections. When working with collections, `:prepend` and
-  `:append` can be used to add entries to the collection
-  stored in the changeset.
-
-  ## CSRF protection
-
-  CSRF protection is a mechanism to ensure that the user who rendered
-  the form is the one actually submitting it. This module generates a
-  CSRF token by default. Your application should check this token on
-  the server to avoid attackers from making requests on your server on
-  behalf of other users. Phoenix by default checks this token.
-
-  When posting a form with a host in its address, such as "//host.com/path"
-  instead of only "/path", Phoenix will include the host signature in the
-  token and validate the token only if the accessed host is the same as
-  the host in the token. This is to avoid tokens from leaking to third
-  party applications. If this behaviour is problematic, you can generate
-  a non-host specific token with `Plug.CSRFProtection.get_csrf_token/0` and
-  pass it to the form generator via the `:csrf_token` option.
-
-  ## Phoenix.LiveView integration
-
-  Phoenix.LiveView builds on top of this function to [provide a function
-  component named `form`](https://hexdocs.pm/phoenix_live_view/Phoenix.LiveView.Helpers.html#form/1).
-  Inside your HEEx templates, instead of doing this:
-
-      <%= form_for @changeset, url, opts, fn f -> %>
-        <%= text_input f, :name %>
-      <% end %>
-
-  you should import `Phoenix.LiveView.Helpers` and then write:
-
-      <.form let={f} for={@changeset}>
-        <%= text_input f, :name %>
-      </.form>
 
   """
 
-  alias Phoenix.WebComponent.Form
-  import Phoenix.WebComponent
-  import Phoenix.WebComponent.Tag
-
-  @doc """
-  Defines the Phoenix.WebComponent.Form struct.
-
-  Its fields are:
-
-    * `:source` - the data structure given to `form_for/4` that
-      implements the form data protocol
-
-    * `:impl` - the module with the form data protocol implementation.
-      This is used to avoid multiple protocol dispatches.
-
-    * `:id` - the id to be used when generating input fields
-
-    * `:index` - the index of the struct in the form
-
-    * `:name` - the name to be used when generating input fields
-
-    * `:data` - the field used to store lookup data
-
-    * `:params` - the parameters associated to this form in case
-      they were sent as part of a previous request
-
-    * `:hidden` - a keyword list of fields that are required for
-      submitting the form behind the scenes as hidden inputs
-
-    * `:options` - a copy of the options given when creating the
-      form via `form_for/4` without any form data specific key
-
-    * `:action` - the action the form is meant to submit to
-
-    * `:errors` - a keyword list of errors that associated with
-      the form
-  """
-  defstruct source: nil,
-            impl: nil,
-            id: nil,
-            name: nil,
-            data: nil,
-            hidden: [],
-            params: %{},
-            errors: [],
-            options: [],
-            index: nil,
-            action: nil
-
-  @type t :: %Form{
-          source: Phoenix.WebComponent.FormData.t(),
-          name: String.t(),
-          data: %{field => term},
-          params: %{binary => term},
-          hidden: Keyword.t(),
-          options: Keyword.t(),
-          errors: Keyword.t(),
-          impl: module,
-          id: String.t(),
-          index: nil | non_neg_integer,
-          action: nil | String.t()
-        }
-
-  @type field :: atom | String.t()
-
-  defimpl Phoenix.WebComponent.Safe do
-    def to_iodata(%{action: action, options: options}) do
-      IO.warn(
-        "form_for/3 without an anonymous function is deprecated. " <>
-          "If you are using Phoenix.LiveView, use the new Phoenix.LiveView.Helpers.form/1 component"
-      )
-
-      {:safe, contents} = form_tag(action, options)
-      contents
-    end
-  end
-
-  @doc """
-  Converts an attribute/form field into its humanize version.
-
-      iex> humanize(:username)
-      "Username"
-      iex> humanize(:created_at)
-      "Created at"
-      iex> humanize("user_id")
-      "User"
-
-  """
-  def humanize(atom) when is_atom(atom), do: humanize(Atom.to_string(atom))
-
-  def humanize(bin) when is_binary(bin) do
-    bin =
-      if String.ends_with?(bin, "_id") do
-        binary_part(bin, 0, byte_size(bin) - 3)
-      else
-        bin
-      end
-
-    bin |> String.replace("_", " ") |> String.capitalize()
-  end
-
-  @doc false
-  def form_for(form_data, action) do
-    form_for(form_data, action, [])
-  end
-
-  @doc """
-  Generates a form tag with a form builder **without** an anonymous function.
-
-  This functionality exists mostly for integration with `Phoenix.LiveView`
-  that replaces the anonymous function for explicit closing of the `<form>`
-  tag:
-
-      <%= f = form_for @changeset, Routes.user_path(@conn, :create), opts %>
-        Name: <%= text_input f, :name %>
-      </form>
-
-  See the [Phoenix.LiveView integration](#module-phoenix-liveview-integration)
-  section in module documentation for examples of using this function.
-
-  See `form_for/4` for the available options.
-  """
-  @doc deprecated: "Use Phoenix.LiveView.Helpers.form/1 instead"
-  @spec form_for(Phoenix.WebComponent.FormData.t(), String.t(), Keyword.t()) :: Phoenix.WebComponent.Form.t()
-  def form_for(form_data, action, options) when is_list(options) do
-    IO.warn(
-      "form_for/3 without an anonymous function is deprecated. " <>
-        "If you are using Phoenix.LiveView, use the new Phoenix.LiveView.Helpers.form/1 component"
-    )
-
-    %{Phoenix.WebComponent.FormData.to_form(form_data, options) | action: action}
-  end
-
-  @doc """
-  Generates a form tag with a form builder and an anonymous function.
-
-      <%= form_for @changeset, Routes.user_path(@conn, :create), fn f -> %>
-        Name: <%= text_input f, :name %>
-      <% end %>
-
-  See the module documentation for examples of using this function.
-
-  ## Options
-
-    * `:as` - the server side parameter in which all params for this
-      form will be collected (i.e. `as: :user_params` would mean all fields
-      for this form will be accessed as `conn.params.user_params` server
-      side). Automatically inflected when a changeset is given.
-
-    * `:method` - the HTTP method. If the method is not "get" nor "post",
-      an input tag with name `_method` is generated along-side the form tag.
-      Defaults to "post".
-
-    * `:multipart` - when true, sets enctype to "multipart/form-data".
-      Required when uploading files
-
-    * `:csrf_token` - for "post" requests, the form tag will automatically
-      include an input tag with name `_csrf_token`. When set to false, this
-      is disabled
-
-    * `:errors` - use this to manually pass a keyword list of errors to the form
-      (for example from `conn.assigns[:errors]`). This option is only used when a
-      connection is used as the form source and it will make the errors available
-      under `f.errors`
-
-    * `:id` - the ID of the form attribute. If an ID is given, all form inputs
-      will also be prefixed by the given ID
-
-  All other options will be passed as html attributes, such as `class: "foo"`.
-  """
-  @spec form_for(Phoenix.WebComponent.FormData.t(), String.t(), (t -> Phoenix.WebComponent.unsafe())) ::
-          Phoenix.WebComponent.safe()
-  @spec form_for(Phoenix.WebComponent.FormData.t(), String.t(), Keyword.t(), (t -> Phoenix.WebComponent.unsafe())) ::
-          Phoenix.WebComponent.safe()
-  def form_for(form_data, action, options \\ [], fun) when is_function(fun, 1) do
-    form = %{Phoenix.WebComponent.FormData.to_form(form_data, options) | action: action}
-    html_escape([form_tag(action, form.options), fun.(form), raw("</form>")])
-  end
-
-  @doc """
-  Same as `inputs_for(form, field, [])`.
-  """
-  @spec inputs_for(t, field) :: list(Phoenix.WebComponent.Form.t())
-  def inputs_for(form, field) when is_atom(field) or is_binary(field),
-    do: inputs_for(form, field, [])
-
-  @doc """
-  Generate a new form builder for the given parameter in form **without** an
-  anonymous function.
-
-  This functionality exists mostly for integration with `Phoenix.LiveView`
-  that replaces the anonymous function for returning the generated forms
-  instead.
-
-  Keep in mind that this function does not generate hidden inputs automatically
-  like `inputs_for/4`. To generate them you need to explicit do it by yourself.
-
-      <%= f = form_for @changeset, Routes.user_path(@conn, :create), opts %>
-        Name: <%= text_input f, :name %>
-
-        <%= for friend_form <- inputs_for(f, :friends) do %>
-          # for generating hidden inputs.
-          <%= hidden_inputs_for(friend_form) %>
-          <%= text_input friend_form, :name %>
-        <% end %>
-      </form>
-
-  See `inputs_for/4` for the available options.
-  """
-  @spec inputs_for(t, field, Keyword.t()) :: list(Phoenix.WebComponent.Form.t())
-  def inputs_for(%{impl: impl} = form, field, options)
-      when (is_atom(field) or is_binary(field)) and is_list(options) do
-    options =
-      form.options
-      |> Keyword.take([:multipart])
-      |> Keyword.merge(options)
-
-    impl.to_form(form.source, form, field, options)
-  end
-
-  @doc """
-  Generate a new form builder for the given parameter in form.
-
-  See the module documentation for examples of using this function.
-
-  ## Options
-
-    * `:id` - the id to be used in the form, defaults to the
-      concatenation of the given `field` to the parent form id
-
-    * `:as` - the name to be used in the form, defaults to the
-      concatenation of the given `field` to the parent form name
-
-    * `:default` - the value to use if none is available
-
-    * `:prepend` - the values to prepend when rendering. This only
-      applies if the field value is a list and no parameters were
-      sent through the form.
-
-    * `:append` - the values to append when rendering. This only
-      applies if the field value is a list and no parameters were
-      sent through the form.
-
-    * `:skip_hidden` - skip the automatic rendering of hidden
-      fields to allow for more tight control over the generated
-      markup. You can access `form.hidden` to generate them manually
-      within the supplied callback.
-
-  """
-  @spec inputs_for(t, field, (t -> Phoenix.WebComponent.unsafe())) :: Phoenix.WebComponent.safe()
-  @spec inputs_for(t, field, Keyword.t(), (t -> Phoenix.WebComponent.unsafe())) :: Phoenix.WebComponent.safe()
-  def inputs_for(%{impl: impl} = form, field, options \\ [], fun)
-      when is_atom(field) or is_binary(field) do
-    {skip, options} = Keyword.pop(options, :skip_hidden, false)
-
-    options =
-      form.options
-      |> Keyword.take([:multipart])
-      |> Keyword.merge(options)
-
-    forms = impl.to_form(form.source, form, field, options)
-
-    html_escape(
-      Enum.map(forms, fn form ->
-        if skip do
-          fun.(form)
-        else
-          [hidden_inputs_for(form), fun.(form)]
-        end
-      end)
-    )
-  end
-
-  @doc """
-  Returns a value of a corresponding form field.
-
-  The `form` should either be a `Phoenix.WebComponent.Form` emitted
-  by `form_for` or an atom.
-
-  When a form is given, it will lookup for changes and then
-  fallback to parameters and finally fallback to the default
-  struct/map value.
-
-  Since the function looks up parameter values too, there is
-  no guarantee that the value will have a certain type. For
-  example, a boolean field will be sent as "false" as a
-  parameter, and this function will return it as is. If you
-  need to normalize the result of `input_value`, the best
-  option is to call `html_escape` on it and compare the
-  resulting string.
-  """
-  @spec input_value(t | atom, field) :: term
-  def input_value(%{source: source, impl: impl} = form, field)
-      when is_atom(field) or is_binary(field) do
-    try do
-      impl.input_value(source, form, field)
-    rescue
-      UndefinedFunctionError ->
-        case Map.fetch(form.params, field_to_string(field)) do
-          {:ok, value} ->
-            value
-
-          :error ->
-            Map.get(form.data, field)
-        end
-    end
-  end
-
-  def input_value(name, _field) when is_atom(name), do: nil
-
-  @doc """
-  Returns an id of a corresponding form field.
-
-  The form should either be a `Phoenix.WebComponent.Form` emitted
-  by `form_for` or an atom.
-  """
-  @spec input_id(t | atom, field) :: String.t()
-  def input_id(%{id: nil}, field), do: "#{field}"
-
-  def input_id(%{id: id}, field) when is_atom(field) or is_binary(field) do
-    "#{id}_#{field}"
-  end
-
-  def input_id(name, field) when (is_atom(name) and is_atom(field)) or is_binary(field) do
-    "#{name}_#{field}"
-  end
-
-  @doc """
-  Returns an id of a corresponding form field and value attached to it.
-
-  Useful for radio buttons and inputs like multiselect checkboxes.
-  """
-  @spec input_id(t | atom, field, Phoenix.WebComponent.Safe.t()) :: String.t()
-  def input_id(name, field, value) do
-    {:safe, value} = html_escape(value)
-    value_id = value |> IO.iodata_to_binary() |> String.replace(~r/\W/u, "_")
-    input_id(name, field) <> "_" <> value_id
-  end
-
-  @doc """
-  Returns a name of a corresponding form field.
-
-  The first argument should either be a `Phoenix.WebComponent.Form` emitted
-  by `form_for` or an atom.
-
-  ## Examples
-
-      iex> Phoenix.WebComponent.Form.input_name(:user, :first_name)
-      "user[first_name]"
-  """
-  @spec input_name(t | atom, field) :: String.t()
-  def input_name(form_or_name, field)
-
-  def input_name(%{name: nil}, field), do: to_string(field)
-
-  def input_name(%{name: name}, field) when is_atom(field) or is_binary(field),
-    do: "#{name}[#{field}]"
-
-  def input_name(name, field) when (is_atom(name) and is_atom(field)) or is_binary(field),
-    do: "#{name}[#{field}]"
-
-  @doc """
-  Returns the HTML5 validations that would apply to
-  the given field.
-  """
-  @spec input_validations(t, field) :: Keyword.t()
-  def input_validations(%{source: source, impl: impl} = form, field)
-      when is_atom(field) or is_binary(field) do
-    impl.input_validations(source, form, field)
-  end
-
-  @mapping %{
-    "url" => :url_input,
-    "email" => :email_input,
-    "search" => :search_input,
-    "password" => :password_input
-  }
-
-  @doc """
-  Gets the input type for a given field.
-
-  If the underlying input type is a `:text_field`,
-  a mapping could be given to further inflect
-  the input type based solely on the field name.
-  The default mapping is:
-
-      %{"url"      => :url_input,
-        "email"    => :email_input,
-        "search"   => :search_input,
-        "password" => :password_input}
-
-  """
-  @spec input_type(t, field) :: atom
-  def input_type(%{impl: impl, source: source} = form, field, mapping \\ @mapping)
-      when is_atom(field) or is_binary(field) do
-    type = impl.input_type(source, form, field)
-
-    if type == :text_input do
-      field = field_to_string(field)
-
-      Enum.find_value(mapping, type, fn {k, v} ->
-        String.contains?(field, k) && v
-      end)
-    else
-      type
-    end
-  end
+  import Phoenix.HTML
+  import Phoenix.HTML.Tag
+  import Phoenix.HTML.Form, except: [options_for_select: 2]
 
   ## Form helpers
 
@@ -614,51 +133,15 @@ defmodule Phoenix.WebComponent.Form do
   ## Examples
 
       # Assuming form contains a User schema
-      text_input(form, :name)
-      #=> <input id="user_name" name="user[name]" type="text" value="">
+      wc_text_input(form, :name)
+      #=> <mwc-textfield id="user_name" name="user[name]" type="text" value="" />
 
-      text_input(:user, :name)
-      #=> <input id="user_name" name="user[name]" type="text" value="">
+      wc_text_input(:user, :name)
+      #=> <mwc-textfield id="user_name" name="user[name]" type="text" value="" />
 
   """
-  def text_input(form, field, opts \\ []) do
+  def wc_text_input(form, field, opts \\ []) do
     generic_input(:text, form, field, opts)
-  end
-
-  @doc """
-  Generates a hidden input.
-
-  See `text_input/3` for example and docs.
-  """
-  def hidden_input(form, field, opts \\ []) do
-    generic_input(:hidden, form, field, opts)
-  end
-
-  @doc """
-  Generates hidden inputs for the given form.
-  """
-  @spec hidden_inputs_for(t) :: list(Phoenix.WebComponent.safe())
-  def hidden_inputs_for(form) do
-    Enum.flat_map(form.hidden, fn {k, v} ->
-      hidden_inputs_for(form, k, v)
-    end)
-  end
-
-  defp hidden_inputs_for(form, k, values) when is_list(values) do
-    id = input_id(form, k)
-    name = input_name(form, k)
-
-    for {v, index} <- Enum.with_index(values) do
-      hidden_input(form, k,
-        id: id <> "_" <> Integer.to_string(index),
-        name: name <> "[]",
-        value: v
-      )
-    end
-  end
-
-  defp hidden_inputs_for(form, k, v) do
-    [hidden_input(form, k, value: v)]
   end
 
   @doc """
@@ -666,7 +149,7 @@ defmodule Phoenix.WebComponent.Form do
 
   See `text_input/3` for example and docs.
   """
-  def email_input(form, field, opts \\ []) do
+  def wc_email_input(form, field, opts \\ []) do
     generic_input(:email, form, field, opts)
   end
 
@@ -675,7 +158,7 @@ defmodule Phoenix.WebComponent.Form do
 
   See `text_input/3` for example and docs.
   """
-  def number_input(form, field, opts \\ []) do
+  def wc_number_input(form, field, opts \\ []) do
     generic_input(:number, form, field, opts)
   end
 
@@ -688,14 +171,45 @@ defmodule Phoenix.WebComponent.Form do
 
   See `text_input/3` for example and docs.
   """
-  def password_input(form, field, opts \\ []) do
+  def wc_password_input(form, field, opts \\ []) do
     opts =
       opts
+      |> Keyword.put_new(:label, humanize(field))
       |> Keyword.put_new(:type, "password")
       |> Keyword.put_new(:id, input_id(form, field))
       |> Keyword.put_new(:name, input_name(form, field))
 
-    tag(:input, opts)
+    # |> Keyword.put_new(:icontrailing, "eye-off")
+
+    errors =
+      case form do
+        %{errors: errors} -> errors |> Keyword.get_values(field)
+        _ -> []
+      end
+
+    {translate_error, opts} = opts |> Keyword.pop(:translate_error)
+
+    opts =
+      unless Enum.empty?(errors) do
+        {class, opts} = opts |> Keyword.pop(:class)
+        opts = opts |> Keyword.put_new(:class, "errors #{class}")
+
+        errorString =
+          Enum.map(errors, fn {msg, opts} ->
+            if is_function(translate_error) do
+              translate_error.({msg, opts})
+            else
+              msg
+            end
+          end)
+          |> Enum.join(" ")
+
+        opts |> Keyword.put(:helper, errorString)
+      else
+        opts
+      end
+
+    tag(:"mwc-textfield", opts)
   end
 
   @doc """
@@ -703,7 +217,7 @@ defmodule Phoenix.WebComponent.Form do
 
   See `text_input/3` for example and docs.
   """
-  def url_input(form, field, opts \\ []) do
+  def wc_url_input(form, field, opts \\ []) do
     generic_input(:url, form, field, opts)
   end
 
@@ -712,7 +226,7 @@ defmodule Phoenix.WebComponent.Form do
 
   See `text_input/3` for example and docs.
   """
-  def search_input(form, field, opts \\ []) do
+  def wc_search_input(form, field, opts \\ []) do
     generic_input(:search, form, field, opts)
   end
 
@@ -721,7 +235,7 @@ defmodule Phoenix.WebComponent.Form do
 
   See `text_input/3` for example and docs.
   """
-  def telephone_input(form, field, opts \\ []) do
+  def wc_telephone_input(form, field, opts \\ []) do
     generic_input(:tel, form, field, opts)
   end
 
@@ -733,7 +247,7 @@ defmodule Phoenix.WebComponent.Form do
 
   See `text_input/3` for example and docs.
   """
-  def color_input(form, field, opts \\ []) do
+  def wc_color_input(form, field, opts \\ []) do
     generic_input(:color, form, field, opts)
   end
 
@@ -742,7 +256,7 @@ defmodule Phoenix.WebComponent.Form do
 
   See `text_input/3` for example and docs.
   """
-  def range_input(form, field, opts \\ []) do
+  def wc_range_input(form, field, opts \\ []) do
     generic_input(:range, form, field, opts)
   end
 
@@ -754,7 +268,7 @@ defmodule Phoenix.WebComponent.Form do
 
   See `text_input/3` for example and docs.
   """
-  def date_input(form, field, opts \\ []) do
+  def wc_date_input(form, field, opts \\ []) do
     generic_input(:date, form, field, opts)
   end
 
@@ -766,7 +280,7 @@ defmodule Phoenix.WebComponent.Form do
 
   See `text_input/3` for example and docs.
   """
-  def datetime_local_input(form, field, opts \\ []) do
+  def wc_datetime_local_input(form, field, opts \\ []) do
     value = Keyword.get(opts, :value, input_value(form, field))
     opts = Keyword.put(opts, :value, datetime_local_input_value(value))
 
@@ -796,16 +310,16 @@ defmodule Phoenix.WebComponent.Form do
 
   ## Examples
 
-      time_input form, :time
+      wc_time_input form, :time
       #=> <input id="form_time" name="form[time]" type="time" value="23:00">
 
-      time_input form, :time, precision: :second
+      wc_time_input form, :time, precision: :second
       #=> <input id="form_time" name="form[time]" type="time" value="23:00:00">
 
-      time_input form, :time, precision: :millisecond
+      wc_time_input form, :time, precision: :millisecond
       #=> <input id="form_time" name="form[time]" type="time" value="23:00:00.000">
   """
-  def time_input(form, field, opts \\ []) do
+  def wc_time_input(form, field, opts \\ []) do
     {precision, opts} = Keyword.pop(opts, :precision, :minute)
     value = opts[:value] || input_value(form, field)
     opts = Keyword.put(opts, :value, truncate_time(value, precision))
@@ -831,13 +345,42 @@ defmodule Phoenix.WebComponent.Form do
        when is_list(opts) and (is_atom(field) or is_binary(field)) do
     opts =
       opts
+      |> Keyword.put_new(:label, humanize(field))
       |> Keyword.put_new(:type, type)
       |> Keyword.put_new(:id, input_id(form, field))
       |> Keyword.put_new(:name, input_name(form, field))
       |> Keyword.put_new(:value, input_value(form, field))
       |> Keyword.update!(:value, &maybe_html_escape/1)
 
-    tag(:input, opts)
+    errors =
+      case form do
+        %{errors: errors} -> errors |> Keyword.get_values(field)
+        _ -> []
+      end
+
+    {translate_error, opts} = opts |> Keyword.pop(:translate_error)
+
+    opts =
+      unless Enum.empty?(errors) do
+        {class, opts} = opts |> Keyword.pop(:class)
+        opts = opts |> Keyword.put_new(:class, "errors #{class}")
+
+        errorString =
+          Enum.map(errors, fn {msg, opts} ->
+            if is_function(translate_error) do
+              translate_error.({msg, opts})
+            else
+              msg
+            end
+          end)
+          |> Enum.join(" ")
+
+        opts |> Keyword.put(:helper, errorString)
+      else
+        opts
+      end
+
+    tag(:"mwc-textfield", opts)
   end
 
   defp maybe_html_escape(nil), do: nil
@@ -868,14 +411,45 @@ defmodule Phoenix.WebComponent.Form do
   automatically add a new line before the text area
   value.
   """
-  def textarea(form, field, opts \\ []) do
+  def wc_textarea(form, field, opts \\ []) do
+    {value, opts} = Keyword.pop(opts, :value, input_value(form, field))
+
     opts =
       opts
+      |> Keyword.put_new(:label, humanize(field))
       |> Keyword.put_new(:id, input_id(form, field))
       |> Keyword.put_new(:name, input_name(form, field))
+      |> Keyword.put_new(:value, value)
 
-    {value, opts} = Keyword.pop(opts, :value, input_value(form, field))
-    content_tag(:textarea, ["\n", html_escape(value || "")], opts)
+    errors =
+      case form do
+        %{errors: errors} -> errors |> Keyword.get_values(field)
+        _ -> []
+      end
+
+    {translate_error, opts} = opts |> Keyword.pop(:translate_error)
+
+    opts =
+      unless Enum.empty?(errors) do
+        {class, opts} = opts |> Keyword.pop(:class)
+        opts = opts |> Keyword.put_new(:class, "errors #{class}")
+
+        errorString =
+          Enum.map(errors, fn {msg, opts} ->
+            if is_function(translate_error) do
+              translate_error.({msg, opts})
+            else
+              msg
+            end
+          end)
+          |> Enum.join(" ")
+
+        opts |> Keyword.put(:helper, errorString)
+      else
+        opts
+      end
+
+    content_tag(:"mwc-textarea", "", opts)
   end
 
   @doc """
@@ -884,10 +458,10 @@ defmodule Phoenix.WebComponent.Form do
   It requires the given form to be configured with `multipart: true`
   when invoking `form_for/4`, otherwise it fails with `ArgumentError`.
 
-  See `text_input/3` for example and docs.
+  See `wc_text_input/3` for example and docs.
   """
-  def file_input(form, field, opts \\ []) do
-    if match?(%Form{}, form) and !form.options[:multipart] do
+  def wc_file_input(form, field, opts \\ []) do
+    if match?(%Phoenix.HTML.Form{}, form) and !form.options[:multipart] do
       raise ArgumentError,
             "file_input/3 requires the enclosing form_for/4 " <>
               "to be configured with multipart: true"
@@ -910,18 +484,18 @@ defmodule Phoenix.WebComponent.Form do
   end
 
   @doc """
-  Generates a submit button to send the form.
+  Generates a wc_submit button to send the form.
 
   ## Examples
 
-      submit do: "Submit"
-      #=> <button type="submit">Submit</button>
+      wc_submit do: "Submit"
+      #=> <button type="wc_submit">Submit</button>
 
   """
-  def submit([do: _] = block_option), do: submit([], block_option)
+  def wc_submit([do: _] = block_option), do: wc_submit([], block_option)
 
   @doc """
-  Generates a submit button to send the form.
+  Generates a wc_submit button to send the form.
 
   All options are forwarded to the underlying button tag.
   When called with a `do:` block, the button tag options
@@ -929,28 +503,28 @@ defmodule Phoenix.WebComponent.Form do
 
   ## Examples
 
-      submit "Submit"
-      #=> <button type="submit">Submit</button>
+      wc_submit "Submit"
+      #=> <button type="wc_submit">Submit</button>
 
-      submit "Submit", class: "btn"
-      #=> <button class="btn" type="submit">Submit</button>
+      wc_submit "Submit", class: "btn"
+      #=> <button class="btn" type="wc_submit">Submit</button>
 
-      submit [class: "btn"], do: "Submit"
-      #=> <button class="btn" type="submit">Submit</button>
+      wc_submit [class: "btn"], do: "Submit"
+      #=> <button class="btn" type="wc_submit">Submit</button>
 
   """
-  def submit(value, opts \\ [])
+  def wc_submit(value, opts \\ [])
 
-  def submit(opts, [do: _] = block_option) do
+  def wc_submit(opts, [do: _] = block_option) do
     opts = Keyword.put_new(opts, :type, "submit")
 
-    content_tag(:button, opts, block_option)
+    content_tag(:"mwc-button", opts, block_option)
   end
 
-  def submit(value, opts) do
+  def wc_submit(value, opts) do
     opts = Keyword.put_new(opts, :type, "submit")
 
-    content_tag(:button, value, opts)
+    content_tag(:"mwc-button", value, opts)
   end
 
   @doc """
@@ -961,20 +535,20 @@ defmodule Phoenix.WebComponent.Form do
 
   ## Examples
 
-      reset "Reset"
+      wc_reset "Reset"
       #=> <input type="reset" value="Reset">
 
-      reset "Reset", class: "btn"
+      wc_reset "Reset", class: "btn"
       #=> <input type="reset" value="Reset" class="btn">
 
   """
-  def reset(value, opts \\ []) do
+  def wc_reset(value, opts \\ []) do
     opts =
       opts
       |> Keyword.put_new(:type, "reset")
       |> Keyword.put_new(:value, value)
 
-    tag(:input, opts)
+    tag(:"mwc-button", opts)
   end
 
   @doc """
@@ -986,14 +560,14 @@ defmodule Phoenix.WebComponent.Form do
   ## Examples
 
       # Assuming form contains a User schema
-      radio_button(form, :role, "admin")
+      wc_radio_button(form, :role, "admin")
       #=> <input id="user_role_admin" name="user[role]" type="radio" value="admin">
 
   ## Options
 
   All options are simply forwarded to the underlying HTML tag.
   """
-  def radio_button(form, field, value, opts \\ []) do
+  def wc_radio_button(form, field, value, opts \\ []) do
     escaped_value = html_escape(value)
 
     opts =
@@ -1013,42 +587,42 @@ defmodule Phoenix.WebComponent.Form do
   end
 
   @doc """
-  Generates a checkbox.
+  Generates a wc_checkbox.
 
   This function is useful for sending boolean values to the server.
 
   ## Examples
 
       # Assuming form contains a User schema
-      checkbox(form, :famous)
+      wc_checkbox(form, :famous)
       #=> <input name="user[famous]" type="hidden" value="false">
-      #=> <input checked="checked" id="user_famous" name="user[famous]" type="checkbox" value="true">
+      #=> <input checked="checked" id="user_famous" name="user[famous]" type="wc_checkbox" value="true">
 
   ## Options
 
-    * `:checked_value` - the value to be sent when the checkbox is checked.
+    * `:checked_value` - the value to be sent when the wc_checkbox is checked.
       Defaults to "true"
 
     * `:hidden_input` - controls if this function will generate a hidden input
-      to submit the unchecked value or not. Defaults to "true"
+      to wc_submit the unchecked value or not. Defaults to "true"
 
-    * `:unchecked_value` - the value to be sent when the checkbox is unchecked,
+    * `:unchecked_value` - the value to be sent when the wc_checkbox is unchecked,
       Defaults to "false"
 
-    * `:value` - the value used to check if a checkbox is checked or unchecked.
+    * `:value` - the value used to check if a wc_checkbox is checked or unchecked.
       The default value is extracted from the form data if available
 
   All other options are forwarded to the underlying HTML tag.
 
   ## Hidden fields
 
-  Because an unchecked checkbox is not sent to the server, Phoenix
+  Because an unchecked wc_checkbox is not sent to the server, Phoenix
   automatically generates a hidden field with the unchecked_value
-  *before* the checkbox field to ensure the `unchecked_value` is sent
-  when the checkbox is not marked. Set `hidden_input` to false If you
-  don't want to send values from unchecked checkbox to the server.
+  *before* the wc_checkbox field to ensure the `unchecked_value` is sent
+  when the wc_checkbox is not marked. Set `hidden_input` to false If you
+  don't want to send values from unchecked wc_checkbox to the server.
   """
-  def checkbox(form, field, opts \\ []) do
+  def wc_checkbox(form, field, opts \\ []) do
     opts =
       opts
       |> Keyword.put_new(:type, "checkbox")
@@ -1114,64 +688,64 @@ defmodule Phoenix.WebComponent.Form do
 
       # Assuming form contains a User schema
       select(form, :age, 0..120)
-      #=> <select id="user_age" name="user[age]">
+      #=> <mwc-select id="user_age" name="user[age]">
       #=>   <option value="0">0</option>
       #=>   ...
       #=>   <option value="120">120</option>
-      #=> </select>
+      #=> </mwc-select>
 
       select(form, :role, ["Admin": "admin", "User": "user"])
-      #=> <select id="user_role" name="user[role]">
+      #=> <mwc-select id="user_role" name="user[role]">
       #=>   <option value="admin">Admin</option>
       #=>   <option value="user">User</option>
-      #=> </select>
+      #=> </mwc-select>
 
       select(form, :role, [[key: "Admin", value: "admin", disabled: true],
                            [key: "User", value: "user"]])
-      #=> <select id="user_role" name="user[role]">
+      #=> <mwc-select id="user_role" name="user[role]">
       #=>   <option value="admin" disabled="disabled">Admin</option>
       #=>   <option value="user">User</option>
-      #=> </select>
+      #=> </mwc-select>
 
   You can also pass a prompt:
 
       select(form, :role, ["Admin": "admin", "User": "user"], prompt: "Choose your role")
-      #=> <select id="user_role" name="user[role]">
+      #=> <mwc-select id="user_role" name="user[role]">
       #=>   <option value="">Choose your role</option>
       #=>   <option value="admin">Admin</option>
       #=>   <option value="user">User</option>
-      #=> </select>
+      #=> </mwc-select>
 
   And customize the prompt as any other entry:
 
       select(form, :role, ["Admin": "admin", "User": "user"], prompt: [key: "Choose your role", disabled: true])
-      #=> <select id="user_role" name="user[role]">
+      #=> <mwc-select id="user_role" name="user[role]">
       #=>   <option value="" disabled="">Choose your role</option>
       #=>   <option value="admin">Admin</option>
       #=>   <option value="user">User</option>
-      #=> </select>
+      #=> </mwc-select>
 
   If you want to select an option that comes from the database,
   such as a manager for a given project, you may write:
 
       select(form, :manager_id, Enum.map(@managers, &{&1.name, &1.id}))
-      #=> <select id="manager_id" name="project[manager_id]">
+      #=> <mwc-select id="manager_id" name="project[manager_id]">
       #=>   <option value="1">Mary Jane</option>
       #=>   <option value="2">John Doe</option>
-      #=> </select>
+      #=> </mwc-select>
 
   Finally, if the values are a list or a map, we use the keys for
   grouping:
 
       select(form, :country, ["Europe": ["UK", "Sweden", "France"]], ...)
-      #=> <select id="user_country" name="user[country]">
+      #=> <mwc-select id="user_country" name="user[country]">
       #=>   <optgroup label="Europe">
       #=>     <option>UK</option>
       #=>     <option>Sweden</option>
       #=>     <option>France</option>
       #=>   </optgroup>
       #=>   ...
-      #=> </select>
+      #=> </mwc-select>
 
   ## Options
 
@@ -1181,11 +755,11 @@ defmodule Phoenix.WebComponent.Form do
     * `:selected` - the default value to use when none was sent as parameter
 
   Be aware that a `:multiple` option will not generate a correctly
-  functioning multiple select element. Use `multiple_select/4` instead.
+  functioning multiple select element. Use `wc_multiple_select/4` instead.
 
   All other options are forwarded to the underlying HTML tag.
   """
-  def select(form, field, options, opts \\ []) when is_atom(field) or is_binary(field) do
+  def wc_select(form, field, options, opts \\ []) when is_atom(field) or is_binary(field) do
     {selected, opts} = selected(form, field, opts)
     options_html = options_for_select(options, selected)
 
@@ -1200,7 +774,7 @@ defmodule Phoenix.WebComponent.Form do
       |> Keyword.put_new(:id, input_id(form, field))
       |> Keyword.put_new(:name, input_name(form, field))
 
-    content_tag(:select, options_html, opts)
+    content_tag(:"mwc-select", options_html, opts)
   end
 
   defp prompt_option(prompt) when is_list(prompt) do
@@ -1319,13 +893,13 @@ defmodule Phoenix.WebComponent.Form do
   ## Examples
 
       # Assuming form contains a User schema
-      multiple_select(form, :roles, ["Admin": 1, "Power User": 2])
+      wc_multiple_select(form, :roles, ["Admin": 1, "Power User": 2])
       #=> <select id="user_roles" name="user[roles][]">
       #=>   <option value="1">Admin</option>
       #=>   <option value="2">Power User</option>
       #=> </select>
 
-      multiple_select(form, :roles, ["Admin": 1, "Power User": 2], selected: [1])
+      wc_multiple_select(form, :roles, ["Admin": 1, "Power User": 2], selected: [1])
       #=> <select id="user_roles" name="user[roles][]">
       #=>   <option value="1" selected="selected">Admin</option>
       #=>   <option value="2">Power User</option>
@@ -1335,7 +909,7 @@ defmodule Phoenix.WebComponent.Form do
   Phoenix how to extract the value out of the collection. For example,
   imagine `user.roles` is a list of `%Role{}` structs. You must call it as:
 
-      multiple_select(form, :roles, ["Admin": 1, "Power User": 2],
+      wc_multiple_select(form, :roles, ["Admin": 1, "Power User": 2],
                       selected: Enum.map(@user.roles, &(&1.id))
 
   The `:selected` option will mark the given IDs as selected unless the form
@@ -1348,7 +922,7 @@ defmodule Phoenix.WebComponent.Form do
 
   All other options are forwarded to the underlying HTML tag.
   """
-  def multiple_select(form, field, options, opts \\ []) do
+  def wc_multiple_select(form, field, options, opts \\ []) do
     {selected, opts} = selected(form, field, opts)
 
     opts =
@@ -1368,7 +942,7 @@ defmodule Phoenix.WebComponent.Form do
   ## Examples
 
       # Assuming form contains a User schema
-      datetime_select form, :born_at
+      wc_datetime_select form, :born_at
       #=> <select id="user_born_at_year" name="user[born_at][year]">...</select> /
       #=> <select id="user_born_at_month" name="user[born_at][month]">...</select> /
       #=> <select id="user_born_at_day" name="user[born_at][day]">...</select> —
@@ -1378,12 +952,12 @@ defmodule Phoenix.WebComponent.Form do
   If you want to include the seconds field (hidden by default), pass `second: []`:
 
       # Assuming form contains a User schema
-      datetime_select form, :born_at, second: []
+      wc_datetime_select form, :born_at, second: []
 
   If you want to configure the years range:
 
       # Assuming form contains a User schema
-      datetime_select form, :born_at, year: [options: 1900..2100]
+      wc_datetime_select form, :born_at, year: [options: 1900..2100]
 
   You are also able to configure `:month`, `:day`, `:hour`, `:minute` and
   `:second`. All options given to those keys will be forwarded to the
@@ -1393,7 +967,7 @@ defmodule Phoenix.WebComponent.Form do
   the list of months, you can pass `:options` to the `:month` key:
 
       # Assuming form contains a User schema
-      datetime_select form, :born_at, month: [
+      wc_datetime_select form, :born_at, month: [
         options: [
           {gettext("January"), "1"},
           {gettext("February"), "2"},
@@ -1410,10 +984,10 @@ defmodule Phoenix.WebComponent.Form do
         ]
       ]
 
-  You may even provide your own `localized_datetime_select/3` built on top of
-  `datetime_select/3`:
+  You may even provide your own `localized_wc_datetime_select/3` built on top of
+  `wc_datetime_select/3`:
 
-      defp localized_datetime_select(form, field, opts \\ []) do
+      defp localized_wc_datetime_select(form, field, opts \\ []) do
         opts =
           Keyword.put(opts, :month, options: [
             {gettext("January"), "1"},
@@ -1430,7 +1004,7 @@ defmodule Phoenix.WebComponent.Form do
             {gettext("December"), "12"},
           ])
 
-        datetime_select(form, field, opts)
+        wc_datetime_select(form, field, opts)
       end
 
   ## Options
@@ -1451,10 +1025,10 @@ defmodule Phoenix.WebComponent.Form do
 
   ## Builder
 
-  The generated datetime_select can be customized at will by providing a
+  The generated wc_datetime_select can be customized at will by providing a
   builder option. Here is an example from EEx:
 
-      <%= datetime_select form, :born_at, builder: fn b -> %>
+      <%= wc_datetime_select form, :born_at, builder: fn b -> %>
         Date: <%= b.(:day, []) %> / <%= b.(:month, []) %> / <%= b.(:year, []) %>
         Time: <%= b.(:hour, []) %> : <%= b.(:minute, []) %>
       <% end %>
@@ -1466,7 +1040,7 @@ defmodule Phoenix.WebComponent.Form do
   In practice, we recommend you to create your own helper with your default
   builder:
 
-      def my_datetime_select(form, field, opts \\ []) do
+      def my_wc_datetime_select(form, field, opts \\ []) do
         builder = fn b ->
           assigns = %{b: b}
 
@@ -1476,10 +1050,10 @@ defmodule Phoenix.WebComponent.Form do
           """
         end
 
-        datetime_select(form, field, [builder: builder] ++ opts)
+        wc_datetime_select(form, field, [builder: builder] ++ opts)
       end
 
-  Then you are able to use your own datetime_select throughout your whole
+  Then you are able to use your own wc_datetime_select throughout your whole
   application.
 
   ## Supported date values
@@ -1501,7 +1075,7 @@ defmodule Phoenix.WebComponent.Form do
     * `nil`
 
   '''
-  def datetime_select(form, field, opts \\ []) do
+  def wc_datetime_select(form, field, opts \\ []) do
     value = Keyword.get(opts, :value, input_value(form, field) || Keyword.get(opts, :default))
 
     builder =
@@ -1518,9 +1092,9 @@ defmodule Phoenix.WebComponent.Form do
   @doc """
   Generates select tags for date.
 
-  Check `datetime_select/3` for more information on options and supported values.
+  Check `wc_datetime_select/3` for more information on options and supported values.
   """
-  def date_select(form, field, opts \\ []) do
+  def wc_date_select(form, field, opts \\ []) do
     value = Keyword.get(opts, :value, input_value(form, field) || Keyword.get(opts, :default))
     builder = Keyword.get(opts, :builder) || (&date_builder(&1, opts))
     builder.(datetime_builder(form, field, date_value(value), nil, opts))
@@ -1552,9 +1126,9 @@ defmodule Phoenix.WebComponent.Form do
   @doc """
   Generates select tags for time.
 
-  Check `datetime_select/3` for more information on options and supported values.
+  Check `wc_datetime_select/3` for more information on options and supported values.
   """
-  def time_select(form, field, opts \\ []) do
+  def wc_time_select(form, field, opts \\ []) do
     value = Keyword.get(opts, :value, input_value(form, field) || Keyword.get(opts, :default))
     builder = Keyword.get(opts, :builder) || (&time_builder(&1, opts))
     builder.(datetime_builder(form, field, nil, time_value(value), opts))
@@ -1663,113 +1237,6 @@ defmodule Phoenix.WebComponent.Form do
      |> Keyword.put_new(:id, id <> "_" <> suff)
      |> Keyword.put_new(:name, name <> "[" <> suff <> "]")
      |> Keyword.put_new(:value, Map.get(datetime, type))}
-  end
-
-  @doc """
-  Generates a label tag.
-
-  Useful when wrapping another input inside a label.
-
-  ## Examples
-
-      label do
-        radio_button :user, :choice, "Choice"
-      end
-      #=> <label>...</label>
-
-      label class: "control-label" do
-        radio_button :user, :choice, "Choice"
-      end
-      #=> <label class="control-label">...</label>
-
-  """
-  def label(do_block)
-
-  def label(do: block) do
-    content_tag(:label, block, [])
-  end
-
-  def label(opts, do: block) when is_list(opts) do
-    content_tag(:label, block, opts)
-  end
-
-  @doc """
-  Generates a label tag for the given field.
-
-  The form should either be a `Phoenix.WebComponent.Form` emitted
-  by `form_for` or an atom.
-
-  All given options are forwarded to the underlying tag.
-  A default value is provided for `for` attribute but can
-  be overridden if you pass a value to the `for` option.
-  Text content would be inferred from `field` if not specified
-  as either a function argument or string value in a block.
-
-  To wrap a label around an input, see `label/1`.
-
-  ## Examples
-
-      # Assuming form contains a User schema
-      label(form, :name, "Name")
-      #=> <label for="user_name">Name</label>
-
-      label(:user, :email, "Email")
-      #=> <label for="user_email">Email</label>
-
-      label(:user, :email)
-      #=> <label for="user_email">Email</label>
-
-      label(:user, :email, class: "control-label")
-      #=> <label for="user_email" class="control-label">Email</label>
-
-      label :user, :email do
-        "E-mail Address"
-      end
-      #=> <label for="user_email">E-mail Address</label>
-
-      label :user, :email, "E-mail Address", class: "control-label"
-      #=> <label class="control-label" for="user_email">E-mail Address</label>
-
-      label :user, :email, class: "control-label" do
-        "E-mail Address"
-      end
-      #=> <label class="control-label" for="user_email">E-mail Address</label>
-
-  """
-  def label(form, field) when is_atom(field) or is_binary(field) do
-    label(form, field, humanize(field), [])
-  end
-
-  @doc """
-  See `label/2`.
-  """
-  def label(form, field, text_or_do_block_or_attributes)
-
-  def label(form, field, do: block) do
-    label(form, field, [], do: block)
-  end
-
-  def label(form, field, opts) when is_list(opts) do
-    label(form, field, humanize(field), opts)
-  end
-
-  def label(form, field, text) do
-    label(form, field, text, [])
-  end
-
-  @doc """
-  See `label/2`.
-  """
-  def label(form, field, text, do_block_or_attributes)
-
-  def label(form, field, opts, do: block) when is_list(opts) do
-    opts = Keyword.put_new(opts, :for, input_id(form, field))
-    content_tag(:label, block, opts)
-  end
-
-  def label(form, field, text, opts) when is_list(opts) do
-    opts = Keyword.put_new(opts, :for, input_id(form, field))
-    content_tag(:label, text, opts)
   end
 
   # Normalize field name to string version
