@@ -4,5 +4,6 @@
 /package-lock.json
 /deps
 /doc
+/priv/static/phoenix_webcomponent.js
 erl_crash.dump
 *.ez

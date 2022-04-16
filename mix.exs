@@ -35,6 +35,7 @@ defmodule PhoenixWebComponent.Mixfile do
     [
       {:phoenix_html, "~> 3.0"},
       {:plug, "~> 1.5", only: :test, optional: true},
+      {:esbuild, "~> 0.2", runtime: true},
       {:ex_doc, ">= 0.0.0", only: :prod, runtime: false}
     ]
   end
