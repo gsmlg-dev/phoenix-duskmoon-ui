@@ -34,8 +34,8 @@ defmodule PhoenixWebComponent.Mixfile do
   defp deps do
     [
       {:phoenix_html, "~> 3.0"},
-      {:plug, "~> 1.5", optional: true},
-      {:ex_doc, ">= 0.0.0", only: :docs}
+      {:plug, "~> 1.5", only: :test, optional: true},
+      {:ex_doc, ">= 0.0.0", only: :prod, runtime: false}
     ]
   end
 

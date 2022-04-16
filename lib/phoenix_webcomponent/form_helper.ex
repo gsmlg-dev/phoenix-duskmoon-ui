@@ -416,9 +416,38 @@ defmodule Phoenix.WebComponent.FormHelper do
 
     opts =
       opts
+      |> Keyword.put_new(:label, humanize(field))
       |> Keyword.put_new(:id, input_id(form, field))
       |> Keyword.put_new(:name, input_name(form, field))
       |> Keyword.put_new(:value, value)
+
+    errors =
+      case form do
+        %{errors: errors} -> errors |> Keyword.get_values(field)
+        _ -> []
+      end
+
+    {translate_error, opts} = opts |> Keyword.pop(:translate_error)
+
+    opts =
+      unless Enum.empty?(errors) do
+        {class, opts} = opts |> Keyword.pop(:class)
+        opts = opts |> Keyword.put_new(:class, "errors #{class}")
+
+        errorString =
+          Enum.map(errors, fn {msg, opts} ->
+            if is_function(translate_error) do
+              translate_error.({msg, opts})
+            else
+              msg
+            end
+          end)
+          |> Enum.join(" ")
+
+        opts |> Keyword.put(:helper, errorString)
+      else
+        opts
+      end
 
     content_tag(:"mwc-textarea", "", opts)
   end
