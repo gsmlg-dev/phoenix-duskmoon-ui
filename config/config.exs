@@ -1,5 +1,7 @@
 import Config
 
+config :phoenix, :json_library, Jason
+
 config :esbuild,
   version: "0.14.0",
   default: [
