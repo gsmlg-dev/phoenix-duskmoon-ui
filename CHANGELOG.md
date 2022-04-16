@@ -1,3 +1,15 @@
+# [1.0.0-beta.2](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.0.0-beta.1...v1.0.0-beta.2) (2022-04-16)
+
+
+### Bug Fixes
+
+* Fix test. ([9bd953a](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/9bd953a3db0170b800abb4afbf906747e540a809))
+
+
+### Features
+
+* Bundle js. ([f5cf9cd](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/f5cf9cd927b483a37e5001ef0158b669bdca89b4))
+
 # 1.0.0-beta.1 (2022-04-16)
 
 
