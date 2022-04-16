@@ -43,11 +43,11 @@ defmodule Phoenix.WebComponent.FormHelper do
 
       <%= form_for @changeset, Routes.user_path(@conn, :create), fn f -> %>
         <label>
-          Name: <%= text_input f, :name %>
+          <%= wc_text_input f, :name %>
         </label>
 
         <label>
-          Age: <%= select f, :age, 18..100 %>
+          <%= wc_select f, :age, 18..100 %>
         </label>
 
         <%= wc_submit "Submit" %>
@@ -87,7 +87,7 @@ defmodule Phoenix.WebComponent.FormHelper do
   form to the `:new` action in the `FooController`:
 
       <%= form_for @conn, Routes.foo_path(@conn, :new), [as: :foo], fn f -> %>
-        <%= text_input f, :for %>
+        <%= wc_text_input f, :for %>
         <%= wc_submit "Search" %>
       <% end %>
 
@@ -98,7 +98,7 @@ defmodule Phoenix.WebComponent.FormHelper do
   as the form data source and explicitly pass the value for every input:
 
       <%= form_for :foo, Routes.foo_path(MyApp.Endpoint, :new), fn f -> %>
-        <%= text_input f, :for, value: "current value" %>
+        <%= wc_text_input f, :for, value: "current value" %>
         <%= wc_submit "Search" %>
       <% end %>
 
@@ -109,7 +109,7 @@ defmodule Phoenix.WebComponent.FormHelper do
   such usage by simply passing an atom as first argument instead
   of the form.
 
-      <%= text_input :user, :name, value: "This is a prepopulated value" %>
+      <%= wc_text_input :user, :name, value: "This is a prepopulated value" %>
 
 
   """
@@ -147,9 +147,12 @@ defmodule Phoenix.WebComponent.FormHelper do
   @doc """
   Generates an email input.
 
+  Auto add pattern="[^@]+@[^@]+" to check format
+
   See `text_input/3` for example and docs.
   """
   def wc_email_input(form, field, opts \\ []) do
+    opts = opts |> Keyword.put_new(:pattern, "[^@]+@[^@]+")
     generic_input(:email, form, field, opts)
   end
 

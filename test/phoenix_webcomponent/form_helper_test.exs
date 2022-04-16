@@ -122,20 +122,20 @@ defmodule Phoenix.WebComponent.FormHelperTest do
 
   test "wc_email_input/3" do
     assert safe_to_string(wc_email_input(:search, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="email">)
+             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" pattern="[^@]+@[^@]+" type="email">)
 
     assert safe_to_string(
              wc_email_input(:search, :key, value: "foo", id: "key", name: "search[key][]")
            ) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="email" value="foo">)
+             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" pattern="[^@]+@[^@]+" type="email" value="foo">)
   end
 
   test "wc_email_input/3 with form" do
     assert safe_form(&wc_email_input(&1, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="email" value="value">)
+             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" pattern="[^@]+@[^@]+" type="email" value="value">)
 
     assert safe_form(&wc_email_input(&1, :key, value: "foo", id: "key", name: "search[key][]")) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="email" value="foo">)
+             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" pattern="[^@]+@[^@]+" type="email" value="foo">)
   end
 
   ## wc_password_input/3
