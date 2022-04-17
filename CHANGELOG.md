@@ -1,3 +1,16 @@
+# [1.2.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.1.1...v1.2.0) (2022-04-17)
+
+
+### Bug Fixes
+
+* Add title to appbar. ([70a6c89](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/70a6c8994278a357efe7c63eab1050b0b28ec123))
+* Fix title check. ([1ce9fa1](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/1ce9fa162b1bd67e13c64c809321a4caa2da9e43))
+
+
+### Features
+
+* Add wc_top_app_bar component. ([fb292af](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/fb292af1171a85f02ecfb275a1a0aaf72d758721))
+
 ## [1.1.1](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.1.0...v1.1.1) (2022-04-16)
 
 
