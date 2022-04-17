@@ -58,10 +58,10 @@ defmodule Phoenix.WebComponent.TopAppBar do
     {title, opts} = Keyword.pop(opts, :title)
 
     content_tag(app_bar_tag, opts) do
-      if is_binary(title) or is_atom(title) do
-        [content_tag(:div, title, class: "app-bar-title", slot: "title"), contents]
-      else
+      if is_nil(title) do
         contents
+      else
+        [content_tag(:div, title, class: "app-bar-title", slot: "title"), contents]
       end
     end
   end
