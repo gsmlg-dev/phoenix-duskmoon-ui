@@ -33,13 +33,26 @@ defmodule Phoenix.WebComponent.TopAppBar do
   | `prominent` | `boolean` | `false` | Makes the bar much taller, can be combined with `dense`.
   | `scrollTarget` | `HTMLElement` | `Window` | `window` | Element used to listen for `scroll` events.
 
+  ### Elixir options
+
+  | Name | Type | Default | Description
+  | ---- | ---- | ------- | -----------
+  | `title` | binatry | nil | Put content in title slot
+
+  TODO: Title didn't change when live view change, maybe change this to a live component is a sulotion.
+
   """
   def wc_top_app_bar(opts, do: contents) when is_list(opts) do
     {fixed, opts} = Keyword.pop(opts, :fixed, false)
     app_bar_tag = if fixed, do: :"mwc-top-app-bar-fixed", else: :"mwc-top-app-bar"
+    {title, opts} = Keyword.pop(opts, :title)
 
     content_tag(app_bar_tag, opts) do
-      contents
+      if is_binary(title) or is_atom(title) do
+        [content_tag(:div, title, [class: "app-bar-title", slot: "title"]), contents]
+      else
+        contents
+      end
     end
   end
 end

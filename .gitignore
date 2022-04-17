@@ -5,5 +5,6 @@
 /deps
 /doc
 /priv/static/phoenix_webcomponent.js
+/priv/static/
 erl_crash.dump
 *.ez
