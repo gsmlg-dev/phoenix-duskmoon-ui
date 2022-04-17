@@ -871,6 +871,19 @@ defmodule Phoenix.WebComponent.FormHelperTest do
                ~s(<option value="quz">quz</option>) <> ~s(</optgroup>)
   end
 
+  # wc_switch/3
+
+  test "wc_switch/3" do
+    assert safe_to_string(wc_switch(:form, :enable)) ==
+             ~s(<mwc-formfield label="Enable"><mwc-switch id="form_enable" name="form[enable]" value="on">enable</mwc-switch></mwc-formfield>)
+
+    assert safe_to_string(wc_switch(:form, :enable, true_value: "yes")) ==
+             ~s(<mwc-formfield label="Enable"><mwc-switch id="form_enable" name="form[enable]" value="yes">enable</mwc-switch></mwc-formfield>)
+
+    assert safe_to_string(wc_switch(:form, :enable, selected: true, true_value: "true")) ==
+             ~s(<mwc-formfield label="Enable"><mwc-switch id="form_enable" name="form[enable]" selected value="true">enable</mwc-switch></mwc-formfield>)
+  end
+
   # wc_date_select/4
 
   test "wc_date_select/4" do

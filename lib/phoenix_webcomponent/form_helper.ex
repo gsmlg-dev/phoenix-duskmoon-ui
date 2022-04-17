@@ -941,6 +941,61 @@ defmodule Phoenix.WebComponent.FormHelper do
     content_tag(:select, options_for_select(options, selected), opts)
   end
 
+  ## Switch
+  @doc ~S'''
+
+   ## Examples
+
+      # Assuming form contains a User schema
+      wc_switch(form, :enable, [true_value: "yes"])
+      #=> <mwc-formfield id="user_enable" name="user[enable]">
+      #=>   <mwc-switch value="yes"></mwc-switch>
+      #=> </mwc-formfield>
+
+  ## Options
+
+    * `true_value` - the value if the switch is on, default is `on`.
+
+    * `:selected` - force the value to be on.
+
+  '''
+  def wc_switch(form, field, opts \\ []) do
+    {label, opts} = opts |> Keyword.pop(:label, humanize(field))
+    fieldSupport = [:alignEnd, :spaceBetween, :nowrap]
+    fieldOpts = [label: label]
+
+    {fieldOpts, opts} =
+      Enum.reduce(fieldSupport, {fieldOpts, opts}, fn f, {fieldOpts, opts} ->
+        case Keyword.pop(opts, f) do
+          {nil, opts} -> {fieldOpts, opts}
+          {v, opts} -> {fieldOpts |> Keyword.put(f, v), opts}
+        end
+      end)
+
+    opts =
+      opts
+      |> Keyword.put_new(:id, input_id(form, field))
+      |> Keyword.put_new(:name, input_name(form, field))
+      |> Keyword.put_new(:value, input_value(form, field))
+      |> Keyword.update!(:value, &maybe_html_escape/1)
+
+    {val, opts} = opts |> Keyword.pop(:value, "true")
+    {trueVal, opts} = opts |> Keyword.pop(:true_value, "on")
+
+    opts =
+      if trueVal == val do
+        opts |> Keyword.put_new(:selected, true)
+      else
+        opts
+      end
+
+    opts = opts |> Keyword.put(:value, trueVal)
+
+    content_tag(:"mwc-formfield", fieldOpts) do
+      content_tag(:"mwc-switch", field, opts)
+    end
+  end
+
   ## Datetime
 
   @doc ~S'''
