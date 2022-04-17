@@ -3,15 +3,27 @@ defmodule Phoenix.WebComponent.TopAppBar do
   Conveniences for create top app bar.
   """
 
+  alias Phoenix.LiveView
   import Phoenix.HTML.Tag
+  import Phoenix.LiveView.Helpers
 
   @doc """
   Generates a top app bar.
+
+  Or
+
+  Top app bar component
 
   ## Examples
 
       wc_top_app_bar([fixed: true], do: "/world")
       #=> <mwc-top-app-bar-fixed>/world</mwc-top-app-bar-fixed>
+
+  ```heex
+  <.wc_top_app_bar fixed centerTitle slot="appContent" title={@page_title}>
+    <mwc-icon-button icon="menu" slot="navigationIcon"></mwc-icon-button>
+  </.wc_top_app_bar>
+  ```
 
   ## Options
 
@@ -39,8 +51,6 @@ defmodule Phoenix.WebComponent.TopAppBar do
   | ---- | ---- | ------- | -----------
   | `title` | binatry | nil | Put content in title slot
 
-  TODO: Title didn't change when live view change, maybe change this to a live component is a sulotion.
-
   """
   def wc_top_app_bar(opts, do: contents) when is_list(opts) do
     {fixed, opts} = Keyword.pop(opts, :fixed, false)
@@ -49,10 +59,41 @@ defmodule Phoenix.WebComponent.TopAppBar do
 
     content_tag(app_bar_tag, opts) do
       if is_binary(title) or is_atom(title) do
-        [content_tag(:div, title, [class: "app-bar-title", slot: "title"]), contents]
+        [content_tag(:div, title, class: "app-bar-title", slot: "title"), contents]
       else
         contents
       end
     end
+  end
+
+  def wc_top_app_bar(assigns) do
+    fixed = assigns[:fixed] || false
+    title = assigns[:title] || nil
+
+    attrs = assigns_to_attributes(assigns, [:fixed, :title])
+
+    assigns = LiveView.assign(assigns, fixed: fixed, title: title, attrs: attrs)
+
+    ~H"""
+    <%= if @fixed do %>
+      <mwc-top-app-bar-fixed {@attrs}>
+        <%= if @title do %>
+        <div class="app-bar-title" slot="title">
+          <%= @title %>
+        </div>
+        <% end %>
+        <%= render_slot(@inner_block) %>
+      </mwc-top-app-bar-fixed>
+    <% else %>
+      <mwc-top-app-bar {@attrs}>
+        <%= if @title do %>
+        <div class="app-bar-title" slot="title">
+          <%= @title %>
+        </div>
+        <% end %>
+        <%= render_slot(@inner_block) %>
+      </mwc-top-app-bar>
+    <% end %>
+    """
   end
 end
