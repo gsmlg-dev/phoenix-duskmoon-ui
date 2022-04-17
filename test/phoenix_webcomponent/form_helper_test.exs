@@ -419,28 +419,28 @@ defmodule Phoenix.WebComponent.FormHelperTest do
 
   test "wc_submit/2" do
     assert safe_to_string(wc_submit("Submit")) ==
-             ~s(<mwc-button type="submit">Submit</mwc-button>)
+             ~s(<mwc-button type="submit" unelevated>Submit</mwc-button>)
 
     assert safe_to_string(wc_submit("Submit", class: "btn")) ==
-             ~s(<mwc-button class="btn" type="submit">Submit</mwc-button>)
+             ~s(<mwc-button class="btn" type="submit" unelevated>Submit</mwc-button>)
 
     assert safe_to_string(wc_submit([class: "btn"], do: "Submit")) ==
-             ~s(<mwc-button class="btn" type="submit">Submit</mwc-button>)
+             ~s(<mwc-button class="btn" type="submit" unelevated>Submit</mwc-button>)
 
     assert safe_to_string(wc_submit(do: "Submit")) ==
-             ~s(<mwc-button type="submit">Submit</mwc-button>)
+             ~s(<mwc-button type="submit" unelevated>Submit</mwc-button>)
 
     assert safe_to_string(wc_submit("<Submit>")) ==
-             ~s(<mwc-button type="submit">&lt;Submit&gt;</mwc-button>)
+             ~s(<mwc-button type="submit" unelevated>&lt;Submit&gt;</mwc-button>)
 
     assert safe_to_string(wc_submit("<Submit>", class: "btn")) ==
-             ~s(<mwc-button class="btn" type="submit">&lt;Submit&gt;</mwc-button>)
+             ~s(<mwc-button class="btn" type="submit" unelevated>&lt;Submit&gt;</mwc-button>)
 
     assert safe_to_string(wc_submit([class: "btn"], do: "<Submit>")) ==
-             ~s(<mwc-button class="btn" type="submit">&lt;Submit&gt;</mwc-button>)
+             ~s(<mwc-button class="btn" type="submit" unelevated>&lt;Submit&gt;</mwc-button>)
 
     assert safe_to_string(wc_submit(do: "<Submit>")) ==
-             ~s(<mwc-button type="submit">&lt;Submit&gt;</mwc-button>)
+             ~s(<mwc-button type="submit" unelevated>&lt;Submit&gt;</mwc-button>)
   end
 
   ## wc_reset/2

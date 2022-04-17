@@ -522,12 +522,14 @@ defmodule Phoenix.WebComponent.FormHelper do
 
   def wc_submit(opts, [do: _] = block_option) do
     opts = Keyword.put_new(opts, :type, "submit")
+    opts = Keyword.put_new(opts, :unelevated, true)
 
     content_tag(:"mwc-button", opts, block_option)
   end
 
   def wc_submit(value, opts) do
     opts = Keyword.put_new(opts, :type, "submit")
+    opts = Keyword.put_new(opts, :unelevated, true)
 
     content_tag(:"mwc-button", value, opts)
   end
