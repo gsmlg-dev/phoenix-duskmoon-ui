@@ -1,3 +1,15 @@
+# [1.3.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.2.0...v1.3.0) (2022-04-18)
+
+
+### Bug Fixes
+
+* Set unelevated to wc_submit. ([07f706e](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/07f706e5b95c247c6e0af6f6c018c5c6321f1c69))
+
+
+### Features
+
+* Add form_helper switch. ([713d418](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/713d418a0c0a7faf838ed8ed44849459496d5cbe))
+
 # [1.3.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.2.0...v1.3.0) (2022-04-17)
 
 
