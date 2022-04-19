@@ -27,7 +27,7 @@ defmodule Phoenix.WebComponent.TopAppBar do
 
   ## Options
 
-  ### Slots
+  ### Slots of custom element
 
   | Name | Description
   | ---- | -----------
@@ -36,10 +36,10 @@ defmodule Phoenix.WebComponent.TopAppBar do
   | `title` | A `<div>` or `<span>` that will be used as the title text.
   | _default_ | Scrollable content to display under the bar. This may be the entire application.
 
-  ### Properties/Attributes
+  ### Properties/Attributes  of custom element
 
   | Name | Type | Default | Description
-  | ---- | ---- | ------- | -----------
+  | ---- | ---- | ------  | -----------
   | `centerTitle` | `boolean` | `false` | Centers the title horizontally. Only meant to be used with 0 or 1 `actionItems`.
   | `dense` | `boolean` | `false` | Makes the bar a little smaller for higher density applications.
   | `prominent` | `boolean` | `false` | Makes the bar much taller, can be combined with `dense`.

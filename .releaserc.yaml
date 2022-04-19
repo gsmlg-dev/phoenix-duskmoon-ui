@@ -22,7 +22,7 @@ plugins:
         npm install;
         sed -i 's%"version": "[0-9\.]\+"%"version": "${nextRelease.version}"%' package.json;
         npm config set '//registry.npmjs.org/:_authToken' $NPM_TOKEN;
-        if [[ -z "${nextRelease.channel}" ]]
+        if [[ -z "${nextRelease.channel}" ]];
         then
           npm publish;
         else

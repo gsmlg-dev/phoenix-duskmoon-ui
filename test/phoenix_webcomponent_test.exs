@@ -3,7 +3,7 @@ defmodule Phoenix.WebComponentTest do
 
   use Phoenix.WebComponent
   import Phoenix.WebComponent
-  # doctest Phoenix.WebComponent
+  doctest Phoenix.WebComponent
 
   test "link_attributes" do
     assert link_attributes({:javascript, "alert('my alert!')"}) == [
