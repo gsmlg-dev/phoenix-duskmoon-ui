@@ -77,4 +77,5 @@ npm install phoenix_webcomponent
 - wc_time_input
 - wc_time_select
 - wc_url_input
-
+- wc_switch
+- wc_top_app_bar
