@@ -179,12 +179,10 @@ defmodule Phoenix.WebComponent.FormHelper do
   def wc_password_input(form, field, opts \\ []) do
     opts =
       opts
-      |> Keyword.put_new(:label, humanize(field))
+      |> Keyword.put_new(:"label-text", humanize(field))
       |> Keyword.put_new(:type, "password")
       |> Keyword.put_new(:id, input_id(form, field))
       |> Keyword.put_new(:name, input_name(form, field))
-
-    # |> Keyword.put_new(:icontrailing, "eye-off")
 
     errors =
       case form do
@@ -196,8 +194,7 @@ defmodule Phoenix.WebComponent.FormHelper do
 
     opts =
       unless Enum.empty?(errors) do
-        {class, opts} = opts |> Keyword.pop(:class)
-        opts = opts |> Keyword.put_new(:class, "errors #{class}")
+        opts = opts |> Keyword.put_new(:invalid, true)
 
         errorString =
           Enum.map(errors, fn {msg, opts} ->
@@ -209,12 +206,12 @@ defmodule Phoenix.WebComponent.FormHelper do
           end)
           |> Enum.join(" ")
 
-        opts |> Keyword.put(:helper, errorString)
+        opts |> Keyword.put(:"validity-message", errorString)
       else
         opts
       end
 
-    tag(:"mwc-textfield", opts)
+    tag(:"bx-input", opts)
   end
 
   @doc """
@@ -274,7 +271,45 @@ defmodule Phoenix.WebComponent.FormHelper do
   See `text_input/3` for example and docs.
   """
   def wc_date_input(form, field, opts \\ []) do
-    generic_input(:date, form, field, opts)
+    opts =
+      opts
+      |> Keyword.put_new(:"label-text", humanize(field))
+      |> Keyword.put_new(:id, input_id(form, field))
+      |> Keyword.put_new(:name, input_name(form, field))
+      |> Keyword.put_new(:value, input_value(form, field))
+      |> Keyword.update!(:value, &maybe_html_escape/1)
+      |> Keyword.put_new(:"date-format", "Y-m-d")
+
+    errors =
+      case form do
+        %{errors: errors} -> errors |> Keyword.get_values(field)
+        _ -> []
+      end
+
+    {translate_error, opts} = opts |> Keyword.pop(:translate_error)
+
+    opts =
+      unless Enum.empty?(errors) do
+        opts = opts |> Keyword.put_new(:invalid, true)
+
+        errorString =
+          Enum.map(errors, fn {msg, opts} ->
+            if is_function(translate_error) do
+              translate_error.({msg, opts})
+            else
+              msg
+            end
+          end)
+          |> Enum.join(" ")
+
+        opts |> Keyword.put(:"validity-message", errorString)
+      else
+        opts
+      end
+
+    content_tag(:"bx-date-picker", opts) do
+      content_tag(:"bx-date-picker-input", "", opts);
+    end
   end
 
   @doc """
@@ -350,7 +385,7 @@ defmodule Phoenix.WebComponent.FormHelper do
        when is_list(opts) and (is_atom(field) or is_binary(field)) do
     opts =
       opts
-      |> Keyword.put_new(:label, humanize(field))
+      |> Keyword.put_new(:"label-text", humanize(field))
       |> Keyword.put_new(:type, type)
       |> Keyword.put_new(:id, input_id(form, field))
       |> Keyword.put_new(:name, input_name(form, field))
@@ -367,8 +402,7 @@ defmodule Phoenix.WebComponent.FormHelper do
 
     opts =
       unless Enum.empty?(errors) do
-        {class, opts} = opts |> Keyword.pop(:class)
-        opts = opts |> Keyword.put_new(:class, "errors #{class}")
+        opts = opts |> Keyword.put_new(:invalid, true)
 
         errorString =
           Enum.map(errors, fn {msg, opts} ->
@@ -380,12 +414,12 @@ defmodule Phoenix.WebComponent.FormHelper do
           end)
           |> Enum.join(" ")
 
-        opts |> Keyword.put(:helper, errorString)
+        opts |> Keyword.put(:"validity-message", errorString)
       else
         opts
       end
 
-    tag(:"mwc-textfield", opts)
+    tag(:"bx-input", opts)
   end
 
   defp maybe_html_escape(nil), do: nil
@@ -421,7 +455,7 @@ defmodule Phoenix.WebComponent.FormHelper do
 
     opts =
       opts
-      |> Keyword.put_new(:label, humanize(field))
+      |> Keyword.put_new(:"label-text", humanize(field))
       |> Keyword.put_new(:id, input_id(form, field))
       |> Keyword.put_new(:name, input_name(form, field))
       |> Keyword.put_new(:value, value)
@@ -436,8 +470,7 @@ defmodule Phoenix.WebComponent.FormHelper do
 
     opts =
       unless Enum.empty?(errors) do
-        {class, opts} = opts |> Keyword.pop(:class)
-        opts = opts |> Keyword.put_new(:class, "errors #{class}")
+        opts = opts |> Keyword.put_new(:invalid, true)
 
         errorString =
           Enum.map(errors, fn {msg, opts} ->
@@ -449,12 +482,12 @@ defmodule Phoenix.WebComponent.FormHelper do
           end)
           |> Enum.join(" ")
 
-        opts |> Keyword.put(:helper, errorString)
+        opts |> Keyword.put(:"validity-message", errorString)
       else
         opts
       end
 
-    content_tag(:"mwc-textarea", "", opts)
+    content_tag(:"bx-textarea", "", opts)
   end
 
   @doc """

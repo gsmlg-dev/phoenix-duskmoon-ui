@@ -48,114 +48,114 @@ defmodule Phoenix.WebComponent.FormHelperTest do
 
   test "wc_text_input/3" do
     assert safe_to_string(wc_text_input(:search, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="text">)
+             ~s(<bx-input id="search_key" label-text="Key" name="search[key]" type="text">)
 
     assert safe_to_string(
              wc_text_input(:search, :key, value: "foo", id: "key", name: "search[key][]")
            ) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="text" value="foo">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="text" value="foo">)
   end
 
   test "wc_text_input/3 with form" do
     assert safe_form(&wc_text_input(&1, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="text" value="value">)
+             ~s(<bx-input id="search_key" label-text="Key" name="search[key]" type="text" value="value">)
 
     assert safe_form(&wc_text_input(&1, :key, value: "foo", id: "key", name: "search[key][]")) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="text" value="foo">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="text" value="foo">)
   end
 
   test "wc_text_input/3 with form and data" do
     assert safe_form(&wc_text_input(put_in(&1.data[:key], "original"), :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="text" value="value">)
+             ~s(<bx-input id="search_key" label-text="Key" name="search[key]" type="text" value="value">)
 
     assert safe_form(&wc_text_input(put_in(&1.data[:no_key], "original"), :no_key)) ==
-             ~s(<mwc-textfield id="search_no_key" label="No key" name="search[no_key]" type="text" value="original">)
+             ~s(<bx-input id="search_no_key" label-text="No key" name="search[no_key]" type="text" value="original">)
   end
 
   ## wc_textarea/3
 
   test "wc_textarea/3" do
     assert safe_to_string(wc_textarea(:search, :key)) ==
-             ~s(<mwc-textarea id="search_key" label="Key" name="search[key]"></mwc-textarea>)
+             ~s(<bx-textarea id="search_key" label-text="Key" name="search[key]"></bx-textarea>)
 
     assert safe_to_string(wc_textarea(:search, :key)) ==
-             ~s(<mwc-textarea id="search_key" label="Key" name="search[key]"></mwc-textarea>)
+             ~s(<bx-textarea id="search_key" label-text="Key" name="search[key]"></bx-textarea>)
 
     assert safe_to_string(wc_textarea(:search, :key, id: "key", name: "search[key][]")) ==
-             ~s(<mwc-textarea id="key" label="Key" name="search[key][]"></mwc-textarea>)
+             ~s(<bx-textarea id="key" label-text="Key" name="search[key][]"></bx-textarea>)
   end
 
   test "wc_textarea/3 with form" do
     assert safe_form(&wc_textarea(&1, :key)) ==
-             ~s(<mwc-textarea id="search_key" label="Key" name="search[key]" value="value"></mwc-textarea>)
+             ~s(<bx-textarea id="search_key" label-text="Key" name="search[key]" value="value"></bx-textarea>)
 
     assert safe_form(&wc_textarea(&1, :key, value: "foo", id: "key", name: "search[key][]")) ==
-             ~s(<mwc-textarea id="key" label="Key" name="search[key][]" value="foo"></mwc-textarea>)
+             ~s(<bx-textarea id="key" label-text="Key" name="search[key][]" value="foo"></bx-textarea>)
   end
 
   test "cw_textarea/3 with non-binary type" do
     assert safe_form(&wc_textarea(&1, :key, value: :atom_value)) ==
-             ~s(<mwc-textarea id="search_key" label="Key" name="search[key]" value="atom_value"></mwc-textarea>)
+             ~s(<bx-textarea id="search_key" label-text="Key" name="search[key]" value="atom_value"></bx-textarea>)
   end
 
   ## wc_number_input/3
 
   test "wc_number_input/3" do
     assert safe_to_string(wc_number_input(:search, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="number">)
+             ~s(<bx-input id="search_key" label-text="Key" name="search[key]" type="number">)
 
     assert safe_to_string(
              wc_number_input(:search, :key, value: "foo", id: "key", name: "search[key][]")
            ) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="number" value="foo">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="number" value="foo">)
   end
 
   test "wc_number_input/3 with form" do
     assert safe_form(&wc_number_input(&1, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="number" value="value">)
+             ~s(<bx-input id="search_key" label-text="Key" name="search[key]" type="number" value="value">)
 
     assert safe_form(&wc_number_input(&1, :key, value: "foo", id: "key", name: "search[key][]")) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="number" value="foo">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="number" value="foo">)
   end
 
   ## wc_email_input/3
 
   test "wc_email_input/3" do
     assert safe_to_string(wc_email_input(:search, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" pattern="[^@]+@[^@]+" type="email">)
+             ~s(<bx-input id="search_key" label-text="Key" name="search[key]" pattern="[^@]+@[^@]+" type="email">)
 
     assert safe_to_string(
              wc_email_input(:search, :key, value: "foo", id: "key", name: "search[key][]")
            ) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" pattern="[^@]+@[^@]+" type="email" value="foo">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" pattern="[^@]+@[^@]+" type="email" value="foo">)
   end
 
   test "wc_email_input/3 with form" do
     assert safe_form(&wc_email_input(&1, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" pattern="[^@]+@[^@]+" type="email" value="value">)
+             ~s(<bx-input id="search_key" label-text="Key" name="search[key]" pattern="[^@]+@[^@]+" type="email" value="value">)
 
     assert safe_form(&wc_email_input(&1, :key, value: "foo", id: "key", name: "search[key][]")) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" pattern="[^@]+@[^@]+" type="email" value="foo">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" pattern="[^@]+@[^@]+" type="email" value="foo">)
   end
 
   ## wc_password_input/3
 
   test "wc_password_input/3" do
     assert safe_to_string(wc_password_input(:search, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="password">)
+             ~s(<bx-input id="search_key" label-text="Key" name="search[key]" type="password">)
 
     assert safe_to_string(
              wc_password_input(:search, :key, value: "foo", id: "key", name: "search[key][]")
            ) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="password" value="foo">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="password" value="foo">)
   end
 
   test "wc_password_input/3 with form" do
     assert safe_form(&wc_password_input(&1, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="password">)
+             ~s(<bx-input id="search_key" label-text="Key" name="search[key]" type="password">)
 
     assert safe_form(&wc_password_input(&1, :key, value: "foo", id: "key", name: "search[key][]")) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="password" value="foo">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="password" value="foo">)
   end
 
   ## wc_file_input/3
@@ -184,147 +184,147 @@ defmodule Phoenix.WebComponent.FormHelperTest do
 
   test "wc_url_input/3" do
     assert safe_to_string(wc_url_input(:search, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="url">)
+             ~s(<bx-input id="search_key" label-text="Key" name="search[key]" type="url">)
 
     assert safe_to_string(
              wc_url_input(:search, :key, value: "foo", id: "key", name: "search[key][]")
            ) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="url" value="foo">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="url" value="foo">)
   end
 
   test "wc_url_input/3 with form" do
     assert safe_form(&wc_url_input(&1, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="url" value="value">)
+             ~s(<bx-input id="search_key" label-text="Key" name="search[key]" type="url" value="value">)
 
     assert safe_form(&wc_url_input(&1, :key, value: "foo", id: "key", name: "search[key][]")) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="url" value="foo">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="url" value="foo">)
   end
 
   ## wc_search_input/3
 
   test "wc_search_input/3" do
     assert safe_to_string(wc_search_input(:search, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="search">)
+             ~s(<bx-input id="search_key" label-text="Key" name="search[key]" type="search">)
 
     assert safe_to_string(
              wc_search_input(:search, :key, value: "foo", id: "key", name: "search[key][]")
            ) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="search" value="foo">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="search" value="foo">)
   end
 
   test "wc_search_input/3 with form" do
     assert safe_form(&wc_search_input(&1, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="search" value="value">)
+             ~s(<bx-input id="search_key" label-text="Key" name="search[key]" type="search" value="value">)
 
     assert safe_form(&wc_search_input(&1, :key, value: "foo", id: "key", name: "search[key][]")) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="search" value="foo">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="search" value="foo">)
   end
 
   ## wc_color_input/3
 
   test "wc_color_input/3" do
     assert safe_to_string(wc_color_input(:search, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="color">)
+             ~s(<bx-input id="search_key" label-text="Key" name="search[key]" type="color">)
 
     assert safe_to_string(
              wc_color_input(:search, :key, value: "#123456", id: "key", name: "search[key][]")
            ) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="color" value="#123456">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="color" value="#123456">)
   end
 
   test "wc_color_input/3 with form" do
     assert safe_form(&wc_color_input(&1, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="color" value="value">)
+             ~s(<bx-input id="search_key" label-text="Key" name="search[key]" type="color" value="value">)
 
     assert safe_form(&wc_color_input(&1, :key, value: "foo", id: "key", name: "search[key][]")) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="color" value="foo">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="color" value="foo">)
   end
 
   ## wc_telephone_input/3
 
   test "wc_telephone_input/3" do
     assert safe_to_string(wc_telephone_input(:search, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="tel">)
+             ~s(<bx-input id="search_key" label-text="Key" name="search[key]" type="tel">)
 
     assert safe_to_string(
              wc_telephone_input(:search, :key, value: "foo", id: "key", name: "search[key][]")
            ) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="tel" value="foo">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="tel" value="foo">)
   end
 
   test "wc_telephone_input/3 with form" do
     assert safe_form(&wc_telephone_input(&1, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="tel" value="value">)
+             ~s(<bx-input id="search_key" label-text="Key" name="search[key]" type="tel" value="value">)
 
     assert safe_form(
              &wc_telephone_input(&1, :key, value: "foo", id: "key", name: "search[key][]")
            ) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="tel" value="foo">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="tel" value="foo">)
   end
 
   ## wc_range_input/3
 
   test "wc_range_input/3" do
     assert safe_to_string(wc_range_input(:search, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="range">)
+             ~s(<bx-input id="search_key" label-text="Key" name="search[key]" type="range">)
 
     assert safe_to_string(
              wc_range_input(:search, :key, value: "foo", id: "key", name: "search[key][]")
            ) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="range" value="foo">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="range" value="foo">)
   end
 
   test "wc_range_input/3 with form" do
     assert safe_form(&wc_range_input(&1, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="range" value="value">)
+             ~s(<bx-input id="search_key" label-text="Key" name="search[key]" type="range" value="value">)
 
     assert safe_form(&wc_range_input(&1, :key, value: "foo", id: "key", name: "search[key][]")) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="range" value="foo">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="range" value="foo">)
   end
 
   ## wc_date_input/3
 
   test "wc_date_input/3" do
     assert safe_to_string(wc_date_input(:search, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="date">)
+             ~s(<bx-date-picker date-format="Y-m-d" id="search_key" label-text="Key" name="search[key]"><bx-date-picker-input date-format="Y-m-d" id="search_key" label-text="Key" name="search[key]"></bx-date-picker-input></bx-date-picker>)
 
     assert safe_to_string(
-             wc_date_input(:search, :key, value: "foo", id: "key", name: "search[key][]")
+             wc_date_input(:search, :key, value: "foo", id: "key", name: "search[key]")
            ) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="date" value="foo">)
+             ~s(<bx-date-picker date-format="Y-m-d" id="key" label-text="Key" name="search[key]" value="foo"><bx-date-picker-input date-format="Y-m-d" id="key" label-text="Key" name="search[key]" value="foo"></bx-date-picker-input></bx-date-picker>)
 
     assert safe_to_string(
-             wc_date_input(:search, :key, value: ~D[2017-09-21], id: "key", name: "search[key][]")
+             wc_date_input(:search, :key, value: ~D[2017-09-21], id: "key", name: "search[key]")
            ) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="date" value="2017-09-21">)
+             ~s(<bx-date-picker date-format="Y-m-d" id="key" label-text="Key" name="search[key]" value="2017-09-21"><bx-date-picker-input date-format="Y-m-d" id="key" label-text="Key" name="search[key]" value="2017-09-21"></bx-date-picker-input></bx-date-picker>)
   end
 
   test "wc_date_input/3 with form" do
     assert safe_form(&wc_date_input(&1, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="date" value="value">)
+             ~s(<bx-date-picker date-format="Y-m-d" id="search_key" label-text="Key" name="search[key]" value="value"><bx-date-picker-input date-format="Y-m-d" id="search_key" label-text="Key" name="search[key]" value="value"></bx-date-picker-input></bx-date-picker>)
 
-    assert safe_form(&wc_date_input(&1, :key, value: "foo", id: "key", name: "search[key][]")) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="date" value="foo">)
+    assert safe_form(&wc_date_input(&1, :key, value: "foo", id: "key", name: "search[key]")) ==
+             ~s(<bx-date-picker date-format="Y-m-d" id="key" label-text="Key" name="search[key]" value="foo"><bx-date-picker-input date-format="Y-m-d" id="key" label-text="Key" name="search[key]" value="foo"></bx-date-picker-input></bx-date-picker>)
 
     assert safe_form(
-             &wc_date_input(&1, :key, value: ~D[2017-09-21], id: "key", name: "search[key][]")
+             &wc_date_input(&1, :key, value: ~D[2017-09-21], id: "key", name: "search[key]")
            ) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="date" value="2017-09-21">)
+             ~s(<bx-date-picker date-format="Y-m-d" id="key" label-text="Key" name="search[key]" value="2017-09-21"><bx-date-picker-input date-format="Y-m-d" id="key" label-text="Key" name="search[key]" value="2017-09-21"></bx-date-picker-input></bx-date-picker>)
   end
 
   ## wc_datewc_time_input/3
 
   test "wc_datetime_local_input/3" do
     assert safe_to_string(wc_datetime_local_input(:search, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="datetime-local">)
+             ~s(<bx-input id="search_key" label-text="Key" name="search[key]" type="datetime-local">)
 
     assert safe_form(&wc_datetime_local_input(&1, :naive_datetime)) ==
-             ~s(<mwc-textfield id="search_naive_datetime" label="Naive datetime" name="search[naive_datetime]" type="datetime-local" value="2000-01-01T10:00">)
+             ~s(<bx-input id="search_naive_datetime" label-text="Naive datetime" name="search[naive_datetime]" type="datetime-local" value="2000-01-01T10:00">)
 
     assert safe_to_string(
              wc_datetime_local_input(:search, :key, value: "foo", id: "key", name: "search[key][]")
            ) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="datetime-local" value="foo">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="datetime-local" value="foo">)
 
     assert safe_to_string(
              wc_datetime_local_input(
@@ -335,7 +335,7 @@ defmodule Phoenix.WebComponent.FormHelperTest do
                name: "search[key][]"
              )
            ) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="datetime-local" value="2017-09-21T20:21">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="datetime-local" value="2017-09-21T20:21">)
   end
 
   test "wc_datetime_local_input/3 with %DateTime{}" do
@@ -348,17 +348,17 @@ defmodule Phoenix.WebComponent.FormHelperTest do
                name: "search[key][]"
              )
            ) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="datetime-local" value="2021-05-13T04:20">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="datetime-local" value="2021-05-13T04:20">)
   end
 
   test "wc_datetime_local_input/3 with form" do
     assert safe_form(&wc_datetime_local_input(&1, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="datetime-local" value="value">)
+             ~s(<bx-input id="search_key" label-text="Key" name="search[key]" type="datetime-local" value="value">)
 
     assert safe_form(
              &wc_datetime_local_input(&1, :key, value: "foo", id: "key", name: "search[key][]")
            ) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="datetime-local" value="foo">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="datetime-local" value="foo">)
 
     assert safe_form(
              &wc_datetime_local_input(
@@ -369,19 +369,19 @@ defmodule Phoenix.WebComponent.FormHelperTest do
                name: "search[key][]"
              )
            ) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="datetime-local" value="2017-09-21T20:21">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="datetime-local" value="2017-09-21T20:21">)
   end
 
   ## wc_time_input/3
 
   test "wc_time_input/3" do
     assert safe_to_string(wc_time_input(:search, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="time">)
+             ~s(<bx-input id="search_key" label-text="Key" name="search[key]" type="time">)
 
     assert safe_to_string(
              wc_time_input(:search, :key, value: "foo", id: "key", name: "search[key][]")
            ) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="time" value="foo">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="time" value="foo">)
 
     assert safe_to_string(
              wc_time_input(:search, :key,
@@ -390,29 +390,29 @@ defmodule Phoenix.WebComponent.FormHelperTest do
                name: "search[key][]"
              )
            ) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="time" value="23:00">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="time" value="23:00">)
   end
 
   test "wc_time_input/3 with form" do
     assert safe_form(&wc_time_input(&1, :key)) ==
-             ~s(<mwc-textfield id="search_key" label="Key" name="search[key]" type="time" value="value">)
+             ~s(<bx-input id="search_key" label-text="Key" name="search[key]" type="time" value="value">)
 
     assert safe_form(&wc_time_input(&1, :time)) ==
-             ~s(<mwc-textfield id="search_time" label="Time" name="search[time]" type="time" value="01:02">)
+             ~s(<bx-input id="search_time" label-text="Time" name="search[time]" type="time" value="01:02">)
 
     assert safe_form(&wc_time_input(&1, :time, precision: :second)) ==
-             ~s(<mwc-textfield id="search_time" label="Time" name="search[time]" type="time" value="01:02:03">)
+             ~s(<bx-input id="search_time" label-text="Time" name="search[time]" type="time" value="01:02:03">)
 
     assert safe_form(&wc_time_input(&1, :time, precision: :millisecond)) ==
-             ~s(<mwc-textfield id="search_time" label="Time" name="search[time]" type="time" value="01:02:03.004">)
+             ~s(<bx-input id="search_time" label-text="Time" name="search[time]" type="time" value="01:02:03.004">)
 
     assert safe_form(&wc_time_input(&1, :key, value: "foo", id: "key", name: "search[key][]")) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="time" value="foo">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="time" value="foo">)
 
     assert safe_form(
              &wc_time_input(&1, :key, value: ~T[23:00:07.001], id: "key", name: "search[key][]")
            ) ==
-             ~s(<mwc-textfield id="key" label="Key" name="search[key][]" type="time" value="23:00">)
+             ~s(<bx-input id="key" label-text="Key" name="search[key][]" type="time" value="23:00">)
   end
 
   ## wc_submit/2

@@ -23,9 +23,9 @@
     "@material/mwc-drawer": "^0.25.3",
     "@material/mwc-fab": "^0.25.3",
     "@material/mwc-formfield": "^0.25.3",
-    "@material/mwc-icon-button-toggle": "^0.25.3",
-    "@material/mwc-icon-button": "^0.25.3",
     "@material/mwc-icon": "^0.25.3",
+    "@material/mwc-icon-button": "^0.25.3",
+    "@material/mwc-icon-button-toggle": "^0.25.3",
     "@material/mwc-linear-progress": "^0.25.3",
     "@material/mwc-list": "^0.25.3",
     "@material/mwc-menu": "^0.25.3",
@@ -34,12 +34,13 @@
     "@material/mwc-slider": "^0.25.3",
     "@material/mwc-snackbar": "^0.25.3",
     "@material/mwc-switch": "^0.25.3",
-    "@material/mwc-tab-bar": "^0.25.3",
     "@material/mwc-tab": "^0.25.3",
+    "@material/mwc-tab-bar": "^0.25.3",
     "@material/mwc-textarea": "^0.25.3",
     "@material/mwc-textfield": "^0.25.3",
+    "@material/mwc-top-app-bar": "^0.25.3",
     "@material/mwc-top-app-bar-fixed": "^0.25.3",
-    "@material/mwc-top-app-bar": "^0.25.3"
+    "carbon-web-components": "^1.21.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
