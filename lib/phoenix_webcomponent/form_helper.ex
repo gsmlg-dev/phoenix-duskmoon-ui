@@ -307,7 +307,10 @@ defmodule Phoenix.WebComponent.FormHelper do
         opts
       end
 
-    content_tag(:"bx-date-picker", opts) do
+    {_, wrapOpts} = Keyword.pop(opts, :id)
+    {_, wrapOpts} = Keyword.pop(wrapOpts, :name)
+    {_, wrapOpts} = Keyword.pop(wrapOpts, :value)
+    content_tag(:"bx-date-picker", wrapOpts) do
       content_tag(:"bx-date-picker-input", "", opts);
     end
   end
