@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.3.0...v1.4.0) (2022-04-25)
+
+
+### Bug Fixes
+
+* Remove duplicate form attribute to wc_date_input. ([b91ddaa](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/b91ddaaf1dc87d4a63a46eb46f4e2118fba306f2))
+
+
+### Features
+
+* Change to carbon web component. ([b7a01c8](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/b7a01c82cc20edae4748c070cd338e90461aae60))
+
 # [1.3.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.2.0...v1.3.0) (2022-04-19)
 
 
