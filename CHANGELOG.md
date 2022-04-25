@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.4.0...v1.4.1) (2022-04-25)
+
+
+### Bug Fixes
+
+* Fix js. ([e494411](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/e494411583122d334acc2838e91db02dc6ea1e03))
+
 # [1.4.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.3.0...v1.4.0) (2022-04-25)
 
 
