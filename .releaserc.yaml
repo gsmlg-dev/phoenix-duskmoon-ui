@@ -23,7 +23,7 @@ plugins:
         sed -i 's%"version": "[0-9\.]\+"%"version": "${nextRelease.version}"%' package.json;
         npm config set '//registry.npmjs.org/:_authToken' $NPM_TOKEN;
         test -z "${nextRelease.channel}" && npm publish || npm publish --tag "${nextRelease.channel}";
-      'publishCmd' : |
         mix prepublish;
+      'publishCmd' : |
         echo pubhlish phoenix_webcomponent ${nextRelease.version};
         mix hex.publish --yes
