@@ -286,30 +286,30 @@ defmodule Phoenix.WebComponent.FormHelperTest do
 
   test "wc_date_input/3" do
     assert safe_to_string(wc_date_input(:search, :key)) ==
-             ~s(<bx-date-picker date-format="Y-m-d" label-text="Key"><bx-date-picker-input date-format="Y-m-d" id="search_key" label-text="Key" name="search[key]"></bx-date-picker-input></bx-date-picker>)
+             ~s(<bx-date-picker date-format="Y-m-d" name="search[key]"><bx-date-picker-input id="search_key" kind="single" label-text="Key"></bx-date-picker-input></bx-date-picker>)
 
     assert safe_to_string(
              wc_date_input(:search, :key, value: "foo", id: "key", name: "search[key]")
            ) ==
-             ~s(<bx-date-picker date-format="Y-m-d" label-text="Key"><bx-date-picker-input date-format="Y-m-d" id="key" label-text="Key" name="search[key]" value="foo"></bx-date-picker-input></bx-date-picker>)
+             ~s(<bx-date-picker date-format="Y-m-d" name="search[key]" value="foo"><bx-date-picker-input id="key" kind="single" label-text="Key" value="foo"></bx-date-picker-input></bx-date-picker>)
 
     assert safe_to_string(
              wc_date_input(:search, :key, value: ~D[2017-09-21], id: "key", name: "search[key]")
            ) ==
-             ~s(<bx-date-picker date-format="Y-m-d" label-text="Key"><bx-date-picker-input date-format="Y-m-d" id="key" label-text="Key" name="search[key]" value="2017-09-21"></bx-date-picker-input></bx-date-picker>)
+             ~s(<bx-date-picker date-format="Y-m-d" name="search[key]" value="2017-09-21"><bx-date-picker-input id="key" kind="single" label-text="Key" value="2017-09-21"></bx-date-picker-input></bx-date-picker>)
   end
 
   test "wc_date_input/3 with form" do
     assert safe_form(&wc_date_input(&1, :key)) ==
-             ~s(<bx-date-picker date-format="Y-m-d" label-text="Key"><bx-date-picker-input date-format="Y-m-d" id="search_key" label-text="Key" name="search[key]" value="value"></bx-date-picker-input></bx-date-picker>)
+             ~s(<bx-date-picker date-format="Y-m-d" name="search[key]" value="value"><bx-date-picker-input id="search_key" kind="single" label-text="Key" value="value"></bx-date-picker-input></bx-date-picker>)
 
     assert safe_form(&wc_date_input(&1, :key, value: "foo", id: "key", name: "search[key]")) ==
-             ~s(<bx-date-picker date-format="Y-m-d" label-text="Key"><bx-date-picker-input date-format="Y-m-d" id="key" label-text="Key" name="search[key]" value="foo"></bx-date-picker-input></bx-date-picker>)
+             ~s(<bx-date-picker date-format="Y-m-d" name="search[key]" value="foo"><bx-date-picker-input id="key" kind="single" label-text="Key" value="foo"></bx-date-picker-input></bx-date-picker>)
 
     assert safe_form(
              &wc_date_input(&1, :key, value: ~D[2017-09-21], id: "key", name: "search[key]")
            ) ==
-             ~s(<bx-date-picker date-format="Y-m-d" label-text="Key"><bx-date-picker-input date-format="Y-m-d" id="key" label-text="Key" name="search[key]" value="2017-09-21"></bx-date-picker-input></bx-date-picker>)
+             ~s(<bx-date-picker date-format="Y-m-d" name="search[key]" value="2017-09-21"><bx-date-picker-input id="key" kind="single" label-text="Key" value="2017-09-21"></bx-date-picker-input></bx-date-picker>)
   end
 
   ## wc_datewc_time_input/3
