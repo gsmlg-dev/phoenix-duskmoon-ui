@@ -445,12 +445,12 @@ defmodule Phoenix.WebComponent.FormHelperTest do
 
   test "wc_switch/3" do
     assert safe_to_string(wc_switch(:form, :enable)) ==
-             ~s(<mwc-formfield label="Enable"><mwc-switch id="form_enable" name="form[enable]" value="on">enable</mwc-switch></mwc-formfield>)
+             ~s(<bx-toggle id="form_enable" label-text="Enable" name="form[enable]" value="on">enable</bx-toggle>)
 
-    assert safe_to_string(wc_switch(:form, :enable, true_value: "yes")) ==
-             ~s(<mwc-formfield label="Enable"><mwc-switch id="form_enable" name="form[enable]" value="yes">enable</mwc-switch></mwc-formfield>)
+    assert safe_to_string(wc_switch(:form, :enable, checked_value: "yes")) ==
+             ~s(<bx-toggle id="form_enable" label-text="Enable" name="form[enable]" value="yes">enable</bx-toggle>)
 
-    assert safe_to_string(wc_switch(:form, :enable, selected: true, true_value: "true")) ==
-             ~s(<mwc-formfield label="Enable"><mwc-switch id="form_enable" name="form[enable]" selected value="true">enable</mwc-switch></mwc-formfield>)
+    assert safe_to_string(wc_switch(:form, :enable, checked: true, checked_value: "true")) ==
+             ~s(<bx-toggle checked id="form_enable" label-text="Enable" name="form[enable]" value="true">enable</bx-toggle>)
   end
 end

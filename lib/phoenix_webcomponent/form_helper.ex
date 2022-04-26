@@ -928,27 +928,16 @@ defmodule Phoenix.WebComponent.FormHelper do
 
   '''
   def wc_switch(form, field, opts \\ []) do
-    {label, opts} = opts |> Keyword.pop(:label, humanize(field))
-    fieldSupport = [:alignEnd, :spaceBetween, :nowrap]
-    fieldOpts = [label: label]
-
-    {fieldOpts, opts} =
-      Enum.reduce(fieldSupport, {fieldOpts, opts}, fn f, {fieldOpts, opts} ->
-        case Keyword.pop(opts, f) do
-          {nil, opts} -> {fieldOpts, opts}
-          {v, opts} -> {fieldOpts |> Keyword.put(f, v), opts}
-        end
-      end)
-
     opts =
       opts
+      |> Keyword.put_new(:"label-text", humanize(field))
       |> Keyword.put_new(:id, input_id(form, field))
       |> Keyword.put_new(:name, input_name(form, field))
       |> Keyword.put_new(:value, input_value(form, field))
       |> Keyword.update!(:value, &maybe_html_escape/1)
 
     {val, opts} = opts |> Keyword.pop(:value, "true")
-    {trueVal, opts} = opts |> Keyword.pop(:true_value, "on")
+    {trueVal, opts} = opts |> Keyword.pop(:checked_value, "on")
 
     opts =
       if trueVal == val do
@@ -959,9 +948,7 @@ defmodule Phoenix.WebComponent.FormHelper do
 
     opts = opts |> Keyword.put(:value, trueVal)
 
-    content_tag(:"mwc-formfield", fieldOpts) do
-      content_tag(:"mwc-switch", field, opts)
-    end
+    content_tag(:"bx-toggle", field, opts)
   end
 
   # Normalize field name to string version
