@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.4.1...v1.4.2) (2022-04-26)
+
+
+### Bug Fixes
+
+* Minify js. ([0391492](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/03914922baa92d0d22f47a9bc791d1304e98abdb))
+
 ## [1.4.1](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.4.0...v1.4.1) (2022-04-25)
 
 
