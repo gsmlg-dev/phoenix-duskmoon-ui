@@ -802,7 +802,10 @@ defmodule Phoenix.WebComponent.FormHelper do
   defp option(group_label, group_values, [])
        when is_list(group_values) or is_map(group_values) do
     section_options = escaped_options_for_select(group_values)
-    {:safe, contents} = content_tag(:"bx-select-item-group", {:safe, section_options}, label: group_label)
+
+    {:safe, contents} =
+      content_tag(:"bx-select-item-group", {:safe, section_options}, label: group_label)
+
     contents
   end
 
@@ -854,7 +857,6 @@ defmodule Phoenix.WebComponent.FormHelper do
   All other options are forwarded to the underlying HTML tag.
   """
   def wc_multiple_select(form, field, options, opts \\ []) do
-
     opts =
       opts
       |> Keyword.put_new(:"label-text", humanize(field))
@@ -907,5 +909,4 @@ defmodule Phoenix.WebComponent.FormHelper do
 
     content_tag(:"bx-toggle", field, opts)
   end
-
 end
