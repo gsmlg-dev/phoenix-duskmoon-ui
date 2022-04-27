@@ -1,3 +1,10 @@
+## [1.4.5](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.4.4...v1.4.5) (2022-04-27)
+
+
+### Bug Fixes
+
+* Fix select. ([c76e9e8](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/c76e9e8b8aa6f292ee5ec13645aaf9527bca05b4))
+
 ## [1.4.4](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.4.3...v1.4.4) (2022-04-27)
 
 
