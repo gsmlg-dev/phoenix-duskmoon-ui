@@ -14,7 +14,7 @@
     "priv/static/"
   ],
   "dependencies": {
-    "@gsmlg/lit": "^1.17.0",
+    "@gsmlg/lit": "^1.17.1",
     "@material/mwc-button": "^0.25.3",
     "@material/mwc-checkbox": "^0.25.3",
     "@material/mwc-circular-progress": "^0.25.3",
