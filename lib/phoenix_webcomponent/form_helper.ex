@@ -735,38 +735,17 @@ defmodule Phoenix.WebComponent.FormHelper do
   All other options are forwarded to the underlying HTML tag.
   """
   def wc_select(form, field, options, opts \\ []) when is_atom(field) or is_binary(field) do
-    {selected, opts} = selected(form, field, opts)
-    options_html = options_for_select(options, selected)
-
-    {options_html, opts} =
-      case Keyword.pop(opts, :prompt) do
-        {nil, opts} -> {options_html, opts}
-        {prompt, opts} -> {[prompt_option(prompt) | options_html], opts}
-      end
+    options_html = options_for_select(options)
 
     opts =
       opts
+      |> Keyword.put_new(:"label-text", humanize(field))
       |> Keyword.put_new(:id, input_id(form, field))
       |> Keyword.put_new(:name, input_name(form, field))
+      |> Keyword.put_new(:value, input_value(form, field))
+      |> Keyword.update!(:value, &maybe_html_escape/1)
 
-    content_tag(:"mwc-select", options_html, opts)
-  end
-
-  defp prompt_option(prompt) when is_list(prompt) do
-    {prompt_key, prompt_opts} = Keyword.pop(prompt, :key)
-
-    prompt_key ||
-      raise ArgumentError,
-            "expected :key key when building a prompt select option with a keyword list: " <>
-              inspect(prompt)
-
-    prompt_option(prompt_key, prompt_opts)
-  end
-
-  defp prompt_option(key) when is_binary(key), do: prompt_option(key, [])
-
-  defp prompt_option(key, opts) when is_list(opts) do
-    content_tag(:option, key, Keyword.put_new(opts, :value, ""))
+    content_tag(:"bx-select", options_html, opts)
   end
 
   @doc """
@@ -791,18 +770,14 @@ defmodule Phoenix.WebComponent.FormHelper do
       #=> </optgroup>
 
   """
-  def options_for_select(options, selected_values) do
-    {:safe,
-     escaped_options_for_select(
-       options,
-       selected_values |> List.wrap() |> Enum.map(&html_escape/1)
-     )}
+  def options_for_select(options) do
+    {:safe, escaped_options_for_select(options)}
   end
 
-  defp escaped_options_for_select(options, selected_values) do
+  defp escaped_options_for_select(options) do
     Enum.reduce(options, [], fn
       {option_key, option_value}, acc ->
-        [acc | option(option_key, option_value, [], selected_values)]
+        [acc | option(option_key, option_value, [])]
 
       options, acc when is_list(options) ->
         {option_key, options} = Keyword.pop(options, :key)
@@ -817,44 +792,25 @@ defmodule Phoenix.WebComponent.FormHelper do
           raise ArgumentError,
                 "expected :value key when building <option> from keyword list: #{inspect(options)}"
 
-        [acc | option(option_key, option_value, options, selected_values)]
+        [acc | option(option_key, option_value, options)]
 
       option, acc ->
-        [acc | option(option, option, [], selected_values)]
+        [acc | option(option, option, [])]
     end)
   end
 
-  defp selected(form, field, opts) do
-    {value, opts} = Keyword.pop(opts, :value)
-    {selected, opts} = Keyword.pop(opts, :selected)
-
-    if value != nil do
-      {value, opts}
-    else
-      param = field_to_string(field)
-
-      case form do
-        %{params: %{^param => sent}} ->
-          {sent, opts}
-
-        _ ->
-          {selected || input_value(form, field), opts}
-      end
-    end
-  end
-
-  defp option(group_label, group_values, [], value)
+  defp option(group_label, group_values, [])
        when is_list(group_values) or is_map(group_values) do
-    section_options = escaped_options_for_select(group_values, value)
-    {:safe, contents} = content_tag(:optgroup, {:safe, section_options}, label: group_label)
+    section_options = escaped_options_for_select(group_values)
+    {:safe, contents} = content_tag(:"bx-select-item-group", {:safe, section_options}, label: group_label)
     contents
   end
 
-  defp option(option_key, option_value, extra, value) do
+  defp option(option_key, option_value, extra) do
     option_key = html_escape(option_key)
     option_value = html_escape(option_value)
-    opts = [value: option_value, selected: option_value in value] ++ extra
-    {:safe, contents} = content_tag(:option, option_key, opts)
+    opts = [value: option_value] ++ extra
+    {:safe, contents} = content_tag(:"bx-select-item", option_key, opts)
     contents
   end
 
@@ -898,15 +854,16 @@ defmodule Phoenix.WebComponent.FormHelper do
   All other options are forwarded to the underlying HTML tag.
   """
   def wc_multiple_select(form, field, options, opts \\ []) do
-    {selected, opts} = selected(form, field, opts)
 
     opts =
       opts
+      |> Keyword.put_new(:"label-text", humanize(field))
       |> Keyword.put_new(:id, input_id(form, field))
       |> Keyword.put_new(:name, input_name(form, field) <> "[]")
-      |> Keyword.put_new(:multiple, "")
+      |> Keyword.put_new(:value, input_value(form, field))
+      |> Keyword.update!(:value, &maybe_html_escape/1)
 
-    content_tag(:select, options_for_select(options, selected), opts)
+    content_tag(:"bx-multi-select", options_for_select(options), opts)
   end
 
   ## Switch
@@ -951,7 +908,4 @@ defmodule Phoenix.WebComponent.FormHelper do
     content_tag(:"bx-toggle", field, opts)
   end
 
-  # Normalize field name to string version
-  defp field_to_string(field) when is_atom(field), do: Atom.to_string(field)
-  defp field_to_string(field) when is_binary(field), do: field
 end

@@ -17,7 +17,7 @@ import '@material/mwc-icon';
 import '@material/mwc-list';
 import '@material/mwc-menu';
 import '@material/mwc-radio';
-import '@material/mwc-select';
+// import '@material/mwc-select';
 // import '@material/mwc-slider';
 // import '@material/mwc-snackbar';
 import '@material/mwc-switch';
