@@ -12,29 +12,29 @@ defmodule Phoenix.WebComponent.Link do
   ## Examples
 
       wc_link("hello", to: "/world")
-      #=> <a href="/world"><mwc-button>hello</mwc-button></a>
+      #=> <a href="/world"><bx-btn>hello</bx-btn></a>
 
       wc_link("hello", to: URI.parse("https://elixir-lang.org"))
-      #=> <a href="https://elixir-lang.org"><mwc-button>hello</mwc-button></a>
+      #=> <a href="https://elixir-lang.org"><bx-btn>hello</bx-btn></a>
 
       wc_link("<hello>", to: "/world")
-      #=> <a href="/world"><mwc-button>&lt;hello&gt;</mwc-button></a>
+      #=> <a href="/world"><bx-btn>&lt;hello&gt;</bx-btn></a>
 
       wc_link("<hello>", to: "/world", class: "btn")
-      #=> <a class="btn" href="/world"><mwc-button>&lt;hello&gt;</mwc-button></a>
+      #=> <a class="btn" href="/world"><bx-btn>&lt;hello&gt;</bx-btn></a>
 
       wc_link("delete", to: "/the_world", data: [confirm: "Really?"])
-      #=> <a data-confirm="Really?" href="/the_world"><mwc-button>delete</mwc-button></a>
+      #=> <a data-confirm="Really?" href="/the_world"><bx-btn>delete</bx-btn></a>
 
       # If you supply a method other than `:get`:
       wc_link("delete", to: "/everything", method: :delete)
-      #=> <a href="/everything" data-csrf="csrf_token" data-method="delete" data-to="/everything"><mwc-button>delete</mwc-button></a>
+      #=> <a href="/everything" data-csrf="csrf_token" data-method="delete" data-to="/everything"><bx-btn>delete</bx-btn></a>
 
       # You can use a `do ... end` block too:
       link to: "/hello" do
         "world"
       end
-      #=> <a href="/hello"><mwc-button>world</mwc-button><a>
+      #=> <a href="/hello"><bx-btn>world</bx-btn><a>
 
   ## Options
 
@@ -83,7 +83,7 @@ defmodule Phoenix.WebComponent.Link do
       {linkOpts, opts} = pop_link_attr(Keyword.delete(opts, :csrf_token))
 
       content_tag(:a, [href: data[:to]] ++ linkOpts) do
-        content_tag(:"mwc-button", text, opts)
+        content_tag(:"bx-btn", text, opts)
       end
     else
       {csrf_token, opts} = Keyword.pop(opts, :csrf_token, true)
@@ -95,7 +95,7 @@ defmodule Phoenix.WebComponent.Link do
       {linkOpts, opts} = pop_link_attr(opts)
 
       content_tag(:a, [data: data, href: data[:to]] ++ linkOpts) do
-        content_tag(:"mwc-button", text, opts)
+        content_tag(:"bx-btn", text, opts)
       end
     end
   end
@@ -149,7 +149,7 @@ defmodule Phoenix.WebComponent.Link do
       |> Keyword.split([:method, :csrf_token])
 
     link_attributes = Phoenix.WebComponent.link_attributes(to, link_opts)
-    content_tag(:"mwc-button", text, link_attributes ++ opts)
+    content_tag(:"bx-btn", text, link_attributes ++ opts)
   end
 
   defp pop_required_option!(opts, key, error_message) do
@@ -290,7 +290,7 @@ defmodule Phoenix.WebComponent.Link do
     {linkOpts, opts} = pop_link_attr(opts)
 
     content_tag(:a, linkOpts) do
-      content_tag(:"mwc-button", opts, do: block_or_text)
+      content_tag(:"bx-btn", opts, do: block_or_text)
     end
   end
 end

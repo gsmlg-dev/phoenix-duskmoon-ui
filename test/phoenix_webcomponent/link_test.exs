@@ -8,7 +8,7 @@ defmodule Phoenix.WebComponent.LinkTest do
     csrf_token = Plug.CSRFProtection.get_csrf_token()
 
     assert safe_to_string(wc_link("hello", to: "/world", method: :post)) ==
-             ~s[<a data-csrf="#{csrf_token}" data-method="post" data-to="/world" href="/world" rel="nofollow"><mwc-button>hello</mwc-button></a>]
+             ~s[<a data-csrf="#{csrf_token}" data-method="post" data-to="/world" href="/world" rel="nofollow"><bx-btn>hello</bx-btn></a>]
   end
 
   test "wc_link with %URI{}" do
@@ -27,16 +27,16 @@ defmodule Phoenix.WebComponent.LinkTest do
     csrf_token = Plug.CSRFProtection.get_csrf_token()
 
     assert safe_to_string(wc_link("hello", to: "/world", method: :put)) ==
-             ~s[<a data-csrf="#{csrf_token}" data-method="put" data-to="/world" href="/world" rel="nofollow"><mwc-button>hello</mwc-button></a>]
+             ~s[<a data-csrf="#{csrf_token}" data-method="put" data-to="/world" href="/world" rel="nofollow"><bx-btn>hello</bx-btn></a>]
   end
 
   test "wc_link with put/delete without csrf_token" do
     assert safe_to_string(wc_link("hello", to: "/world", method: :put, csrf_token: false)) ==
-             ~s[<a data-method="put" data-to="/world" href="/world" rel="nofollow"><mwc-button>hello</mwc-button></a>]
+             ~s[<a data-method="put" data-to="/world" href="/world" rel="nofollow"><bx-btn>hello</bx-btn></a>]
   end
 
   test "wc_link with :do contents" do
-    assert ~s[<a href="/hello"><mwc-button><p>world</p></mwc-button></a>] ==
+    assert ~s[<a href="/hello"><bx-btn><p>world</p></bx-btn></a>] ==
              safe_to_string(
                wc_link to: "/hello" do
                  Phoenix.HTML.Tag.content_tag(:p, "world")
@@ -47,27 +47,27 @@ defmodule Phoenix.WebComponent.LinkTest do
              wc_link(to: "/hello") do
                "world"
              end
-           ) == ~s[<a href="/hello"><mwc-button>world</mwc-button></a>]
+           ) == ~s[<a href="/hello"><bx-btn>world</bx-btn></a>]
   end
 
   test "wc_link with scheme" do
     assert safe_to_string(wc_link("foo", to: "/javascript:alert(<1>)")) ==
-             ~s[<a href="/javascript:alert(&lt;1&gt;)"><mwc-button>foo</mwc-button></a>]
+             ~s[<a href="/javascript:alert(&lt;1&gt;)"><bx-btn>foo</bx-btn></a>]
 
     assert safe_to_string(wc_link("foo", to: {:safe, "/javascript:alert(<1>)"})) ==
-             ~s[<a href="/javascript:alert(<1>)"><mwc-button>foo</mwc-button></a>]
+             ~s[<a href="/javascript:alert(<1>)"><bx-btn>foo</bx-btn></a>]
 
     assert safe_to_string(wc_link("foo", to: {:javascript, "alert(<1>)"})) ==
-             ~s[<a href="javascript:alert(&lt;1&gt;)"><mwc-button>foo</mwc-button></a>]
+             ~s[<a href="javascript:alert(&lt;1&gt;)"><bx-btn>foo</bx-btn></a>]
 
     assert safe_to_string(wc_link("foo", to: {:javascript, 'alert(<1>)'})) ==
-             ~s[<a href="javascript:alert(&lt;1&gt;)"><mwc-button>foo</mwc-button></a>]
+             ~s[<a href="javascript:alert(&lt;1&gt;)"><bx-btn>foo</bx-btn></a>]
 
     assert safe_to_string(wc_link("foo", to: {:javascript, {:safe, "alert(<1>)"}})) ==
-             ~s[<a href="javascript:alert(<1>)"><mwc-button>foo</mwc-button></a>]
+             ~s[<a href="javascript:alert(<1>)"><bx-btn>foo</bx-btn></a>]
 
     assert safe_to_string(wc_link("foo", to: {:javascript, {:safe, 'alert(<1>)'}})) ==
-             ~s[<a href="javascript:alert(<1>)"><mwc-button>foo</mwc-button></a>]
+             ~s[<a href="javascript:alert(<1>)"><bx-btn>foo</bx-btn></a>]
   end
 
   test "wc_link with confirm" do
@@ -76,7 +76,7 @@ defmodule Phoenix.WebComponent.LinkTest do
     assert safe_to_string(
              wc_link("hello", to: "/world", method: :delete, data: [confirm: "Are you sure?"])
            ) ==
-             ~s[<a data-confirm="Are you sure?" data-csrf="#{csrf_token}" data-method="delete" data-to="/world" href="/world" rel="nofollow"><mwc-button>hello</mwc-button></a>]
+             ~s[<a data-confirm="Are you sure?" data-csrf="#{csrf_token}" data-method="delete" data-to="/world" href="/world" rel="nofollow"><bx-btn>hello</bx-btn></a>]
   end
 
   test "wc_link with invalid args" do
@@ -109,7 +109,7 @@ defmodule Phoenix.WebComponent.LinkTest do
     csrf_token = Plug.CSRFProtection.get_csrf_token()
 
     assert safe_to_string(wc_button("hello", to: "/world")) ==
-             ~s[<mwc-button data-csrf="#{csrf_token}" data-method="post" data-to="/world">hello</mwc-button>]
+             ~s[<bx-btn data-csrf="#{csrf_token}" data-method="post" data-to="/world">hello</bx-btn>]
   end
 
   test "wc_button with %URI{}" do
@@ -121,12 +121,12 @@ defmodule Phoenix.WebComponent.LinkTest do
 
   test "wc_button with post without csrf_token" do
     assert safe_to_string(wc_button("hello", to: "/world", csrf_token: false)) ==
-             ~s[<mwc-button data-method="post" data-to="/world">hello</mwc-button>]
+             ~s[<bx-btn data-method="post" data-to="/world">hello</bx-btn>]
   end
 
   test "wc_button with get does not generate CSRF" do
     assert safe_to_string(wc_button("hello", to: "/world", method: :get)) ==
-             ~s[<mwc-button data-method="get" data-to="/world">hello</mwc-button>]
+             ~s[<bx-btn data-method="get" data-to="/world">hello</bx-btn>]
   end
 
   test "wc_button with do" do
@@ -140,14 +140,14 @@ defmodule Phoenix.WebComponent.LinkTest do
       )
 
     assert output ==
-             ~s[<mwc-button class="small" data-csrf="#{csrf_token}" data-method="post" data-to="/world"><span>Hi</span></mwc-button>]
+             ~s[<bx-btn class="small" data-csrf="#{csrf_token}" data-method="post" data-to="/world"><span>Hi</span></bx-btn>]
   end
 
   test "wc_button with class overrides default" do
     csrf_token = Plug.CSRFProtection.get_csrf_token()
 
     assert safe_to_string(wc_button("hello", to: "/world", class: "btn rounded", id: "btn")) ==
-             ~s[<mwc-button class="btn rounded" data-csrf="#{csrf_token}" data-method="post" data-to="/world" id="btn">hello</mwc-button>]
+             ~s[<bx-btn class="btn rounded" data-csrf="#{csrf_token}" data-method="post" data-to="/world" id="btn">hello</bx-btn>]
   end
 
   test "wc_button with invalid args" do
@@ -159,12 +159,12 @@ defmodule Phoenix.WebComponent.LinkTest do
   describe "live view link" do
     test "wc_live_patch" do
       assert safe_to_string(wc_live_patch("hello", to: "/world")) ==
-               ~s[<a data-phx-link="patch" data-phx-link-state="push" href="/world"><mwc-button>hello</mwc-button></a>]
+               ~s[<a data-phx-link="patch" data-phx-link-state="push" href="/world"><bx-btn>hello</bx-btn></a>]
     end
 
     test "wc_live_redirect" do
       assert safe_to_string(wc_live_redirect("hello", to: "/world")) ==
-               ~s[<a data-phx-link="redirect" data-phx-link-state="push" href="/world"><mwc-button>hello</mwc-button></a>]
+               ~s[<a data-phx-link="redirect" data-phx-link-state="push" href="/world"><bx-btn>hello</bx-btn></a>]
     end
   end
 end
