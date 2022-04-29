@@ -316,37 +316,37 @@ defmodule Phoenix.WebComponent.FormHelperTest do
 
   test "wc_submit/2" do
     assert safe_to_string(wc_submit("Submit")) ==
-             ~s(<mwc-button type="submit" unelevated>Submit</mwc-button>)
+             ~s(<bx-btn type="submit" unelevated>Submit</bx-btn>)
 
     assert safe_to_string(wc_submit("Submit", class: "btn")) ==
-             ~s(<mwc-button class="btn" type="submit" unelevated>Submit</mwc-button>)
+             ~s(<bx-btn class="btn" type="submit" unelevated>Submit</bx-btn>)
 
     assert safe_to_string(wc_submit([class: "btn"], do: "Submit")) ==
-             ~s(<mwc-button class="btn" type="submit" unelevated>Submit</mwc-button>)
+             ~s(<bx-btn class="btn" type="submit" unelevated>Submit</bx-btn>)
 
     assert safe_to_string(wc_submit(do: "Submit")) ==
-             ~s(<mwc-button type="submit" unelevated>Submit</mwc-button>)
+             ~s(<bx-btn type="submit" unelevated>Submit</bx-btn>)
 
     assert safe_to_string(wc_submit("<Submit>")) ==
-             ~s(<mwc-button type="submit" unelevated>&lt;Submit&gt;</mwc-button>)
+             ~s(<bx-btn type="submit" unelevated>&lt;Submit&gt;</bx-btn>)
 
     assert safe_to_string(wc_submit("<Submit>", class: "btn")) ==
-             ~s(<mwc-button class="btn" type="submit" unelevated>&lt;Submit&gt;</mwc-button>)
+             ~s(<bx-btn class="btn" type="submit" unelevated>&lt;Submit&gt;</bx-btn>)
 
     assert safe_to_string(wc_submit([class: "btn"], do: "<Submit>")) ==
-             ~s(<mwc-button class="btn" type="submit" unelevated>&lt;Submit&gt;</mwc-button>)
+             ~s(<bx-btn class="btn" type="submit" unelevated>&lt;Submit&gt;</bx-btn>)
 
     assert safe_to_string(wc_submit(do: "<Submit>")) ==
-             ~s(<mwc-button type="submit" unelevated>&lt;Submit&gt;</mwc-button>)
+             ~s(<bx-btn type="submit" unelevated>&lt;Submit&gt;</bx-btn>)
   end
 
   ## wc_reset/2
 
   test "wc_reset/2" do
-    assert safe_to_string(wc_reset("Reset")) == ~s(<mwc-button type="reset" value="Reset">)
+    assert safe_to_string(wc_reset("Reset")) == ~s(<bx-btn type="reset" value="Reset">)
 
     assert safe_to_string(wc_reset("Reset", class: "btn")) ==
-             ~s(<mwc-button class="btn" type="reset" value="Reset">)
+             ~s(<bx-btn class="btn" type="reset" value="Reset">)
   end
 
   ## wc_radio_button/4

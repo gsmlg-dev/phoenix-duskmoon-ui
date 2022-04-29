@@ -134,10 +134,10 @@ defmodule Phoenix.WebComponent.FormHelper do
 
       # Assuming form contains a User schema
       wc_text_input(form, :name)
-      #=> <mwc-textfield id="user_name" name="user[name]" type="text" value="" />
+      #=> <bx-input id="user_name" name="user[name]" type="text" value="" />
 
       wc_text_input(:user, :name)
-      #=> <mwc-textfield id="user_name" name="user[name]" type="text" value="" />
+      #=> <bx-input id="user_name" name="user[name]" type="text" value="" />
 
   """
   def wc_text_input(form, field, opts \\ []) do
@@ -492,14 +492,14 @@ defmodule Phoenix.WebComponent.FormHelper do
     opts = Keyword.put_new(opts, :type, "submit")
     opts = Keyword.put_new(opts, :unelevated, true)
 
-    content_tag(:"mwc-button", opts, block_option)
+    content_tag(:"bx-btn", opts, block_option)
   end
 
   def wc_submit(value, opts) do
     opts = Keyword.put_new(opts, :type, "submit")
     opts = Keyword.put_new(opts, :unelevated, true)
 
-    content_tag(:"mwc-button", value, opts)
+    content_tag(:"bx-btn", value, opts)
   end
 
   @doc """
@@ -523,7 +523,7 @@ defmodule Phoenix.WebComponent.FormHelper do
       |> Keyword.put_new(:type, "reset")
       |> Keyword.put_new(:value, value)
 
-    tag(:"mwc-button", opts)
+    tag(:"bx-btn", opts)
   end
 
   @doc """
@@ -663,64 +663,64 @@ defmodule Phoenix.WebComponent.FormHelper do
 
       # Assuming form contains a User schema
       select(form, :age, 0..120)
-      #=> <mwc-select id="user_age" name="user[age]">
+      #=> <bx-select id="user_age" name="user[age]">
       #=>   <option value="0">0</option>
       #=>   ...
       #=>   <option value="120">120</option>
-      #=> </mwc-select>
+      #=> </bx-select>
 
       select(form, :role, ["Admin": "admin", "User": "user"])
-      #=> <mwc-select id="user_role" name="user[role]">
+      #=> <bx-select id="user_role" name="user[role]">
       #=>   <option value="admin">Admin</option>
       #=>   <option value="user">User</option>
-      #=> </mwc-select>
+      #=> </bx-select>
 
       select(form, :role, [[key: "Admin", value: "admin", disabled: true],
                            [key: "User", value: "user"]])
-      #=> <mwc-select id="user_role" name="user[role]">
+      #=> <bx-select id="user_role" name="user[role]">
       #=>   <option value="admin" disabled="disabled">Admin</option>
       #=>   <option value="user">User</option>
-      #=> </mwc-select>
+      #=> </bx-select>
 
   You can also pass a prompt:
 
       select(form, :role, ["Admin": "admin", "User": "user"], prompt: "Choose your role")
-      #=> <mwc-select id="user_role" name="user[role]">
+      #=> <bx-select id="user_role" name="user[role]">
       #=>   <option value="">Choose your role</option>
       #=>   <option value="admin">Admin</option>
       #=>   <option value="user">User</option>
-      #=> </mwc-select>
+      #=> </bx-select>
 
   And customize the prompt as any other entry:
 
       select(form, :role, ["Admin": "admin", "User": "user"], prompt: [key: "Choose your role", disabled: true])
-      #=> <mwc-select id="user_role" name="user[role]">
+      #=> <bx-select id="user_role" name="user[role]">
       #=>   <option value="" disabled="">Choose your role</option>
       #=>   <option value="admin">Admin</option>
       #=>   <option value="user">User</option>
-      #=> </mwc-select>
+      #=> </bx-select>
 
   If you want to select an option that comes from the database,
   such as a manager for a given project, you may write:
 
       select(form, :manager_id, Enum.map(@managers, &{&1.name, &1.id}))
-      #=> <mwc-select id="manager_id" name="project[manager_id]">
+      #=> <bx-select id="manager_id" name="project[manager_id]">
       #=>   <option value="1">Mary Jane</option>
       #=>   <option value="2">John Doe</option>
-      #=> </mwc-select>
+      #=> </bx-select>
 
   Finally, if the values are a list or a map, we use the keys for
   grouping:
 
       select(form, :country, ["Europe": ["UK", "Sweden", "France"]], ...)
-      #=> <mwc-select id="user_country" name="user[country]">
+      #=> <bx-select id="user_country" name="user[country]">
       #=>   <optgroup label="Europe">
       #=>     <option>UK</option>
       #=>     <option>Sweden</option>
       #=>     <option>France</option>
       #=>   </optgroup>
       #=>   ...
-      #=> </mwc-select>
+      #=> </bx-select>
 
   ## Options
 
@@ -874,16 +874,14 @@ defmodule Phoenix.WebComponent.FormHelper do
    ## Examples
 
       # Assuming form contains a User schema
-      wc_switch(form, :enable, [true_value: "yes"])
-      #=> <mwc-formfield id="user_enable" name="user[enable]">
-      #=>   <mwc-switch value="yes"></mwc-switch>
-      #=> </mwc-formfield>
+      wc_switch(form, :enable, [checked_value: "yes"])
+      #=> <bx-toggle id="user_enable" name="user[enable]" value="yes" />
 
   ## Options
 
-    * `true_value` - the value if the switch is on, default is `on`.
+    * `checked_value` - the value if the switch is on, default is `on`.
 
-    * `:selected` - force the value to be on.
+    * `:checked` - force the value to be on.
 
   '''
   def wc_switch(form, field, opts \\ []) do
@@ -900,7 +898,7 @@ defmodule Phoenix.WebComponent.FormHelper do
 
     opts =
       if trueVal == val do
-        opts |> Keyword.put_new(:selected, true)
+        opts |> Keyword.put_new(:checked, true)
       else
         opts
       end
