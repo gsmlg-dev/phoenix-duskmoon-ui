@@ -1,3 +1,16 @@
+# [1.5.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.4.5...v1.5.0) (2022-04-29)
+
+
+### Bug Fixes
+
+* Fix toggle. ([44f40b1](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/44f40b1481339d65034ed6d8e586566fe3c589d3))
+* Move mwc-button to bx-btn. ([fab7d7b](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/fab7d7be177356ea6c3d12c1c24de8ae2015dd67))
+
+
+### Features
+
+* Add table. ([62ff8f7](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/62ff8f73e4e8332ee88a144b3dd206c89b744abe))
+
 ## [1.4.5](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.4.4...v1.4.5) (2022-04-27)
 
 
