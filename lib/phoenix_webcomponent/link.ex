@@ -83,7 +83,7 @@ defmodule Phoenix.WebComponent.Link do
       {linkOpts, opts} = pop_link_attr(Keyword.delete(opts, :csrf_token))
 
       content_tag(:a, [href: data[:to]] ++ linkOpts) do
-        content_tag(:"bx-btn", text, opts)
+        content_tag(:"bx-link", text, opts)
       end
     else
       {csrf_token, opts} = Keyword.pop(opts, :csrf_token, true)
@@ -95,7 +95,7 @@ defmodule Phoenix.WebComponent.Link do
       {linkOpts, opts} = pop_link_attr(opts)
 
       content_tag(:a, [data: data, href: data[:to]] ++ linkOpts) do
-        content_tag(:"bx-btn", text, opts)
+        content_tag(:"bx-link", text, opts)
       end
     end
   end
@@ -149,7 +149,7 @@ defmodule Phoenix.WebComponent.Link do
       |> Keyword.split([:method, :csrf_token])
 
     link_attributes = Phoenix.WebComponent.link_attributes(to, link_opts)
-    content_tag(:"bx-btn", text, link_attributes ++ opts)
+    content_tag(:"bx-link", text, link_attributes ++ opts)
   end
 
   defp pop_required_option!(opts, key, error_message) do
@@ -290,7 +290,7 @@ defmodule Phoenix.WebComponent.Link do
     {linkOpts, opts} = pop_link_attr(opts)
 
     content_tag(:a, linkOpts) do
-      content_tag(:"bx-btn", opts, do: block_or_text)
+      content_tag(:"bx-link", opts, do: block_or_text)
     end
   end
 end

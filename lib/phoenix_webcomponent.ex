@@ -30,6 +30,7 @@ defmodule Phoenix.WebComponent do
       import Phoenix.WebComponent.Link
       import Phoenix.WebComponent.Markdown
       import Phoenix.WebComponent.TopAppBar
+      import Phoenix.WebComponent.Table
     end
   end
 
