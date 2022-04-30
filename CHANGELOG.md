@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.5.0...v1.5.1) (2022-04-30)
+
+
+### Bug Fixes
+
+* Remove useless mwc. ([449e8ae](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/449e8aecf73f81b6e995d84ceed01ae0dec66b37))
+
 # [1.5.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.4.5...v1.5.0) (2022-04-29)
 
 
