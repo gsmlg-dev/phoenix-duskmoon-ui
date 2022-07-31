@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.5.1...v1.6.0) (2022-07-31)
+
+
+### Features
+
+* Refactor wc_switch, using my custom element. ([8f911c4](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/8f911c4d8305e8a13cf25b8a65a22684d0a114bb))
+
 ## [1.5.1](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.5.0...v1.5.1) (2022-04-30)
 
 
