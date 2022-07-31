@@ -874,14 +874,14 @@ defmodule Phoenix.WebComponent.FormHelper do
    ## Examples
 
       # Assuming form contains a User schema
-      wc_switch(form, :enable, [checked_value: "yes"])
+      wc_switch(form, :enable, [checked_value: "yes", unchecked_value: "no"])
       #=> <bx-toggle id="user_enable" name="user[enable]" value="yes" />
 
   ## Options
 
-    * `checked_value` - the value if the switch is on, default is `on`.
-
-    * `:checked` - force the value to be on.
+    * `:checked_value` - the value if the switch is on, Defaults to "true".
+    * `:unchecked_value` - the value if the switch is off, Defaults to "false"
+    * `:value` - the value of `checked_value` or `unchecked_value`.
 
   '''
   def wc_switch(form, field, opts \\ []) do
@@ -893,18 +893,6 @@ defmodule Phoenix.WebComponent.FormHelper do
       |> Keyword.put_new(:value, input_value(form, field))
       |> Keyword.update!(:value, &maybe_html_escape/1)
 
-    {val, opts} = opts |> Keyword.pop(:value, "true")
-    {trueVal, opts} = opts |> Keyword.pop(:checked_value, "on")
-
-    opts =
-      if trueVal == val do
-        opts |> Keyword.put_new(:checked, true)
-      else
-        opts
-      end
-
-    opts = opts |> Keyword.put(:value, trueVal)
-
-    content_tag(:"bx-toggle", field, opts)
+    content_tag(:"gsmlg-switch", field, opts)
   end
 end

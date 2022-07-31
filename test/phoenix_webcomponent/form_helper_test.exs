@@ -445,12 +445,12 @@ defmodule Phoenix.WebComponent.FormHelperTest do
 
   test "wc_switch/3" do
     assert safe_to_string(wc_switch(:form, :enable)) ==
-             ~s(<bx-toggle id="form_enable" label-text="Enable" name="form[enable]" value="on">enable</bx-toggle>)
+             ~s(<gsmlg-switch id="form_enable" label-text="Enable" name="form[enable]">enable</gsmlg-switch>)
 
-    assert safe_to_string(wc_switch(:form, :enable, checked_value: "yes")) ==
-             ~s(<bx-toggle id="form_enable" label-text="Enable" name="form[enable]" value="yes">enable</bx-toggle>)
+    assert safe_to_string(wc_switch(:form, :enable, checked_value: "yes", unchecked_value: "no")) ==
+             ~s(<gsmlg-switch checked-value="yes" id="form_enable" label-text="Enable" name="form[enable]" unchecked-value="no">enable</gsmlg-switch>)
 
-    assert safe_to_string(wc_switch(:form, :enable, checked: true, checked_value: "true")) ==
-             ~s(<bx-toggle checked id="form_enable" label-text="Enable" name="form[enable]" value="true">enable</bx-toggle>)
+    assert safe_to_string(wc_switch(:form, :enable, checked: true)) ==
+             ~s(<gsmlg-switch checked id="form_enable" label-text="Enable" name="form[enable]">enable</gsmlg-switch>)
   end
 end

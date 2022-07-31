@@ -6,5 +6,6 @@
 /doc
 /priv/static/phoenix_webcomponent.js
 /priv/static/
+/.elixir_ls
 erl_crash.dump
 *.ez
