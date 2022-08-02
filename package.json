@@ -14,7 +14,7 @@
     "priv/static/"
   ],
   "dependencies": {
-    "@gsmlg/lit": "^1.20.1",
+    "@gsmlg/lit": "^1.20.3",
     "@material/mwc-button": "^0.26.1",
     "@material/mwc-checkbox": "^0.26.1",
     "@material/mwc-circular-progress": "^0.26.1",
@@ -43,8 +43,8 @@
     "carbon-web-components": "^1.21.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.18.9",
-    "@babel/core": "^7.18.9",
-    "@babel/preset-env": "^7.18.9"
+    "@babel/cli": "^7.18.10",
+    "@babel/core": "^7.18.10",
+    "@babel/preset-env": "^7.18.10"
   }
 }
