@@ -22,7 +22,6 @@ defmodule PhxWCStorybookWeb do
       use Phoenix.Controller, namespace: PhxWCStorybookWeb
 
       import Plug.Conn
-      import PhxWCStorybookWeb.Gettext
       alias PhxWCStorybookWeb.Router.Helpers, as: Routes
     end
   end
@@ -39,6 +38,7 @@ defmodule PhxWCStorybookWeb do
 
       # Include shared imports and aliases for views
       unquote(view_helpers())
+      unquote(components())
     end
   end
 
@@ -48,6 +48,7 @@ defmodule PhxWCStorybookWeb do
         layout: {PhxWCStorybookWeb.LayoutView, "live.html"}
 
       unquote(view_helpers())
+      unquote(components())
     end
   end
 
@@ -95,9 +96,13 @@ defmodule PhxWCStorybookWeb do
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.View
 
-      import PhxWCStorybookWeb.ErrorHelpers
-      import PhxWCStorybookWeb.Gettext
       alias PhxWCStorybookWeb.Router.Helpers, as: Routes
+    end
+  end
+
+  defp components do
+    quote do
+      import PhxWCStorybookWeb.Components.Button
     end
   end
 
