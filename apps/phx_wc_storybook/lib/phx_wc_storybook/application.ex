@@ -1,4 +1,4 @@
-defmodule PhxWCStoryBook.Application do
+defmodule PhxWCStorybook.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -9,11 +9,11 @@ defmodule PhxWCStoryBook.Application do
   def start(_type, _args) do
     children = [
       # Start the PubSub system
-      {Phoenix.PubSub, name: PhxWCStoryBook.PubSub}
-      # Start a worker by calling: PhxWCStoryBook.Worker.start_link(arg)
-      # {PhxWCStoryBook.Worker, arg}
+      {Phoenix.PubSub, name: PhxWCStorybook.PubSub}
+      # Start a worker by calling: PhxWCStorybook.Worker.start_link(arg)
+      # {PhxWCStorybook.Worker, arg}
     ]
 
-    Supervisor.start_link(children, strategy: :one_for_one, name: PhxWCStoryBook.Supervisor)
+    Supervisor.start_link(children, strategy: :one_for_one, name: PhxWCStorybook.Supervisor)
   end
 end

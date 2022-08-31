@@ -1,4 +1,4 @@
-defmodule PhxWCStoryBook.MixProject do
+defmodule PhxWCStorybook.MixProject do
   use Mix.Project
 
   def project do
@@ -22,7 +22,7 @@ defmodule PhxWCStoryBook.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {PhxWCStoryBook.Application, []},
+      mod: {PhxWCStorybook.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end

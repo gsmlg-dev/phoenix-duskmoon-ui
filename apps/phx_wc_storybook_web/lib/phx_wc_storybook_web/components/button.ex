@@ -1,5 +1,5 @@
-defmodule PhxWCStoryBookWeb.Components.Button do
-  use PhxWCStoryBookWeb, :component
+defmodule PhxWCStorybookWeb.Components.Button do
+  use PhxWCStorybookWeb, :component
 
   def button(assigns) do
     assigns

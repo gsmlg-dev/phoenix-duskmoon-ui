@@ -1,4 +1,4 @@
-defmodule PhxWCStoryBookWeb.Endpoint do
+defmodule PhxWCStorybookWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :phx_wc_storybook_web
 
   # The session will be stored in the cookie and signed,
@@ -45,5 +45,5 @@ defmodule PhxWCStoryBookWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug PhxWCStoryBookWeb.Router
+  plug PhxWCStorybookWeb.Router
 end

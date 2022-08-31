@@ -1,4 +1,4 @@
-defmodule PhxWCStoryBook.Umbrella.MixProject do
+defmodule Phoenix.WebComponent.Umbrella.MixProject do
   use Mix.Project
 
   def project do

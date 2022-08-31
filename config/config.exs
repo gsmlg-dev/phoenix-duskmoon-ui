@@ -11,20 +11,20 @@ import Config
 
 # Configure Mix tasks and generators
 config :phx_wc_storybook,
-  namespace: PhxWCStoryBook
+  namespace: PhxWCStorybook
 
 config :phx_wc_storybook_web,
-  namespace: PhxWCStoryBookWeb,
+  namespace: PhxWCStorybookWeb,
   generators: [context_app: :phx_wc_storybook]
 
 # Configures the endpoint
-config :phx_wc_storybook_web, PhxWCStoryBookWeb.Endpoint,
+config :phx_wc_storybook_web, PhxWCStorybookWeb.Endpoint,
   url: [host: "localhost"],
-  render_errors: [view: PhxWCStoryBookWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: PhxWCStoryBook.PubSub,
+  render_errors: [view: PhxWCStorybookWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: PhxWCStorybook.PubSub,
   live_view: [signing_salt: "HkF5qV0r"]
 
-config :phx_wc_storybook_web, PhxWCStoryBookWeb.Storybook,
+config :phx_wc_storybook_web, PhxWCStorybookWeb.Storybook,
   content_path: Path.expand("../apps/phx_wc_storybook_web/lib/phx_wc_storybook_web/storybook", __DIR__)
 
 # Configure esbuild (the version is required)

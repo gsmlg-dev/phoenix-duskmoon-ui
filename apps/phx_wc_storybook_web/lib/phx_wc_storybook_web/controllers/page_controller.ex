@@ -1,5 +1,5 @@
-defmodule PhxWCStoryBookWeb.PageController do
-  use PhxWCStoryBookWeb, :controller
+defmodule PhxWCStorybookWeb.PageController do
+  use PhxWCStorybookWeb, :controller
 
   def index(conn, _params) do
     render(conn, "index.html")

@@ -1,3 +1,3 @@
-defmodule PhxWCStoryBookWeb.PageView do
-  use PhxWCStoryBookWeb, :view
+defmodule PhxWCStorybookWeb.PageView do
+  use PhxWCStorybookWeb, :view
 end

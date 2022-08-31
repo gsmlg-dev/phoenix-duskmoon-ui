@@ -1,6 +1,6 @@
-defmodule PhxWCStoryBook do
+defmodule PhxWCStorybook do
   @moduledoc """
-  PhxWCStoryBook keeps the contexts that define your domain
+  PhxWCStorybook keeps the contexts that define your domain
   and business logic.
 
   Contexts are also responsible for managing your data, regardless

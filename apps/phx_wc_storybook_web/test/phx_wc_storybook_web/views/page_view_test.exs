@@ -1,3 +1,3 @@
-defmodule PhxWCStoryBookWeb.PageViewTest do
-  use PhxWCStoryBookWeb.ConnCase, async: true
+defmodule PhxWCStorybookWeb.PageViewTest do
+  use PhxWCStorybookWeb.ConnCase, async: true
 end

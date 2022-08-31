@@ -1,5 +1,5 @@
-defmodule PhxWCStoryBookWeb.PageControllerTest do
-  use PhxWCStoryBookWeb.ConnCase
+defmodule PhxWCStorybookWeb.PageControllerTest do
+  use PhxWCStorybookWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")

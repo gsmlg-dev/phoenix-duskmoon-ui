@@ -1,6 +1,6 @@
 # storybook/components/button.exs
-defmodule PhxWCStoryBookWeb.Storybook.Components.Button do
-    alias PhxWCStoryBookWeb.Components.Button
+defmodule PhxWCStorybookWeb.Storybook.Components.Button do
+    alias PhxWCStorybookWeb.Components.Button
 
     # :live_component or :page are also available
     use PhxLiveStorybook.Entry, :component

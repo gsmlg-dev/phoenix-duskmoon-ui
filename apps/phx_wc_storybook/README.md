@@ -1,3 +1,3 @@
-# PhxWCStoryBook
+# PhxWCStorybook
 
 **TODO: Add description**

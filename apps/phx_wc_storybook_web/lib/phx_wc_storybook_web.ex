@@ -1,12 +1,12 @@
-defmodule PhxWCStoryBookWeb do
+defmodule PhxWCStorybookWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, views, channels and so on.
 
   This can be used in your application as:
 
-      use PhxWCStoryBookWeb, :controller
-      use PhxWCStoryBookWeb, :view
+      use PhxWCStorybookWeb, :controller
+      use PhxWCStorybookWeb, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -19,11 +19,11 @@ defmodule PhxWCStoryBookWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: PhxWCStoryBookWeb
+      use Phoenix.Controller, namespace: PhxWCStorybookWeb
 
       import Plug.Conn
-      import PhxWCStoryBookWeb.Gettext
-      alias PhxWCStoryBookWeb.Router.Helpers, as: Routes
+      import PhxWCStorybookWeb.Gettext
+      alias PhxWCStorybookWeb.Router.Helpers, as: Routes
     end
   end
 
@@ -31,7 +31,7 @@ defmodule PhxWCStoryBookWeb do
     quote do
       use Phoenix.View,
         root: "lib/phx_wc_storybook_web/templates",
-        namespace: PhxWCStoryBookWeb
+        namespace: PhxWCStorybookWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller,
@@ -45,7 +45,7 @@ defmodule PhxWCStoryBookWeb do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {PhxWCStoryBookWeb.LayoutView, "live.html"}
+        layout: {PhxWCStorybookWeb.LayoutView, "live.html"}
 
       unquote(view_helpers())
     end
@@ -80,7 +80,7 @@ defmodule PhxWCStoryBookWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import PhxWCStoryBookWeb.Gettext
+      import PhxWCStorybookWeb.Gettext
     end
   end
 
@@ -95,9 +95,9 @@ defmodule PhxWCStoryBookWeb do
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.View
 
-      import PhxWCStoryBookWeb.ErrorHelpers
-      import PhxWCStoryBookWeb.Gettext
-      alias PhxWCStoryBookWeb.Router.Helpers, as: Routes
+      import PhxWCStorybookWeb.ErrorHelpers
+      import PhxWCStorybookWeb.Gettext
+      alias PhxWCStorybookWeb.Router.Helpers, as: Routes
     end
   end
 

@@ -1,5 +1,5 @@
-defmodule PhxWCStoryBookWeb.LayoutViewTest do
-  use PhxWCStoryBookWeb.ConnCase, async: true
+defmodule PhxWCStorybookWeb.LayoutViewTest do
+  use PhxWCStorybookWeb.ConnCase, async: true
 
   # When testing helpers, you may want to import Phoenix.HTML and
   # use functions such as safe_to_string() to convert the helper

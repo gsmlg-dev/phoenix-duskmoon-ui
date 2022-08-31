@@ -1,4 +1,4 @@
-defmodule PhxWCStoryBookWeb.ErrorHelpers do
+defmodule PhxWCStorybookWeb.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -39,9 +39,9 @@ defmodule PhxWCStoryBookWeb.ErrorHelpers do
     # should be written to the errors.po file. The :count option is
     # set by Ecto and indicates we should also apply plural rules.
     if count = opts[:count] do
-      Gettext.dngettext(PhxWCStoryBookWeb.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(PhxWCStorybookWeb.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(PhxWCStoryBookWeb.Gettext, "errors", msg, opts)
+      Gettext.dgettext(PhxWCStorybookWeb.Gettext, "errors", msg, opts)
     end
   end
 end

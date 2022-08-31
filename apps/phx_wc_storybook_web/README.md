@@ -1,4 +1,4 @@
-# PhxWCStoryBookWeb
+# PhxWCStorybookWeb
 
 To start your Phoenix server:
 

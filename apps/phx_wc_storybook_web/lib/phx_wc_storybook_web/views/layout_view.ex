@@ -1,5 +1,5 @@
-defmodule PhxWCStoryBookWeb.LayoutView do
-  use PhxWCStoryBookWeb, :view
+defmodule PhxWCStorybookWeb.LayoutView do
+  use PhxWCStorybookWeb, :view
 
   # Phoenix LiveDashboard is available only in development by default,
   # so we instruct Elixir to not warn if the dashboard route is missing.
