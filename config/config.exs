@@ -25,7 +25,9 @@ config :phx_wc_storybook_web, PhxWCStorybookWeb.Endpoint,
   live_view: [signing_salt: "HkF5qV0r"]
 
 config :phx_wc_storybook_web, PhxWCStorybookWeb.Storybook,
-  content_path: Path.expand("../apps/phx_wc_storybook_web/lib/phx_wc_storybook_web/storybook", __DIR__)
+  content_path: Path.expand("../apps/phx_wc_storybook_web/lib/phx_wc_storybook_web/storybook", __DIR__),
+  js_path: "/assets/app.js",
+  css_path: "/assets/app.css"
 
 # Configure esbuild (the version is required)
 config :esbuild,
@@ -34,7 +36,7 @@ config :esbuild,
     args:
       ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
     cd: Path.expand("../apps/phx_wc_storybook_web/assets", __DIR__),
-    env: %{"NODE_PATH" => "#{Path.expand("../deps", __DIR__)}"}
+    env: %{"NODE_PATH" => "#{Path.expand("../deps", __DIR__)}:#{Path.expand("../apps", __DIR__)}"}
   ]
 
 # Configures Elixir's Logger

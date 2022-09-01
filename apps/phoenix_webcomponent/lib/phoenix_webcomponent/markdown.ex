@@ -8,8 +8,8 @@ defmodule Phoenix.WebComponent.Markdown do
     * charts render by mermaid.js
 
   """
+  use Phoenix.WebComponent, :component
 
-  import Phoenix.HTML.Tag
 
   @doc """
   Generates a html customElement remark-element to preview markdown.
@@ -36,18 +36,14 @@ defmodule Phoenix.WebComponent.Markdown do
   All other options are forwarded to the underlying button input.
 
   """
-  def wc_remark(text, opts) when is_binary(text) and is_list(opts) do
-    opts = Keyword.put(opts, :content, text)
-    wc_remark(opts)
-  end
+  def remark(assigns) do
+    assigns = assigns
+    |> assign_new(:debug, fn() -> false end)
 
-  def wc_remark(text) when is_binary(text) do
-    opts = Keyword.put([], :content, text)
-    wc_remark(opts)
-  end
-
-  def wc_remark(opts) when is_list(opts) do
-    {text, opts} = Keyword.pop(opts, :content, "")
-    content_tag(:"remark-element", text, opts)
+    ~H"""
+    <remark-element id={@id} debug={@debug}>
+      <%= @content %>
+    </remark-element>
+    """
   end
 end
