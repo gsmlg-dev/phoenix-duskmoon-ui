@@ -10,14 +10,10 @@ defmodule Phoenix.WebComponent.Markdown do
   """
   use Phoenix.WebComponent, :component
 
-
   @doc """
   Generates a html customElement remark-element to preview markdown.
 
   Docs of remark-element (See https://gsmlg-dev.github.io/lit/?path=/story/gsmlg-remark-element--basic).
-
-  Useful to ensure that links that change data are not triggered by
-  search engines and other spidering software.
 
   ## Examples
 
@@ -33,17 +29,15 @@ defmodule Phoenix.WebComponent.Markdown do
 
     * `:content` - The content of markdown, replace innerHTML.
 
-  All other options are forwarded to the underlying button input.
-
   """
   def remark(assigns) do
-    assigns = assigns
-    |> assign_new(:debug, fn() -> false end)
+    assigns =
+      assigns
+      |> assign_new(:id, fn -> false end)
+      |> assign_new(:debug, fn -> false end)
 
     ~H"""
-    <remark-element id={@id} debug={@debug}>
-      <%= @content %>
-    </remark-element>
+    <remark-element id={@id} debug={@debug}><%= @content %></remark-element>
     """
   end
 end

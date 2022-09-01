@@ -21,8 +21,8 @@ defmodule PhxWCStorybookWeb.Router do
     get "/", PageController, :index
   end
 
-  live_storybook "/storybook",
+  live_storybook("/storybook",
     otp_app: :phx_wc_storybook_web,
     backend_module: PhxWCStorybookWeb.Storybook
-
+  )
 end
