@@ -44,6 +44,7 @@ defmodule PhxWCStorybookWeb.MixProject do
       {:phx_live_storybook, "~> 0.3.0"},
       {:floki, ">= 0.30.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.6"},
+      {:tailwind, "~> 0.1.6", runtime: Mix.env() == :dev},
       {:esbuild, "~> 0.4", runtime: Mix.env() == :dev},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},

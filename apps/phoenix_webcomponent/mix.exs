@@ -40,6 +40,7 @@ defmodule PhoenixWebComponent.Mixfile do
       {:plug, "~> 1.5", optional: true},
       {:jason, "~> 1.0"},
       {:esbuild, "~> 0.2", runtime: true},
+      {:tailwind, "~> 0.1.6", runtime: Mix.env() == :dev},
       {:ex_doc, ">= 0.0.0", only: :prod, runtime: false}
     ]
   end
@@ -58,7 +59,7 @@ defmodule PhoenixWebComponent.Mixfile do
 
   defp aliases do
     [
-      prepublish: ["esbuild default"]
+      prepublish: ["tailwind default --minify", "esbuild default"]
     ]
   end
 end
