@@ -1,2 +1,0 @@
-
-import 'phoenix_webcomponent';

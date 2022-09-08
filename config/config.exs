@@ -35,7 +35,7 @@ config :tailwind,
   default: [
     args: ~w(
       --config=tailwind.config.js
-      --input=css/app.css
+      --input=css/phoenix_webcomponent.css
       --output=../priv/static/phoenix_webcomponent.css
     ),
     cd: Path.expand("../apps/phoenix_webcomponent/assets", __DIR__)
@@ -44,7 +44,7 @@ config :tailwind,
     args: ~w(
       --config=tailwind.config.js
       --input=css/app.css
-      --output=../priv/static/app.css
+      --output=../priv/static/assets/app.css
     ),
     cd: Path.expand("../apps/phx_wc_storybook_web/assets", __DIR__)
   ]

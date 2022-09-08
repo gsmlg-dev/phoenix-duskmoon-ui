@@ -1,5 +1,10 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@import "phoenix_webcomponent/priv/static/phoenix_webcomponent.css"
+
 /* This file is for your main application CSS */
-@import "./phoenix.css";
 
 /* Alerts and form errors used by phx.new */
 .alert {
@@ -118,3 +123,4 @@
   0% { opacity: 1; }
   100% { opacity: 0; }
 }
+

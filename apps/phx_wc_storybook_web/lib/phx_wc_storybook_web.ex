@@ -102,7 +102,7 @@ defmodule PhxWCStorybookWeb do
 
   defp components do
     quote do
-      import PhxWCStorybookWeb.Components.Button
+      use Phoenix.WebComponent
     end
   end
 

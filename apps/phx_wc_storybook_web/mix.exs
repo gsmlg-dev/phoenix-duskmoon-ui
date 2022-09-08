@@ -61,7 +61,7 @@ defmodule PhxWCStorybookWeb.MixProject do
   defp aliases do
     [
       setup: ["deps.get"],
-      "assets.deploy": ["esbuild default --minify", "phx.digest"]
+      "assets.deploy": ["tailwind storybook --minify", "esbuild storybook --minify", "phx.digest"]
     ]
   end
 end

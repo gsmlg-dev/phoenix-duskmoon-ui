@@ -52,6 +52,13 @@ defmodule Phoenix.WebComponent do
     end
   end
 
+  defp components do
+    quote do
+      import Phoenix.WebComponent.Appbar
+      import Phoenix.WebComponent.Markdown
+    end
+  end
+
   @doc """
   Import helpers for internal usage.
 
@@ -63,5 +70,11 @@ defmodule Phoenix.WebComponent do
   """
   defmacro __using__(which) when is_atom(which) do
     apply(__MODULE__, which, [])
+  end
+
+  defmacro __using__(_) do
+    quote do
+      unquote(components())
+    end
   end
 end
