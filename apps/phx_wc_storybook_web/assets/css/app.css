@@ -124,3 +124,7 @@
   100% { opacity: 0; }
 }
 
+.lsb-sandbox {
+  width: 100%;
+  height: fit-content;
+}

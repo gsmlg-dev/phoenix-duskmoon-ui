@@ -9,8 +9,11 @@ defmodule PhoenixWebComponent.Mixfile do
     [
       app: :phoenix_webcomponent,
       version: @version,
-      elixir: "~> 1.7",
-      config_path: "config/config.exs",
+      elixir: "~> 1.12",
+      build_path: "../../_build",
+      config_path: "../../config/config.exs",
+      deps_path: "../../deps",
+      lockfile: "../../mix.lock",
       deps: deps(),
       name: "Phoenix.WebComponent",
       description: "Phoenix view functions for working with WebComponent",

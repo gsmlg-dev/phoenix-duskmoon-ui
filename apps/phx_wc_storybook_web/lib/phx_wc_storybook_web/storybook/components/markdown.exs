@@ -29,7 +29,6 @@ defmodule PhxWCStorybookWeb.Storybook.Components.Markdown do
       %Story{
         id: :with_mermaid,
         attributes: %{
-          class: "w-48 h-48",
           content: """
           ### Mermaid Chart
           ```mermaid

@@ -54,7 +54,7 @@ config :esbuild,
   version: "0.14.29",
   default: [
     args:
-      ~w(js/phoenix_webcomponent.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
+      ~w(js/phoenix_webcomponent.js --bundle --target=es2021 --outdir=../priv/static/ --external:/fonts/* --external:/images/*),
     cd: Path.expand("../apps/phoenix_webcomponent/assets", __DIR__),
     env: %{"NODE_PATH" => "#{Path.expand("../deps", __DIR__)}:#{Path.expand("../apps", __DIR__)}"}
   ],
