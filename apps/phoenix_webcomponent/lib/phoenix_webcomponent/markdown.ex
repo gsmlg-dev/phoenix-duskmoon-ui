@@ -17,10 +17,10 @@ defmodule Phoenix.WebComponent.Markdown do
 
   ## Examples
 
-      wc_remark("# Hello", class: "dark")
+      wc_markdown("# Hello", class: "dark")
       #=> <remark-element class="dark" content="# Hello"></remark-element>
 
-      wc_remark(content: "# Hello", class: "btn")
+      wc_markdown(content: "# Hello", class: "btn")
       #=> <remark-element class="btn" content="# Hello"></remark-element>
 
   ## Options
@@ -30,7 +30,7 @@ defmodule Phoenix.WebComponent.Markdown do
     * `:content` - The content of markdown, replace innerHTML.
 
   """
-  def remark(assigns) do
+  def wc_markdown(assigns) do
     assigns =
       assigns
       |> assign_new(:id, fn -> false end)

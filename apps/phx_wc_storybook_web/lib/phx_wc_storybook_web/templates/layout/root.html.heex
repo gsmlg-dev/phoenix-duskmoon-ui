@@ -10,19 +10,20 @@
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
   </head>
   <body>
-    <.appbar
-      title={"Phoenix WebComponent Live Storybook"}
+    <div class="rainbow"></div>
+    <.wc_appbar
+      title={"Phoenix WebComponent"}
       menus={[
-        %{ label: "Storybook", to: Routes.live_storybook_path(@conn, :root) }
+        %{ label: "Component Storybook", to: Routes.live_storybook_path(@conn, :root) }
       ]}
     >
       <:logo>
-        <img src="https://gsmlg.github.io/svg/gsmlg-dev.svg" alt="GSMLG.DEV" class="sto-l8z9zc">
+        <logo-gsmlg-dev />
       </:logo>
       <:user_profile>
-        Josh
+        (^_^)
       </:user_profile>
-    </.appbar>
+    </.wc_appbar>
 
     <%= @inner_content %>
   </body>

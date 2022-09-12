@@ -38,7 +38,8 @@ config :tailwind,
       --input=css/phoenix_webcomponent.css
       --output=../priv/static/phoenix_webcomponent.css
     ),
-    cd: Path.expand("../apps/phoenix_webcomponent/assets", __DIR__)
+    cd: Path.expand("../apps/phoenix_webcomponent/assets", __DIR__),
+    env: %{"NODE_PATH" => "#{Path.expand("../deps", __DIR__)}:#{Path.expand("../apps", __DIR__)}"}
   ],
   storybook: [
     args: ~w(
@@ -46,7 +47,8 @@ config :tailwind,
       --input=css/app.css
       --output=../priv/static/assets/app.css
     ),
-    cd: Path.expand("../apps/phx_wc_storybook_web/assets", __DIR__)
+    cd: Path.expand("../apps/phx_wc_storybook_web/assets", __DIR__),
+    env: %{"NODE_PATH" => "#{Path.expand("../deps", __DIR__)}:#{Path.expand("../apps", __DIR__)}"}
   ]
 
 # Configure esbuild (the version is required)

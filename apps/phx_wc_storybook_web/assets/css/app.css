@@ -2,9 +2,34 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@import "phoenix_webcomponent/priv/static/phoenix_webcomponent.css"
-
 /* This file is for your main application CSS */
+@import "../../../phoenix_webcomponent/priv/static/phoenix_webcomponent.css";
+
+.rainbow {
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  --opt: 0.2;
+  background: linear-gradient(
+      -55.62deg,
+      rgba(255, 0, 0, var(--opt)) 0%,
+      rgba(255, 154, 0, var(--opt)) 10%,
+      rgba(208, 222, 33, var(--opt)) 20%,
+      rgba(79, 220, 74, var(--opt)) 30%,
+      rgba(63, 218, 216, var(--opt)) 40%,
+      rgba(47, 201, 226, var(--opt)) 50%,
+      rgba(28, 127, 238, var(--opt)) 60%,
+      rgba(95, 21, 242, var(--opt)) 70%,
+      rgba(186, 12, 248, var(--opt)) 80%,
+      rgba(251, 7, 217, var(--opt)) 90%,
+      rgba(255, 0, 0, var(--opt)) 100%
+  );
+}
+
+app-bar {
+  --btn-link: rgb(238, 249, 238);
+}
 
 /* Alerts and form errors used by phx.new */
 .alert {
