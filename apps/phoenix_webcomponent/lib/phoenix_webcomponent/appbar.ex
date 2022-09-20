@@ -10,6 +10,18 @@ defmodule Phoenix.WebComponent.Appbar do
   @doc """
   Generates a html customElement appbar.
 
+  ## Attributes
+
+  - `title` binary
+  example: "App Title"
+  - `menus` List
+  example: [ %{ label: "Menu Name", to: Routes.index_path(@conn, :index) } ]
+
+  ## Slots
+
+  - `logo`
+  - `user_profile`
+
   """
   def wc_appbar(assigns) do
     assigns =

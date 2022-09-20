@@ -56,6 +56,8 @@ defmodule Phoenix.WebComponent do
     quote do
       import Phoenix.WebComponent.Appbar
       import Phoenix.WebComponent.Markdown
+      import Phoenix.WebComponent.Table
+      import Phoenix.WebComponent.Pagination
     end
   end
 
