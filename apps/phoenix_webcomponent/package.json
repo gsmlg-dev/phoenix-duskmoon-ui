@@ -4,7 +4,7 @@
   "main": "./priv/static/phoenix_webcomponent.js",
   "repository": {},
   "scripts": {
-    "prepublish": "mix esbuild default --minify"
+    "prepublish": "mix tailwind default && mix esbuild default"
   },
   "files": [
     "README.md",
