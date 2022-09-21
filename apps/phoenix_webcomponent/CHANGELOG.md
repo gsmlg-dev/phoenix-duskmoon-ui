@@ -1,3 +1,62 @@
+# [2.0.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.6.3...v2.0.0) (2022-09-21)
+
+
+### Bug Fixes
+
+* Remove :dry_run. ([a9556d4](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/a9556d4f3151df2a42940ac6b3f6fe8a614e900a))
+
+
+### Features
+
+* BREAKING CHANGE: Project architecture to umbrella project and remove third party web component. ([#4](https://github.com/gsmlg-dev/phoenix_webcomponent/issues/4)) ([b6177e0](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/b6177e025df96702598df3287254b6fd086a8f8c))
+
+
+### BREAKING CHANGES
+
+* * feat: Change architecture to umbrella project.
+
+* fix: Fix base dev.
+
+* feat: Add live storybook.
+
+* fix: fix test.
+
+* fix: Fix names.
+
+* fix: Fix filename to exs.
+
+* fix: Fix component.
+
+* feat: Update storybook.
+
+* fix: Add class.
+
+* feat: Add tailwind css.
+
+* feat: Add appbar.
+
+* fix: Fix config.
+
+* feat: Add markdown add appbar.
+
+* feat: Add pagination.
+
+* fix: Fix pagination.
+
+* chore: Add CI.
+
+* chore: Fix format.
+
+* fix: Fix test.
+
+* chore: Fix.
+
+* feat: Add use :alias.
+
+* docs: Add README.md
+
+Co-authored-by: Jonathan Gao <gsmlg.com@gmail.com>
+
 ## [1.6.3](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.6.2...v1.6.3) (2022-08-02)
 
 
