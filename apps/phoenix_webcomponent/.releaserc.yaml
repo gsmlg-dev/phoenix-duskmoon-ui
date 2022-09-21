@@ -3,6 +3,7 @@ branches:
   - main
   - next
   - next-major
+  - {name: 'umbrella', prerelease: true}
   - {name: 'beta', prerelease: true}
   - {name: 'alpha', prerelease: true}
 plugins:
