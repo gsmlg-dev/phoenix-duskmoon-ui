@@ -1,5 +1,5 @@
 <div class="p-4">
-<.wc_pagination total={10834} page_size={30} page_num={3}></.wc_pagination>
+<.wc_pagination url_func={&(Routes.page_path(@conn, :index, [p: &1]))} total={10834} page_size={30} page_num={@page}></.wc_pagination>
 </div>
 
 <div class="container p-4">

@@ -20,6 +20,7 @@ defmodule Phoenix.WebComponent.Pagination do
       |> assign_new(:page_size, fn -> 30 end)
       |> assign_new(:page_num, fn -> 1 end)
       |> assign_new(:total, fn -> 0 end)
+      |> assign_new(:url_base, fn -> "\#{p}" end)
 
     IO.inspect(assigns)
     max_page = if assigns.total > 0 do
@@ -36,8 +37,9 @@ defmodule Phoenix.WebComponent.Pagination do
       max_page < 7 -> 1..max_page |> Enum.map(&(&1))
       page_num < 3 -> [1,2,3] ++ ['...'] ++ [max_page - 2, max_page - 1, max_page]
       page_num == 3 -> [1,2,3,4] ++ ['...'] ++ [max_page - 2, max_page - 1, max_page]
-      page_num > 3 && page_num < max_page - 2 -> [1] ++ ['...', page_num - 1, page_num, page_num + 1, '...'] ++ [max_page - 2, max_page - 1, max_page]
-      true -> 1..max_page |> Enum.map(&(&1))
+      page_num > 3 && page_num < max_page - 2 -> [1] ++ ['...', page_num - 1, page_num, page_num + 1, '...'] ++ [max_page]
+      page_num == max_page - 2 -> [1,2,3] ++ ['...', max_page - 3, max_page - 2, max_page - 1, max_page]
+      page_num > max_page - 2 -> [1,2,3] ++ ['...', max_page - 2, max_page - 1, max_page]
     end
 
     assigns = assigns |> Map.put(:pages, pages)
@@ -72,7 +74,7 @@ defmodule Phoenix.WebComponent.Pagination do
             <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
 
           <%= for p <- @pages do %>
-            <a href="#" aria-current={if p == @page_num, do: "page", else: false } class={"relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20" <> if p == @page_num, do: " z-10 bg-indigo-50 border-indigo-500 text-indigo-600", else: "" }><%= p %></a>
+            <a href={@url_func.(p)} aria-current={if p == @page_num, do: "page", else: false } class={"relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20" <> if p == @page_num, do: " z-10 bg-indigo-50 border-indigo-500 text-indigo-600", else: "" }><%= p %></a>
           <% end %>
 
             <a href="#" class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
