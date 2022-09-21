@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="csrf-token" content={csrf_token_value()}>
+    <%= live_title_tag assigns[:page_title] || "PhxWCStorybook", suffix: " · Phoenix Framework" %>
+    <link phx-track-static rel="stylesheet" href={Routes.static_path(@conn, "/assets/app.css")}/>
+    <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
+  </head>
+  <body class="flex flex-col items-center">
+    <div class="rainbow"></div>
+    <.wc_appbar
+      title={"Phoenix WebComponent"}
+      menus={[
+        %{ label: "Component Storybook", to: Routes.live_storybook_path(@conn, :root) }
+      ]}
+    >
+      <:logo>
+        <logo-gsmlg-dev />
+      </:logo>
+      <:user_profile>
+        (^_^)
+      </:user_profile>
+    </.wc_appbar>
+
+    <%= @inner_content %>
+  </body>
+</html>

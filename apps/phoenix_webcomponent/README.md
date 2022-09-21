@@ -16,7 +16,7 @@ About at [Web Component](https://developer.mozilla.org/en-US/docs/Web/Web_Compon
 
 Add deps in `mix.exs`
 ```elixir
-    {:phoenix_webcomponent, "~> 2.0"},
+    {:phoenix_webcomponent, "~> 1.0"},
 ```
 
 Include in phoenix view helpers
@@ -24,11 +24,10 @@ Include in phoenix view helpers
 ```elixir
  defp view_helpers do
     quote do
-        # import all helper functions
+        # Use all HTML functionality (forms, tags, etc)
+        use Phoenix.HTML
         use Phoenix.WebComponent
 
-        # or 
-        use Phoenix.WebComponent, :alias
         ...
     end
 end
@@ -50,13 +49,33 @@ npm install phoenix_webcomponent
 
 ### All helpers
 
-- wc_appbar
-- wc_markdown
-- wc_pagination
-- wc_table
-
-## Live Storybook
-
-[Live Storybook](https://phoenix-webcomponent.gsmlg.org)
-
-
+- wc_button
+- wc_checkbox
+- wc_color_input
+- wc_date_input
+- wc_date_select
+- wc_datetime_local_input
+- wc_datetime_select
+- wc_email_input
+- wc_file_input
+- wc_link
+- wc_live_patch
+- wc_live_redirect
+- wc_multiple_select
+- wc_number_input
+- wc_password_input
+- wc_radio_button
+- wc_range_input
+- wc_remark
+- wc_reset
+- wc_search_input
+- wc_select
+- wc_submit
+- wc_telephone_input
+- wc_textarea
+- wc_text_input
+- wc_time_input
+- wc_time_select
+- wc_url_input
+- wc_switch
+- wc_top_app_bar

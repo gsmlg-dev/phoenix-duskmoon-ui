@@ -1,0 +1,19 @@
+<div class="p-4">
+<.wc_pagination url_func={&(Routes.page_path(@conn, :index, [p: &1]))} total={10834} page_size={30} page_num={@page}></.wc_pagination>
+</div>
+
+<div class="container p-4">
+    <.wc_table rows={Process.list |> Enum.map(&Process.info/1)}>
+        <:col let={process} label="Name">
+            <%= process |> Keyword.get(:registered_name) %>
+        </:col>
+
+        <:col let={process} label="Priority">
+            <%=process |> Keyword.get(:priority) %>
+        </:col>
+
+        <:col let={process} label="Status">
+            <%=process |> Keyword.get(:status) %>
+        </:col>
+    </.wc_table>
+</div>

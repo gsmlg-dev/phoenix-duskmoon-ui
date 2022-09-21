@@ -8,6 +8,7 @@ on:
       - beta
       - next
       - next-major
+      - umbrella
 jobs:
   tests:
     name: Run tests (Elixir ${{matrix.elixir}}, OTP ${{matrix.otp}})
@@ -104,6 +105,8 @@ jobs:
             @semantic-release/changelog
             @semantic-release/exec
             @semantic-release/git
+          dry_run: true
+          working_directory: apps/phoenix_webcomponent
         env:
           MIX_ENV: prod
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
