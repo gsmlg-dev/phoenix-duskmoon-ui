@@ -23,24 +23,40 @@ defmodule Phoenix.WebComponent.Pagination do
       |> assign_new(:url_base, fn -> "\#{p}" end)
 
     IO.inspect(assigns)
-    max_page = if assigns.total > 0 do
-      assigns.total / assigns.page_size |> ceil
-    else
-      1
-    end
+
+    max_page =
+      if assigns.total > 0 do
+        (assigns.total / assigns.page_size) |> ceil
+      else
+        1
+      end
 
     assigns = assigns |> Map.put(:max_page, max_page)
     page_num = assigns.page_num
 
-    pages = cond do
-      max_page == 1 -> [1]
-      max_page < 7 -> 1..max_page |> Enum.map(&(&1))
-      page_num < 3 -> [1,2,3] ++ ['...'] ++ [max_page - 2, max_page - 1, max_page]
-      page_num == 3 -> [1,2,3,4] ++ ['...'] ++ [max_page - 2, max_page - 1, max_page]
-      page_num > 3 && page_num < max_page - 2 -> [1] ++ ['...', page_num - 1, page_num, page_num + 1, '...'] ++ [max_page]
-      page_num == max_page - 2 -> [1,2,3] ++ ['...', max_page - 3, max_page - 2, max_page - 1, max_page]
-      page_num > max_page - 2 -> [1,2,3] ++ ['...', max_page - 2, max_page - 1, max_page]
-    end
+    pages =
+      cond do
+        max_page == 1 ->
+          [1]
+
+        max_page < 7 ->
+          1..max_page |> Enum.map(& &1)
+
+        page_num < 3 ->
+          [1, 2, 3] ++ ['...'] ++ [max_page - 2, max_page - 1, max_page]
+
+        page_num == 3 ->
+          [1, 2, 3, 4] ++ ['...'] ++ [max_page - 2, max_page - 1, max_page]
+
+        page_num > 3 && page_num < max_page - 2 ->
+          [1] ++ ['...', page_num - 1, page_num, page_num + 1, '...'] ++ [max_page]
+
+        page_num == max_page - 2 ->
+          [1, 2, 3] ++ ['...', max_page - 3, max_page - 2, max_page - 1, max_page]
+
+        page_num > max_page - 2 ->
+          [1, 2, 3] ++ ['...', max_page - 2, max_page - 1, max_page]
+      end
 
     assigns = assigns |> Map.put(:pages, pages)
 

@@ -154,8 +154,7 @@ defmodule Phoenix.WebComponent.Helpers.Link do
       {csrf_token, opts} = Keyword.pop(opts, :csrf_token, true)
       opts = Keyword.put_new(opts, :rel, "nofollow")
 
-      [data: data] =
-        link_attributes(to, method: method, csrf_token: csrf_token)
+      [data: data] = link_attributes(to, method: method, csrf_token: csrf_token)
 
       {linkOpts, opts} = pop_link_attr(opts)
 

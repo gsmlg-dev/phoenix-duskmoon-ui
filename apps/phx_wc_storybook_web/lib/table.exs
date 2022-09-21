@@ -12,7 +12,7 @@ defmodule PhxWCStorybookWeb.Storybook.Components.Table do
         attributes: %{
           cols: [%{label: "Name"}]
         }
-      },
+      }
     ]
   end
 end
