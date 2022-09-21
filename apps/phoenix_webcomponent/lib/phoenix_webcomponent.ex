@@ -39,6 +39,15 @@ defmodule Phoenix.WebComponent do
     end
   end
 
+  def alias do
+    quote do
+      alias Phoenix.WebComponent.Appbar
+      alias Phoenix.WebComponent.Markdown
+      alias Phoenix.WebComponent.Table
+      alias Phoenix.WebComponent.Pagination
+    end
+  end
+
   defp view_helpers do
     quote do
       # Use all HTML functionality (forms, tags, etc)
