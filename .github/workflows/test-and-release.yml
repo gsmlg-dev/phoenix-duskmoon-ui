@@ -105,7 +105,6 @@ jobs:
             @semantic-release/changelog
             @semantic-release/exec
             @semantic-release/git
-          dry_run: true
           working_directory: apps/phoenix_webcomponent
         env:
           MIX_ENV: prod
