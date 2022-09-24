@@ -1,3 +1,17 @@
+# [2.1.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.0.0...v2.1.0) (2022-09-24)
+
+
+### Bug Fixes
+
+* Fix wc_table. ([689913c](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/689913cfe2e58f651c0902856115702f3475a960))
+
+
+### Features
+
+* Add  action bar. ([6726b25](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/6726b257ebecd60446e5a59b0a3f53708035007d))
+* Add wc_card. ([f50230a](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/f50230a58c8d5bbaaed3baadf410eece21b12b8d))
+* Add wc_left_menu. ([a48ac09](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/a48ac09c5a0feb31223f531365d3a9bcffd9508d))
+
 # [2.0.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v1.6.3...v2.0.0) (2022-09-21)
 
 
