@@ -15,7 +15,7 @@ RUN apk update \
     && mix release storybook --version "${RELEASE_VERSION}" \
     && cp -r _build/prod/rel/storybook /app
 
-FROM alpine:3.14
+FROM alpine:3.16
 
 ARG RELEASE_VERSION=0.1.0
 
