@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.1.0...v2.1.1) (2022-09-24)
+
+
+### Bug Fixes
+
+* Fix use and use :alias. ([d7a12c9](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/d7a12c9ddb0d6aa4c5ca858c1ffae4bfb1ad65b5))
+
 # [2.1.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.0.0...v2.1.0) (2022-09-24)
 
 
