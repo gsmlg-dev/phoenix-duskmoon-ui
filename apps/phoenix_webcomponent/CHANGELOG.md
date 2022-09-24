@@ -1,3 +1,11 @@
+## [2.1.2](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.1.1...v2.1.2) (2022-09-24)
+
+
+### Bug Fixes
+
+* Fix deps. ([b2c5438](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/b2c5438074281e44ae945e538c64b6c3fbf91af1))
+* Fix deps. ([115db0e](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/115db0eb418692479b95e101692eb1f5b7de7b48))
+
 ## [2.1.1](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.1.0...v2.1.1) (2022-09-24)
 
 
