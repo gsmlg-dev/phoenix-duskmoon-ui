@@ -12,14 +12,15 @@ defmodule PhxWCStorybookWeb.Storybook.Components.LeftMenu do
         attributes: %{
           active: "left_menu",
           menus: [
-            {"Components", [
-              {"actionbar", "Actionbar", "/storybook/components/actionbar"},
-              {"card", "Card", "/storybook/components/card"},
-              {"left_menu", "Left Menu", "/storybook/components/left_menu"},
-              {"markdown", "Markdown", "/storybook/components/markdown"},
-              {"pagination", "Pagination", "/storybook/components/pagination"},
-              {"table", "Table", "/storybook/components/table"},
-            ]}
+            {"Components",
+             [
+               {"actionbar", "Actionbar", "/storybook/components/actionbar"},
+               {"card", "Card", "/storybook/components/card"},
+               {"left_menu", "Left Menu", "/storybook/components/left_menu"},
+               {"markdown", "Markdown", "/storybook/components/markdown"},
+               {"pagination", "Pagination", "/storybook/components/pagination"},
+               {"table", "Table", "/storybook/components/table"}
+             ]}
           ]
         },
         slots: ["<:title>Menu Demo Components</:title>"]

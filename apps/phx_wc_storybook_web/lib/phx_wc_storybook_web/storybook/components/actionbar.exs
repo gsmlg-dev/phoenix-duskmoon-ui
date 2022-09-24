@@ -12,14 +12,16 @@ defmodule PhxWCStorybookWeb.Storybook.Components.Actionbar do
         attributes: %{
           class: "shadow"
         },
-        slots: ["""
-        <:left>
-          Star Wars
-        </:left>
-        <:right>
-          <button>action</button>
-        </:right>
-        """]
+        slots: [
+          """
+          <:left>
+            Star Wars
+          </:left>
+          <:right>
+            <button>action</button>
+          </:right>
+          """
+        ]
       }
     ]
   end

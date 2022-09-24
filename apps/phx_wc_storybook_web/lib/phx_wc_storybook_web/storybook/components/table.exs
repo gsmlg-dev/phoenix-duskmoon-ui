@@ -41,17 +41,19 @@ defmodule PhxWCStorybookWeb.Storybook.Components.Table do
             }
           ]
         },
-        slots: ["""
-        <:col let={r} label="Name">
-          <%= r.name %>
-        </:col>
-        <:col let={r} label="Portrayal">
-          <%= r.portrayal %>
-        </:col>
-        <:col let={r} label="Description">
-          <%= r.description %>
-        </:col>
-        """]
+        slots: [
+          """
+          <:col let={r} label="Name">
+            <%= r.name %>
+          </:col>
+          <:col let={r} label="Portrayal">
+            <%= r.portrayal %>
+          </:col>
+          <:col let={r} label="Description">
+            <%= r.description %>
+          </:col>
+          """
+        ]
       }
     ]
   end

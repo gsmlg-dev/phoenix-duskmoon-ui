@@ -9,15 +9,17 @@ defmodule PhxWCStorybookWeb.Storybook.Components.Card do
     [
       %Story{
         id: :default,
-        slots: ["""
-        <:title>
-        Star Wars
-        </:title>
-        Star Wars is an American epic space opera multimedia
-        franchise created by George Lucas,
-        which began with the eponymous 1977 film and
-        quickly became a worldwide pop-culture phenomenon.
-        """]
+        slots: [
+          """
+          <:title>
+          Star Wars
+          </:title>
+          Star Wars is an American epic space opera multimedia
+          franchise created by George Lucas,
+          which began with the eponymous 1977 film and
+          quickly became a worldwide pop-culture phenomenon.
+          """
+        ]
       }
     ]
   end

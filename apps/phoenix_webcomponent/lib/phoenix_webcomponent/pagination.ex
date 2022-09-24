@@ -58,7 +58,8 @@ defmodule Phoenix.WebComponent.Pagination do
           [1, 2, 3] ++ ["...", max_page - 2, max_page - 1, max_page]
       end
 
-    assigns = assigns
+    assigns =
+      assigns
       |> Map.put(:max_page, max_page)
       |> Map.put(:pages, pages)
 
