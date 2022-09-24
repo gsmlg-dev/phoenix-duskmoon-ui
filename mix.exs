@@ -7,6 +7,11 @@ defmodule Phoenix.WebComponent.Umbrella.MixProject do
       version: "0.1.0",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
+      releases: [
+        storybook: [
+          applications: [phx_wc_storybook_web: :permanent]
+        ]
+      ],
       aliases: aliases()
     ]
   end
