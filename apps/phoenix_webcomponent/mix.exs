@@ -39,7 +39,7 @@ defmodule PhoenixWebComponent.Mixfile do
   defp deps do
     [
       {:phoenix_html, "~> 3.0"},
-      {:phoenix_live_view, "~> 0.17.0"},
+      {:phoenix_live_view, ">= 0.17"},
       {:plug, "~> 1.5", optional: true},
       {:jason, "~> 1.0"},
       {:esbuild, "~> 0.2", runtime: true},
