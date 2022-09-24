@@ -41,10 +41,13 @@ defmodule Phoenix.WebComponent do
 
   def alias do
     quote do
+      alias Phoenix.WebComponent.Actionbar
       alias Phoenix.WebComponent.Appbar
+      alias Phoenix.WebComponent.Card
+      alias Phoenix.WebComponent.LeftMenu
       alias Phoenix.WebComponent.Markdown
-      alias Phoenix.WebComponent.Table
       alias Phoenix.WebComponent.Pagination
+      alias Phoenix.WebComponent.Table
     end
   end
 
@@ -63,10 +66,13 @@ defmodule Phoenix.WebComponent do
 
   defp components do
     quote do
+      import Phoenix.WebComponent.Actionbar
       import Phoenix.WebComponent.Appbar
+      import Phoenix.WebComponent.Card
+      import Phoenix.WebComponent.LeftMenu
       import Phoenix.WebComponent.Markdown
-      import Phoenix.WebComponent.Table
       import Phoenix.WebComponent.Pagination
+      import Phoenix.WebComponent.Table
     end
   end
 
