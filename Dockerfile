@@ -29,6 +29,7 @@ ENV PORT=80 \
     ERLCOOKIE=phx_wc_storybook \
     HOST=phoenix-webcomponent.gsmlg.org \
     POOL_SIZE=10 \
+    PHX_SERVER=true \
     SECRET_KEY_BASE=phx_wc_storybook
 
 RUN apk update \
