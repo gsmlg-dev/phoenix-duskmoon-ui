@@ -13,8 +13,8 @@ defmodule Phoenix.WebComponent.Card do
     assigns =
       assigns
       |> assign_new(:id, fn -> false end)
-      |> assign_new(:title, fn -> nil end)
       |> assign_new(:class, fn -> "" end)
+      |> assign_new(:title, fn -> nil end)
 
     ~H"""
     <div id={@id} class={"bg-white w-auto h-fit m-4 p-6 flex flex-col shadow #{@class}"}>
