@@ -1,5 +1,19 @@
-<main class="container justify-start items-center">
-  <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-  <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+<p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+<p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+<main class="container h-[calc(100vh-56px)] flex flex-row justify-start items-start">
+  <.wc_left_menu
+    class="w-48 h-[calc(100vh-56px)]"
+    menus={[
+      {"Components",
+        [
+          {"actionbar", "Actionbar", "/storybook/components/actionbar"},
+          {"card", "Card", "/storybook/components/card"},
+          {"left_menu", "Left Menu", "/storybook/components/left_menu"},
+          {"markdown", "Markdown", "/storybook/components/markdown"},
+          {"pagination", "Pagination", "/storybook/components/pagination"},
+          {"table", "Table", "/storybook/components/table"}
+        ]}
+    ]}
+  />
   <%= @inner_content %>
 </main>
