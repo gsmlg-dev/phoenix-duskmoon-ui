@@ -50,7 +50,10 @@ npm install phoenix_webcomponent
 
 ### All helpers
 
+- wc_actionbar
 - wc_appbar
+- wc_card
+- wc_left_menu
 - wc_markdown
 - wc_pagination
 - wc_table
@@ -59,4 +62,6 @@ npm install phoenix_webcomponent
 
 [Live Storybook](https://phoenix-webcomponent.gsmlg.org)
 
+![](screenshots/1.jpg)
+![](screenshots/2.jpg)
 
