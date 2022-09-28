@@ -14,14 +14,14 @@
     "priv/static/"
   ],
   "dependencies": {
-    "@gsmlg/lit": "^1.25.1",
+    "@gsmlg/lit": "^1.25.3",
     "lit": "^2.3.1",
     "lit-element": "^3.2.2",
     "lit-html": "^2.3.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.19.0",
-    "@babel/preset-env": "^7.19.0"
+    "@babel/core": "^7.19.3",
+    "@babel/preset-env": "^7.19.3"
   },
   "peerDependencies": {
     "lit": "^2.3.1",

@@ -1,19 +1,30 @@
-<div class="p-4">
-<.wc_pagination url_func={&(Routes.page_path(@conn, :index, [p: &1]))} total={10834} page_size={30} page_num={@page}></.wc_pagination>
-</div>
 
-<div class="container p-4">
-    <.wc_table rows={Process.list |> Enum.map(&Process.info/1)}>
-        <:col let={process} label="Name">
-            <%= process |> Keyword.get(:registered_name) %>
-        </:col>
+<.wc_card>
+    <div class="flex flex-row justify-center items-center">
+        <%= link "To Storybook", to: Routes.live_storybook_path(@conn, :root), class: "text-4xl text-blue-600 hover:text-blue-400" %>
+    </div>
 
-        <:col let={process} label="Priority">
-            <%=process |> Keyword.get(:priority) %>
-        </:col>
-
-        <:col let={process} label="Status">
-            <%=process |> Keyword.get(:status) %>
-        </:col>
-    </.wc_table>
-</div>
+    <div class="flex flex-col justify-start items-center">
+        <div>
+            wc_actionbar
+        </div>
+        <div>
+            wc_appbar
+        </div>
+        <div>
+            wc_card
+        </div>
+        <div>
+            wc_left_menu
+        </div>
+        <div>
+            wc_markdown
+        </div>
+        <div>
+            wc_pagination
+        </div>
+        <div>
+            wc_table
+        </div>
+    </div>
+</.wc_card>
