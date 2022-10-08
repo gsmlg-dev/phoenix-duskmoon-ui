@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.1.4...v2.2.0) (2022-10-08)
+
+
+### Features
+
+* Add hook to web component. ([eec2b47](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/eec2b4798a549587a3e374a20846ec91cfca4c04))
+
 ## [2.1.4](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.1.3...v2.1.4) (2022-09-28)
 
 
