@@ -1,3 +1,10 @@
+## [2.1.4](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.1.3...v2.1.4) (2022-09-28)
+
+
+### Bug Fixes
+
+* Fix wc_card width and storybook. ([3585d8f](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/3585d8f047d90b81e50f338a2f2a3ed9ac287647))
+
 ## [2.1.3](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.1.2...v2.1.3) (2022-09-28)
 
 
