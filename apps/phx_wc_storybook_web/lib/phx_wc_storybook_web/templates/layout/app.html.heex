@@ -3,7 +3,11 @@
 <main class="container h-[calc(100vh-56px)] flex flex-row justify-start items-start">
   <.wc_left_menu
     class="w-48 h-[calc(100vh-56px)]"
+    active={"phx-wc-hook"}
     menus={[
+      {"Hooks", [
+        {"phx-wc-hook", "PhxWCHook", "/"}
+      ]},
       {"Components",
         [
           {"actionbar", "Actionbar", "/storybook/components/actionbar"},

@@ -1,30 +1,40 @@
 
 <.wc_card class="w-[100%_!important] h-[calc(100vh-56px-2em)_!important]">
     <:title class="flex flex-row justify-center items-center">
-        <%= link "To Storybook", to: Routes.live_storybook_path(@conn, :root), class: "text-4xl text-blue-600 hover:text-blue-400" %>
+        <span class="text-4xl text-blue-600 hover:text-blue-400">
+            PhxWCHook
+        </span>
     </:title>
+    <.wc_markdown content={"""
 
-    <div class="flex flex-col justify-start items-start">
-        <div>
-            wc_actionbar
-        </div>
-        <div>
-            wc_appbar
-        </div>
-        <div>
-            wc_card
-        </div>
-        <div>
-            wc_left_menu
-        </div>
-        <div>
-            wc_markdown
-        </div>
-        <div>
-            wc_pagination
-        </div>
-        <div>
-            wc_table
-        </div>
-    </div>
+    Custom hook `PhxWCHook` for connect custom elements to phoenix.
+    This will send and receive event to live view.
+
+    ```js
+    const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+
+    import { PhxWCHook } from "phoenix_webcomponent";
+
+    const liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}, hooks: { PhxWCHook }});
+    ```
+
+    Send custom events to live view:
+    ```html
+    <Element phx-wc-send-sync-content="load_content" phx-hook="PhxWCHook" />
+    <Element phx-wc-send-sync-content="load_content;loadAccepted" phx-hook="PhxWCHook" />
+    ```
+    - In the first element, when element trigger customEvents `sync-content`, also use `pushEvent` send `load_content` to live view.
+    - Second element are same as first, but will call `loadAccepted` on element when receive server send feedback.
+
+    Receive live view event:
+    ```html
+    <Element phx-wc-receive-update_content="updateContent" phx-hook="PhxWCHook" />
+    <!-- equal  -->
+    <Element phx-wc-receive="update_content;updateContent" phx-hook="PhxWCHook" />
+    ```
+    - In this case, when live view fire `update_content` event, also trigger `updateContent` method on elmenet.
+    - If value(`updateContent`) is empty, trigger a same event `update_content` on element.
+
+    """}>
+    </.wc_markdown>
 </.wc_card>
