@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.2.0...v2.2.1) (2022-10-12)
+
+
+### Bug Fixes
+
+* Fix pagination. ([fa8538d](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/fa8538d1f59036c798a8ea512d893ab4cea4c398))
+
 # [2.2.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.1.4...v2.2.0) (2022-10-08)
 
 
