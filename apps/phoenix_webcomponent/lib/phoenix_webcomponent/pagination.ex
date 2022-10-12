@@ -60,8 +60,8 @@ defmodule Phoenix.WebComponent.Pagination do
 
     assigns =
       assigns
-      |> Map.put(:max_page, max_page)
-      |> Map.put(:pages, pages)
+      |> assign(:max_page, max_page)
+      |> assign(:pages, pages)
 
     ~H"""
     <div id={@id} class={"flex items-center justify-end border-t border-gray-200 bg-white px-4 py-3 #{@class}"}>
