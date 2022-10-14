@@ -11,11 +11,9 @@
     This will send and receive event to live view.
 
     ```js
-    const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content");
-
-    import { PhxWCHook } from "phoenix_webcomponent";
-
-    const liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}, hooks: { PhxWCHook }});
+    import "phoenix_webcomponent";
+    const PhxWCHook = window.__PhxWCHook__;
+    const liveSocket = new LiveSocket("/live", Socket, {hooks: { PhxWCHook }});
     ```
 
     Send custom events to live view:
@@ -34,6 +32,11 @@
     ```
     - In this case, when live view fire `update_content` event, also trigger `updateContent` method on elmenet.
     - If value(`updateContent`) is empty, trigger a same event `update_content` on element.
+
+    Also add css
+    ```css
+    import "phoenix_webcomponent/priv/static/phoenix_webcomponent.css"
+    ```
 
     """}>
     </.wc_markdown>

@@ -23,9 +23,10 @@ import "phoenix_html";
 // Establish Phoenix Socket and LiveView configuration.
 import {Socket} from "phoenix";
 import {LiveSocket} from "phoenix_live_view";
-import { PhxWCHook } from "phoenix_webcomponent";
+import "phoenix_webcomponent";
 import topbar from "../vendor/topbar";
 
+const PhxWCHook = window.__PhxWCHook__;
 const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content");
 const liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}, hooks: { PhxWCHook }});
 

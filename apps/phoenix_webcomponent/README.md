@@ -42,10 +42,9 @@ import 'phoenix_webcomponent';
 
 Use custom hook
 ```javascript
-import { PhxWCHook } from "phoenix_webcomponent";
-
+import "phoenix_webcomponent";
+const PhxWCHook = window.__PhxWCHook__;
 const liveSocket = new LiveSocket("/live", Socket, {hooks: { PhxWCHook }});
-
 ```
 
 Send custom events to live view:
@@ -64,6 +63,12 @@ Receive live view event:
 ```
 - In this case, when live view fire `update_content` event, also trigger `updateContent` method on elmenet.
 - If value(`updateContent`) is empty, trigger a same event `update_content` on element.
+
+Import CSS
+
+```css
+import "phoenix_webcomponent/priv/static/phoenix_webcomponent.css"
+```
 
 ### All helpers
 

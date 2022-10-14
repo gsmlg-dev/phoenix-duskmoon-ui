@@ -1,6 +1,6 @@
 import '@gsmlg/lit';
 
-export const PhxWCHook = {
+const PhxWCHook = {
     mounted() {
         const attrs = this.el.attributes;
         const phxTarget = attrs["phx-target"].value;
@@ -39,3 +39,5 @@ export const PhxWCHook = {
         }
     },
 };
+
+window.__PhxWCHook__ = PhxWCHook;
