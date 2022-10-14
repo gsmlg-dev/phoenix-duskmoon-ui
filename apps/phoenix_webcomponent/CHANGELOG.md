@@ -1,3 +1,10 @@
+## [2.2.3](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.2.2...v2.2.3) (2022-10-14)
+
+
+### Bug Fixes
+
+* Fix exports issue, bundle has no exports, to switch to using window. ([92f6066](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/92f60663e55c023b6f440da0d12fd1041c50d8ba))
+
 ## [2.2.2](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.2.1...v2.2.2) (2022-10-14)
 
 
