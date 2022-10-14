@@ -16,7 +16,7 @@ About at [Web Component](https://developer.mozilla.org/en-US/docs/Web/Web_Compon
 
 Add deps in `mix.exs`
 ```elixir
-    {:phoenix_webcomponent, "~> 1.0"},
+    {:phoenix_webcomponent, "~> 2.0"},
 ```
 
 Include in phoenix view helpers
@@ -24,10 +24,11 @@ Include in phoenix view helpers
 ```elixir
  defp view_helpers do
     quote do
-        # Use all HTML functionality (forms, tags, etc)
-        use Phoenix.HTML
+        # import all helper functions
         use Phoenix.WebComponent
 
+        # or 
+        use Phoenix.WebComponent, :alias
         ...
     end
 end
@@ -39,43 +40,41 @@ Include javascript
 import 'phoenix_webcomponent';
 ```
 
-By default, javascirpt is at `priv/static/phoenix_webcomponent.js` and bundle all packages.
+Use custom hook
+```javascript
+import { PhxWCHook } from "phoenix_webcomponent";
 
-If you wannt better javascript bundle, you can use npm version.
+const liveSocket = new LiveSocket("/live", Socket, {hooks: { PhxWCHook }});
 
-```bash
-npm install phoenix_webcomponent
 ```
+
+Send custom events to live view:
+```html
+<Element phx-wc-send-sync-content="load_content" phx-hook="PhxWCHook" />
+<Element phx-wc-send-sync-content="load_content;loadAccepted" phx-hook="PhxWCHook" />
+```
+- In the first element, when element trigger customEvents `sync-content`, also use `pushEvent` send `load_content` to live view.
+- Second element are same as first, but will call `loadAccepted` on element when receive server send feedback.
+
+Receive live view event:
+```html
+<Element phx-wc-receive-update_content="updateContent" phx-hook="PhxWCHook" />
+<!-- equal  -->
+<Element phx-wc-receive="update_content;updateContent" phx-hook="PhxWCHook" />
+```
+- In this case, when live view fire `update_content` event, also trigger `updateContent` method on elmenet.
+- If value(`updateContent`) is empty, trigger a same event `update_content` on element.
 
 ### All helpers
 
-- wc_button
-- wc_checkbox
-- wc_color_input
-- wc_date_input
-- wc_date_select
-- wc_datetime_local_input
-- wc_datetime_select
-- wc_email_input
-- wc_file_input
-- wc_link
-- wc_live_patch
-- wc_live_redirect
-- wc_multiple_select
-- wc_number_input
-- wc_password_input
-- wc_radio_button
-- wc_range_input
-- wc_remark
-- wc_reset
-- wc_search_input
-- wc_select
-- wc_submit
-- wc_telephone_input
-- wc_textarea
-- wc_text_input
-- wc_time_input
-- wc_time_select
-- wc_url_input
-- wc_switch
-- wc_top_app_bar
+- wc_actionbar
+- wc_appbar
+- wc_card
+- wc_left_menu
+- wc_markdown
+- wc_pagination
+- wc_table
+
+## Live Storybook
+
+[Live Storybook](https://phoenix-webcomponent.gsmlg.org)
