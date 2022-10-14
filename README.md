@@ -40,12 +40,34 @@ Include javascript
 import 'phoenix_webcomponent';
 ```
 
-By default, javascirpt is at `priv/static/phoenix_webcomponent.js` and bundle all packages.
+Use custom hook
+```javascript
+import "phoenix_webcomponent";
+const PhxWCHook = window.__PhxWCHook__;
+const liveSocket = new LiveSocket("/live", Socket, {hooks: { PhxWCHook }});
+```
 
-If you wannt better javascript bundle, you can use npm version.
+Send custom events to live view:
+```html
+<Element phx-wc-send-sync-content="load_content" phx-hook="PhxWCHook" />
+<Element phx-wc-send-sync-content="load_content;loadAccepted" phx-hook="PhxWCHook" />
+```
+- In the first element, when element trigger customEvents `sync-content`, also use `pushEvent` send `load_content` to live view.
+- Second element are same as first, but will call `loadAccepted` on element when receive server send feedback.
 
-```bash
-npm install phoenix_webcomponent
+Receive live view event:
+```html
+<Element phx-wc-receive-update_content="updateContent" phx-hook="PhxWCHook" />
+<!-- equal  -->
+<Element phx-wc-receive="update_content;updateContent" phx-hook="PhxWCHook" />
+```
+- In this case, when live view fire `update_content` event, also trigger `updateContent` method on elmenet.
+- If value(`updateContent`) is empty, trigger a same event `update_content` on element.
+
+Import CSS
+
+```javascript
+import "phoenix_webcomponent/priv/static/phoenix_webcomponent.css"
 ```
 
 ### All helpers
