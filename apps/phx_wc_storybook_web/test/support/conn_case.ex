@@ -24,7 +24,7 @@ defmodule PhxWCStorybookWeb.ConnCase do
       import Phoenix.ConnTest
       import PhxWCStorybookWeb.ConnCase
 
-      alias PhxWCStorybookWeb.Router.Helpers, as: Routes
+      use PhxWCStorybookWeb, :verified_routes
 
       # The default endpoint for testing
       @endpoint PhxWCStorybookWeb.Endpoint
