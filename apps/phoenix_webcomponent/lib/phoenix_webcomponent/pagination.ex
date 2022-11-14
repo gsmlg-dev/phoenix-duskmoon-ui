@@ -3,7 +3,7 @@ defmodule Phoenix.WebComponent.Pagination do
   Render pagination.
 
   """
-  use Phoenix.WebComponent, :component
+  use Phoenix.WebComponent, :html
 
   @doc """
   Generates a pagination.

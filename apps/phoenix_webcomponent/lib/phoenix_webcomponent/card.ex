@@ -2,7 +2,7 @@ defmodule Phoenix.WebComponent.Card do
   @moduledoc """
   Render card.
   """
-  use Phoenix.WebComponent, :component
+  use Phoenix.WebComponent, :html
 
   # alias Phoenix.LiveView.JS
 

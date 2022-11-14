@@ -2,7 +2,7 @@ defmodule Phoenix.WebComponent.Table do
   @moduledoc """
   Render table.
   """
-  use Phoenix.WebComponent, :component
+  use Phoenix.WebComponent, :html
 
   @doc """
   Generates a table.
