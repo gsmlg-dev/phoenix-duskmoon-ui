@@ -8,7 +8,7 @@ defmodule Phoenix.WebComponent.Markdown do
     * charts render by mermaid.js
 
   """
-  use Phoenix.WebComponent, :component
+  use Phoenix.WebComponent, :html
 
   @doc """
   Generates a html customElement remark-element to preview markdown.

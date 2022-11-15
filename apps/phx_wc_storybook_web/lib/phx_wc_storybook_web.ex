@@ -1,77 +1,29 @@
 defmodule PhxWCStorybookWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
-  as controllers, views, channels and so on.
+  as controllers, components, channels, and so on.
 
   This can be used in your application as:
 
       use PhxWCStorybookWeb, :controller
-      use PhxWCStorybookWeb, :view
+      use PhxWCStorybookWeb, :html
 
-  The definitions below will be executed for every view,
-  controller, etc, so keep them short and clean, focused
+  The definitions below will be executed for every controller,
+  component, etc, so keep them short and clean, focused
   on imports, uses and aliases.
 
   Do NOT define functions inside the quoted expressions
-  below. Instead, define any helper function in modules
-  and import those modules here.
+  below. Instead, define additional modules and import
+  those modules here.
   """
 
-  def controller do
-    quote do
-      use Phoenix.Controller, namespace: PhxWCStorybookWeb
-
-      import Plug.Conn
-      alias PhxWCStorybookWeb.Router.Helpers, as: Routes
-    end
-  end
-
-  def view do
-    quote do
-      use Phoenix.View,
-        root: "lib/phx_wc_storybook_web/templates",
-        namespace: PhxWCStorybookWeb
-
-      # Import convenience functions from controllers
-      import Phoenix.Controller,
-        only: [get_flash: 1, get_flash: 2, view_module: 1, view_template: 1]
-
-      # Include shared imports and aliases for views
-      unquote(view_helpers())
-      unquote(components())
-    end
-  end
-
-  def live_view do
-    quote do
-      use Phoenix.LiveView,
-        layout: {PhxWCStorybookWeb.LayoutView, "live.html"}
-
-      unquote(view_helpers())
-      unquote(components())
-    end
-  end
-
-  def live_component do
-    quote do
-      use Phoenix.LiveComponent
-
-      unquote(view_helpers())
-    end
-  end
-
-  def component do
-    quote do
-      use Phoenix.Component
-
-      unquote(view_helpers())
-    end
-  end
+  def static_paths, do: ~w(assets fonts images favicon.ico robots.txt)
 
   def router do
     quote do
-      use Phoenix.Router
+      use Phoenix.Router, helpers: false
 
+      # Import common connection and controller functions to use in pipelines
       import Plug.Conn
       import Phoenix.Controller
       import Phoenix.LiveView.Router
@@ -81,28 +33,76 @@ defmodule PhxWCStorybookWeb do
   def channel do
     quote do
       use Phoenix.Channel
+    end
+  end
+
+  def controller do
+    quote do
+      use Phoenix.Controller,
+        namespace: PhxWCStorybookWeb,
+        formats: [:html, :json],
+        layouts: [html: PhxWCStorybookWeb.Layouts]
+
+      import Plug.Conn
       import PhxWCStorybookWeb.Gettext
+
+      unquote(verified_routes())
     end
   end
 
-  defp view_helpers do
+  def live_view do
     quote do
-      # Use all HTML functionality (forms, tags, etc)
-      use Phoenix.HTML
+      use Phoenix.LiveView,
+        layout: {PhxWCStorybookWeb.Layouts, :app}
 
-      # Import LiveView and .heex helpers (live_render, live_patch, <.form>, etc)
-      import Phoenix.LiveView.Helpers
-
-      # Import basic rendering functionality (render, render_layout, etc)
-      import Phoenix.View
-
-      alias PhxWCStorybookWeb.Router.Helpers, as: Routes
+      unquote(html_helpers())
     end
   end
 
-  defp components do
+  def live_component do
     quote do
+      use Phoenix.LiveComponent
+
+      unquote(html_helpers())
+    end
+  end
+
+  def html do
+    quote do
+      use Phoenix.Component
+
+      # Import convenience functions from controllers
+      import Phoenix.Controller,
+        only: [get_csrf_token: 0, view_module: 1, view_template: 1]
+
+      # Include general helpers for rendering HTML
+      unquote(html_helpers())
+    end
+  end
+
+  defp html_helpers do
+    quote do
+      # HTML escaping functionality
+      import Phoenix.HTML
+      # Core UI components and translation
       use Phoenix.WebComponent
+      import PhxWCStorybookWeb.CoreComponents
+      import PhxWCStorybookWeb.Gettext
+
+      # Shortcut for generating JS commands
+      alias Phoenix.LiveView.JS
+
+      # Routes generation with the ~p sigil
+      unquote(verified_routes())
+    end
+  end
+
+  def verified_routes do
+    quote do
+      use Phoenix.VerifiedRoutes,
+        endpoint: PhxWCStorybookWeb.Endpoint,
+        router: PhxWCStorybookWeb.Router,
+        statics: PhxWCStorybookWeb.static_paths()
     end
   end
 

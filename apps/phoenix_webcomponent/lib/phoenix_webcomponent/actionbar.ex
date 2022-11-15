@@ -2,7 +2,7 @@ defmodule Phoenix.WebComponent.Actionbar do
   @moduledoc """
   Render actionbar.
   """
-  use Phoenix.WebComponent, :component
+  use Phoenix.WebComponent, :html
 
   @doc """
   Generates a actionbar.
