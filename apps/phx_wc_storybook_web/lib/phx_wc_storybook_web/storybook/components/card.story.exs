@@ -1,13 +1,13 @@
 defmodule PhxWCStorybookWeb.Storybook.Components.Card do
   # :live_component or :page are also available
-  use PhxLiveStorybook.Entry, :component
+  use PhxLiveStorybook.Story, :component
 
   def function, do: &Phoenix.WebComponent.Card.wc_card/1
   def description, do: "A card element."
 
-  def stories do
+  def variations do
     [
-      %Story{
+      %Variation{
         id: :default,
         slots: [
           """

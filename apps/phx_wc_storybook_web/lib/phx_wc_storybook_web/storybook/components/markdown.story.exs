@@ -1,13 +1,13 @@
 defmodule PhxWCStorybookWeb.Storybook.Components.Markdown do
   # :live_component or :page are also available
-  use PhxLiveStorybook.Entry, :component
+  use PhxLiveStorybook.Story, :component
 
   def function, do: &Phoenix.WebComponent.Markdown.wc_markdown/1
   def description, do: "A markdown render element."
 
-  def stories do
+  def variations do
     [
-      %Story{
+      %Variation{
         id: :default,
         attributes: %{
           content: """
@@ -15,7 +15,7 @@ defmodule PhxWCStorybookWeb.Storybook.Components.Markdown do
           """
         }
       },
-      %Story{
+      %Variation{
         id: :with_code,
         attributes: %{
           content: """
@@ -26,7 +26,7 @@ defmodule PhxWCStorybookWeb.Storybook.Components.Markdown do
           """
         }
       },
-      %Story{
+      %Variation{
         id: :with_mermaid,
         attributes: %{
           content: """

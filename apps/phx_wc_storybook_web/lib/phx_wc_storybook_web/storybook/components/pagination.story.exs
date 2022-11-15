@@ -1,13 +1,13 @@
 defmodule PhxWCStorybookWeb.Storybook.Components.Pagination do
   # :live_component or :page are also available
-  use PhxLiveStorybook.Entry, :component
+  use PhxLiveStorybook.Story, :component
 
   def function, do: &Phoenix.WebComponent.Pagination.wc_pagination/1
   def description, do: "A pagination element."
 
-  def stories do
+  def variations do
     [
-      %Story{
+      %Variation{
         id: :default,
         attributes: %{
           total: 100,
