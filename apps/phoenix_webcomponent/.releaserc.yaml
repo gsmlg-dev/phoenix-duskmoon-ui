@@ -26,5 +26,5 @@ plugins:
         test -z "${nextRelease.channel}" && npm publish || npm publish --tag "${nextRelease.channel}";
         mix prepublish;
       'publishCmd' : |
-        echo pubhlish phoenix_webcomponent ${nextRelease.version};
+        echo publish phoenix_webcomponent ${nextRelease.version};
         mix hex.publish --yes
