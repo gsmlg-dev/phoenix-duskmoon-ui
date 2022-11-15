@@ -1,13 +1,13 @@
 defmodule PhxWCStorybookWeb.Storybook.Components.LeftMenu do
   # :live_component or :page are also available
-  use PhxLiveStorybook.Entry, :component
+  use PhxLiveStorybook.Story, :component
 
   def function, do: &Phoenix.WebComponent.LeftMenu.wc_left_menu/1
   def description, do: "A left menu element."
 
-  def stories do
+  def variations do
     [
-      %Story{
+      %Variation{
         id: :default,
         attributes: %{
           active: "left_menu",

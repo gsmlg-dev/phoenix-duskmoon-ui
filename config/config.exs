@@ -25,8 +25,6 @@ config :phx_wc_storybook_web, PhxWCStorybookWeb.Endpoint,
   live_view: [signing_salt: "HkF5qV0r"]
 
 config :phx_wc_storybook_web, PhxWCStorybookWeb.Storybook,
-  content_path:
-    Path.expand("../apps/phx_wc_storybook_web/lib/phx_wc_storybook_web/storybook", __DIR__),
   js_path: "/assets/app.js",
   css_path: "/assets/app.css"
 

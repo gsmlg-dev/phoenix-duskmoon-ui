@@ -1,13 +1,13 @@
 defmodule PhxWCStorybookWeb.Storybook.Components.Table do
   # :live_component or :page are also available
-  use PhxLiveStorybook.Entry, :component
+  use PhxLiveStorybook.Story, :component
 
   def function, do: &Phoenix.WebComponent.Table.wc_table/1
   def description, do: "A table element."
 
-  def stories do
+  def variations do
     [
-      %Story{
+      %Variation{
         id: :default,
         attributes: %{
           rows: [

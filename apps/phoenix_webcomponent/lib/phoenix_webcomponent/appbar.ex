@@ -3,9 +3,7 @@ defmodule Phoenix.WebComponent.Appbar do
   render appbar
 
   """
-  use Phoenix.WebComponent, :component
-
-  import Phoenix.WebComponent.Helpers.Link
+  use Phoenix.WebComponent, :html
 
   @doc """
   Generates a html customElement appbar.
@@ -15,7 +13,7 @@ defmodule Phoenix.WebComponent.Appbar do
   - `title` binary
   example: "App Title"
   - `menus` List
-  example: [ %{ label: "Menu Name", to: Routes.index_path(@conn, :index) } ]
+  example: [ %{ label: "Menu Name", to: ~p"/menu-url" } ]
 
   ## Slots
 
@@ -35,15 +33,20 @@ defmodule Phoenix.WebComponent.Appbar do
 
     ~H"""
     <app-bar id={@id} class={@class} app-name={@title}>
-        <nav slot="logo" class="flex justify-center">
+      <nav slot="logo" class="flex justify-center">
         <%= render_slot(@logo) %>
-        </nav>
-        <%= for menu <- @menus do %>
-        <%= wc_link menu.label, to: menu.to, slot: "nav" %>
-        <% end %>
-        <span slot="user">
+      </nav>
+      <%= for menu <- @menus do %>
+        <.link
+          navigate={menu.to}
+          slot="nav"
+        >
+          <%= menu.label %>
+        </.link>
+      <% end %>
+      <span slot="user">
         <%= render_slot(@user_profile) %>
-        </span>
+      </span>
     </app-bar>
     """
   end

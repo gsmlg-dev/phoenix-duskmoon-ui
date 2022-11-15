@@ -2,7 +2,7 @@ defmodule Phoenix.WebComponent.LeftMenu do
   @moduledoc """
   Render left menu.
   """
-  use Phoenix.WebComponent, :component
+  use Phoenix.WebComponent, :html
 
   @doc """
   Generates left menu
@@ -28,9 +28,12 @@ defmodule Phoenix.WebComponent.LeftMenu do
         <div class="text-slate-400 px-10 py-4 w-full"><%= group %></div>
         <div class="text-slate-800 px-4 w-full">
         <%= for {id, menu, url} <- subMenu do %>
-          <%= live_redirect to: url, class: "px-6 py-4 rounded-lg w-full flex flex-row justify-start items-center hover:text-blue-600 cursor-pointer" <> if(@active == id, do: " bg-blue-600 text-white hover:text-slate-300", else: "") do %>
+          <.link
+            navigate={url}
+            class={"px-6 py-4 rounded-lg w-full flex flex-row justify-start items-center hover:text-blue-600 cursor-pointer" <> if(@active == id, do: " bg-blue-600 text-white hover:text-slate-300", else: "")}
+          >
             <span data-menu-id={id} class="indent-2.5"><%= menu %></span>
-          <% end %>
+          </.link>
         <% end %>
         </div>
       </div>

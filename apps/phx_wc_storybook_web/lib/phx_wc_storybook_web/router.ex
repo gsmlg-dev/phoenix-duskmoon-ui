@@ -15,14 +15,17 @@ defmodule PhxWCStorybookWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/" do
+    storybook_assets()
+  end
+
   scope "/", PhxWCStorybookWeb do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    live_storybook "/storybook", backend_module: PhxWCStorybookWeb.Storybook
   end
 
-  live_storybook("/storybook",
-    otp_app: :phx_wc_storybook_web,
-    backend_module: PhxWCStorybookWeb.Storybook
-  )
+
 end
