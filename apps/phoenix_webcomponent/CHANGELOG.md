@@ -1,3 +1,10 @@
+## [2.3.1](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.3.0...v2.3.1) (2022-11-15)
+
+
+### Bug Fixes
+
+* Remove elixir 1.11. ([3e59cbc](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/3e59cbc8e0c24e7713228ccf20899e6bd7371512))
+
 ## [2.2.3](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.2.2...v2.2.3) (2022-10-14)
 
 
