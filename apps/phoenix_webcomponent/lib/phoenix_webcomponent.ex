@@ -46,6 +46,7 @@ defmodule Phoenix.WebComponent do
 
   def alias do
     quote do
+      alias Phoenix.WebComponent.Link
       alias Phoenix.WebComponent.Actionbar
       alias Phoenix.WebComponent.Appbar
       alias Phoenix.WebComponent.Card
@@ -68,6 +69,7 @@ defmodule Phoenix.WebComponent do
 
   defp components do
     quote do
+      import Phoenix.WebComponent.Link
       import Phoenix.WebComponent.Actionbar
       import Phoenix.WebComponent.Appbar
       import Phoenix.WebComponent.Card
