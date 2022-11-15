@@ -16,11 +16,11 @@ jobs:
     strategy:
       matrix:
         include:
-          - elixir: 1.11
-            otp: 23.3
-            lint: lint
           - elixir: 1.13
             otp: 24
+            lint: lint
+          - elixir: 1.14
+            otp: 25
             lint: lint
 
     runs-on: ubuntu-latest
@@ -88,8 +88,8 @@ jobs:
       - name: 💊 Setup Elixir
         uses: erlef/setup-beam@v1
         with:
-          otp-version: '24'
-          elixir-version: '1.13.0'
+          otp-version: '25'
+          elixir-version: '1.14.0'
 
       - name: ⎔ Setup node
         uses: actions/setup-node@v2
