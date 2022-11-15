@@ -16,5 +16,4 @@ defmodule PhxWCStorybookWeb.Storybook do
     #   - When lazy: ony .index.exs files are compiled upfront and .story.exs are compile when the
     #     matching story is loaded in UI.
     compilation_mode: :eager
-
 end
