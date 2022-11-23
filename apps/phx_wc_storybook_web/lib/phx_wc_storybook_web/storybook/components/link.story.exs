@@ -41,7 +41,7 @@ defmodule PhxWCStorybookWeb.Storybook.Components.Link do
           Back to home
           """
         ]
-      },
+      }
     ]
   end
 end
