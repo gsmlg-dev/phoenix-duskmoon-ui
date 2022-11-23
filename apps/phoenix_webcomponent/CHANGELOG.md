@@ -1,3 +1,11 @@
+## [2.3.3](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.3.2...v2.3.3) (2022-11-23)
+
+
+### Bug Fixes
+
+* Add new link storybbok. ([2234b3d](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/2234b3dbe84e0c99b48507a6c92c6acd3a1ae2ab))
+* Fix format. ([476dd84](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/476dd84ae6b1301e361457a2867ff9a2068d0271))
+
 ## [2.3.2](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.3.1...v2.3.2) (2022-11-15)
 
 
