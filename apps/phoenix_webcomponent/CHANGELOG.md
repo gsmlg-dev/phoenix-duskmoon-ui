@@ -1,3 +1,10 @@
+## [2.3.5](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.3.4...v2.3.5) (2022-11-30)
+
+
+### Bug Fixes
+
+* Update @gsmlg/lit. ([5fb7a17](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/5fb7a170f4faad16d58b17df1d176a2d07466a6d))
+
 ## [2.3.4](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.3.3...v2.3.4) (2022-11-29)
 
 
