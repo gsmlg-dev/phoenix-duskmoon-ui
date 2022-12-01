@@ -1,3 +1,10 @@
+# [2.4.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.3.6...v2.4.0) (2022-12-01)
+
+
+### Features
+
+* Add new appbar wc_simple_appbar. ([4101601](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/4101601b24f09e9f4133f8c07f423a632025a641))
+
 ## [2.3.6](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.3.5...v2.3.6) (2022-11-30)
 
 
