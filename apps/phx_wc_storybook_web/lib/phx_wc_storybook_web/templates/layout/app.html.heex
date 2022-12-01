@@ -1,6 +1,6 @@
 <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
 <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-<main class="container h-[calc(100vh-56px)] flex flex-row justify-start items-start">
+<main class="container h-[calc(100vh-56px)] flex flex-row justify-start items-start overflow-x-auto">
   <.wc_left_menu
     class="w-48 h-[calc(100vh-56px)]"
     active={"phx-wc-hook"}
@@ -18,6 +18,11 @@
           {"table", "Table", "/storybook/components/table"}
         ]}
     ]}
-  />
+  >
+  <:title>
+  <.wc_link href="/">Simple Appbar</.wc_link>
+  <.wc_link href="/?mode=wc">WC Appbar</.wc_link>
+  </:title>
+  </.wc_left_menu>
   <%= @inner_content %>
 </main>

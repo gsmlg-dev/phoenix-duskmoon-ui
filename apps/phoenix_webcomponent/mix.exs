@@ -40,6 +40,7 @@ defmodule PhoenixWebComponent.Mixfile do
     [
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_view, "~> 0.18"},
+      {:heroicons, "~> 0.5.1"},
       {:plug, "~> 1.5", optional: true},
       {:jason, "~> 1.0"},
       {:esbuild, "~> 0.2", runtime: true},

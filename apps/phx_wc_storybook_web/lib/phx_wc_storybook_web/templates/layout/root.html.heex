@@ -11,6 +11,21 @@
   </head>
   <body class="flex flex-col items-center">
     <div class="rainbow"></div>
+    <%= if assigns[:mode] == "app" do %>
+    <.wc_simple_appbar
+      title={"Phoenix WebComponent"}
+      menus={[
+        %{ label: "Component Storybook", to: Routes.live_storybook_path(@conn, :root) }
+      ]}
+    >
+      <:logo>
+        <logo-gsmlg-dev />
+      </:logo>
+      <:user_profile>
+        (^_^)
+      </:user_profile>
+    </.wc_simple_appbar>
+    <% else %>
     <.wc_appbar
       title={"Phoenix WebComponent"}
       menus={[
@@ -24,7 +39,7 @@
         (^_^)
       </:user_profile>
     </.wc_appbar>
-
+    <% end %>
     <%= @inner_content %>
   </body>
 </html>
