@@ -12,15 +12,19 @@ defmodule Phoenix.WebComponent.Appbar do
 
   ## Attributes
 
-  - `title` binary
+  - `title` `binary`
+  Appbar Title.
   example: "App Title"
-  - `menus` List
+  - `menus` `List`
+  Appbar menus.
   example: [ %{ label: "Menu Name", to: ~p"/menu-url" } ]
 
   ## Slots
 
   - `logo`
+  Appbar Logo.
   - `user_profile`
+  Right side userinfo.
 
   """
   def wc_appbar(assigns) do
@@ -54,19 +58,26 @@ defmodule Phoenix.WebComponent.Appbar do
   end
 
   @doc """
-  Generates an appbar.
+  Generates an simple html appbar.
 
   ## Attributes
 
-  - `title` binary
+  - `home` `binary`
+  Link to Home page.
+  example: "https://hexdocs.pm/phoenix_webcomponent/"
+  - `title` `binary`
+  Appbar Title.
   example: "App Title"
-  - `menus` List
+  - `menus` `List`
+  Appbar menus.
   example: [ %{ label: "Menu Name", to: ~p"/menu-url" } ]
 
   ## Slots
 
   - `logo`
+  Appbar Logo.
   - `user_profile`
+  Right side userinfo.
 
   """
   def wc_simple_appbar(assigns) do
