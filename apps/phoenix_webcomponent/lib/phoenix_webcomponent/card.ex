@@ -29,18 +29,21 @@ defmodule Phoenix.WebComponent.Card do
     html attribute id
     """
   )
+
   attr(:class, :string,
     default: "",
     doc: """
     html attribute class
     """
   )
+
   slot(:title,
     required: false,
     doc: """
     Render a card title.
     """
   )
+
   def wc_card(assigns) do
     assigns =
       assigns

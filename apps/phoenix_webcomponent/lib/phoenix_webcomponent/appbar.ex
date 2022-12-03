@@ -34,18 +34,21 @@ defmodule Phoenix.WebComponent.Appbar do
     html attribute id
     """
   )
+
   attr(:class, :string,
     default: "",
     doc: """
     html attribute class
     """
   )
+
   attr(:title, :string,
     default: "",
     doc: """
     Appbar title.
     """
   )
+
   attr(:menus, :list,
     default: [],
     doc: """
@@ -54,18 +57,21 @@ defmodule Phoenix.WebComponent.Appbar do
     example: [ %{ label: "Menu Name", to: ~p"/menu-url" } ]
     """
   )
+
   slot(:logo,
     required: false,
     doc: """
     Appbar Logo.
     """
   )
+
   slot(:user_profile,
     required: false,
     doc: """
     Appbar right side user_profile.
     """
   )
+
   def wc_appbar(assigns) do
     assigns =
       assigns
@@ -123,18 +129,21 @@ defmodule Phoenix.WebComponent.Appbar do
     html attribute id
     """
   )
+
   attr(:class, :string,
     default: "",
     doc: """
     html attribute class
     """
   )
+
   attr(:title, :string,
     default: "",
     doc: """
     Appbar title.
     """
   )
+
   attr(:menus, :list,
     default: [],
     doc: """
@@ -143,18 +152,21 @@ defmodule Phoenix.WebComponent.Appbar do
     example: [ %{ label: "Menu Name", to: ~p"/menu-url" } ]
     """
   )
+
   slot(:logo,
     required: false,
     doc: """
     Appbar Logo.
     """
   )
+
   slot(:user_profile,
     required: false,
     doc: """
     Appbar right side user_profile.
     """
   )
+
   def wc_simple_appbar(assigns) do
     assigns =
       assigns

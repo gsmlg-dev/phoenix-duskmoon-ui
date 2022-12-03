@@ -53,18 +53,21 @@ defmodule Phoenix.WebComponent.Icons do
     html attribute id
     """
   )
+
   attr(:class, :string,
     default: "",
     doc: """
     html attribute class
     """
   )
+
   attr(:name, :string,
     required: true,
     doc: """
     material icon name, avaliable names are return value of `mdi_icons()`.
     """
   )
+
   def wc_mdi(assigns) do
     assigns =
       assigns

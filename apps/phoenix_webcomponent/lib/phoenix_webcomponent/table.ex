@@ -54,18 +54,21 @@ defmodule Phoenix.WebComponent.Table do
     html attribute id
     """
   )
+
   attr(:class, :string,
     default: "",
     doc: """
     html attribute class
     """
   )
+
   attr(:rows, :list,
     default: [],
     doc: """
     table data list
     """
   )
+
   slot(:col,
     required: false,
     doc: """
@@ -79,6 +82,7 @@ defmodule Phoenix.WebComponent.Table do
     ```
     """
   )
+
   def wc_table(assigns) do
     assigns =
       assigns

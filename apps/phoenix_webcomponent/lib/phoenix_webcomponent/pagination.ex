@@ -40,36 +40,42 @@ defmodule Phoenix.WebComponent.Pagination do
     html attribute id
     """
   )
+
   attr(:class, :string,
     default: "",
     doc: """
     html attribute class
     """
   )
+
   attr(:page_size, :integer,
     default: 10,
     doc: """
     items shows per page
     """
   )
+
   attr(:page_num, :integer,
     default: 1,
     doc: """
     page num
     """
   )
+
   attr(:total, :integer,
     default: 0,
     doc: """
     total items count
     """
   )
+
   attr(:update_event, :string,
     default: "",
     doc: """
     Phoenix live event name for page status update.
     """
   )
+
   def wc_pagination(assigns) do
     assigns =
       assigns

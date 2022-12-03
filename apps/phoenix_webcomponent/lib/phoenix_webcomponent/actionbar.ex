@@ -28,24 +28,28 @@ defmodule Phoenix.WebComponent.Actionbar do
     html attribute id
     """
   )
+
   attr(:class, :string,
     default: "",
     doc: """
     html attribute class
     """
   )
+
   slot(:left,
     required: false,
     doc: """
     Left part of action bar.
     """
   )
+
   slot(:right,
     required: false,
     doc: """
     Right part of action bar.
     """
   )
+
   def wc_actionbar(assigns) do
     assigns =
       assigns
