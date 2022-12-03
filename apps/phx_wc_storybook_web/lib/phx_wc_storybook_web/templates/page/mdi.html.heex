@@ -1,11 +1,18 @@
-<.wc_card class="w-[100%_!important] h-[calc(100vh-56px-2em)_!important]">
+<.wc_card class="w-[100%_!important] h-[calc(100vh-56px-2em)_!important] overflow-auto">
     <:title class="flex flex-row justify-center items-center">
         <span class="text-4xl text-blue-600 hover:text-blue-400">
             Material Design Icons
         </span>
     </:title>
-    <.wc_markdown>
-    </.wc_markdown>
+    <.wc_markdown content={"""
+    ## Example
+
+    ```html
+    <!-- icon_name is matrial icon name -->
+    <.wc_mdi name={icon_name} class="w-12 h-12" />
+    ```
+
+    """}></.wc_markdown>
     <div class="flex flex-row flex-wrap gap-4">
         <%= for icon_name <- @mdi_icons do %>
         <div class="border flex flex-col w-40 h-40 items-center justify-center">
