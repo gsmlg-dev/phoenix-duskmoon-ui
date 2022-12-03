@@ -13,11 +13,11 @@ defmodule Phoenix.WebComponent.Table do
   <.wc_table rows={[
     %{
       name: "Shmi Skywalker",
-      portrayal: "Pernilla August (Episodes I-II)\nVoice: Pernilla August (The Clone Wars)\n"
+      portrayal: "Pernilla August (Episodes I-II)"
     },
     %{
       name: "Luke Skywalker",
-      portrayal: "Mark Hamill (Episodes IV-IX, The Mandalorian, The Book of Boba Fett), Aidan Barton (Episode III), Grant Feely (Obi-Wan Kenobi)\nBody Doubles: Lukaz Leong (Episode IX), Max Lloyd-Jones (The Mandalorian), Graham Hamilton (The Book of Boba Fett)\n\nVoice: Mark Hamill (Forces of Destiny)\n"}
+      portrayal: "Mark Hamill (Episodes IV-IX, The Mandalorian, The Book of Boba Fett)"}
     ]}>
     <:col let={r} label="Name">
       <%= r.name %>
