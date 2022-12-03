@@ -40,7 +40,7 @@ defmodule Phoenix.WebComponent.LeftMenu do
     default: [],
     doc: """
     menu list
-
+    ```elixir
     [
       {"Components",
         [
@@ -53,6 +53,7 @@ defmodule Phoenix.WebComponent.LeftMenu do
         ]
       }
     ]
+    ```
     """
   )
 
