@@ -1,3 +1,11 @@
+## [2.5.1](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.5.0...v2.5.1) (2022-12-03)
+
+
+### Bug Fixes
+
+* Add color attribute to wc_mdi. ([00ad870](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/00ad87073ae5fbb159d55438a08adffcd9fdfb18))
+* Fix test. ([8490170](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/8490170d7becea97061c8842e6274c1dc9174cc0))
+
 # [2.5.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.4.0...v2.5.0) (2022-12-03)
 
 
