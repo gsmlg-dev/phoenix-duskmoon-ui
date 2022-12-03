@@ -68,11 +68,19 @@ defmodule Phoenix.WebComponent.Icons do
     """
   )
 
+  attr(:color, :string,
+    default: "currentcolor",
+    doc: """
+    icon color
+    """
+  )
+
   def wc_mdi(assigns) do
     assigns =
       assigns
       |> assign_new(:id, fn -> false end)
       |> assign_new(:class, fn -> false end)
+      |> assign_new(:color, fn -> "currentcolor" end)
 
     name = assigns.name
 
@@ -84,7 +92,7 @@ defmodule Phoenix.WebComponent.Icons do
     assigns = assigns |> assign(:inner_svg, inner_svg)
 
     ~H"""
-    <svg xmlns="http://www.w3.org/2000/svg" id={@id} class={@class} viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" id={@id} class={@class} fill={@color} viewBox="0 0 24 24">
       <%= raw(@inner_svg) %>
     </svg>
     """
