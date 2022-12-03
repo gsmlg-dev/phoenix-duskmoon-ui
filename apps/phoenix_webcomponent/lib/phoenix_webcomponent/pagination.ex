@@ -23,8 +23,6 @@ defmodule Phoenix.WebComponent.Pagination do
       |> assign_new(:total, fn -> 0 end)
       |> assign_new(:update_event, fn -> "update_current_page" end)
 
-    # IO.inspect(assigns)
-
     max_page =
       if assigns.total > 0 do
         (assigns.total / assigns.page_size) |> ceil

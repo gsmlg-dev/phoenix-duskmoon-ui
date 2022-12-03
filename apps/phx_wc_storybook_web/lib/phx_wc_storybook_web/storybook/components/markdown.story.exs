@@ -21,7 +21,7 @@ defmodule PhxWCStorybookWeb.Storybook.Components.Markdown do
           content: """
           # Code
           ```elixir
-          IO.inspect :math.pow(2, 4)
+          n2_4 = :math.pow(2, 4)
           ```
           """
         }

@@ -36,6 +36,7 @@ defmodule Phoenix.WebComponent.Markdown do
       |> assign_new(:id, fn -> false end)
       |> assign_new(:class, fn -> false end)
       |> assign_new(:debug, fn -> false end)
+      |> assign_new(:content, fn -> "" end)
 
     ~H"""
     <remark-element id={@id} debug={@debug} class={@class}><%= @content %></remark-element>

@@ -77,6 +77,7 @@ defmodule Phoenix.WebComponent do
       import Phoenix.WebComponent.Markdown
       import Phoenix.WebComponent.Pagination
       import Phoenix.WebComponent.Table
+      import Phoenix.WebComponent.Icons
     end
   end
 

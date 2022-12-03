@@ -1,10 +1,13 @@
 <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
 <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-<main class="container h-[calc(100vh-56px)] flex flex-row justify-start items-start overflow-x-auto">
+<main class="container h-[calc(100vh-56px)] flex flex-row justify-start items-start overflow-auto">
   <.wc_left_menu
     class="w-48 h-[calc(100vh-56px)]"
-    active={"phx-wc-hook"}
+    active={assigns[:active_menu]}
     menus={[
+      {"Icons", [
+        {"mdi", "MDIcons", "/mdi"}
+      ]},
       {"Hooks", [
         {"phx-wc-hook", "PhxWCHook", "/"}
       ]},
