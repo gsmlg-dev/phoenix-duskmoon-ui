@@ -6,8 +6,34 @@ defmodule Phoenix.WebComponent.Actionbar do
 
   @doc """
   Generates a actionbar.
+
   ## Examples
-  ## Options
+
+      <.wc_actionbar class="shadow">
+        <:left>
+          Star Wars
+        </:left>
+        <:right>
+          <button>action</button>
+        </:right>
+      </.wc_actionbar>
+
+  ## Attributes
+
+  * `id` - `binary`
+  html attribute id
+
+  * `class` - `binary`
+  html attribute class
+
+  ## Slots
+
+  * `left`
+  Left part of action bar.
+
+  * `right`
+  Right part of action bar.
+
   """
   def wc_actionbar(assigns) do
     assigns =

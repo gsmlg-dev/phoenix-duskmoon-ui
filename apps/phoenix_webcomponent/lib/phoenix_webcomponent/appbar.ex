@@ -10,20 +10,44 @@ defmodule Phoenix.WebComponent.Appbar do
   @doc """
   Generates a html customElement appbar.
 
+  ## Example
+
+      <.wc_appbar
+        title={"Phoenix WebComponent"}
+        menus={[
+          %{ label: "Component Storybook", to: Routes.live_storybook_path(@conn, :root) }
+        ]}
+      >
+        <:logo>
+          <logo-gsmlg-dev />
+        </:logo>
+        <:user_profile>
+          (^_^)
+        </:user_profile>
+      </.wc_appbar>
+
   ## Attributes
 
-  - `title` `binary`
+  * `id` - `binary`
+  html attribute id
+
+  * `class` - `binary`
+  html attribute class
+
+  * `title` - `binary`
   Appbar Title.
   example: "App Title"
-  - `menus` `List`
+
+  * `menus` - `List`
   Appbar menus.
   example: [ %{ label: "Menu Name", to: ~p"/menu-url" } ]
 
   ## Slots
 
-  - `logo`
+  * `logo`
   Appbar Logo.
-  - `user_profile`
+
+  * `user_profile`
   Right side userinfo.
 
   """
@@ -60,15 +84,39 @@ defmodule Phoenix.WebComponent.Appbar do
   @doc """
   Generates an simple html appbar.
 
+  ## Example
+
+      <.wc_simple_appbar
+        title={"Phoenix WebComponent"}
+        menus={[
+          %{ label: "Component Storybook", to: Routes.live_storybook_path(@conn, :root) }
+        ]}
+      >
+        <:logo>
+          <logo-gsmlg-dev />
+        </:logo>
+        <:user_profile>
+          (^_^)
+        </:user_profile>
+      </.wc_simple_appbar>
+
   ## Attributes
 
-  - `home` `binary`
+  * `id` - `binary`
+  html attribute id
+
+  * `class` - `binary`
+  html attribute class
+
+  * `home` - `binary`
   Link to Home page.
   example: "https://hexdocs.pm/phoenix_webcomponent/"
-  - `title` `binary`
+
+  * `title` - `binary`
   Appbar Title.
   example: "App Title"
-  - `menus` `List`
+
+  * `menus` - `List`
   Appbar menus.
   example: [ %{ label: "Menu Name", to: ~p"/menu-url" } ]
 
@@ -76,6 +124,7 @@ defmodule Phoenix.WebComponent.Appbar do
 
   - `logo`
   Appbar Logo.
+
   - `user_profile`
   Right side userinfo.
 

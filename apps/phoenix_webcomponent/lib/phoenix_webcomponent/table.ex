@@ -7,7 +7,45 @@ defmodule Phoenix.WebComponent.Table do
   @doc """
   Generates a table.
   ## Examples
-  ## Options
+
+      <.wc_table rows={[
+        %{
+          name: "Shmi Skywalker",
+          portrayal: "Pernilla August (Episodes I-II)\nVoice: Pernilla August (The Clone Wars)\n"
+        },
+        %{
+          name: "Luke Skywalker",
+          portrayal: "Mark Hamill (Episodes IV-IX, The Mandalorian, The Book of Boba Fett), Aidan Barton (Episode III), Grant Feely (Obi-Wan Kenobi)\nBody Doubles: Lukaz Leong (Episode IX), Max Lloyd-Jones (The Mandalorian), Graham Hamilton (The Book of Boba Fett)\n\nVoice: Mark Hamill (Forces of Destiny)\n"}
+        ]}>
+        <:col let={r} label="Name">
+          <%= r.name %>
+        </:col>
+        <:col let={r} label="Portrayal">
+          <%= r.portrayal %>
+        </:col>
+      </.wc_table>
+
+  ## Attributes
+
+    * `id` - `binary`
+    html attribute id
+
+    * `class` - `binary`
+    html attribute class
+
+    * `rows` - `list`
+    table data, data shape is a list of map
+
+  ## Slots
+
+    * `col`
+    Each slot for render a column.
+
+      ### Attributes
+
+        * `label` - `binatry`
+        Render table column title line.
+
   """
   def wc_table(assigns) do
     assigns =

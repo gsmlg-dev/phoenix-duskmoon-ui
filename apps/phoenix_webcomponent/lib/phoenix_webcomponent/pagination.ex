@@ -10,7 +10,27 @@ defmodule Phoenix.WebComponent.Pagination do
 
   ## Examples
 
-  ## Options
+      <.wc_pagination page_num={5} page_size={15} total={100} update_event="update-page"/>
+
+  ## Attributes
+
+    * `id` - `binary`
+    html attribute id
+
+    * `class` - `binary`
+    html attribute class
+
+    * `page_size` - `binary`
+    How manage items are showing in page.
+
+    * `page_num` - `binary`
+    Which page is showing.
+
+    * `total` - `binary`
+    Total item count.
+
+    * `update_event` - `binary`
+    Phoenix live event name for page status update.
 
   """
   def wc_pagination(assigns) do

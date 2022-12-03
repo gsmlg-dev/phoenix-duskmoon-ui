@@ -8,6 +8,32 @@ defmodule Phoenix.WebComponent.Card do
 
   @doc """
   Generates card
+
+  ## Example
+
+      <.wc_card>
+        <:title>
+        Star Wars
+        </:title>
+        Star Wars is an American epic space opera multimedia
+        franchise created by George Lucas,
+        which began with the eponymous 1977 film and
+        quickly became a worldwide pop-culture phenomenon.
+      </.wc_card>
+
+  ## Attributes
+
+    * `id` - `binary`
+    html attribute id
+
+    * `class` - `binary`
+    html attribute class
+
+  ## Slots
+
+    * `title`
+    Render a card title.
+
   """
   def wc_card(assigns) do
     assigns =

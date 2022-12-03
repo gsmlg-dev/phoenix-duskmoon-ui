@@ -2,12 +2,7 @@ defmodule Phoenix.WebComponent do
   @moduledoc """
   Provides a suit of html custom component for phoenix.
 
-  This library provides three main functionalities:
-
-    * Enhance form helper with manterial web componet
-    * Enhance link helper with manterial web componet
-    * Markdown render helper with `@gsmlg/lit/remark-element`
-    * TopAppBar render top app bar with custom element.
+  This library add a list of phoneix component.
 
   ## Form helper
 
@@ -84,7 +79,11 @@ defmodule Phoenix.WebComponent do
   @doc """
   Import helpers for internal usage.
 
-  Support:
+  ## Support:
+
+  - `use Phoenix.WebComponent`
+
+  ### Internal use Only
 
   - `use Phoenix.WebComponent, :component`
   - `use Phoenix.WebComponent, :live_component`
