@@ -17,13 +17,19 @@ defmodule Phoenix.WebComponent.Markdown do
 
   ## Examples
 
-      wc_markdown("# Hello", class: "dark")
+      <.wc_markdown content={"# Hello"} class="dark" />
       #=> <remark-element class="dark" content="# Hello"></remark-element>
 
-      wc_markdown(content: "# Hello", class: "btn")
+      <.wc_markdown content={"# Hello"} class="btn" />
       #=> <remark-element class="btn" content="# Hello"></remark-element>
 
-  ## Options
+  ## Attributes
+
+    * `id` - `binary`
+    remark-element html attribute id
+
+    * `class` - `binary`
+    remark-element html attribute class
 
     * `:debug` - print log in browser console
 
