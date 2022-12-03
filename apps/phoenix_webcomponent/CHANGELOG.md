@@ -1,3 +1,10 @@
+# [2.5.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.4.0...v2.5.0) (2022-12-03)
+
+
+### Features
+
+* Add material design icons community version. ([2ee18ad](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/2ee18adbeee0c2cb164f6177752af6e586b2349f))
+
 # [2.4.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.3.6...v2.4.0) (2022-12-01)
 
 
