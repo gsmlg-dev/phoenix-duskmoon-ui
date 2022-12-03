@@ -36,6 +36,31 @@ defmodule Phoenix.WebComponent.Markdown do
     * `:content` - The content of markdown, replace innerHTML.
 
   """
+  @doc type: :component
+  attr(:id, :string,
+    default: "",
+    doc: """
+    html attribute id
+    """
+  )
+  attr(:class, :string,
+    default: "",
+    doc: """
+    html attribute class
+    """
+  )
+  attr(:debug, :boolean,
+    default: false,
+    doc: """
+    remark-element attribute, enable debug
+    """
+  )
+  attr(:content, :string,
+    default: "",
+    doc: """
+    markdown content
+    """
+  )
   def wc_markdown(assigns) do
     assigns =
       assigns

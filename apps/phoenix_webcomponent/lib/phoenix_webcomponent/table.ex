@@ -47,6 +47,38 @@ defmodule Phoenix.WebComponent.Table do
         Render table column title line.
 
   """
+  @doc type: :component
+  attr(:id, :string,
+    default: "",
+    doc: """
+    html attribute id
+    """
+  )
+  attr(:class, :string,
+    default: "",
+    doc: """
+    html attribute class
+    """
+  )
+  attr(:rows, :list,
+    default: [],
+    doc: """
+    table data list
+    """
+  )
+  slot(:col,
+    required: false,
+    doc: """
+    render a column of table.
+
+    Example
+    ```heex
+    <:col let={r} label="Name">
+      <%= r.name %>
+    </:col>
+    ```
+    """
+  )
   def wc_table(assigns) do
     assigns =
       assigns

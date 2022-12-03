@@ -6,7 +6,58 @@ defmodule Phoenix.WebComponent.LeftMenu do
 
   @doc """
   Generates left menu
+
+  ## Example
+
+      <.wc_left_menu active="left_menu" menus={[{"Components", [{"actionbar", "Actionbar", "/storybook/components/actionbar"}, {"card", "Card", "/storybook/components/card"}, {"left_menu", "Left Menu", "/storybook/components/left_menu"}, {"markdown", "Markdown", "/storybook/components/markdown"}, {"pagination", "Pagination", "/storybook/components/pagination"}, {"table", "Table", "/storybook/components/table"}]}]}>
+        <:title>Menu Demo Components</:title>
+      </.wc_left_menu>
+
   """
+  @doc type: :component
+  attr(:id, :string,
+    default: "",
+    doc: """
+    html attribute id
+    """
+  )
+  attr(:class, :string,
+    default: "",
+    doc: """
+    html attribute class
+    """
+  )
+  attr(:active, :string,
+    default: "",
+    doc: """
+    actvie menu id
+    """
+  )
+  attr(:menus, :list,
+    default: [],
+    doc: """
+    menu list
+
+    [
+      {"Components",
+        [
+          {"actionbar", "Actionbar", "/storybook/components/actionbar"},
+          {"card", "Card", "/storybook/components/card"},
+          {"left_menu", "Left Menu", "/storybook/components/left_menu"},
+          {"markdown", "Markdown", "/storybook/components/markdown"},
+          {"pagination", "Pagination", "/storybook/components/pagination"},
+          {"table", "Table", "/storybook/components/table"}
+        ]
+      }
+    ]
+    """
+  )
+  slot(:title,
+    required: false,
+    doc: """
+    Render a card title.
+    """
+  )
   def wc_left_menu(assigns) do
     assigns =
       assigns

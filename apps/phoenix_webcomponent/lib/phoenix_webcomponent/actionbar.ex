@@ -9,32 +9,43 @@ defmodule Phoenix.WebComponent.Actionbar do
 
   ## Examples
 
-      <.wc_actionbar class="shadow">
-        <:left>
-          Star Wars
-        </:left>
-        <:right>
-          <button>action</button>
-        </:right>
-      </.wc_actionbar>
-
-  ## Attributes
-
-  * `id` - `binary`
-  html attribute id
-
-  * `class` - `binary`
-  html attribute class
-
-  ## Slots
-
-  * `left`
-  Left part of action bar.
-
-  * `right`
-  Right part of action bar.
+  ```heex
+  <.wc_actionbar class="shadow">
+    <:left>
+      Star Wars
+    </:left>
+    <:right>
+      <button>action</button>
+    </:right>
+  </.wc_actionbar>
+  ```
 
   """
+  @doc type: :component
+  attr(:id, :string,
+    default: "",
+    doc: """
+    html attribute id
+    """
+  )
+  attr(:class, :string,
+    default: "",
+    doc: """
+    html attribute class
+    """
+  )
+  slot(:left,
+    required: false,
+    doc: """
+    Left part of action bar.
+    """
+  )
+  slot(:right,
+    required: false,
+    doc: """
+    Right part of action bar.
+    """
+  )
   def wc_actionbar(assigns) do
     assigns =
       assigns

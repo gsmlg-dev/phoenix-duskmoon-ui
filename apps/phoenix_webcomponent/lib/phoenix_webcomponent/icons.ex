@@ -13,14 +13,14 @@ defmodule Phoenix.WebComponent.Icons do
 
   @doc """
   Return all names of available icons.
-  Can be found at [](https://phoenix-webcomponent.gsmlg.org/mdi)
+  Can be found at [Material Icons](https://phoenix-webcomponent.gsmlg.org/mdi)
 
-    > Phoenix.WebComponent.Icons()
-      [
-        "abacus.svg",
-        "abjad-arabic.svg",
-        ...
-      ]
+      > Phoenix.WebComponent.Icons()
+        #=> [
+          "abacus.svg",
+          "abjad-arabic.svg",
+          ...
+        ]
   """
   @spec mdi_icons() :: [String.t()]
   def mdi_icons(), do: @icons
@@ -46,6 +46,25 @@ defmodule Phoenix.WebComponent.Icons do
     Icon html attribute class
 
   """
+  @doc type: :component
+  attr(:id, :string,
+    default: "",
+    doc: """
+    html attribute id
+    """
+  )
+  attr(:class, :string,
+    default: "",
+    doc: """
+    html attribute class
+    """
+  )
+  attr(:name, :string,
+    required: true,
+    doc: """
+    material icon name, avaliable names are return value of `mdi_icons()`.
+    """
+  )
   def wc_mdi(assigns) do
     assigns =
       assigns

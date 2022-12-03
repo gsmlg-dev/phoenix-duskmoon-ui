@@ -21,20 +21,26 @@ defmodule Phoenix.WebComponent.Card do
         quickly became a worldwide pop-culture phenomenon.
       </.wc_card>
 
-  ## Attributes
-
-    * `id` - `binary`
-    html attribute id
-
-    * `class` - `binary`
-    html attribute class
-
-  ## Slots
-
-    * `title`
-    Render a card title.
-
   """
+  @doc type: :component
+  attr(:id, :string,
+    default: "",
+    doc: """
+    html attribute id
+    """
+  )
+  attr(:class, :string,
+    default: "",
+    doc: """
+    html attribute class
+    """
+  )
+  slot(:title,
+    required: false,
+    doc: """
+    Render a card title.
+    """
+  )
   def wc_card(assigns) do
     assigns =
       assigns

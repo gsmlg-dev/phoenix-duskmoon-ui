@@ -26,31 +26,46 @@ defmodule Phoenix.WebComponent.Appbar do
         </:user_profile>
       </.wc_appbar>
 
-  ## Attributes
-
-  * `id` - `binary`
-  html attribute id
-
-  * `class` - `binary`
-  html attribute class
-
-  * `title` - `binary`
-  Appbar Title.
-  example: "App Title"
-
-  * `menus` - `List`
-  Appbar menus.
-  example: [ %{ label: "Menu Name", to: ~p"/menu-url" } ]
-
-  ## Slots
-
-  * `logo`
-  Appbar Logo.
-
-  * `user_profile`
-  Right side userinfo.
-
   """
+  @doc type: :component
+  attr(:id, :string,
+    default: "",
+    doc: """
+    html attribute id
+    """
+  )
+  attr(:class, :string,
+    default: "",
+    doc: """
+    html attribute class
+    """
+  )
+  attr(:title, :string,
+    default: "",
+    doc: """
+    Appbar title.
+    """
+  )
+  attr(:menus, :list,
+    default: [],
+    doc: """
+    Appbar menus
+
+    example: [ %{ label: "Menu Name", to: ~p"/menu-url" } ]
+    """
+  )
+  slot(:logo,
+    required: false,
+    doc: """
+    Appbar Logo.
+    """
+  )
+  slot(:user_profile,
+    required: false,
+    doc: """
+    Appbar right side user_profile.
+    """
+  )
   def wc_appbar(assigns) do
     assigns =
       assigns
@@ -100,35 +115,46 @@ defmodule Phoenix.WebComponent.Appbar do
         </:user_profile>
       </.wc_simple_appbar>
 
-  ## Attributes
-
-  * `id` - `binary`
-  html attribute id
-
-  * `class` - `binary`
-  html attribute class
-
-  * `home` - `binary`
-  Link to Home page.
-  example: "https://hexdocs.pm/phoenix_webcomponent/"
-
-  * `title` - `binary`
-  Appbar Title.
-  example: "App Title"
-
-  * `menus` - `List`
-  Appbar menus.
-  example: [ %{ label: "Menu Name", to: ~p"/menu-url" } ]
-
-  ## Slots
-
-  - `logo`
-  Appbar Logo.
-
-  - `user_profile`
-  Right side userinfo.
-
   """
+  @doc type: :component
+  attr(:id, :string,
+    default: "",
+    doc: """
+    html attribute id
+    """
+  )
+  attr(:class, :string,
+    default: "",
+    doc: """
+    html attribute class
+    """
+  )
+  attr(:title, :string,
+    default: "",
+    doc: """
+    Appbar title.
+    """
+  )
+  attr(:menus, :list,
+    default: [],
+    doc: """
+    Appbar menus
+
+    example: [ %{ label: "Menu Name", to: ~p"/menu-url" } ]
+    """
+  )
+  slot(:logo,
+    required: false,
+    doc: """
+    Appbar Logo.
+    """
+  )
+  slot(:user_profile,
+    required: false,
+    doc: """
+    Appbar right side user_profile.
+    """
+  )
   def wc_simple_appbar(assigns) do
     assigns =
       assigns
