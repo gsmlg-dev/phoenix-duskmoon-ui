@@ -1,3 +1,12 @@
+## [2.5.2](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.5.1...v2.5.2) (2022-12-04)
+
+
+### Bug Fixes
+
+* Add exports in package.json. ([c2b4df1](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/c2b4df1db019c4d7f0c1d12eb6c5e527d038c570))
+* Fix default value. ([f14a0c7](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/f14a0c75055be67fd24733f82f9606f1ee7364ac))
+* Fix test. ([4d1a56e](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/4d1a56e2a6d6f054580f69c089f31c00cef5c705))
+
 ## [2.5.1](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.5.0...v2.5.1) (2022-12-03)
 
 
