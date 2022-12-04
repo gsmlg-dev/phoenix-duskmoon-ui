@@ -7,6 +7,6 @@ defmodule Phoenix.WebComponent.MarkdownTest do
 
   test "remark empty" do
     assert render_component(&wc_markdown/1, content: "value") ==
-             ~s[<remark-element id="" class="">value</remark-element>]
+             ~s[<remark-element class="">value</remark-element>]
   end
 end
