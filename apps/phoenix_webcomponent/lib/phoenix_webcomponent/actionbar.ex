@@ -22,8 +22,8 @@ defmodule Phoenix.WebComponent.Actionbar do
 
   """
   @doc type: :component
-  attr(:id, :string,
-    default: "",
+  attr(:id, :any,
+    default: false,
     doc: """
     html attribute id
     """
@@ -53,13 +53,15 @@ defmodule Phoenix.WebComponent.Actionbar do
   def wc_actionbar(assigns) do
     assigns =
       assigns
-      |> assign_new(:id, fn -> false end)
-      |> assign_new(:class, fn -> "" end)
       |> assign_new(:left, fn -> [] end)
       |> assign_new(:right, fn -> [] end)
 
     ~H"""
-    <div id={@id} class={"w-full h-16 px-4 flex justify-between items-center #{@class}"}>
+    <div id={@id} class={[
+      "w-full h-16 px-4",
+      "flex justify-between items-center",
+      @class
+    ]}>
       <div classs="flex justify-start items-center">
         <%= render_slot(@left) %>
       </div>

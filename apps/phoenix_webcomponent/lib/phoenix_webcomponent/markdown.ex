@@ -23,22 +23,10 @@ defmodule Phoenix.WebComponent.Markdown do
       <.wc_markdown content={"# Hello"} class="btn" />
       #=> <remark-element class="btn" content="# Hello"></remark-element>
 
-  ## Attributes
-
-    * `id` - `binary`
-    remark-element html attribute id
-
-    * `class` - `binary`
-    remark-element html attribute class
-
-    * `:debug` - print log in browser console
-
-    * `:content` - The content of markdown, replace innerHTML.
-
   """
   @doc type: :component
-  attr(:id, :string,
-    default: "",
+  attr(:id, :any,
+    default: false,
     doc: """
     html attribute id
     """
@@ -66,13 +54,6 @@ defmodule Phoenix.WebComponent.Markdown do
   )
 
   def wc_markdown(assigns) do
-    assigns =
-      assigns
-      |> assign_new(:id, fn -> false end)
-      |> assign_new(:class, fn -> false end)
-      |> assign_new(:debug, fn -> false end)
-      |> assign_new(:content, fn -> "" end)
-
     ~H"""
     <remark-element id={@id} debug={@debug} class={@class}><%= @content %></remark-element>
     """

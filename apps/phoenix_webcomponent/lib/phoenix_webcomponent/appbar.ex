@@ -28,8 +28,8 @@ defmodule Phoenix.WebComponent.Appbar do
 
   """
   @doc type: :component
-  attr(:id, :string,
-    default: "",
+  attr(:id, :any,
+    default: false,
     doc: """
     html attribute id
     """
@@ -75,11 +75,7 @@ defmodule Phoenix.WebComponent.Appbar do
   def wc_appbar(assigns) do
     assigns =
       assigns
-      |> assign_new(:id, fn -> false end)
-      |> assign_new(:class, fn -> "" end)
       |> assign_new(:logo, fn -> [] end)
-      |> assign_new(:title, fn -> "GSMLG Title" end)
-      |> assign_new(:menus, fn -> [] end)
       |> assign_new(:user_profile, fn -> [] end)
 
     ~H"""
@@ -123,8 +119,8 @@ defmodule Phoenix.WebComponent.Appbar do
 
   """
   @doc type: :component
-  attr(:id, :string,
-    default: "",
+  attr(:id, :any,
+    default: false,
     doc: """
     html attribute id
     """
@@ -170,25 +166,23 @@ defmodule Phoenix.WebComponent.Appbar do
   def wc_simple_appbar(assigns) do
     assigns =
       assigns
-      |> assign_new(:id, fn -> false end)
-      |> assign_new(:class, fn -> "" end)
       |> assign_new(:logo, fn -> [] end)
-      |> assign_new(:home, fn -> nil end)
-      |> assign_new(:title, fn -> "GSMLG Title" end)
-      |> assign_new(:menus, fn -> [] end)
+      |> assign_new(:home, fn -> false end)
       |> assign_new(:user_profile, fn -> [] end)
 
     ~H"""
     <header
-      class={"h-14 w-screen bg-sky-900 text-white text-xl flex items-center justify-center relative #{@class}"}
+      class={[
+        "h-14 w-screen bg-sky-900 text-white text-xl",
+        "flex items-center justify-center relative",
+        @class
+      ]}
     >
-      <div class="container h-full flex items-center justify-between select-none ">
+      <div class="container h-full flex items-center justify-between select-none">
         <div class="flex flex-row items-center justify-start">
-          <a href={@home}>
-            <%= render_slot(@logo) %>
-          </a>
+          <%= render_slot(@logo) %>
           <h1 class="select-none text-blod hidden lg:inline-flex">
-            <a href={@home}><%= @title %></a>
+            <%= @title %>
           </h1>
           <nav class="text-fuchsia-200 mx-12 hidden md:flex flex-row items-center gap-4">
             <%= for menu <- @menus do %>
@@ -203,7 +197,6 @@ defmodule Phoenix.WebComponent.Appbar do
           <div
             class="hidden md:inline-flex"
           ><%= render_slot(@user_profile) %></div>
-
           <button
             class="inline-flex md:hidden w-10 h-10 justify-center items-center"
             onclick="document.getElementById('header-md-menu').classList.toggle('hidden')"

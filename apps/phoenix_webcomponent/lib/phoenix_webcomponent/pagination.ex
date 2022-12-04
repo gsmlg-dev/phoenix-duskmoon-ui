@@ -12,30 +12,10 @@ defmodule Phoenix.WebComponent.Pagination do
 
       <.wc_pagination page_num={5} page_size={15} total={100} update_event="update-page"/>
 
-  ## Attributes
-
-    * `id` - `binary`
-    html attribute id
-
-    * `class` - `binary`
-    html attribute class
-
-    * `page_size` - `integer`
-    How manage items are showing in page.
-
-    * `page_num` - `integer`
-    Which page is showing.
-
-    * `total` - `integer`
-    Total item count.
-
-    * `update_event` - `binary`
-    Phoenix live event name for page status update.
-
   """
   @doc type: :component
-  attr(:id, :string,
-    default: "",
+  attr(:id, :any,
+    default: false,
     doc: """
     html attribute id
     """
@@ -70,22 +50,13 @@ defmodule Phoenix.WebComponent.Pagination do
   )
 
   attr(:update_event, :string,
-    default: "",
+    default: "update_current_page",
     doc: """
     Phoenix live event name for page status update.
     """
   )
 
   def wc_pagination(assigns) do
-    assigns =
-      assigns
-      |> assign_new(:id, fn -> false end)
-      |> assign_new(:class, fn -> "" end)
-      |> assign_new(:page_size, fn -> 10 end)
-      |> assign_new(:page_num, fn -> 1 end)
-      |> assign_new(:total, fn -> 0 end)
-      |> assign_new(:update_event, fn -> "update_current_page" end)
-
     max_page =
       if assigns.total > 0 do
         (assigns.total / assigns.page_size) |> ceil

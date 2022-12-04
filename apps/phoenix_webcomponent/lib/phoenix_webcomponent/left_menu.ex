@@ -15,8 +15,8 @@ defmodule Phoenix.WebComponent.LeftMenu do
 
   """
   @doc type: :component
-  attr(:id, :string,
-    default: "",
+  attr(:id, :any,
+    default: false,
     doc: """
     html attribute id
     """
@@ -60,17 +60,13 @@ defmodule Phoenix.WebComponent.LeftMenu do
   slot(:title,
     required: false,
     doc: """
-    Render a card title.
+    Render menu title.
     """
   )
 
   def wc_left_menu(assigns) do
     assigns =
       assigns
-      |> assign_new(:id, fn -> false end)
-      |> assign_new(:class, fn -> "" end)
-      |> assign_new(:active, fn -> false end)
-      |> assign_new(:menus, fn -> [] end)
       |> assign_new(:title, fn -> nil end)
 
     ~H"""

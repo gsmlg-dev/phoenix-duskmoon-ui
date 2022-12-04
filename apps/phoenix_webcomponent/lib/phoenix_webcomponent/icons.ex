@@ -35,8 +35,8 @@ defmodule Phoenix.WebComponent.Icons do
 
   """
   @doc type: :component
-  attr(:id, :string,
-    default: "",
+  attr(:id, :any,
+    default: false,
     doc: """
     html attribute id
     """
@@ -64,12 +64,6 @@ defmodule Phoenix.WebComponent.Icons do
   )
 
   def wc_mdi(assigns) do
-    assigns =
-      assigns
-      |> assign_new(:id, fn -> false end)
-      |> assign_new(:class, fn -> false end)
-      |> assign_new(:color, fn -> "currentcolor" end)
-
     name = assigns.name
 
     inner_svg =

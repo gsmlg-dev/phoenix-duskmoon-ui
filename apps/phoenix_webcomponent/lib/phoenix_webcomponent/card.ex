@@ -23,8 +23,8 @@ defmodule Phoenix.WebComponent.Card do
 
   """
   @doc type: :component
-  attr(:id, :string,
-    default: "",
+  attr(:id, :any,
+    default: false,
     doc: """
     html attribute id
     """
@@ -34,6 +34,13 @@ defmodule Phoenix.WebComponent.Card do
     default: "",
     doc: """
     html attribute class
+    """
+  )
+
+  attr(:fit, :boolean,
+    default: false,
+    doc: """
+    set width and height to fit-content
     """
   )
 
@@ -47,12 +54,16 @@ defmodule Phoenix.WebComponent.Card do
   def wc_card(assigns) do
     assigns =
       assigns
-      |> assign_new(:id, fn -> false end)
-      |> assign_new(:class, fn -> "" end)
       |> assign_new(:title, fn -> nil end)
 
     ~H"""
-    <div id={@id} class={"bg-white w-fit h-fit m-4 p-6 flex flex-col shadow #{@class}"}>
+    <div id={@id} class={[
+        if(@fit, do: "w-fit h-fit", else: "w-auto h-auto"),
+        "m-4 p-6 flex flex-col",
+        "bg-white shadow",
+        @class
+      ]}
+    >
       <%= unless is_nil(@title) do %>
       <div class="w-full text-xl flex flex-row justify-start items-center h-10 mb-4">
         <%= render_slot(@title) %>

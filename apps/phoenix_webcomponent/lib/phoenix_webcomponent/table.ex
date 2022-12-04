@@ -30,8 +30,8 @@ defmodule Phoenix.WebComponent.Table do
 
   """
   @doc type: :component
-  attr(:id, :string,
-    default: "",
+  attr(:id, :any,
+    default: false,
     doc: """
     html attribute id
     """
@@ -68,10 +68,7 @@ defmodule Phoenix.WebComponent.Table do
   def wc_table(assigns) do
     assigns =
       assigns
-      |> assign_new(:id, fn -> false end)
-      |> assign_new(:class, fn -> "" end)
       |> assign_new(:col, fn -> [] end)
-      |> assign_new(:rows, fn -> [] end)
 
     ~H"""
     <table id={@id} class={"table-fixed border-collapse border-spacing-0 #{@class}"}>
