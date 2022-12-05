@@ -1,3 +1,10 @@
+## [2.5.3](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.5.2...v2.5.3) (2022-12-05)
+
+
+### Bug Fixes
+
+* Fix exports at package.json and docs of table. ([836d2b1](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/836d2b12803c5e2d3e3152e744f761e5aaa38fd7))
+
 ## [2.5.2](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.5.1...v2.5.2) (2022-12-04)
 
 
