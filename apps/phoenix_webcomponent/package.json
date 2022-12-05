@@ -5,7 +5,7 @@
   "exports": {
     ".": "./priv/static/phoenix_webcomponent.js",
     "./css": "./priv/static/phoenix_webcomponent.css",
-    "./svg/": "./priv/mdi/svg/"
+    "./svg/*.svg": "./priv/mdi/svg/*.svg"
   },
   "scripts": {
     "prepublish": "mix tailwind default && mix esbuild default"
@@ -15,7 +15,8 @@
     "CHANGELOG.md",
     "LICENSE",
     "package.json",
-    "priv/static/"
+    "priv/static/",
+    "priv/svg/"
   ],
   "dependencies": {
     "@gsmlg/lit": "^1.29.5",

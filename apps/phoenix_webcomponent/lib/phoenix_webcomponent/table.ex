@@ -63,7 +63,9 @@ defmodule Phoenix.WebComponent.Table do
     </:col>
     ```
     """
-  )
+  ) do
+    attr(:label, :string, doc: "table column title")
+  end
 
   def wc_table(assigns) do
     assigns =
