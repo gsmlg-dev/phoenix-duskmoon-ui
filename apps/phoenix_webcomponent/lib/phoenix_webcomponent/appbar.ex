@@ -6,6 +6,7 @@ defmodule Phoenix.WebComponent.Appbar do
   use Phoenix.WebComponent, :html
 
   import Phoenix.WebComponent.Link
+  import Phoenix.WebComponent.Icons
 
   @doc """
   Generates a html customElement appbar.
@@ -201,7 +202,7 @@ defmodule Phoenix.WebComponent.Appbar do
             class="inline-flex md:hidden w-10 h-10 justify-center items-center"
             onclick="document.getElementById('header-md-menu').classList.toggle('hidden')"
           >
-            <Heroicons.bars_3 class="w-8 h-8" />
+            <.wc_mdi name="menu" class="w-8 h-8" />
           </button>
         </div>
       </div>
