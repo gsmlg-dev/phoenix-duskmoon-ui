@@ -1,3 +1,10 @@
+## [2.5.4](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.5.3...v2.5.4) (2022-12-06)
+
+
+### Bug Fixes
+
+* Use local icon instead. ([a623091](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/a623091b9f405d401e367935a3e657b72452f228))
+
 ## [2.5.3](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.5.2...v2.5.3) (2022-12-05)
 
 
