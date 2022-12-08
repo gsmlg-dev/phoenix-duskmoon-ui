@@ -24,4 +24,20 @@ defmodule PhxWCStorybookWeb.PageController do
     icons = Phoenix.WebComponent.Icons.mdi_icons()
     render(conn, "mdi.html", mdi_icons: icons, active_menu: "mdi")
   end
+
+  def bsi(conn, %{"filter" => filter}) do
+    icons =
+      Phoenix.WebComponent.Icons.bsi_icons()
+      |> Enum.filter(fn n ->
+        reg = Regex.compile!("#{filter}", [:caseless])
+        Regex.match?(reg, n)
+      end)
+
+    render(conn, "bsi.html", bsi_icons: icons, active_menu: "bsi")
+  end
+
+  def bsi(conn, _params) do
+    icons = Phoenix.WebComponent.Icons.bsi_icons()
+    render(conn, "bsi.html", bsi_icons: icons, active_menu: "bsi")
+  end
 end
