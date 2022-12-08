@@ -1,3 +1,10 @@
+# [2.6.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.5.4...v2.6.0) (2022-12-08)
+
+
+### Features
+
+* Add bootstrap icons. ([21d76e1](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/21d76e18b91d075ded072067a12d123b2050a8da))
+
 ## [2.5.4](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.5.3...v2.5.4) (2022-12-06)
 
 
