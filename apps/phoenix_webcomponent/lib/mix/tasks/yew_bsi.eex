@@ -1,0 +1,38 @@
+#![allow(non_camel_case_types)]
+
+use yew::prelude::*;
+use strum_macros::Display;
+use strum_macros::EnumIter;
+
+#[derive(Properties, Clone, PartialEq)]
+pub struct BSIconProps {
+    #[prop_or_default]
+    pub id: AttrValue,
+    /// CSS classes to add to the anchor element (optional).
+    #[prop_or_default]
+    pub class: Classes,
+    #[prop_or(AttrValue::from("1em"))]
+    pub size: AttrValue,
+    #[prop_or(AttrValue::from("currentColor"))]
+    pub color: AttrValue,
+}
+
+#[derive(Clone, PartialEq, Debug, Display, EnumIter)]
+pub enum BSIcon {
+<%= for name <- icons do %>  BS_<%= name |> String.split("-") |> Enum.map(&String.capitalize/1) |> Enum.join("") %>,
+<% end %>
+}
+
+<%= for name <- icons do %>
+#[function_component(BS_<%= name |> String.split("-") |> Enum.map(&String.capitalize/1) |> Enum.join("") %>)]
+pub fn r#bsi_<%= String.replace(name, "-", "_") %>(props: &BSIconProps) -> Html {
+  let owned_props = props.clone();
+
+  html! {
+    <svg xmlns="http://www.w3.org/2000/svg" id={owned_props.id} class={owned_props.class} width={owned_props.size} fill={owned_props.color} viewBox="0 0 16 16">
+      <%= File.read!(Application.app_dir(:phoenix_webcomponent, "priv/bsi/svg/#{name}.svg")) |> String.replace(~r/<svg[^>]+>/, "") |> String.replace("</svg>", "") |> String.trim() %>
+    </svg>
+  }
+}
+
+<% end %>

@@ -1,0 +1,38 @@
+#![allow(non_camel_case_types)]
+
+use yew::prelude::*;
+use strum_macros::Display;
+use strum_macros::EnumIter;
+
+#[derive(Properties, Clone, PartialEq)]
+pub struct MDIconProps {
+    #[prop_or_default]
+    pub id: AttrValue,
+    /// CSS classes to add to the anchor element (optional).
+    #[prop_or_default]
+    pub class: Classes,
+    #[prop_or(AttrValue::from("1em"))]
+    pub size: AttrValue,
+    #[prop_or(AttrValue::from("currentColor"))]
+    pub color: AttrValue,
+}
+
+#[derive(Clone, PartialEq, Debug, Display, EnumIter)]
+pub enum MDIcon {
+<%= for name <- icons do %>  MD_<%= name |> String.split("-") |> Enum.map(&String.capitalize/1) |> Enum.join("") %>,
+<% end %>
+}
+
+<%= for name <- icons do %>
+#[function_component(MD_<%= name |> String.split("-") |> Enum.map(&String.capitalize/1) |> Enum.join("") %>)]
+pub fn r#mdi_<%= String.replace(name, "-", "_") %>(props: &MDIconProps) -> Html {
+  let owned_props = props.clone();
+
+  html! {
+    <svg xmlns="http://www.w3.org/2000/svg" id={owned_props.id} class={owned_props.class} width={owned_props.size} fill={owned_props.color} viewBox="0 0 24 24">
+      <%= File.read!(Application.app_dir(:phoenix_webcomponent, "priv/mdi/svg/#{name}.svg")) |> String.replace(~r/<svg[^>]+>/, "") |> String.replace("</svg>", "") %>
+    </svg>
+  }
+}
+
+<% end %>
