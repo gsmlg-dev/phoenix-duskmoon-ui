@@ -10,6 +10,8 @@ defmodule Mix.Tasks.PhxWc.GenRsIcons do
   def run(["mdi"]) do
     Mix.Task.run("app.start")
 
+    ns = "MD"
+
     icons =
       File.ls!(Application.app_dir(:phoenix_webcomponent, "priv/mdi/svg"))
       |> Enum.filter(&String.ends_with?(&1, ".svg"))
@@ -19,16 +21,33 @@ defmodule Mix.Tasks.PhxWc.GenRsIcons do
       name |> String.split("-") |> Enum.map(&String.capitalize/1) |> Enum.join("")
     end)
 
-    quoted = EEx.compile_file("#{__DIR__}/yew_mdi.eex")
-    {result, _bindings} = Code.eval_quoted(quoted, icons: icons, icon_names: icon_names)
+    wd = Path.expand("../../../mdi", __DIR__)
+    File.mkdir_p!(wd)
 
-    fl = Path.expand("../../../mdi.rs", __DIR__)
-
+    quoted = EEx.compile_file("#{__DIR__}/yew_icon_mod.eex")
+    {result, _bindings} = Code.eval_quoted(quoted, icons: icons, icon_names: icon_names, ns: ns)
+    fl = "#{wd}/mod.rs"
     File.write!(fl, result)
+
+    quoted = EEx.compile_file("#{__DIR__}/yew_icon_props.eex")
+    {result, _bindings} = Code.eval_quoted(quoted, ns: ns)
+    fl = "#{wd}/icon_props.rs"
+    File.write!(fl, result)
+
+    icons |> Enum.each(fn(name) ->
+      inner = File.read!(Application.app_dir(:phoenix_webcomponent, "priv/mdi/svg/#{name}.svg")) |> String.replace(~r/<svg[^>]+>/, "") |> String.replace("</svg>", "") |> String.trim()
+      quoted = EEx.compile_file("#{__DIR__}/yew_icon_item.eex")
+      {result, _bindings} = Code.eval_quoted(quoted, ns: ns, name: name, inner: inner, vb: "0 0 24 24")
+
+      fl = "#{wd}/#{name |> String.replace("-", "_")}.rs"
+      File.write!(fl, result)
+    end)
   end
 
   def run(["bsi"]) do
     Mix.Task.run("app.start")
+
+    ns = "BS"
 
     icons =
       File.ls!(Application.app_dir(:phoenix_webcomponent, "priv/bsi/svg"))
@@ -39,12 +58,27 @@ defmodule Mix.Tasks.PhxWc.GenRsIcons do
       name |> String.split("-") |> Enum.map(&String.capitalize/1) |> Enum.join("")
     end)
 
-    quoted = EEx.compile_file("#{__DIR__}/yew_bsi.eex")
-    {result, _bindings} = Code.eval_quoted(quoted, icons: icons, icon_names: icon_names)
+    wd = Path.expand("../../../bsi", __DIR__)
+    File.mkdir_p!(wd)
 
-    fl = Path.expand("../../../bsi.rs", __DIR__)
-
+    quoted = EEx.compile_file("#{__DIR__}/yew_icon_mod.eex")
+    {result, _bindings} = Code.eval_quoted(quoted, icons: icons, icon_names: icon_names, ns: ns)
+    fl = "#{wd}/mod.rs"
     File.write!(fl, result)
+
+    quoted = EEx.compile_file("#{__DIR__}/yew_icon_props.eex")
+    {result, _bindings} = Code.eval_quoted(quoted, ns: ns)
+    fl = "#{wd}/icon_props.rs"
+    File.write!(fl, result)
+
+    icons |> Enum.each(fn(name) ->
+      inner = File.read!(Application.app_dir(:phoenix_webcomponent, "priv/bsi/svg/#{name}.svg")) |> String.replace(~r/<svg[^>]+>/, "") |> String.replace("</svg>", "") |> String.trim()
+      quoted = EEx.compile_file("#{__DIR__}/yew_icon_item.eex")
+      {result, _bindings} = Code.eval_quoted(quoted, ns: ns, name: name, inner: inner, vb: "0 0 16 16")
+
+      fl = "#{wd}/#{name |> String.replace("-", "_")}.rs"
+      File.write!(fl, result)
+    end)
   end
 
   def run(_) do

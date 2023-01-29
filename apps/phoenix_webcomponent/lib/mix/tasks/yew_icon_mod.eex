@@ -1,0 +1,21 @@
+use self::icon_props::IconProps;
+
+pub const NAMES: [&str; <%= icon_names |> length() %>] = [
+<%= for name <- icon_names do %>  "<%= name %>",
+<% end %>
+];
+
+<%= for {name, idx} <- Enum.with_index(icons) do %>pub use self::<%= name |> String.replace("-", "_") %>::<%= ns %>_<%= Enum.at(icon_names, idx) %>;
+<% end %>
+
+#[function_component(<%= ns %>Icon)]
+pub fn r#md_icon(props: &IconProps) -> Html {
+  let owned_props = props.clone();
+  match owned_props.name {
+<%= for name <- icon_names do %>    implicit_clone::unsync::IString::Static("<%= name %>") => html! {
+      <MD_<%= name %> ..owned_props />
+    },
+<% end %>
+    _ => html! {},
+  }
+}
