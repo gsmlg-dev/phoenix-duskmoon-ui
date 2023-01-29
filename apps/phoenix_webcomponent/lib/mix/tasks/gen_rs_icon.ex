@@ -42,6 +42,11 @@ defmodule Mix.Tasks.PhxWc.GenRsIcons do
       fl = "#{wd}/icon_#{name |> String.replace("-", "_")}.rs"
       File.write!(fl, result)
     end)
+
+    quoted = EEx.compile_file("#{__DIR__}/yew_icon_names.eex")
+    {result, _bindings} = Code.eval_quoted(quoted, icons: icons, icon_names: icon_names, ns: ns, mod_name: "mdi")
+    fl = "#{wd}/mdi_names.rs"
+    File.write!(fl, result)
   end
 
   def run(["bsi"]) do
@@ -79,6 +84,11 @@ defmodule Mix.Tasks.PhxWc.GenRsIcons do
       fl = "#{wd}/icon_#{name |> String.replace("-", "_")}.rs"
       File.write!(fl, result)
     end)
+
+    quoted = EEx.compile_file("#{__DIR__}/yew_icon_names.eex")
+    {result, _bindings} = Code.eval_quoted(quoted, icons: icons, icon_names: icon_names, ns: ns, mod_name: "bsi")
+    fl = "#{wd}/bsi_names.rs"
+    File.write!(fl, result)
   end
 
   def run(_) do
