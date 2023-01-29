@@ -1,8 +1,6 @@
 #![allow(non_camel_case_types)]
 
 use yew::prelude::*;
-use strum_macros::Display;
-use strum_macros::EnumIter;
 
 #[derive(Properties, Clone, PartialEq)]
 pub struct BSIconProps {
