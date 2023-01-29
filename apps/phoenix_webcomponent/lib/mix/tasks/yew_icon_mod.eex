@@ -1,3 +1,4 @@
+use yew::prelude::*;
 use self::icon_props::IconProps;
 
 pub const NAMES: [&str; <%= icon_names |> length() %>] = [
