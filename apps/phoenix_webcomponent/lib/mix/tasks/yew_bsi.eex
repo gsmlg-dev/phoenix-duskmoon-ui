@@ -15,24 +15,38 @@ pub struct BSIconProps {
     pub size: AttrValue,
     #[prop_or(AttrValue::from("currentColor"))]
     pub color: AttrValue,
+    #[prop_or_default]
+    pub name: AttrValue,
 }
 
-#[derive(Clone, PartialEq, Debug, Display, EnumIter)]
-pub enum BSIcon {
-<%= for name <- icons do %>  BS_<%= name |> String.split("-") |> Enum.map(&String.capitalize/1) |> Enum.join("") %>,
+pub const BSI_NAMES: [&str; <%= icon_names |> length() %>] = [
+<%= for name <- icon_names do %>  "<%= name %>",
 <% end %>
-}
+];
 
-<%= for name <- icons do %>
-#[function_component(BS_<%= name |> String.split("-") |> Enum.map(&String.capitalize/1) |> Enum.join("") %>)]
+<%= for {name, idx} <- Enum.with_index(icons) do %>
+#[function_component(BS_<%= Enum.at(icon_names, idx) %>)]
 pub fn r#bsi_<%= String.replace(name, "-", "_") %>(props: &BSIconProps) -> Html {
   let owned_props = props.clone();
 
   html! {
-    <svg xmlns="http://www.w3.org/2000/svg" id={owned_props.id} class={owned_props.class} width={owned_props.size} fill={owned_props.color} viewBox="0 0 16 16">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id={owned_props.id} class={owned_props.class} width={owned_props.size} fill={owned_props.color}>
       <%= File.read!(Application.app_dir(:phoenix_webcomponent, "priv/bsi/svg/#{name}.svg")) |> String.replace(~r/<svg[^>]+>/, "") |> String.replace("</svg>", "") |> String.trim() %>
     </svg>
   }
 }
 
 <% end %>
+
+#[function_component(BSIcon)]
+pub fn r#bs_icon(props: &BSIconProps) -> Html {
+  let owned_props = props.clone();
+  match owned_props.name {
+<%= for name <- icon_names do %>    implicit_clone::unsync::IString::Static("<%= name %>") => html! {
+      <BS_<%= name %> ..owned_props />
+    },
+<% end %>
+    _ => html! {},
+  }
+}
+

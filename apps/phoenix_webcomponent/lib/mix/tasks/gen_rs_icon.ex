@@ -15,8 +15,12 @@ defmodule Mix.Tasks.PhxWc.GenRsIcons do
       |> Enum.filter(&String.ends_with?(&1, ".svg"))
       |> Enum.map(&String.trim(&1, ".svg"))
 
+    icon_names = icons |> Enum.map(fn(name) ->
+      name |> String.split("-") |> Enum.map(&String.capitalize/1) |> Enum.join("")
+    end)
+
     quoted = EEx.compile_file("#{__DIR__}/yew_mdi.eex")
-    {result, _bindings} = Code.eval_quoted(quoted, icons: icons)
+    {result, _bindings} = Code.eval_quoted(quoted, icons: icons, icon_names: icon_names)
 
     fl = Path.expand("../../../mdi.rs", __DIR__)
 
@@ -31,8 +35,12 @@ defmodule Mix.Tasks.PhxWc.GenRsIcons do
       |> Enum.filter(&String.ends_with?(&1, ".svg"))
       |> Enum.map(&String.trim(&1, ".svg"))
 
+    icon_names = icons |> Enum.map(fn(name) ->
+      name |> String.split("-") |> Enum.map(&String.capitalize/1) |> Enum.join("")
+    end)
+
     quoted = EEx.compile_file("#{__DIR__}/yew_bsi.eex")
-    {result, _bindings} = Code.eval_quoted(quoted, icons: icons)
+    {result, _bindings} = Code.eval_quoted(quoted, icons: icons, icon_names: icon_names)
 
     fl = Path.expand("../../../bsi.rs", __DIR__)
 

@@ -15,13 +15,14 @@ pub struct MDIconProps {
     pub size: AttrValue,
     #[prop_or(AttrValue::from("currentColor"))]
     pub color: AttrValue,
+    #[prop_or_default]
+    pub name: AttrValue,
 }
 
-#[derive(Clone, PartialEq, Debug, Display, EnumIter)]
-pub enum MDIcon {
-<%= for name <- icons do %>  MD_<%= name |> String.split("-") |> Enum.map(&String.capitalize/1) |> Enum.join("") %>,
+pub const MDI_NAMES: [&str; <%= icon_names |> length() %>] = [
+<%= for name <- icon_names do %>  "<%= name %>",
 <% end %>
-}
+];
 
 <%= for name <- icons do %>
 #[function_component(MD_<%= name |> String.split("-") |> Enum.map(&String.capitalize/1) |> Enum.join("") %>)]
@@ -36,3 +37,15 @@ pub fn r#mdi_<%= String.replace(name, "-", "_") %>(props: &MDIconProps) -> Html 
 }
 
 <% end %>
+
+#[function_component(MDIcon)]
+pub fn r#md_icon(props: &MDIconProps) -> Html {
+  let owned_props = props.clone();
+  match owned_props.name {
+<%= for name <- icon_names do %>    implicit_clone::unsync::IString::Static("<%= name %>") => html! {
+      <MD_<%= name %> ..owned_props />
+    },
+<% end %>
+    _ => html! {},
+  }
+}
