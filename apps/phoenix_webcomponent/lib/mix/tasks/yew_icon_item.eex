@@ -1,7 +1,7 @@
 #![allow(non_camel_case_types)]
 
 use yew::prelude::*;
-use self::icon_props::IconProps;
+use self::props::IconProps;
 
 #[function_component(<%= ns %>_<%= name |> String.split("-") |> Enum.map(&String.capitalize/1) |> Enum.join("") %>)]
 pub fn r#icon_<%= String.replace(name, "-", "_") %>(props: &IconProps) -> Html {

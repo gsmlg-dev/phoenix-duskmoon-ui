@@ -31,7 +31,7 @@ defmodule Mix.Tasks.PhxWc.GenRsIcons do
 
     quoted = EEx.compile_file("#{__DIR__}/yew_icon_props.eex")
     {result, _bindings} = Code.eval_quoted(quoted, ns: ns)
-    fl = "#{wd}/icon_props.rs"
+    fl = "#{wd}/props.rs"
     File.write!(fl, result)
 
     icons |> Enum.each(fn(name) ->
@@ -39,7 +39,7 @@ defmodule Mix.Tasks.PhxWc.GenRsIcons do
       quoted = EEx.compile_file("#{__DIR__}/yew_icon_item.eex")
       {result, _bindings} = Code.eval_quoted(quoted, ns: ns, name: name, inner: inner, vb: "0 0 24 24")
 
-      fl = "#{wd}/#{name |> String.replace("-", "_")}.rs"
+      fl = "#{wd}/icon_#{name |> String.replace("-", "_")}.rs"
       File.write!(fl, result)
     end)
   end
@@ -68,7 +68,7 @@ defmodule Mix.Tasks.PhxWc.GenRsIcons do
 
     quoted = EEx.compile_file("#{__DIR__}/yew_icon_props.eex")
     {result, _bindings} = Code.eval_quoted(quoted, ns: ns)
-    fl = "#{wd}/icon_props.rs"
+    fl = "#{wd}/props.rs"
     File.write!(fl, result)
 
     icons |> Enum.each(fn(name) ->
@@ -76,7 +76,7 @@ defmodule Mix.Tasks.PhxWc.GenRsIcons do
       quoted = EEx.compile_file("#{__DIR__}/yew_icon_item.eex")
       {result, _bindings} = Code.eval_quoted(quoted, ns: ns, name: name, inner: inner, vb: "0 0 16 16")
 
-      fl = "#{wd}/#{name |> String.replace("-", "_")}.rs"
+      fl = "#{wd}/icon_#{name |> String.replace("-", "_")}.rs"
       File.write!(fl, result)
     end)
   end
