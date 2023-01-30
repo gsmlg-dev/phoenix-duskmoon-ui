@@ -1,6 +1,6 @@
 use yew::prelude::*;
 
-use self::<%= mod_name %>::IconProps;
+use super::<%= mod_name %>::IconProps;
 
 <%= for name <- icon_names do %>use super::<%= mod_name %>::<%= ns %>_<%= name %>;
 <% end %>
