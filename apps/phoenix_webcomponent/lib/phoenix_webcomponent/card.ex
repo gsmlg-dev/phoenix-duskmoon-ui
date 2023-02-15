@@ -37,13 +37,6 @@ defmodule Phoenix.WebComponent.Card do
     """
   )
 
-  attr(:fit, :boolean,
-    default: false,
-    doc: """
-    set width and height to fit-content
-    """
-  )
-
   slot(:title,
     required: false,
     doc: """
@@ -58,17 +51,21 @@ defmodule Phoenix.WebComponent.Card do
 
     ~H"""
     <div id={@id} class={[
-        if(@fit, do: "w-fit h-fit", else: "w-auto h-auto"),
         "m-4 p-6 flex flex-col",
         "bg-white shadow",
         @class
       ]}
     >
-      <%= unless is_nil(@title) do %>
-      <div class="w-full text-xl flex flex-row justify-start items-center h-10 mb-4">
-        <%= render_slot(@title) %>
+      <div
+        :for={{title, _i} <- Enum.with_index(@title)}
+        class={[
+          "w-full text-xl",
+          "flex flex-row justify-start items-center",
+          "h-10 mb-4"
+        ]}
+      >
+        <%= render_slot(title) %>
       </div>
-      <% end %>
       <%= render_slot(@inner_block) %>
     </div>
     """

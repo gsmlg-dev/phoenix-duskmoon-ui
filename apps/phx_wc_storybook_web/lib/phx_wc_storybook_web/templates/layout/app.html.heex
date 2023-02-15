@@ -2,31 +2,45 @@
 <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 <main class="container h-[calc(100vh-56px)] flex flex-row justify-start items-start overflow-hidden">
   <.wc_left_menu
-    class="w-48 h-[calc(100vh-56px)]"
+    class="w-48 h-[calc(100vh-56px)] bg-slate-100"
     active={assigns[:active_menu]}
-    menus={[
-      {"Icons", [
-        {"mdi", "MDIcons", "/mdi"},
-        {"bsi", "BSIcons", "/bsi"}
-      ]},
-      {"Hooks", [
-        {"phx-wc-hook", "PhxWCHook", "/"}
-      ]},
-      {"Components",
-        [
-          {"actionbar", "Actionbar", "/storybook/components/actionbar"},
-          {"card", "Card", "/storybook/components/card"},
-          {"left_menu", "Left Menu", "/storybook/components/left_menu"},
-          {"markdown", "Markdown", "/storybook/components/markdown"},
-          {"pagination", "Pagination", "/storybook/components/pagination"},
-          {"table", "Table", "/storybook/components/table"}
-        ]}
-    ]}
   >
-  <:title>
-  <.wc_link href="/">Simple Appbar</.wc_link>
-  <.wc_link href="/?mode=wc">WC Appbar</.wc_link>
+  <:title class="text-slate-400 font-bold">
+    WebComponent
   </:title>
+  <:menu>
+    <.wc_left_menu_group active={assigns[:active_menu]}>
+      <:title>Hooks</:title>
+      <:menu id="phx-wc-hook" to={"/"}>
+        <.wc_mdi name={"webhook"} class="w-4 h-4" />
+        PhxWCHook
+      </:menu>
+    </.wc_left_menu_group>
+  </:menu>
+  <:menu>
+    <.wc_left_menu_group active={assigns[:active_menu]}>
+      <:title>Icons</:title>
+      <:menu id="mdi" to={"/mdi"}>
+        <.wc_mdi name={"material-design"} class="w-4 h-4" />
+        MD Icon
+      </:menu>
+      <:menu id="bsi" to={"/bsi"}>
+        <.wc_bsi name={"bootstrap"} class="w-4 h-4" />
+        BS Icon
+      </:menu>
+    </.wc_left_menu_group>
+  </:menu>
+  <:menu>
+    <.wc_left_menu_group active={assigns[:active_menu]}>
+      <:title>Components</:title>
+      <:menu id="table" to="/storybook/components/actionbar">Actionbar</:menu>
+      <:menu id="card" to="/storybook/components/card">Card</:menu>
+      <:menu id="left_menu" to="/storybook/components/left_menu">Left Menu</:menu>
+      <:menu id="markdown" to="/storybook/components/markdown">Markdown</:menu>
+      <:menu id="pagination" to="/storybook/components/pagination">Pagination</:menu>
+      <:menu id="table" to="/storybook/components/table">Table</:menu>
+    </.wc_left_menu_group>
+  </:menu>
   </.wc_left_menu>
   <%= @inner_content %>
 </main>

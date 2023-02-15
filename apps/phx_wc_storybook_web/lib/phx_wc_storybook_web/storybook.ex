@@ -7,8 +7,8 @@ defmodule PhxWCStorybookWeb.Storybook do
     # Path to your storybook stories (required).
     content_path: Path.expand("storybook", __DIR__),
 
-    # Custom storybook title. Default is "Live Storybook".
-    title: "Phoenix WebComponent Live Storybook",
+    # Custom storybook title. Default is "Storybook".
+    title: "Phoenix WebComponent Storybook",
 
     # Story compilation mode, can be either `:eager` or `:lazy`.
     # It defaults to `:lazy` in dev environment, `:eager` in other environments.
