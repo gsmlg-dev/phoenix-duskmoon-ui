@@ -44,7 +44,7 @@ defmodule Phoenix.WebComponent.LeftMenu do
     Render menu title.
     """
   ) do
-    attr :class, :string
+    attr(:class, :string)
   end
 
   slot(:menu,
@@ -55,7 +55,6 @@ defmodule Phoenix.WebComponent.LeftMenu do
   )
 
   def wc_left_menu(assigns) do
-
     ~H"""
     <nav
       id={@id}
@@ -86,7 +85,6 @@ defmodule Phoenix.WebComponent.LeftMenu do
     </nav>
     """
   end
-
 
   @doc """
   Generates left menu Group
@@ -125,7 +123,7 @@ defmodule Phoenix.WebComponent.LeftMenu do
     Render menu title.
     """
   ) do
-    attr :class, :string
+    attr(:class, :string)
   end
 
   slot(:menu,
@@ -134,9 +132,9 @@ defmodule Phoenix.WebComponent.LeftMenu do
     Render menu
     """
   ) do
-    attr :id, :string
-    attr :class, :string
-    attr :to, :string
+    attr(:id, :string)
+    attr(:class, :string)
+    attr(:to, :string)
   end
 
   def wc_left_menu_group(assigns) do
@@ -181,5 +179,4 @@ defmodule Phoenix.WebComponent.LeftMenu do
     </div>
     """
   end
-
 end

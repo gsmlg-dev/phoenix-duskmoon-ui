@@ -16,7 +16,7 @@ defmodule PhxWCStorybookWeb.Storybook.Components.LeftMenu do
       %Variation{
         id: :default,
         attributes: %{
-          active: "left_menu",
+          active: "left_menu"
         },
         slots: [
           """
@@ -51,7 +51,7 @@ defmodule PhxWCStorybookWeb.Storybook.Components.LeftMenu do
               <:menu id="table" to="/storybook/components/table">Table</:menu>
             </.wc_left_menu_group>
           </:menu>
-          """,
+          """
         ]
       }
     ]

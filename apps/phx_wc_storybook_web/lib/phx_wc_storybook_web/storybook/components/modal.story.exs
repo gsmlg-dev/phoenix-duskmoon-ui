@@ -24,8 +24,8 @@ defmodule PhxWCStorybookWeb.Storybook.Components.Modal do
         id: :default,
         slots: [
           "<:title>Phoenix WebComponent</:title>",
-          "<:body>Phoenix WebComponent Storybook</:body>",
-        ],
+          "<:body>Phoenix WebComponent Storybook</:body>"
+        ]
       },
       %Variation{
         id: :with_buttons,
@@ -54,8 +54,8 @@ defmodule PhxWCStorybookWeb.Storybook.Components.Modal do
               OK
             </button>
           </:button>
-          """,
-        ],
+          """
+        ]
       },
       %Variation{
         id: :without_title,
@@ -71,9 +71,9 @@ defmodule PhxWCStorybookWeb.Storybook.Components.Modal do
               OK
             </button>
           </:button>
-          """,
-        ],
-      },
+          """
+        ]
+      }
     ]
   end
 end

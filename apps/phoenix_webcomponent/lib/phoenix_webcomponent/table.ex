@@ -68,7 +68,6 @@ defmodule Phoenix.WebComponent.Table do
   end
 
   def wc_table(assigns) do
-
     ~H"""
     <table
       id={@id}
