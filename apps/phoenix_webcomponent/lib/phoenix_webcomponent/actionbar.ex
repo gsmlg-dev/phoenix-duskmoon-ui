@@ -57,11 +57,14 @@ defmodule Phoenix.WebComponent.Actionbar do
       |> assign_new(:right, fn -> [] end)
 
     ~H"""
-    <div id={@id} class={[
-      "w-full h-16 px-4",
-      "flex justify-between items-center",
-      @class
-    ]}>
+    <div
+      id={@id}
+      class={[
+        "w-full h-16 px-4",
+        "flex justify-between items-center",
+        @class,
+      ]}
+    >
       <div classs="flex justify-start items-center">
         <%= render_slot(@left) %>
       </div>

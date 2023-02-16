@@ -173,6 +173,7 @@ defmodule Phoenix.WebComponent.Appbar do
 
     ~H"""
     <header
+      id={@id}
       class={[
         "h-14 w-screen bg-sky-900 text-white text-xl",
         "flex items-center justify-center relative",
@@ -199,7 +200,10 @@ defmodule Phoenix.WebComponent.Appbar do
             class="hidden md:inline-flex"
           ><%= render_slot(@user_profile) %></div>
           <button
-            class="inline-flex md:hidden w-10 h-10 justify-center items-center"
+            class={[
+              "inline-flex justify-center items-center",
+              "md:hidden w-10 h-10",
+            ]}
             onclick="document.getElementById('header-md-menu').classList.toggle('hidden')"
           >
             <.wc_mdi name="menu" class="w-8 h-8" />
@@ -209,7 +213,12 @@ defmodule Phoenix.WebComponent.Appbar do
       <div id="header-md-menu" class="absolute z-50 top-14 w-full bg-sky-900 flex flex-col md:hidden hidden">
         <%= for menu <- @menus do %>
         <a
-          class="w-full bg-cyan-600 hover:bg-cyan-400 py-2 px-6 text-lg font-semibold leading-6 text-center text-white active:text-white/80"
+          class={[
+            "w-full py-2 px-6",
+            "bg-cyan-600 hover:bg-cyan-400",
+            "font-semibold leading-6",
+            "text-lg text-center text-white active:text-white/80",
+          ]}
           href={menu.to}
         ><%= menu.label %></a>
         <% end %>

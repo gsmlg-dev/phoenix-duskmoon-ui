@@ -50,7 +50,9 @@ defmodule Phoenix.WebComponent.Card do
       |> assign_new(:title, fn -> nil end)
 
     ~H"""
-    <div id={@id} class={[
+    <div
+      id={@id}
+      class={[
         "m-4 p-6 flex flex-col",
         "bg-white shadow",
         @class
@@ -61,7 +63,8 @@ defmodule Phoenix.WebComponent.Card do
         class={[
           "w-full text-xl",
           "flex flex-row justify-start items-center",
-          "h-10 mb-4"
+          "h-10 mb-4",
+          Map.get(title, :class, ""),
         ]}
       >
         <%= render_slot(title) %>
