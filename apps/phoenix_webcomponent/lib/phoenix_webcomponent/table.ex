@@ -68,27 +68,33 @@ defmodule Phoenix.WebComponent.Table do
   end
 
   def wc_table(assigns) do
-    assigns =
-      assigns
-      |> assign_new(:col, fn -> [] end)
 
     ~H"""
-    <table id={@id} class={"table-fixed border-collapse border-spacing-0 #{@class}"}>
+    <table
+      id={@id}
+      class={[
+        "table-fixed border-collapse border-spacing-0",
+        @class,
+      ]}
+    >
       <thead>
         <tr class="bg-slate-100 h-[34px]">
-          <%= for col <- @col do %>
-            <th class=" px-4 py-2 slate-700 text-left font-medium"><%= col.label %></th>
-          <% end %>
+          <th
+            :for={col <- @col}
+            class="px-4 py-2 slate-700 text-left font-medium"
+          ><%= col.label %></th>
         </tr>
       </thead>
       <tbody>
-      <%= for row <- @rows do %>
-        <tr class="bg-slate-50 even:bg-white h-[40px]">
-          <%= for col <- @col do %>
-            <td class=" px-4 py-2"><%= render_slot(col, row) %></td>
-          <% end %>
+        <tr
+          :for={row <- @rows}
+          class={"bg-slate-50 even:bg-white h-[40px]"}
+        >
+          <td
+            :for={col <- @col}
+            class="px-4 py-2"
+          ><%= render_slot(col, row) %></td>
         </tr>
-      <% end %>
       </tbody>
     </table>
     """
