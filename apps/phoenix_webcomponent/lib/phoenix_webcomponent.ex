@@ -47,6 +47,7 @@ defmodule Phoenix.WebComponent do
       alias Phoenix.WebComponent.Card
       alias Phoenix.WebComponent.LeftMenu
       alias Phoenix.WebComponent.Markdown
+      alias Phoenix.WebComponent.Modal
       alias Phoenix.WebComponent.Pagination
       alias Phoenix.WebComponent.Table
     end
@@ -70,6 +71,7 @@ defmodule Phoenix.WebComponent do
       import Phoenix.WebComponent.Card
       import Phoenix.WebComponent.LeftMenu
       import Phoenix.WebComponent.Markdown
+      import Phoenix.WebComponent.Modal
       import Phoenix.WebComponent.Pagination
       import Phoenix.WebComponent.Table
       import Phoenix.WebComponent.Icons
