@@ -1,7 +1,6 @@
 defmodule PhxWCStorybookWeb.Storybook.Components.LeftMenu do
   # :live_component or :page are also available
   use PhxLiveStorybook.Story, :component
-  import Phoenix.WebComponent.LeftMenu
 
   def function, do: &Phoenix.WebComponent.LeftMenu.wc_left_menu/1
 
