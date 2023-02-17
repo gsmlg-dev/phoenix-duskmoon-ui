@@ -1,3 +1,23 @@
+# [2.7.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.6.0...v2.7.0) (2023-02-17)
+
+
+### Bug Fixes
+
+* Fix build yew icons. ([76f2972](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/76f2972c267ca03cc831fc18c4a07a942777f875))
+* Fix build yew icons. ([29d5ff5](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/29d5ff582947cc666228538f6e3951a9800f5d33))
+* Fix format. ([4ac5cc4](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/4ac5cc4d1db2b3fa1698508e12dc090fc843757a))
+* Fix import. ([a42689e](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/a42689e7e46e355a506680efcf9ba3d8cca35ba3))
+* Fix left_menu storybook. ([87fd7ac](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/87fd7aca9e0c098f6dbe9d80e7225741f23d7b2f))
+* Format class to array. ([b3b29bf](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/b3b29bf5e4f5ff985bedf10975c153d20d4bd7b0))
+* Optimize menu. ([9864d5e](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/9864d5ed7262678c3de22aa19e82b9e16180e6c9))
+* Use macro. ([87f2554](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/87f25548b2df510536bea5edd2828881719d5375))
+
+
+### Features
+
+* Add wc_modal. ([2b2a951](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/2b2a95107e9c55066084694bab7695cbc98ad8dc))
+* Refactor left_menu. ([575fa11](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/575fa111d6ad4f513ad8ce5730d75eb20293353e))
+
 # [2.6.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.5.4...v2.6.0) (2022-12-08)
 
 
