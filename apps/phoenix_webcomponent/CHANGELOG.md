@@ -1,3 +1,10 @@
+# [2.8.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.7.0...v2.8.0) (2023-02-18)
+
+
+### Features
+
+* Add Breadcrumb component. ([72b1812](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/72b1812d4568c98abe48cdea05445e7184823f14))
+
 # [2.7.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.6.0...v2.7.0) (2023-02-17)
 
 
