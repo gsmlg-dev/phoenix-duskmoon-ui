@@ -44,6 +44,7 @@ defmodule Phoenix.WebComponent do
       alias Phoenix.WebComponent.Link
       alias Phoenix.WebComponent.Actionbar
       alias Phoenix.WebComponent.Appbar
+      alias Phoenix.WebComponent.Breadcrumb
       alias Phoenix.WebComponent.Card
       alias Phoenix.WebComponent.LeftMenu
       alias Phoenix.WebComponent.Markdown
@@ -68,6 +69,7 @@ defmodule Phoenix.WebComponent do
       import Phoenix.WebComponent.Link
       import Phoenix.WebComponent.Actionbar
       import Phoenix.WebComponent.Appbar
+      import Phoenix.WebComponent.Breadcrumb
       import Phoenix.WebComponent.Card
       import Phoenix.WebComponent.LeftMenu
       import Phoenix.WebComponent.Markdown
