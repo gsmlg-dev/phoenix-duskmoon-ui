@@ -17,11 +17,11 @@ defmodule Phoenix.WebComponent.Markdown do
 
   ## Examples
 
-      <.wc_markdown content={"# Hello"} class="dark" />
-      #=> <remark-element class="dark" content="# Hello"></remark-element>
+      <.wc_markdown class="dark"># Hello</.wc_markdown>
+      #=> <remark-element class="dark"># Hello</remark-element>
 
-      <.wc_markdown content={"# Hello"} class="btn" />
-      #=> <remark-element class="btn" content="# Hello"></remark-element>
+      <.wc_markdown class="btn"># Hello</.wc_markdown>
+      #=> <remark-element class="btn"># Hello</remark-element>
 
   """
   @doc type: :component

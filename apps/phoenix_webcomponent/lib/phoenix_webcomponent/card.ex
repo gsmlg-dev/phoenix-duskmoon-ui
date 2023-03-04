@@ -42,7 +42,9 @@ defmodule Phoenix.WebComponent.Card do
     doc: """
     Render a card title.
     """
-  )
+  ) do
+    attr(:class, :string, doc: "title class")
+  end
 
   def wc_card(assigns) do
     assigns =

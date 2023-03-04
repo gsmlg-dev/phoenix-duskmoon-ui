@@ -15,10 +15,10 @@
     <!-- icon_name is bootstrap icon name -->
     <.wc_bsi name={icon_name} class="w-12 h-12" />
     ```
-    """}></.wc_markdown>
+    """} />
     <div class="flex flex-row mt-4 mb-2">
         <.form for={@conn} action={~p"/bsi"} method="get" class={["flex flex-row gap-2"]}>
-            <.input field={:filter} label="Icon Name" name="filter" value={@filter} />
+            <.input label="Icon Name" name="filter" value={@filter} />
             <.button type="submit">Search</.button>
         </.form>
     </div>
