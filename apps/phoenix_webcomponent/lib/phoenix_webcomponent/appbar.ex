@@ -5,30 +5,78 @@ defmodule Phoenix.WebComponent.Appbar do
   """
   use Phoenix.WebComponent, :html
 
+  import Phoenix.WebComponent.Link
+  import Phoenix.WebComponent.Icons
+
   @doc """
   Generates a html customElement appbar.
 
-  ## Attributes
+  ## Example
 
-  - `title` binary
-  example: "App Title"
-  - `menus` List
-  example: [ %{ label: "Menu Name", to: ~p"/menu-url" } ]
-
-  ## Slots
-
-  - `logo`
-  - `user_profile`
+      <.wc_appbar
+        title={"Phoenix WebComponent"}
+        menus={[
+          %{ label: "Component Storybook", to: Routes.live_storybook_path(@conn, :root) }
+        ]}
+      >
+        <:logo>
+          <logo-gsmlg-dev />
+        </:logo>
+        <:user_profile>
+          (^_^)
+        </:user_profile>
+      </.wc_appbar>
 
   """
+  @doc type: :component
+  attr(:id, :any,
+    default: false,
+    doc: """
+    html attribute id
+    """
+  )
+
+  attr(:class, :string,
+    default: "",
+    doc: """
+    html attribute class
+    """
+  )
+
+  attr(:title, :string,
+    default: "",
+    doc: """
+    Appbar title.
+    """
+  )
+
+  attr(:menus, :list,
+    default: [],
+    doc: """
+    Appbar menus
+
+    example: [ %{ label: "Menu Name", to: ~p"/menu-url" } ]
+    """
+  )
+
+  slot(:logo,
+    required: false,
+    doc: """
+    Appbar Logo.
+    """
+  )
+
+  slot(:user_profile,
+    required: false,
+    doc: """
+    Appbar right side user_profile.
+    """
+  )
+
   def wc_appbar(assigns) do
     assigns =
       assigns
-      |> assign_new(:id, fn -> false end)
-      |> assign_new(:class, fn -> "" end)
       |> assign_new(:logo, fn -> [] end)
-      |> assign_new(:title, fn -> "GSMLG Title" end)
-      |> assign_new(:menus, fn -> [] end)
       |> assign_new(:user_profile, fn -> [] end)
 
     ~H"""
@@ -37,17 +85,149 @@ defmodule Phoenix.WebComponent.Appbar do
         <%= render_slot(@logo) %>
       </nav>
       <%= for menu <- @menus do %>
-        <.link
+        <.wc_link
           navigate={menu.to}
           slot="nav"
         >
           <%= menu.label %>
-        </.link>
+        </.wc_link>
       <% end %>
       <span slot="user">
         <%= render_slot(@user_profile) %>
       </span>
     </app-bar>
+    """
+  end
+
+  @doc """
+  Generates an simple html appbar.
+
+  ## Example
+
+      <.wc_simple_appbar
+        title={"Phoenix WebComponent"}
+        menus={[
+          %{ label: "Component Storybook", to: Routes.live_storybook_path(@conn, :root) }
+        ]}
+      >
+        <:logo>
+          <logo-gsmlg-dev />
+        </:logo>
+        <:user_profile>
+          (^_^)
+        </:user_profile>
+      </.wc_simple_appbar>
+
+  """
+  @doc type: :component
+  attr(:id, :any,
+    default: false,
+    doc: """
+    html attribute id
+    """
+  )
+
+  attr(:class, :string,
+    default: "",
+    doc: """
+    html attribute class
+    """
+  )
+
+  attr(:title, :string,
+    default: "",
+    doc: """
+    Appbar title.
+    """
+  )
+
+  attr(:menus, :list,
+    default: [],
+    doc: """
+    Appbar menus
+
+    example: [ %{ label: "Menu Name", to: ~p"/menu-url" } ]
+    """
+  )
+
+  slot(:logo,
+    required: false,
+    doc: """
+    Appbar Logo.
+    """
+  )
+
+  slot(:user_profile,
+    required: false,
+    doc: """
+    Appbar right side user_profile.
+    """
+  )
+
+  def wc_simple_appbar(assigns) do
+    assigns =
+      assigns
+      |> assign_new(:logo, fn -> [] end)
+      |> assign_new(:home, fn -> false end)
+      |> assign_new(:user_profile, fn -> [] end)
+
+    ~H"""
+    <header
+      id={@id}
+      class={[
+        "h-14 w-screen bg-sky-900 text-white text-xl",
+        "flex items-center justify-center relative",
+        @class
+      ]}
+    >
+      <div class="container h-full flex items-center justify-between select-none">
+        <div class="flex flex-row items-center justify-start">
+          <%= render_slot(@logo) %>
+          <h1 class="select-none text-blod hidden lg:inline-flex">
+            <%= @title %>
+          </h1>
+          <nav class="text-fuchsia-200 mx-12 hidden md:flex flex-row items-center gap-4">
+            <%= for menu <- @menus do %>
+            <a
+              class="rounded-lg bg-cyan-600 hover:bg-cyan-400 py-2 px-6 text-lg font-semibold leading-6 text-center text-white active:text-white/80"
+              href={menu.to}
+            ><%= menu.label %></a>
+            <% end %>
+          </nav>
+        </div>
+        <div class="flex flex-row items-center justify-end">
+          <div
+            class="hidden md:inline-flex"
+          ><%= render_slot(@user_profile) %></div>
+          <button
+            class={[
+              "inline-flex justify-center items-center",
+              "md:hidden w-10 h-10",
+            ]}
+            onclick="document.getElementById('header-md-menu').classList.toggle('hidden')"
+          >
+            <.wc_mdi name="menu" class="w-8 h-8" />
+          </button>
+        </div>
+      </div>
+      <div id="header-md-menu" class="absolute z-50 top-14 w-full bg-sky-900 flex flex-col md:hidden hidden">
+        <%= for menu <- @menus do %>
+        <a
+          class={[
+            "w-full py-2 px-6",
+            "bg-cyan-600 hover:bg-cyan-400",
+            "font-semibold leading-6",
+            "text-lg text-center text-white active:text-white/80",
+          ]}
+          href={menu.to}
+        ><%= menu.label %></a>
+        <% end %>
+        <hr />
+        <div
+          class="w-full my-2 text-center flex flex-col justify-start items-center"
+        ><%= render_slot(@user_profile) %></div>
+      </div>
+    </header>
     """
   end
 end

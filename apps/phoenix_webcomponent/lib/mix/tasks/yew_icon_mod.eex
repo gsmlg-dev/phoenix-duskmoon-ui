@@ -1,0 +1,6 @@
+pub mod props;
+pub use self::props::IconProps;
+
+<%= for {name, idx} <- Enum.with_index(icons) do %>pub mod icon_<%= name |> String.replace("-", "_") %>;
+pub use self::icon_<%= name |> String.replace("-", "_") %>::<%= ns %>_<%= Enum.at(icon_names, idx) %>;
+<% end %>

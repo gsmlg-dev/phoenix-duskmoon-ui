@@ -10,21 +10,53 @@ defmodule Phoenix.WebComponent.Pagination do
 
   ## Examples
 
-  ## Options
+      <.wc_pagination page_num={5} page_size={15} total={100} update_event="update-page"/>
 
   """
+  @doc type: :component
+  attr(:id, :any,
+    default: false,
+    doc: """
+    html attribute id
+    """
+  )
+
+  attr(:class, :string,
+    default: "",
+    doc: """
+    html attribute class
+    """
+  )
+
+  attr(:page_size, :integer,
+    default: 10,
+    doc: """
+    items shows per page
+    """
+  )
+
+  attr(:page_num, :integer,
+    default: 1,
+    doc: """
+    page num
+    """
+  )
+
+  attr(:total, :integer,
+    default: 0,
+    doc: """
+    total items count
+    """
+  )
+
+  attr(:update_event, :string,
+    default: "update_current_page",
+    doc: """
+    Phoenix live event name for page status update.
+    """
+  )
+
   def wc_pagination(assigns) do
-    assigns =
-      assigns
-      |> assign_new(:id, fn -> false end)
-      |> assign_new(:class, fn -> "" end)
-      |> assign_new(:page_size, fn -> 10 end)
-      |> assign_new(:page_num, fn -> 1 end)
-      |> assign_new(:total, fn -> 0 end)
-      |> assign_new(:update_event, fn -> "update_current_page" end)
-
-    # IO.inspect(assigns)
-
     max_page =
       if assigns.total > 0 do
         (assigns.total / assigns.page_size) |> ceil
@@ -64,7 +96,15 @@ defmodule Phoenix.WebComponent.Pagination do
       |> assign(:pages, pages)
 
     ~H"""
-    <div id={@id} class={"flex items-center justify-end border-t border-gray-200 bg-white px-4 py-3 #{@class}"}>
+    <div
+      id={@id}
+      class={[
+        "flex items-center justify-end",
+        "border-t border-gray-200",
+        "bg-white px-4 py-3",
+        @class
+      ]}
+    >
       <div class="flex flex-row items-center mx-8">
         <div class="inline-flex flex-row items-center mx-8">
           <p class="inline-flex flex-row items-center text-medium text-gray-700">
@@ -78,7 +118,13 @@ defmodule Phoenix.WebComponent.Pagination do
               phx-click={if @page_num == 1, do: false, else: @update_event}
               phx-value-current={if @page_num == 1, do: nil, else: @page_num - 1}
               disabled={if @page_num == 1, do: true, else: false}
-              class={"#{if @page_num == 1, do: "", else: "cursor-pointer"} relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"}>
+              class={[
+                "relative inline-flex items-center",
+                "rounded-l-md border border-gray-300",
+                "bg-white hover:bg-gray-50 px-2 py-2",
+                "text-sm font-medium text-gray-500 focus:z-20",
+                if(@page_num == 1, do: "", else: "cursor-pointer"),
+              ]}>
               <span class="sr-only">Previous</span>
               <!-- Heroicon name: mini/chevron-left -->
               <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -89,12 +135,26 @@ defmodule Phoenix.WebComponent.Pagination do
 
           <%= for p <- @pages do %>
             <%= if is_binary(p) do %>
-              <span class={"relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"}><%= p %></span>
+              <span
+                class={[
+                  "relative inline-flex items-center",
+                  "border border-gray-300",
+                  "bg-white hover:bg-gray-50",
+                  "px-4 py-2",
+                  "text-sm font-medium text-gray-500 focus:z-20",
+                ]}
+              ><%= p %></span>
             <% else %>
               <span
                 phx-click={@update_event} phx-value-current={p}
                 aria-current={if p == @page_num, do: "page", else: false }
-                class={"relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20" <> if p == @page_num, do: " z-10 bg-indigo-50 border-indigo-500 text-indigo-600", else: " cursor-pointer" }
+                class={[
+                  "relative inline-flex items-center",
+                  "border border-gray-300",
+                  "bg-white hover:bg-gray-50 px-4 py-2",
+                  "text-sm font-medium text-gray-500 focus:z-20",
+                  if(p == @page_num, do: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", else: "cursor-pointer"),
+                ]}
               ><%= p %></span>
             <% end %>
           <% end %>
@@ -103,7 +163,14 @@ defmodule Phoenix.WebComponent.Pagination do
               phx-click={if @page_num == @max_page, do: false, else: @update_event}
               phx-value-current={if @page_num == @max_page, do: nil, else: @page_num + 1}
               disabled={if @page_num == @max_page, do: true, else: false}
-              class={"#{if @page_num == @max_page, do: "", else: "cursor-pointer"} relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20"}>
+              class={[
+                "inline-flex items-center",
+                "relative px-2 py-2",
+                "border border-gray-300 rounded-r-md",
+                "bg-white hover:bg-gray-50",
+                "text-sm font-medium text-gray-500 focus:z-20",
+                if(@page_num == @max_page, do: "", else: "cursor-pointer"),
+              ]}>
               <span class="sr-only">Next</span>
               <!-- Heroicon name: mini/chevron-right -->
               <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -112,7 +179,6 @@ defmodule Phoenix.WebComponent.Pagination do
             </span>
           </nav>
         </div>
-
       </div>
     </div>
     """

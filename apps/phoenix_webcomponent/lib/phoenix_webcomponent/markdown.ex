@@ -17,26 +17,43 @@ defmodule Phoenix.WebComponent.Markdown do
 
   ## Examples
 
-      wc_markdown("# Hello", class: "dark")
+      <.wc_markdown content={"# Hello"} class="dark" />
       #=> <remark-element class="dark" content="# Hello"></remark-element>
 
-      wc_markdown(content: "# Hello", class: "btn")
+      <.wc_markdown content={"# Hello"} class="btn" />
       #=> <remark-element class="btn" content="# Hello"></remark-element>
 
-  ## Options
-
-    * `:debug` - print log in browser console
-
-    * `:content` - The content of markdown, replace innerHTML.
-
   """
-  def wc_markdown(assigns) do
-    assigns =
-      assigns
-      |> assign_new(:id, fn -> false end)
-      |> assign_new(:class, fn -> false end)
-      |> assign_new(:debug, fn -> false end)
+  @doc type: :component
+  attr(:id, :any,
+    default: false,
+    doc: """
+    html attribute id
+    """
+  )
 
+  attr(:class, :string,
+    default: "",
+    doc: """
+    html attribute class
+    """
+  )
+
+  attr(:debug, :boolean,
+    default: false,
+    doc: """
+    remark-element attribute, enable debug
+    """
+  )
+
+  attr(:content, :string,
+    default: "",
+    doc: """
+    markdown content
+    """
+  )
+
+  def wc_markdown(assigns) do
     ~H"""
     <remark-element id={@id} debug={@debug} class={@class}><%= @content %></remark-element>
     """

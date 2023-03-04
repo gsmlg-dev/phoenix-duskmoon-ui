@@ -1,0 +1,22 @@
+use yew::prelude::*;
+
+use super::<%= mod_name %>::IconProps;
+
+<%= for name <- icon_names do %>use super::<%= mod_name %>::<%= ns %>_<%= name %>;
+<% end %>
+
+pub const NAMES: [&str; <%= icon_names |> length() %>] = [
+<%= for name <- icon_names do %>  "<%= name %>",
+<% end %>
+];
+
+#[function_component(<%= ns %>Icon)]
+pub fn icon(props: &IconProps) -> Html {
+  let owned_props = props.clone();
+  match owned_props.name {
+<%= for name <- icon_names do %>    implicit_clone::unsync::IString::Static("<%= name %>") => html! {
+      <<%= ns %>_<%= name %> ..owned_props />
+    },
+<% end %>    _ => html! {},
+  }
+}

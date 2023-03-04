@@ -38,7 +38,7 @@ defmodule PhoenixWebComponent.Mixfile do
 
   defp deps do
     [
-      {:phoenix, "~> 1.7.0-rc.0", override: true},
+      {:phoenix, "~> 1.7.1"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_view, "~> 0.18"},
       {:plug, "~> 1.5", optional: true},

@@ -1,3 +1,118 @@
+# [2.7.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.6.0...v2.7.0) (2023-02-17)
+
+
+### Bug Fixes
+
+* Fix build yew icons. ([76f2972](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/76f2972c267ca03cc831fc18c4a07a942777f875))
+* Fix build yew icons. ([29d5ff5](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/29d5ff582947cc666228538f6e3951a9800f5d33))
+* Fix format. ([4ac5cc4](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/4ac5cc4d1db2b3fa1698508e12dc090fc843757a))
+* Fix import. ([a42689e](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/a42689e7e46e355a506680efcf9ba3d8cca35ba3))
+* Fix left_menu storybook. ([87fd7ac](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/87fd7aca9e0c098f6dbe9d80e7225741f23d7b2f))
+* Format class to array. ([b3b29bf](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/b3b29bf5e4f5ff985bedf10975c153d20d4bd7b0))
+* Optimize menu. ([9864d5e](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/9864d5ed7262678c3de22aa19e82b9e16180e6c9))
+* Use macro. ([87f2554](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/87f25548b2df510536bea5edd2828881719d5375))
+
+
+### Features
+
+* Add wc_modal. ([2b2a951](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/2b2a95107e9c55066084694bab7695cbc98ad8dc))
+* Refactor left_menu. ([575fa11](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/575fa111d6ad4f513ad8ce5730d75eb20293353e))
+
+# [2.6.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.5.4...v2.6.0) (2022-12-08)
+
+
+### Features
+
+* Add bootstrap icons. ([21d76e1](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/21d76e18b91d075ded072067a12d123b2050a8da))
+
+## [2.5.4](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.5.3...v2.5.4) (2022-12-06)
+
+
+### Bug Fixes
+
+* Use local icon instead. ([a623091](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/a623091b9f405d401e367935a3e657b72452f228))
+
+## [2.5.3](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.5.2...v2.5.3) (2022-12-05)
+
+
+### Bug Fixes
+
+* Fix exports at package.json and docs of table. ([836d2b1](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/836d2b12803c5e2d3e3152e744f761e5aaa38fd7))
+
+## [2.5.2](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.5.1...v2.5.2) (2022-12-04)
+
+
+### Bug Fixes
+
+* Add exports in package.json. ([c2b4df1](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/c2b4df1db019c4d7f0c1d12eb6c5e527d038c570))
+* Fix default value. ([f14a0c7](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/f14a0c75055be67fd24733f82f9606f1ee7364ac))
+* Fix test. ([4d1a56e](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/4d1a56e2a6d6f054580f69c089f31c00cef5c705))
+
+## [2.5.1](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.5.0...v2.5.1) (2022-12-03)
+
+
+### Bug Fixes
+
+* Add color attribute to wc_mdi. ([00ad870](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/00ad87073ae5fbb159d55438a08adffcd9fdfb18))
+* Fix test. ([8490170](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/8490170d7becea97061c8842e6274c1dc9174cc0))
+
+# [2.5.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.4.0...v2.5.0) (2022-12-03)
+
+
+### Features
+
+* Add material design icons community version. ([2ee18ad](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/2ee18adbeee0c2cb164f6177752af6e586b2349f))
+
+# [2.4.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.3.6...v2.4.0) (2022-12-01)
+
+
+### Features
+
+* Add new appbar wc_simple_appbar. ([4101601](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/4101601b24f09e9f4133f8c07f423a632025a641))
+
+## [2.3.6](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.3.5...v2.3.6) (2022-11-30)
+
+
+### Bug Fixes
+
+* Fix @gsmlg/lit. ([ababf12](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/ababf129ca57883ed51f3cc87b19885dbf7718ad))
+
+## [2.3.5](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.3.4...v2.3.5) (2022-11-30)
+
+
+### Bug Fixes
+
+* Update @gsmlg/lit. ([5fb7a17](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/5fb7a170f4faad16d58b17df1d176a2d07466a6d))
+
+## [2.3.4](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.3.3...v2.3.4) (2022-11-29)
+
+
+### Bug Fixes
+
+* Update @gsmlg/lit version. ([311f257](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/311f257f6bfc54f399d06c0b4bd0eabae12c8a11))
+
+## [2.3.3](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.3.2...v2.3.3) (2022-11-23)
+
+
+### Bug Fixes
+
+* Add new link storybbok. ([2234b3d](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/2234b3dbe84e0c99b48507a6c92c6acd3a1ae2ab))
+* Fix format. ([476dd84](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/476dd84ae6b1301e361457a2867ff9a2068d0271))
+
+## [2.3.2](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.3.1...v2.3.2) (2022-11-15)
+
+
+### Bug Fixes
+
+* Fix linke style. ([38d2dbf](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/38d2dbfde433f647dbd741ab215f438767401b35))
+
+## [2.3.1](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.3.0...v2.3.1) (2022-11-15)
+
+
+### Bug Fixes
+
+* Remove elixir 1.11. ([3e59cbc](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/3e59cbc8e0c24e7713228ccf20899e6bd7371512))
+
 ## [2.2.3](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v2.2.2...v2.2.3) (2022-10-14)
 
 

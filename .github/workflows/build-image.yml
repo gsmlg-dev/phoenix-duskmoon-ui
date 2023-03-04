@@ -2,7 +2,7 @@ name: build-image
 on:
   push:
     branches:
-      - main
+      - 2.x
 jobs:
   build-docker-image:
     name: Build docker image
@@ -30,4 +30,3 @@ jobs:
             RELEASE_VERSION=2.0.0
           tags: |
             docker.io/gsmlg/phx-wc-storybook:v2
-            docker.io/gsmlg/phx-wc-storybook:latest

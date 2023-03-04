@@ -2,13 +2,12 @@ name: test-and-release
 on:
   push:
     branches:
-      - '+([0-9])?(.{+([0-9]),x}).x'
+      - 2.x
       - main
       - alpha
       - beta
       - next
       - next-major
-      - umbrella
 jobs:
   tests:
     name: Run tests (Elixir ${{matrix.elixir}}, OTP ${{matrix.otp}})
