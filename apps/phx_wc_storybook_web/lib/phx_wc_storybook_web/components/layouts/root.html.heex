@@ -1,32 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="csrf-token" content={get_csrf_token()} />
     <.live_title suffix=" · PhxWCStorybook">
       <%= assigns[:page_title] || "PhxWCStorybook" %>
     </.live_title>
     <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
-    <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
-    </script>
+    <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}></script>
   </head>
-  <body class="bg-white antialiased flex flex-col items-center">
+  <body class="flex flex-col items-center">
     <div class="rainbow"></div>
-    <.wc_appbar
+    <%= if assigns[:mode] == "app" do %>
+    <.wc_simple_appbar
       title={"Phoenix WebComponent"}
       menus={[
-        %{ label: "Component Storybook", to: ~p"/" }
+        %{ label: "Component Storybook", to: ~p"/storybook" }
       ]}
     >
       <:logo>
         <logo-gsmlg-dev />
       </:logo>
       <:user_profile>
-        (^_^)
+        <.wc_link href={"https://github.com/gsmlg-dev/phoenix_webcomponent"}>
+          <.wc_mdi name="github" class="w-12 h-12" color="white" />
+        </.wc_link>
+      </:user_profile>
+    </.wc_simple_appbar>
+    <% else %>
+    <.wc_appbar
+      title={"Phoenix WebComponent"}
+      menus={[
+        %{ label: "Component Storybook", to: ~p"/storybook" }
+      ]}
+    >
+      <:logo>
+        <logo-gsmlg-dev />
+      </:logo>
+      <:user_profile>
+        <.wc_link href={"https://github.com/gsmlg-dev/phoenix_webcomponent"}>
+          <.wc_mdi name="github" class="w-12 h-12" color="white" />
+        </.wc_link>
       </:user_profile>
     </.wc_appbar>
-
+    <% end %>
     <%= @inner_content %>
   </body>
 </html>

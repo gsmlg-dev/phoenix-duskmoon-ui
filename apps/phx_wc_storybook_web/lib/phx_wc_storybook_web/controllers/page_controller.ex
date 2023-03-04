@@ -17,12 +17,12 @@ defmodule PhxWCStorybookWeb.PageController do
         Regex.match?(reg, n)
       end)
 
-    render(conn, "mdi.html", mdi_icons: icons, active_menu: "mdi")
+    render(conn, "mdi.html", mdi_icons: icons, active_menu: "mdi", filter: filter)
   end
 
   def mdi(conn, _params) do
     icons = Phoenix.WebComponent.Icons.mdi_icons()
-    render(conn, "mdi.html", mdi_icons: icons, active_menu: "mdi")
+    render(conn, "mdi.html", mdi_icons: icons, active_menu: "mdi", filter: "")
   end
 
   def bsi(conn, %{"filter" => filter}) do
@@ -33,11 +33,11 @@ defmodule PhxWCStorybookWeb.PageController do
         Regex.match?(reg, n)
       end)
 
-    render(conn, "bsi.html", bsi_icons: icons, active_menu: "bsi")
+    render(conn, "bsi.html", bsi_icons: icons, active_menu: "bsi", filter: filter)
   end
 
   def bsi(conn, _params) do
     icons = Phoenix.WebComponent.Icons.bsi_icons()
-    render(conn, "bsi.html", bsi_icons: icons, active_menu: "bsi")
+    render(conn, "bsi.html", bsi_icons: icons, active_menu: "bsi", filter: "")
   end
 end
