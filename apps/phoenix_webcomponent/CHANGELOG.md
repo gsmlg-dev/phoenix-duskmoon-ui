@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v3.1.0...v3.1.1) (2023-03-04)
+
+
+### Bug Fixes
+
+* Remove base css. ([fc85ed8](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/fc85ed83245d8f85022bca061ee7db29f14a0bd7))
+
 # [3.1.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v3.0.0...v3.1.0) (2023-03-04)
 
 
