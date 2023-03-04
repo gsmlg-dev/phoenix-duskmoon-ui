@@ -7,7 +7,7 @@ module.exports = {
   content: [
     './js/**/*.js',
     '../lib/phoenix_webcomponent/*.ex',
-    '../lib/phoenix_webcomponent/**/*.*ex'
+    '../lib/phoenix_webcomponent/**/*.ex'
   ],
   theme: {
     extend: {},

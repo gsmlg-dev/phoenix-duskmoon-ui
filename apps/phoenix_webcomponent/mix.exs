@@ -63,7 +63,7 @@ defmodule PhoenixWebComponent.Mixfile do
 
   defp aliases do
     [
-      prepublish: ["tailwind default --minify", "esbuild default --minify"]
+      prepublish: ["tailwind default", "esbuild default"]
     ]
   end
 end
