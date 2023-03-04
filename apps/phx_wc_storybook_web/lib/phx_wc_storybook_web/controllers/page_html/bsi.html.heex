@@ -17,11 +17,10 @@
     ```
     """}></.wc_markdown>
     <div class="flex flex-row mt-4 mb-2">
-        <%= form_for @conn, Routes.page_path(@conn, :bsi), [method: "get", class: "flex flex-row gap-2"], fn f -> %>
-        <label class="flex items-center">Icon Name</label>
-        <%= text_input f, :filter, class: "border rounded-lg py-2 px-3" %>
-        <%= submit "Search", class: "broder rounded-lg bg-blue-600 text-slate-100 py-2 px-3" %>
-        <% end %>
+        <.form for={@conn} action={Routes.page_path(@conn, :bsi)} method="get" class={["flex flex-row gap-2"]}>
+            <.input field={:filter} label="Icon Name" />
+            <.button type="submit">Search</.button>
+        </.form>
     </div>
     <div class="flex flex-row flex-wrap gap-4">
         <%= for icon_name <- @bsi_icons do %>

@@ -1,6 +1,6 @@
 defmodule PhxWCStorybookWeb.Storybook.Components.Actionbar do
   # :live_component or :page are also available
-  use PhxLiveStorybook.Story, :component
+  use PhoenixStorybook.Story, :component
 
   def function, do: &Phoenix.WebComponent.Actionbar.wc_actionbar/1
   def description, do: "A actionbar element."

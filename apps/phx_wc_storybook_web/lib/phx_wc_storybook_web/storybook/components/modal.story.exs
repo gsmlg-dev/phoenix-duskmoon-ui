@@ -1,5 +1,5 @@
 defmodule PhxWCStorybookWeb.Storybook.Components.Modal do
-  use PhxLiveStorybook.Story, :component
+  use PhoenixStorybook.Story, :component
 
   def function, do: &Phoenix.WebComponent.Modal.wc_modal/1
 

@@ -1,6 +1,6 @@
 defmodule PhxWCStorybookWeb.Storybook do
   @moduledoc false
-  use PhxLiveStorybook,
+  use PhoenixStorybook,
     # OTP name of your application.
     otp_app: :phx_wc_storybook_web,
 

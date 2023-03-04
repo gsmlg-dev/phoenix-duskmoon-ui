@@ -1,12 +1,12 @@
 defmodule PhxWCStorybookWeb.Router do
   use PhxWCStorybookWeb, :router
-  import PhxLiveStorybook.Router
+  import PhoenixStorybook.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
-    plug :put_root_layout, {PhxWCStorybookWeb.LayoutView, :root}
+    plug :put_root_layout, {PhxWCStorybookWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end

@@ -1,6 +1,6 @@
 defmodule PhxWCStorybookWeb.Storybook.Components.Breadcrumb do
   # :live_component or :page are also available
-  use PhxLiveStorybook.Story, :component
+  use PhoenixStorybook.Story, :component
 
   def function, do: &Phoenix.WebComponent.Breadcrumb.wc_breadcrumb/1
   def description, do: "A breadcrumb element."
