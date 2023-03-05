@@ -1,3 +1,10 @@
+## [3.1.3](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v3.1.2...v3.1.3) (2023-03-05)
+
+
+### Bug Fixes
+
+* Fix ci and docs. ([b10a828](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/b10a828b8023f00e6420371eb0976129fda56570))
+
 ## [3.1.2](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v3.1.1...v3.1.2) (2023-03-04)
 
 
