@@ -16,10 +16,11 @@
     <%= if assigns[:mode] == "app" do %>
     <.wc_simple_appbar
       title={"Phoenix WebComponent"}
-      menus={[
-        %{ label: "Component Storybook", to: ~p"/storybook" }
-      ]}
+      class="bg-blue-600 text-slate-200"
     >
+      <:menu to={~p"/storybook"}>
+        Storybook
+      </:menu>
       <:logo>
         <logo-gsmlg-dev />
       </:logo>
@@ -32,10 +33,10 @@
     <% else %>
     <.wc_appbar
       title={"Phoenix WebComponent"}
-      menus={[
-        %{ label: "Component Storybook", to: ~p"/storybook" }
-      ]}
     >
+      <:menu to={~p"/storybook"}>
+        Storybook
+      </:menu>
       <:logo>
         <logo-gsmlg-dev />
       </:logo>

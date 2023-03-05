@@ -15,10 +15,10 @@ defmodule Phoenix.WebComponent.Appbar do
 
       <.wc_appbar
         title={"Phoenix WebComponent"}
-        menus={[
-          %{ label: "Component Storybook", to: Routes.live_storybook_path(@conn, :root) }
-        ]}
       >
+        <:menu to={~p"/storybook"}>
+          Component Storybook
+        </:menu>
         <:logo>
           <logo-gsmlg-dev />
         </:logo>
@@ -50,14 +50,15 @@ defmodule Phoenix.WebComponent.Appbar do
     """
   )
 
-  attr(:menus, :list,
-    default: [],
+  slot(:menu,
+    required: false,
     doc: """
     Appbar menus
-
-    example: [ %{ label: "Menu Name", to: ~p"/menu-url" } ]
     """
-  )
+  ) do
+    attr(:class, :string)
+    attr(:to, :string)
+  end
 
   slot(:logo,
     required: false,
@@ -84,12 +85,13 @@ defmodule Phoenix.WebComponent.Appbar do
       <nav slot="logo" class="flex justify-center">
         <%= render_slot(@logo) %>
       </nav>
-      <%= for menu <- @menus do %>
+      <%= for menu <- @menu do %>
         <.wc_link
-          navigate={menu.to}
+          navigate={Map.get(menu, :to, "")}
+          class={Map.get(menu, :class, "")}
           slot="nav"
         >
-          <%= menu.label %>
+        <%= render_slot(menu) %>
         </.wc_link>
       <% end %>
       <span slot="user">
@@ -106,10 +108,10 @@ defmodule Phoenix.WebComponent.Appbar do
 
       <.wc_simple_appbar
         title={"Phoenix WebComponent"}
-        menus={[
-          %{ label: "Component Storybook", to: Routes.live_storybook_path(@conn, :root) }
-        ]}
       >
+        <:menu to={~p"/storybook"}>
+          Component Storybook
+        </:menu>
         <:logo>
           <logo-gsmlg-dev />
         </:logo>
@@ -141,14 +143,15 @@ defmodule Phoenix.WebComponent.Appbar do
     """
   )
 
-  attr(:menus, :list,
-    default: [],
+  slot(:menu,
+    required: false,
     doc: """
     Appbar menus
-
-    example: [ %{ label: "Menu Name", to: ~p"/menu-url" } ]
     """
-  )
+  ) do
+    attr(:class, :string)
+    attr(:to, :string)
+  end
 
   slot(:logo,
     required: false,
@@ -175,7 +178,7 @@ defmodule Phoenix.WebComponent.Appbar do
     <header
       id={@id}
       class={[
-        "h-14 w-screen bg-sky-900 text-white text-xl",
+        "h-14 w-screen text-xl",
         "flex items-center justify-center relative",
         @class
       ]}
@@ -186,12 +189,19 @@ defmodule Phoenix.WebComponent.Appbar do
           <h1 class="select-none text-blod hidden lg:inline-flex">
             <%= @title %>
           </h1>
-          <nav class="text-fuchsia-200 mx-12 hidden md:flex flex-row items-center gap-4">
-            <%= for menu <- @menus do %>
+          <nav class="mx-12 hidden md:flex flex-row items-center gap-4">
+            <%= for menu <- @menu do %>
             <a
-              class="rounded-lg bg-cyan-600 hover:bg-cyan-400 py-2 px-6 text-lg font-semibold leading-6 text-center text-white active:text-white/80"
-              href={menu.to}
-            ><%= menu.label %></a>
+              class={[
+                "py-2 px-6",
+                "text-lg font-semibold leading-6 text-center",
+                "hover:opacity-50",
+                Map.get(menu, :class, "")
+              ]}
+              href={Map.get(menu, :to, false)}
+            >
+              <%= render_slot(menu) %>
+            </a>
             <% end %>
           </nav>
         </div>
@@ -210,17 +220,27 @@ defmodule Phoenix.WebComponent.Appbar do
           </button>
         </div>
       </div>
-      <div id="header-md-menu" class="absolute z-50 top-14 w-full bg-sky-900 flex flex-col md:hidden hidden">
-        <%= for menu <- @menus do %>
+      <div
+        id="header-md-menu"
+        class={[
+          "absolute z-50 top-14 w-full",
+          "flex flex-col",
+          "md:hidden hidden",
+          @class
+        ]}
+      >
+        <hr />
+        <%= for menu <- @menu do %>
         <a
           class={[
             "w-full py-2 px-6",
-            "bg-cyan-600 hover:bg-cyan-400",
             "font-semibold leading-6",
-            "text-lg text-center text-white active:text-white/80",
+            "text-lg text-center",
+            Map.get(menu, :class, "")
           ]}
-          href={menu.to}
-        ><%= menu.label %></a>
+        >
+          <%= render_slot(menu) %>
+        </a>
         <% end %>
         <hr />
         <div
