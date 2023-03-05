@@ -1,3 +1,10 @@
+## [3.1.4](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v3.1.3...v3.1.4) (2023-03-05)
+
+
+### Bug Fixes
+
+* Change appbar, make it more customizable. ([2d1da27](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/2d1da276fac5cb47b4fe28b6cfb7852e926791e5))
+
 ## [3.1.3](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v3.1.2...v3.1.3) (2023-03-05)
 
 
