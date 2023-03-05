@@ -16,13 +16,13 @@ About at [Web Component](https://developer.mozilla.org/en-US/docs/Web/Web_Compon
 
 Add deps in `mix.exs`
 ```elixir
-    {:phoenix_webcomponent, "~> 2.0"},
+    {:phoenix_webcomponent, "~> 3.0"},
 ```
 
 Include in phoenix view helpers
 
 ```elixir
- defp view_helpers do
+ defp html_helpers do
     quote do
         # import all helper functions
         use Phoenix.WebComponent
@@ -34,13 +34,26 @@ Include in phoenix view helpers
 end
 ```
 
-Include javascript
+Include `javascript`
 
 ```javascript
 import 'phoenix_webcomponent';
 ```
 
+Web Componet library is now external
+
+```bash
+npm install @gsmlg/lit
+```
+
+Import `css`
+
+```css
+@import 'phoenix_webcomponent/priv/static/phoenix_webcomponent.css';
+```
+
 Use custom hook
+
 ```javascript
 import "phoenix_webcomponent";
 const PhxWCHook = window.__PhxWCHook__;
@@ -66,7 +79,7 @@ Receive live view event:
 
 Import CSS
 
-```javascript
+```css
 import "phoenix_webcomponent/priv/static/phoenix_webcomponent.css"
 ```
 
