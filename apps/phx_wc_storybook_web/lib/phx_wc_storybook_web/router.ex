@@ -27,6 +27,8 @@ defmodule PhxWCStorybookWeb.Router do
     get "/mdi", PageController, :mdi
     get "/bsi", PageController, :bsi
 
+    get "/page_header", PageController, :page_header
+
     live_storybook("/storybook", backend_module: PhxWCStorybookWeb.Storybook)
   end
 end

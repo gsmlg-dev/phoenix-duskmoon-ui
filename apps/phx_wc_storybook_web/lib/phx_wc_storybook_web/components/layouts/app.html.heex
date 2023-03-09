@@ -1,3 +1,39 @@
+<div class="rainbow"></div>
+<%= if assigns[:mode] == "app" do %>
+  <.wc_simple_appbar
+    title={"Phoenix WebComponent"}
+    class="bg-blue-600 text-slate-200"
+  >
+    <:menu to={~p"/storybook"}>
+      Storybook
+    </:menu>
+    <:logo>
+      <logo-gsmlg-dev />
+    </:logo>
+    <:user_profile>
+      <.wc_link href={"https://github.com/gsmlg-dev/phoenix_webcomponent"}>
+        <.wc_mdi name="github" class="w-12 h-12" color="white" />
+      </.wc_link>
+    </:user_profile>
+  </.wc_simple_appbar>
+<% else %>
+  <.wc_appbar
+    title={"Phoenix WebComponent"}
+  >
+    <:menu to={~p"/storybook"}>
+      Storybook
+    </:menu>
+    <:logo>
+      <logo-gsmlg-dev />
+    </:logo>
+    <:user_profile>
+      <.wc_link href={"https://github.com/gsmlg-dev/phoenix_webcomponent"}>
+        <.wc_mdi name="github" class="w-12 h-12" color="white" />
+      </.wc_link>
+    </:user_profile>
+  </.wc_appbar>
+<% end %>
+
 <main class="container h-[calc(100vh-56px)] flex flex-row justify-start items-start overflow-hidden">
   <.flash kind={:info} title="Success!" flash={@flash} />
   <.flash kind={:error} title="Error!" flash={@flash} />
@@ -21,8 +57,17 @@
     </:title>
     <:menu>
       <.wc_left_menu_group active={assigns[:active_menu]}>
+        <:title>Page Header</:title>
+        <:menu id="phx-wc-hook" to={~p"/page_header"}>
+          <.wc_mdi name={"webhook"} class="w-4 h-4" />
+          Page Header
+        </:menu>
+      </.wc_left_menu_group>
+    </:menu>
+    <:menu>
+      <.wc_left_menu_group active={assigns[:active_menu]}>
         <:title>Hooks</:title>
-        <:menu id="phx-wc-hook" to={"/"}>
+        <:menu id="phx-wc-hook" to={~p"/"}>
           <.wc_mdi name={"webhook"} class="w-4 h-4" />
           PhxWCHook
         </:menu>
@@ -31,11 +76,11 @@
     <:menu>
       <.wc_left_menu_group active={assigns[:active_menu]}>
         <:title>Icons</:title>
-        <:menu id="mdi" to={"/mdi"}>
+        <:menu id="mdi" to={~p"/mdi"}>
           <.wc_mdi name={"material-design"} class="w-4 h-4" />
           MD Icon
         </:menu>
-        <:menu id="bsi" to={"/bsi"}>
+        <:menu id="bsi" to={~p"/bsi"}>
           <.wc_bsi name={"bootstrap"} class="w-4 h-4" />
           BS Icon
         </:menu>

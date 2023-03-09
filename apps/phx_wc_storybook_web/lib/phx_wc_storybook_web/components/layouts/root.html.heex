@@ -11,42 +11,11 @@
     <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
     <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}></script>
   </head>
-  <body class="flex flex-col items-center">
-    <div class="rainbow"></div>
-    <%= if assigns[:mode] == "app" do %>
-    <.wc_simple_appbar
-      title={"Phoenix WebComponent"}
-      class="bg-blue-600 text-slate-200"
-    >
-      <:menu to={~p"/storybook"}>
-        Storybook
-      </:menu>
-      <:logo>
-        <logo-gsmlg-dev />
-      </:logo>
-      <:user_profile>
-        <.wc_link href={"https://github.com/gsmlg-dev/phoenix_webcomponent"}>
-          <.wc_mdi name="github" class="w-12 h-12" color="white" />
-        </.wc_link>
-      </:user_profile>
-    </.wc_simple_appbar>
-    <% else %>
-    <.wc_appbar
-      title={"Phoenix WebComponent"}
-    >
-      <:menu to={~p"/storybook"}>
-        Storybook
-      </:menu>
-      <:logo>
-        <logo-gsmlg-dev />
-      </:logo>
-      <:user_profile>
-        <.wc_link href={"https://github.com/gsmlg-dev/phoenix_webcomponent"}>
-          <.wc_mdi name="github" class="w-12 h-12" color="white" />
-        </.wc_link>
-      </:user_profile>
-    </.wc_appbar>
-    <% end %>
+  <body 
+    class={[
+      if(assigns[:no_flex] == true, do: nil, else: "flex flex-col items-center")
+    ]}
+  >
     <%= @inner_content %>
   </body>
 </html>
