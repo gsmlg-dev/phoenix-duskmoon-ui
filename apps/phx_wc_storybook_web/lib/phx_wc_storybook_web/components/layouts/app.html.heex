@@ -57,10 +57,14 @@
     </:title>
     <:menu>
       <.wc_left_menu_group active={assigns[:active_menu]}>
-        <:title>Page Header</:title>
-        <:menu id="phx-wc-hook" to={~p"/page_header"}>
-          <.wc_mdi name={"webhook"} class="w-4 h-4" />
-          Page Header
+        <:title>Page</:title>
+        <:menu id="page_header" to={~p"/page_header"}>
+          <.wc_mdi name={"page-layout-header"} class="w-4 h-4" />
+          Header
+        </:menu>
+        <:menu id="page_header_demo" to={~p"/page_header_demo"}>
+          <.wc_mdi name={"newspaper-variant-outline"} class="w-4 h-4" />
+          Demo
         </:menu>
       </.wc_left_menu_group>
     </:menu>

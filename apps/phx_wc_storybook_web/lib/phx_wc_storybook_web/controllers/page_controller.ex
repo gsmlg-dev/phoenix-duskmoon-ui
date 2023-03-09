@@ -42,7 +42,11 @@ defmodule PhxWCStorybookWeb.PageController do
   end
 
   def page_header(conn, _params) do
-    render(conn, :page_header, layout: false, no_flex: true, active_menu: "page_header")
+    render(conn, :page_header, layout: false, active_menu: "page_header")
+  end
+
+  def page_header_demo(conn, _params) do
+    render(conn, :page_header_demo, layout: false, no_flex: true, active_menu: "page_header_demo")
   end
 
 end
