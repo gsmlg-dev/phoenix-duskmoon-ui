@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v3.1.5...v3.2.0) (2023-03-10)
+
+
+### Features
+
+* Add new Home page to document page. ([#9](https://github.com/gsmlg-dev/phoenix_webcomponent/issues/9)) ([9f813c7](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/9f813c73c6a2fef26a130fc1fe6cf346d8e112da))
+
 ## [3.1.5](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v3.1.4...v3.1.5) (2023-03-09)
 
 
