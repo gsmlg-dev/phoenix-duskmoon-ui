@@ -43,7 +43,7 @@ defmodule Phoenix.WebComponent.PageHeader do
     """
   )
 
-  attr(:nav_class, :string,
+  attr(:nav_class, :any,
     default: "",
     doc: """
     nav html attribute class
