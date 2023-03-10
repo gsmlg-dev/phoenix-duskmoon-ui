@@ -12,18 +12,18 @@ jobs:
     strategy:
       matrix:
         include:
-          - elixir: 1.12
-            otp: 24.1
+          - elixir: 1.13
+            otp: 24
             lint: lint
-          - elixir: 1.14.0
-            otp: 25.0
+          - elixir: 1.14
+            otp: 25
             lint: lint
 
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Elixir
       uses: erlef/setup-elixir@v1
@@ -32,7 +32,7 @@ jobs:
         otp-version: ${{ matrix.otp }}
 
     - name: Restore deps and _build cache
-      uses: actions/cache@v2
+      uses: actions/cache@v3
       with:
         path: |
           deps
@@ -43,10 +43,14 @@ jobs:
 
     - name: Install dependencies
       run: mix deps.get --only test
+      env:
+        MIX_ENV: test
 
     - name: Check source code format
       run: mix format --check-formatted
       if: ${{ matrix.lint }}
+      env:
+        MIX_ENV: test
 
     - name: Remove compiled application files
       run: mix clean
@@ -65,3 +69,5 @@ jobs:
 
     - name: Run tests
       run: mix test
+      env:
+        MIX_ENV: test
