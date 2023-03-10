@@ -8,7 +8,7 @@
     "./svg/*.svg": "./priv/mdi/svg/*.svg"
   },
   "scripts": {
-    "prepublish": "mix tailwind default && mix esbuild default"
+    "build": "mix tailwind default && mix esbuild default"
   },
   "files": [
     "README.md",
@@ -18,6 +18,9 @@
     "priv/static/",
     "priv/svg/"
   ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "dependencies": {
     "@gsmlg/lit": "^1.29.5",
     "lit": "^2.4.1",
