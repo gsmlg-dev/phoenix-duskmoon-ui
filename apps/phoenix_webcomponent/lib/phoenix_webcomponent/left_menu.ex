@@ -24,7 +24,7 @@ defmodule Phoenix.WebComponent.LeftMenu do
     """
   )
 
-  attr(:class, :string,
+  attr(:class, :any,
     default: "",
     doc: """
     html attribute class
@@ -103,7 +103,7 @@ defmodule Phoenix.WebComponent.LeftMenu do
     """
   )
 
-  attr(:class, :string,
+  attr(:class, :any,
     default: "",
     doc: """
     html attribute class

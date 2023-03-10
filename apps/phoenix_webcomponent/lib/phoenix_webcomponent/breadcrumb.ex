@@ -21,7 +21,7 @@ defmodule Phoenix.WebComponent.Breadcrumb do
     """
   )
 
-  attr(:class, :string,
+  attr(:class, :any,
     default: "",
     doc: """
     html attribute class

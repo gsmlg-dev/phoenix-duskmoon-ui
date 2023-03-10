@@ -42,7 +42,7 @@ defmodule Phoenix.WebComponent.Icons do
     """
   )
 
-  attr(:class, :string,
+  attr(:class, :any,
     default: "",
     doc: """
     html attribute class
@@ -119,7 +119,7 @@ defmodule Phoenix.WebComponent.Icons do
     """
   )
 
-  attr(:class, :string,
+  attr(:class, :any,
     default: "",
     doc: """
     html attribute class

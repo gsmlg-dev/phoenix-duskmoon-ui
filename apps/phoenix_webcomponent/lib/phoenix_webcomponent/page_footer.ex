@@ -29,7 +29,7 @@ defmodule Phoenix.WebComponent.PageFooter do
     """
   )
 
-  attr(:class, :string,
+  attr(:class, :any,
     default: "",
     doc: """
     html attribute class
