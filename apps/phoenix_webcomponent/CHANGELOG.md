@@ -1,3 +1,10 @@
+## [3.2.3](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v3.2.2...v3.2.3) (2023-03-10)
+
+
+### Bug Fixes
+
+* Add footer to page layout. ([0bb698b](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/0bb698bd11d3c9ddaf7611d10be69a966c9e310e))
+
 ## [3.2.2](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v3.2.1...v3.2.2) (2023-03-10)
 
 
