@@ -22,13 +22,12 @@ defmodule PhxWCStorybookWeb.Router do
   scope "/", PhxWCStorybookWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", PageController, :page
+
+    get "/hook", PageController, :hook
 
     get "/mdi", PageController, :mdi
     get "/bsi", PageController, :bsi
-
-    get "/page_header", PageController, :page_header
-    get "/page_header_demo", PageController, :page_header_demo
 
     live_storybook("/storybook", backend_module: PhxWCStorybookWeb.Storybook)
   end

@@ -28,6 +28,7 @@ defmodule Phoenix.WebComponent.PageHeader do
     html attribute id
     """
   )
+
   attr(:nav_id, :string,
     default: "wc-page-header-nav",
     doc: """
@@ -41,13 +42,13 @@ defmodule Phoenix.WebComponent.PageHeader do
     html attribute class
     """
   )
+
   attr(:nav_class, :string,
     default: "",
     doc: """
     nav html attribute class
     """
   )
-
 
   slot(:menu,
     required: false,
@@ -67,7 +68,6 @@ defmodule Phoenix.WebComponent.PageHeader do
   )
 
   def wc_page_header(assigns) do
-
     ~H"""
     <nav
       id={@nav_id}

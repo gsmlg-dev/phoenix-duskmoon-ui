@@ -1,11 +1,15 @@
 <.wc_page_header
-  class={["bg-gradient-to-br from-cyan-500 to-blue-500 text-slate-200 h-[680px] py-6"]}
+  class={[
+    "bg-gradient-to-br from-cyan-500 to-blue-500",
+    "text-slate-200 h-[680px] py-6"
+  ]}
   nav_class={["bg-slate-50 text-sky-700 shadow"]}
 >
-  <:menu to={~p"/"}>Hook</:menu>
-  <:menu to={~p"/mdi"}>MDI</:menu>
-  <:menu to={~p"/bsi"}>BSI</:menu>
-  <:menu to={~p"/storybook"}>Storybook</:menu>
+  <:menu to={~p"/"} class="border-b-2 border-slate-50">Home</:menu>
+  <:menu to={~p"/hook"} class="opacity-60">Hook</:menu>
+  <:menu to={~p"/mdi"} class="opacity-60">MDI</:menu>
+  <:menu to={~p"/bsi"} class="opacity-60">BSI</:menu>
+  <:menu to={~p"/storybook"} class="opacity-60">Storybook</:menu>
 
   <:user_profile>
     <.link href={"https://github.com/gsmlg-dev/phoenix_webcomponent"}>
@@ -17,7 +21,7 @@
     "text-center text-8xl font-bold text-transparent",
     "bg-clip-text bg-gradient-to-tl from-purple-500 to-violet-500"
   ]}>
-    Phoenix Web Component
+    Phoenix WebComponent
   </h1>
   <p class={[
     "text-right text-4xl mx-auto py-4",
@@ -43,7 +47,7 @@
       </p>
     </div>
     <div class="flex justify-center items-center">
-      <.wc_mdi name={"webhook"} class="w-72 h-72" />
+      <.wc_mdi name="webhook" class="w-72 h-72" />
     </div>
   </div>
 </div>
@@ -97,6 +101,6 @@
     <.link href="https://gsmlg-dev.github.io/three-fiber">3D Component</.link>
   </:section>
   <:copyright title="Copyright - GSMLG.dev">
-    Make with ❤️ for build a better Web.
+    Made with ❤️ for building a better Web.
   </:copyright>
 </.wc_page_footer>

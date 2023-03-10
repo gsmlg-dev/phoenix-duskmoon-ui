@@ -61,7 +61,6 @@ defmodule Phoenix.WebComponent.PageFooter do
   end
 
   def wc_page_footer(assigns) do
-
     ~H"""
 
     <footer class={[

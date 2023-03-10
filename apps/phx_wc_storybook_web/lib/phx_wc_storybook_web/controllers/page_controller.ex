@@ -1,12 +1,16 @@
 defmodule PhxWCStorybookWeb.PageController do
   use PhxWCStorybookWeb, :controller
 
-  def index(conn, %{"mode" => mode} = _params) do
-    render(conn, :index, mode: mode, active_menu: "phx-wc-hook")
+  def page(conn, _params) do
+    render(conn, :page, layout: false, active_menu: "page")
   end
 
-  def index(conn, _params) do
-    render(conn, :index, mode: "app", active_menu: "phx-wc-hook")
+  def hook(conn, %{"mode" => mode} = _params) do
+    render(conn, :hook, mode: mode, active_menu: "phx-wc-hook")
+  end
+
+  def hook(conn, _params) do
+    render(conn, :hook, mode: "app", active_menu: "phx-wc-hook")
   end
 
   def mdi(conn, %{"filter" => filter}) do
@@ -40,13 +44,4 @@ defmodule PhxWCStorybookWeb.PageController do
     icons = Phoenix.WebComponent.Icons.bsi_icons()
     render(conn, :bsi, bsi_icons: icons, active_menu: "bsi", filter: "")
   end
-
-  def page_header(conn, _params) do
-    render(conn, :page_header, layout: false, active_menu: "page_header")
-  end
-
-  def page_header_demo(conn, _params) do
-    render(conn, :page_header_demo, layout: false, no_flex: true, active_menu: "page_header_demo")
-  end
-
 end
