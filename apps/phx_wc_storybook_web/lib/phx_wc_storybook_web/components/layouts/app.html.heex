@@ -116,3 +116,22 @@
   <%= @inner_content %>
   </div>
 </main>
+
+<.wc_page_footer
+  class={["bg-gradient-to-br from-cyan-500 to-blue-500 text-slate-100"]}
+>
+  <:section title="Web Sites" body_class="text-slate-300">
+    <.link href="https://github.com/gsmlg-dev">Github Repos</.link>
+    <.link href="https://gsmlg.org/blogs">Blog</.link>
+    <.link href="https://gsmlg.org/tools">Tools</.link>
+  </:section>
+  <:section title="Other Libraries" body_class="text-slate-300">
+    <.link href="https://gsmlg-dev.github.io/yew-duskmoon-ui/">Yew Duskmoon UI</.link>
+    <.link href="https://gsmlg-dev.github.io/lit">Web Component</.link>
+    <.link href="https://gsmlg-dev.github.io/react">React Component</.link>
+    <.link href="https://gsmlg-dev.github.io/three-fiber">3D Component</.link>
+  </:section>
+  <:copyright title="Copyright - GSMLG.dev">
+    Made with ❤️ for building a better Web.
+  </:copyright>
+</.wc_page_footer>
