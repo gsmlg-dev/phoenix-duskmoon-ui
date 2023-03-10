@@ -46,10 +46,14 @@ jobs:
 
     - name: Install dependencies
       run: mix deps.get --only test
+      env:
+        MIX_ENV: test
 
     - name: Check source code format
       run: mix format --check-formatted
       if: ${{ matrix.lint }}
+      env:
+        MIX_ENV: test
 
     - name: Remove compiled application files
       run: mix clean
@@ -68,6 +72,8 @@ jobs:
 
     - name: Run tests
       run: mix test
+      env:
+        MIX_ENV: test
 
   release:
     name: semantic release

@@ -22,7 +22,9 @@ defmodule PhxWCStorybookWeb.Router do
   scope "/", PhxWCStorybookWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/", PageController, :page
+
+    get "/hook", PageController, :hook
 
     get "/mdi", PageController, :mdi
     get "/bsi", PageController, :bsi

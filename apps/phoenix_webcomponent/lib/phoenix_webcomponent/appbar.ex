@@ -36,7 +36,7 @@ defmodule Phoenix.WebComponent.Appbar do
     """
   )
 
-  attr(:class, :string,
+  attr(:class, :any,
     default: "",
     doc: """
     html attribute class
@@ -129,7 +129,7 @@ defmodule Phoenix.WebComponent.Appbar do
     """
   )
 
-  attr(:class, :string,
+  attr(:class, :any,
     default: "",
     doc: """
     html attribute class

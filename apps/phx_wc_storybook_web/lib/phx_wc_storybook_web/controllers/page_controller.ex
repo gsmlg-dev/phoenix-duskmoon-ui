@@ -1,12 +1,16 @@
 defmodule PhxWCStorybookWeb.PageController do
   use PhxWCStorybookWeb, :controller
 
-  def index(conn, %{"mode" => mode} = _params) do
-    render(conn, "index.html", mode: mode, active_menu: "phx-wc-hook")
+  def page(conn, _params) do
+    render(conn, :page, layout: false, active_menu: "page")
   end
 
-  def index(conn, _params) do
-    render(conn, "index.html", mode: "app", active_menu: "phx-wc-hook")
+  def hook(conn, %{"mode" => mode} = _params) do
+    render(conn, :hook, mode: mode, active_menu: "phx-wc-hook")
+  end
+
+  def hook(conn, _params) do
+    render(conn, :hook, mode: "app", active_menu: "phx-wc-hook")
   end
 
   def mdi(conn, %{"filter" => filter}) do
@@ -17,12 +21,12 @@ defmodule PhxWCStorybookWeb.PageController do
         Regex.match?(reg, n)
       end)
 
-    render(conn, "mdi.html", mdi_icons: icons, active_menu: "mdi", filter: filter)
+    render(conn, :mdi, mdi_icons: icons, active_menu: "mdi", filter: filter)
   end
 
   def mdi(conn, _params) do
     icons = Phoenix.WebComponent.Icons.mdi_icons()
-    render(conn, "mdi.html", mdi_icons: icons, active_menu: "mdi", filter: "")
+    render(conn, :mdi, mdi_icons: icons, active_menu: "mdi", filter: "")
   end
 
   def bsi(conn, %{"filter" => filter}) do
@@ -33,11 +37,11 @@ defmodule PhxWCStorybookWeb.PageController do
         Regex.match?(reg, n)
       end)
 
-    render(conn, "bsi.html", bsi_icons: icons, active_menu: "bsi", filter: filter)
+    render(conn, :bsi, bsi_icons: icons, active_menu: "bsi", filter: filter)
   end
 
   def bsi(conn, _params) do
     icons = Phoenix.WebComponent.Icons.bsi_icons()
-    render(conn, "bsi.html", bsi_icons: icons, active_menu: "bsi", filter: "")
+    render(conn, :bsi, bsi_icons: icons, active_menu: "bsi", filter: "")
   end
 end

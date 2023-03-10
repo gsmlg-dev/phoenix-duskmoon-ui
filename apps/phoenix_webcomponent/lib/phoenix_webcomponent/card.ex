@@ -30,7 +30,7 @@ defmodule Phoenix.WebComponent.Card do
     """
   )
 
-  attr(:class, :string,
+  attr(:class, :any,
     default: "",
     doc: """
     html attribute class
@@ -43,7 +43,7 @@ defmodule Phoenix.WebComponent.Card do
     Render a card title.
     """
   ) do
-    attr(:class, :string, doc: "title class")
+    attr(:class, :any, doc: "title class")
   end
 
   def wc_card(assigns) do

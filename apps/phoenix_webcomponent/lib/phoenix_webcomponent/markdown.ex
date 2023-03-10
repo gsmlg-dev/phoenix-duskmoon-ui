@@ -32,7 +32,7 @@ defmodule Phoenix.WebComponent.Markdown do
     """
   )
 
-  attr(:class, :string,
+  attr(:class, :any,
     default: "",
     doc: """
     html attribute class

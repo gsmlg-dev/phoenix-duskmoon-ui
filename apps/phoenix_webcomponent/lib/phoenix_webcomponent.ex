@@ -51,6 +51,8 @@ defmodule Phoenix.WebComponent do
       alias Phoenix.WebComponent.Modal
       alias Phoenix.WebComponent.Pagination
       alias Phoenix.WebComponent.Table
+      alias Phoenix.WebComponent.PageHeader
+      alias Phoenix.WebComponent.PageFooter
     end
   end
 
@@ -77,6 +79,8 @@ defmodule Phoenix.WebComponent do
       import Phoenix.WebComponent.Pagination
       import Phoenix.WebComponent.Table
       import Phoenix.WebComponent.Icons
+      import Phoenix.WebComponent.PageHeader
+      import Phoenix.WebComponent.PageFooter
     end
   end
 
