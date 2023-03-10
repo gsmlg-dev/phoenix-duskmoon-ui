@@ -1,3 +1,10 @@
+## [3.2.2](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v3.2.1...v3.2.2) (2023-03-10)
+
+
+### Bug Fixes
+
+* Fix style. ([fd295f9](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/fd295f9e9ac0ee65fe1e86af70444f542b171448))
+
 ## [3.2.1](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v3.2.0...v3.2.1) (2023-03-10)
 
 
