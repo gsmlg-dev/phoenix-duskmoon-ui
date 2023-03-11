@@ -178,7 +178,7 @@ defmodule PhoenixDuskmoon.Appbar do
     <header
       id={@id}
       class={[
-        "h-14 w-screen text-xl",
+        "h-14 w-full text-xl",
         "flex items-center justify-center relative",
         @class
       ]}

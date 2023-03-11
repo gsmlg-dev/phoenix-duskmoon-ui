@@ -44,7 +44,7 @@ defmodule PhoenixDuskmoon.LeftMenu do
     Render menu title.
     """
   ) do
-    attr(:class, :string)
+    attr(:class, :any)
   end
 
   slot(:menu,
@@ -52,7 +52,9 @@ defmodule PhoenixDuskmoon.LeftMenu do
     doc: """
     Render menu
     """
-  )
+  ) do
+    attr(:class, :any)
+  end
 
   def wc_left_menu(assigns) do
     ~H"""
@@ -78,7 +80,10 @@ defmodule PhoenixDuskmoon.LeftMenu do
     <% end %>
       <div
         :for={{m, _i} <- Enum.with_index(@menu)}
-        class="flex flex-col justify-start items-start w-full"
+        class={[
+          "flex flex-col justify-start items-start w-full",
+          Map.get(m, :class, "")
+        ]}
       >
         <%= render_slot(m) %>
       </div>
@@ -117,13 +122,20 @@ defmodule PhoenixDuskmoon.LeftMenu do
     """
   )
 
+  attr(:active_class, :any,
+    default: "bg-blue-100 text-blue-500 dark:bg-blue-900 dark:text-blue-100",
+    doc: """
+    active menu html attribute class
+    """
+  )
+
   slot(:title,
     required: true,
     doc: """
     Render menu title.
     """
   ) do
-    attr(:class, :string)
+    attr(:class, :any)
   end
 
   slot(:menu,
@@ -133,7 +145,7 @@ defmodule PhoenixDuskmoon.LeftMenu do
     """
   ) do
     attr(:id, :string)
-    attr(:class, :string)
+    attr(:class, :any)
     attr(:to, :string)
   end
 
@@ -160,13 +172,15 @@ defmodule PhoenixDuskmoon.LeftMenu do
       >
         <%= render_slot(@title) %>
       </div>
-      <div class="text-slate-800 px-4 w-full">
+      <div class="px-4 w-full">
         <.link
           :for={{m, _i} <- Enum.with_index(@menu)}
           class={[
             "flex flex-row justify-start items-center",
             "px-6 py-4 rounded-lg w-full cursor-pointer",
-            if(Map.get(m, :id, "") == @active, do: " bg-blue-100 text-blue-500 hover:text-blue-600", else: "hover:text-blue-600 "),
+            if Map.get(m, :id, "") == @active do
+              @active_class
+            end,
             Map.get(m, :class, "")
           ]}
           navigate={Map.get(m, :to, "")}

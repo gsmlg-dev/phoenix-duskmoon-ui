@@ -47,11 +47,6 @@ defmodule PhoenixDuskmoon.Breadcrumb do
   end
 
   def wc_breadcrumb(assigns) do
-    assigns =
-      assigns
-      |> assign_new(:id, fn -> false end)
-      |> assign_new(:class, fn -> "" end)
-
     ~H"""
     <div id={@id} class={[
       "flex flex-row justify-start items-center gap-2",

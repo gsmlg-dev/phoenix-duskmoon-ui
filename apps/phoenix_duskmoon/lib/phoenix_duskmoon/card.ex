@@ -56,7 +56,7 @@ defmodule PhoenixDuskmoon.Card do
       id={@id}
       class={[
         "m-4 p-6 flex flex-col",
-        "bg-white shadow",
+        "bg-white shadow-lg dark:bg-black dark:shadow-slate-600",
         @class
       ]}
     >

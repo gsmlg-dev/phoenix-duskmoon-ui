@@ -6,11 +6,11 @@ defmodule DuskmoonStorybookWeb.PageController do
   end
 
   def hook(conn, %{"mode" => mode} = _params) do
-    render(conn, :hook, mode: mode, active_menu: "phx-wc-hook")
+    render(conn, :hook, mode: mode, active_menu: "darkmoon-hook")
   end
 
   def hook(conn, _params) do
-    render(conn, :hook, mode: "app", active_menu: "phx-wc-hook")
+    render(conn, :hook, mode: "app", active_menu: "darkmoon-hook")
   end
 
   def mdi(conn, %{"filter" => filter}) do

@@ -111,7 +111,7 @@ jobs:
             @semantic-release/changelog
             @semantic-release/exec
             @semantic-release/git
-          working_directory: apps/phoenix_webcomponent
+          working_directory: apps/phoenix_duskmoon
         env:
           MIX_ENV: prod
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -146,5 +146,5 @@ jobs:
           build-args: |
             RELEASE_VERSION=${{ needs.release.outputs.version }}
           tags: |
-            docker.io/gsmlg/phx-wc-storybook:v${{ needs.release.outputs.version }}
-            docker.io/gsmlg/phx-wc-storybook:${{ needs.release.outputs.channel || 'latest' }}
+            docker.io/gsmlg/duskmoon-storybook:v${{ needs.release.outputs.version }}
+            docker.io/gsmlg/duskmoon-storybook:${{ needs.release.outputs.channel || 'latest' }}

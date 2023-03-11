@@ -27,12 +27,12 @@
   );
 }
 
-.phx-wc-hero-text {
+.darkmoon-hero-text {
   text-shadow: #fc0 1px 0 10px;
   transition: all 1s;
   animation: 4s linear 1s infinite running bg-rainbow-turn;
 }
-.phx-wc-hero-p-text {
+.darkmoon-hero-p-text {
   text-shadow: 1px -2px 2px #222a30;
 }
 @keyframes bg-rainbow-turn {

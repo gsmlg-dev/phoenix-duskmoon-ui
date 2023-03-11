@@ -1,6 +1,6 @@
 import '@gsmlg/lit';
 
-export const PhxWCHook = {
+export const WebComponentHook = {
     mounted() {
         const attrs = this.el.attributes;
         const phxTarget = attrs["phx-target"].value;
@@ -10,8 +10,8 @@ export const PhxWCHook = {
         : this.pushEvent;
 
         for (var i = 0; i < attrs.length; i++) {
-            if (/^phx-wc-send-/.test(attrs[i].name)) {
-                const eventName = attrs[i].name.replace(/^phx-wc-send-/, "");
+            if (/^darkmoon-send-/.test(attrs[i].name)) {
+                const eventName = attrs[i].name.replace(/^darkmoon-send-/, "");
                 const [phxEvent, callbackName] = attrs[i].value.split(';');
                 this.el.addEventListener(eventName, ({ detail }) => {
                     pushEvent(phxEvent, detail, (e) => {
@@ -19,8 +19,8 @@ export const PhxWCHook = {
                     });
                 });
             }
-            if (/^phx-wc-receive-/.test(attrs[i].name)) {
-                const eventName = attrs[i].name.replace(/^phx-wc-receive-/, "");
+            if (/^darkmoon-receive-/.test(attrs[i].name)) {
+                const eventName = attrs[i].name.replace(/^darkmoon-receive-/, "");
                 const handler = attrs[i].value;
                 this.handleEvent(eventName, (payload) => {
                     if (handler && this.el[handler]) {
@@ -30,7 +30,7 @@ export const PhxWCHook = {
                     }
                 });
             }
-            if ('phx-wc-receive' === attrs[i].name) {
+            if ('darkmoon-receive' === attrs[i].name) {
                 const [phxEvent, callbackName] = attrs[i].value.split(';');
                 this.handleEvent(phxEvent, (payload) => {
                     this.el[callbackName]?.(payload);
@@ -41,5 +41,5 @@ export const PhxWCHook = {
 };
 
 if (window) {
-    window.__PhxWCHook__ = PhxWCHook;
+    window.__WebComponentHook__ = WebComponentHook;
 }

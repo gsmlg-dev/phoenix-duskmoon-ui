@@ -2,7 +2,10 @@
 <%= if assigns[:mode] == "app" do %>
   <.wc_simple_appbar
     title={"Duskmoon UI"}
-    class="bg-blue-600 text-slate-200"
+    class={[
+      "bg-blue-600 text-slate-200 dark:bg-neutral-900 dark:text-slate-50",
+      "shadow dark:shadow-slate-600"
+    ]}
   >
     <:menu to={~p"/storybook"}>
       Storybook
@@ -37,7 +40,10 @@
 <main class="container min-h-[calc(100vh-56px)] flex flex-row justify-start items-start overflow-hidden">
   <.flash_group flash={@flash} />
   <.wc_left_menu
-    class="w-48 min-h-[calc(100vh-56px)] bg-slate-100"
+    class={[
+      "w-48 min-h-[calc(100vh-56px)]",
+      "dark:text-slate-50 dark:bg-neutral-900"
+    ]}
     active={assigns[:active_menu]}
   >
     <:title class="text-slate-400 font-bold">
@@ -55,9 +61,9 @@
     <:menu>
       <.wc_left_menu_group active={assigns[:active_menu]}>
         <:title>Hook</:title>
-        <:menu id="phx-wc-hook" to={~p"/hook"}>
+        <:menu id="darkmoon-hook" to={~p"/hook"}>
           <.wc_mdi name={"webhook"} class="w-4 h-4" />
-          PhxWCHook
+          WebComponentHook
         </:menu>
       </.wc_left_menu_group>
     </:menu>

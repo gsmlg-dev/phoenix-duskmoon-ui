@@ -26,9 +26,9 @@ import {LiveSocket} from "phoenix_live_view";
 import "phoenix_duskmoon";
 import topbar from "../vendor/topbar";
 
-const PhxWCHook = window.__PhxWCHook__;
+const WebComponentHook = window.__WebComponentHook__;
 const csrfToken = document.querySelector("meta[name='csrf-token']").getAttribute("content");
-const liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}, hooks: { PhxWCHook }});
+const liveSocket = new LiveSocket("/live", Socket, {params: {_csrf_token: csrfToken}, hooks: { WebComponentHook }});
 
 // Show progress bar on live navigation and form submits
 topbar.config({barColors: {0: "#29d"}, shadowColor: "rgba(0, 0, 0, .3)"});
