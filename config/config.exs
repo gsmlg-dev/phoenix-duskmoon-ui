@@ -10,21 +10,21 @@
 import Config
 
 # Configure Mix tasks and generators
-config :phx_wc_storybook,
-  namespace: PhxWCStorybook
+config :duskmoon_storybook,
+  namespace: DuskmoonStorybook
 
-config :phx_wc_storybook_web,
-  namespace: PhxWCStorybookWeb,
-  generators: [context_app: :phx_wc_storybook]
+config :duskmoon_storybook_web,
+  namespace: DuskmoonStorybookWeb,
+  generators: [context_app: :duskmoon_storybook]
 
 # Configures the endpoint
-config :phx_wc_storybook_web, PhxWCStorybookWeb.Endpoint,
+config :duskmoon_storybook_web, DuskmoonStorybookWeb.Endpoint,
   url: [host: "localhost"],
-  render_errors: [view: PhxWCStorybookWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: PhxWCStorybook.PubSub,
+  render_errors: [view: DuskmoonStorybookWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: DuskmoonStorybook.PubSub,
   live_view: [signing_salt: "HkF5qV0r"]
 
-config :phx_wc_storybook_web, PhxWCStorybookWeb.Storybook,
+config :duskmoon_storybook_web, DuskmoonStorybookWeb.Storybook,
   js_path: "/assets/app.js",
   css_path: "/assets/app.css"
 
@@ -45,7 +45,7 @@ config :tailwind,
       --input=css/app.css
       --output=../priv/static/assets/app.css
     ),
-    cd: Path.expand("../apps/phx_wc_storybook_web/assets", __DIR__),
+    cd: Path.expand("../apps/duskmoon_storybook_web/assets", __DIR__),
     env: %{"NODE_PATH" => "#{Path.expand("../deps", __DIR__)}:#{Path.expand("../apps", __DIR__)}"}
   ]
 
@@ -60,7 +60,7 @@ config :esbuild,
   storybook: [
     args:
       ~w(js/app.js --bundle --format=iife --target=es2021 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
-    cd: Path.expand("../apps/phx_wc_storybook_web/assets", __DIR__),
+    cd: Path.expand("../apps/duskmoon_storybook_web/assets", __DIR__),
     env: %{"NODE_PATH" => "#{Path.expand("../deps", __DIR__)}:#{Path.expand("../apps", __DIR__)}"}
   ]
 

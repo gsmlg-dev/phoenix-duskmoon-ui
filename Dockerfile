@@ -1,7 +1,7 @@
 FROM gsmlg/phoenix:alpine AS builder
 
 ARG MIX_ENV=prod
-ARG NAME=phx_wc_storybook
+ARG NAME=duskmoon_storybook
 ARG RELEASE_VERSION=0.1.0
 
 COPY . /build
@@ -11,7 +11,7 @@ RUN apk update \
     && mix do deps.get, compile \
     && mix tailwind.install \
     && cd apps/phoenix_duskmoon && npm install && mix prepublish && cd ../.. \
-    && cd apps/phx_wc_storybook_web && mix assets.deploy && cd ../.. \
+    && cd apps/duskmoon_storybook_web && mix assets.deploy && cd ../.. \
     && mix release storybook --version "${RELEASE_VERSION}" \
     && cp -r _build/prod/rel/storybook /app
 
@@ -26,11 +26,11 @@ ENV PORT=80 \
     REPLACE_OS_VARS=true \
     ERL_EPMD_PORT=4369 \
     POD_IP=127.0.0.1 \
-    ERLCOOKIE=phx_wc_storybook \
+    ERLCOOKIE=duskmoon_storybook \
     HOST=phoenix-webcomponent.gsmlg.org \
     POOL_SIZE=10 \
     PHX_SERVER=true \
-    SECRET_KEY_BASE=phx_wc_storybook
+    SECRET_KEY_BASE=duskmoon_storybook
 
 RUN apk update \
     && apk add openssl bash libstdc++ \
