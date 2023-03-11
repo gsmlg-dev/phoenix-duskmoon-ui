@@ -1,9 +1,9 @@
 <.wc_page_header
   class={[
-    "bg-gradient-to-br from-cyan-500 to-blue-500",
+    "bg-gradient-to-br from-[#ff6f61] to-[#639]",
     "text-slate-200 h-[680px] py-6"
   ]}
-  nav_class={["bg-slate-50 text-sky-700 shadow"]}
+  nav_class={["bg-gradient-to-br from-[#ff6f61] to-[#639] text-slate-200 shadow"]}
 >
   <:menu to={~p"/"} class="border-b-2 border-slate-50">Home</:menu>
   <:menu to={~p"/hook"} class="opacity-60">Hook</:menu>
@@ -18,17 +18,21 @@
   </:user_profile>
 
   <h1 class={[
-    "text-center text-8xl font-bold text-transparent",
-    "bg-clip-text bg-gradient-to-tl from-purple-500 to-violet-500"
+    "text-center text-8xl font-bold text-slate-300 select-none",
+    "bg-clip-text bg-gradient-to-tl from-[#fac2b0] to-[#b4e3da]",
+    "phx-wc-hero-text"
   ]}>
     Phoenix WebComponent
   </h1>
   <p class={[
-    "text-right text-4xl mx-auto py-4",
-    "bg-clip-text bg-gradient-to-bl from-lime-500 to-amber-500"
+    "text-center text-4xl mx-auto my-8 select-none",
+    "phx-wc-hero-p-text"
   ]}>
     Bring web components to Phoneix
   </p>
+  <.link href="/#hook" class="my-4 px-4 py-2 text-4xl bg-rose-400 rounded shadow-md hover:shadow-2xl">
+    See More
+  </.link>
 </.wc_page_header>
 
 <div class={[
@@ -36,14 +40,15 @@
   "flex flex-col",
   "border-b-2 border-slate-300"
 ]}>
+  <a name="hook" />
   <div class="container mx-auto flex flex-row justify-around">
     <div class="flex flex-col justify-center">
-      <h3 class="font-bold text-lg my-4">Live Component Mount Hook - <i class="text-rose-500">PhxWCHook</i></h3>
-      <p class="my-2">
-        This Hook binding custom element's custom events to phoenix live events.
+      <h3 class="font-bold text-4xl my-4">Component Mount Hook - <i class="text-rose-500">PhxWCHook</i></h3>
+      <p class="my-2 text-lg text-violet-500	">
+        Binding custom element's custom events to phoenix live events.
       </p>
-      <p class="my-2">
-        This Hook also binding phoenix live events to custom element's custom action.
+      <p class="my-2 text-lg text-violet-500	">
+        Binding phoenix live events to custom element's custom action.
       </p>
     </div>
     <div class="flex justify-center items-center">
@@ -58,15 +63,21 @@
   "border-b-2 border-slate-300"
 ]}>
   <div class="container mx-auto flex flex-row justify-around">
-    <div class="w-full py-32 flex flex-col justify-center items-center border-r-2 border-slate-300">
-      <h3 class="font-bold text-lg my-4">Material Design Icons</h3>
-      <p class="my-2">
+    <div class="w-full py-32 flex flex-col justify-center items-center border-r-2 border-slate-300 text-blue-500">
+      <h3 class="font-bold text-4xl my-4 flex flex-row gap-4 items-center">
+        <.wc_mdi name="material-design" class="w-12 h-12" />
+        Material Design Icons
+      </h3>
+      <p class="my-2 text-lg">
         Includs 7000+ Material Design Commmunity Icons.
       </p>
     </div>
-    <div class="w-full py-32 flex flex-col justify-center items-center">
-      <h3 class="font-bold text-lg my-4">Bootstrap Icons</h3>
-      <p class="my-2">
+    <div class="w-full py-32 flex flex-col justify-center items-center text-violet-900">
+      <h3 class="font-bold text-4xl my-4 flex flex-row gap-4 items-center">
+        <.wc_bsi name="bootstrap" class="w-12 h-12" />
+        Bootstrap Icons
+      </h3>
+      <p class="my-2 text-lg">
         Includs 1900+ Bootstrap Icons.
       </p>
     </div>
@@ -79,10 +90,58 @@
 ]}>
   <div class="container mx-auto flex flex-row justify-around">
     <div class="w-full flex flex-col justify-center items-center">
-      <h3 class="font-bold text-lg my-4">Other Components</h3>
-      <p class="my-2">
-        Documents in storybook
-      </p>
+      <h3 class="font-bold text-6xl my-4 text-fuchsia-500">Components</h3>
+      <div class="my-4 flex flex-row gap-4 text-fuchsia-300">
+        <.link href="/storybook">Component Storybook</.link>
+        <div class="mx-12">|</div>
+        <.link href="https://hexdocs.pm/phoenix_webcomponent/">HEX Document</.link>
+      </div>
+      <div class="my-4 flex flex-col gap-8">
+        <.link class="flex flex-row items-center text-2xl text-blue-300 gap-4">
+          <.wc_mdi name={"page-layout-header"} class="w-4 h-4" />
+          PageHeader
+        </.link>
+        <.link class="flex flex-row items-center text-2xl text-blue-300 gap-4">
+          <.wc_mdi name={"page-layout-footer"} class="w-4 h-4" />
+          PageFooter
+        </.link>
+        <.link class="flex flex-row items-center text-2xl text-blue-300 gap-4">
+          <.wc_mdi name={"page-layout-header"} class="w-4 h-4" />
+          Appbar
+        </.link>
+        <.link class="flex flex-row items-center text-2xl text-blue-500 gap-4" id="actionbar" href="/storybook/components/actionbar">
+          <.wc_bsi name={"tools"} class="w-4 h-4" />
+          Actionbar
+        </.link>
+        <.link class="flex flex-row items-center text-2xl text-blue-500 gap-4" id="breadcrumb" href="/storybook/components/breadcrumb">
+          <.wc_bsi name={"segmented-nav"} class="w-4 h-4" />
+          Breadcrumb
+        </.link>
+        <.link class="flex flex-row items-center text-2xl text-blue-500 gap-4" id="card" href="/storybook/components/card">
+          <.wc_bsi name={"card-text"} class="w-4 h-4" />
+          Card
+        </.link>
+        <.link class="flex flex-row items-center text-2xl text-blue-500 gap-4" id="left_menu" href="/storybook/components/left_menu">
+          <.wc_bsi name={"layout-sidebar"} class="w-4 h-4" />
+          Left Menu
+        </.link>
+        <.link class="flex flex-row items-center text-2xl text-blue-500 gap-4" id="markdown" href="/storybook/components/markdown">
+          <.wc_bsi name={"markdown"} class="w-4 h-4" />
+          Markdown
+        </.link>
+        <.link class="flex flex-row items-center text-2xl text-blue-500 gap-4" id="modal" href="/storybook/components/modal">
+          <.wc_bsi name={"chat-square"} class="w-4 h-4" />
+          Modal
+        </.link>
+        <.link class="flex flex-row items-center text-2xl text-blue-500 gap-4" id="pagination" href="/storybook/components/pagination">
+          <.wc_mdi name={"book-open-page-variant-outline"} class="w-4 h-4" />
+          Pagination
+        </.link>
+        <.link class="flex flex-row items-center text-2xl text-blue-500 gap-4" id="table" href="/storybook/components/table">
+          <.wc_mdi name={"table"} class="w-4 h-4" />
+          Table
+        </.link>
+      </div>
     </div>
   </div>
 </div>

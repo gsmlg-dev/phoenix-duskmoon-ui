@@ -27,6 +27,21 @@
   );
 }
 
+.phx-wc-hero-text {
+  text-shadow: #fc0 1px 0 10px;
+  transition: all 1s;
+  animation: 4s linear 1s infinite running bg-rainbow-turn;
+}
+.phx-wc-hero-p-text {
+  text-shadow: 1px -2px 2px #222a30;
+}
+@keyframes bg-rainbow-turn {
+  0% { background-image: linear-gradient(to top left,  #fac2b0, #b4e3da); }
+  25% { background-image: linear-gradient(to top right, #fac2b0, #b4e3da); }
+  50% { background-image: linear-gradient(to bottom right,  #fac2b0, #b4e3da); }
+  75% { background-image: linear-gradient(to bottom left,  #fac2b0, #b4e3da); }
+}
+
 app-bar {
   --btn-link: rgb(238, 249, 238);
 }

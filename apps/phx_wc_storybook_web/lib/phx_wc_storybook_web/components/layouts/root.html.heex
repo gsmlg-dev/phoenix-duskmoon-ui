@@ -11,9 +11,11 @@
     <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
     <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}></script>
   </head>
-  <body 
+  <body
     class={[
-      if(assigns[:no_flex] == true, do: nil, else: "flex flex-col items-center")
+      "flex flex-col items-center",
+      "bg-slate-50 text-neutral-800",
+      "dark:bg-neutral-800 dark:text-slate-50",
     ]}
   >
     <%= @inner_content %>
