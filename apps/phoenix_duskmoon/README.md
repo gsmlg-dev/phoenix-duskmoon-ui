@@ -16,7 +16,7 @@ About at [Web Component](https://developer.mozilla.org/en-US/docs/Web/Web_Compon
 
 Add deps in `mix.exs`
 ```elixir
-    {:phoenix_duskmoon, "~> 3.0"},
+    {:phoenix_duskmoon, "~> 4.0"},
 ```
 
 Include in phoenix view helpers
