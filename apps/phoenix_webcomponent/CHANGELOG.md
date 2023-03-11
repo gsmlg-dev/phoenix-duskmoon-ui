@@ -1,3 +1,10 @@
+## [3.2.4](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v3.2.3...v3.2.4) (2023-03-11)
+
+
+### Bug Fixes
+
+* Fix storybook side style. ([46e146c](https://github.com/gsmlg-dev/phoenix_webcomponent/commit/46e146cfdd29ff396de37252554756dc068b7477))
+
 ## [3.2.3](https://github.com/gsmlg-dev/phoenix_webcomponent/compare/v3.2.2...v3.2.3) (2023-03-10)
 
 
