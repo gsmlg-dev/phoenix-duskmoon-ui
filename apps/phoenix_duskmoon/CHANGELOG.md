@@ -1,3 +1,29 @@
+# [4.0.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v3.2.4...v4.0.0) (2023-03-11)
+
+
+### Bug Fixes
+
+* Fix name prefix. ([1abd013](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/1abd013581d509e053d34d2a448348b5705b674e))
+* Fix rename issue and dark mode issue. ([ffc6022](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/ffc6022b9110d10fc003d141dbb9c5125529e499))
+* Fix rename issue. ([0a28820](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/0a28820e959730a447624b2d88a498c8b4b3272b))
+* Fix rename issure. ([8d72f0c](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/8d72f0c56e8713be82adc5458c86ffb613a32d35))
+
+
+### Features
+
+* Rename to phoenix_duskmoon ([#10](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/issues/10)) ([e61fd9d](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/e61fd9d7179c0bdc990c87b4ced20a3cd17953a1))
+
+
+### BREAKING CHANGES
+
+* RENAME PHOENIX_WEBCOMPONENT TO PHOENIX_DUSKMOON.
+
+* fix: Also rename storybook.
+
+* docs: Fix docs.
+
+* fix: Fix url.
+
 ## [3.2.3](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v3.2.2...v3.2.3) (2023-03-10)
 
 
