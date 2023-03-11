@@ -85,7 +85,7 @@ import "phoenix_duskmoon/priv/static/phoenix_duskmoon.css"
 
 ## Live Storybook
 
-[Live Storybook](https://duskmoon-storybook.gsmlg.org)
+[Live Storybook](https://duskmoon-storybook.gsmlg.dev)
 
 ![](screenshots/1.png)
 ![](screenshots/2.png)
