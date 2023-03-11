@@ -1,10 +1,10 @@
 defmodule PhxWCStorybookWeb.Storybook.Components.Modal do
   use PhoenixStorybook.Story, :component
 
-  def function, do: &Phoenix.WebComponent.Modal.wc_modal/1
+  def function, do: &PhoenixDuskmoon.Modal.wc_modal/1
 
   def imports do
-    [{Phoenix.WebComponent.Modal, wc_show_modal: 0}]
+    [{PhoenixDuskmoon.Modal, wc_show_modal: 0}]
   end
 
   def template do
@@ -23,8 +23,8 @@ defmodule PhxWCStorybookWeb.Storybook.Components.Modal do
       %Variation{
         id: :default,
         slots: [
-          "<:title>Phoenix WebComponent</:title>",
-          "<:body>Phoenix WebComponent Storybook</:body>"
+          "<:title>PhoenixDuskmoon</:title>",
+          "<:body>PhoenixDuskmoon Storybook</:body>"
         ]
       },
       %Variation{
@@ -32,12 +32,12 @@ defmodule PhxWCStorybookWeb.Storybook.Components.Modal do
         slots: [
           """
           <:title>
-            Phoenix WebComponent
+            PhoenixDuskmoon
           </:title>
           """,
           """
           <:body>
-            Phoenix WebComponentb Storybook
+            PhoenixDuskmoonb Storybook
             Show Modal
           </:body>
           """,
@@ -62,7 +62,7 @@ defmodule PhxWCStorybookWeb.Storybook.Components.Modal do
         slots: [
           """
           <:body>
-            Phoenix WebComponentb Is Awesome
+            PhoenixDuskmoonb Is Awesome
           </:body>
           """,
           """

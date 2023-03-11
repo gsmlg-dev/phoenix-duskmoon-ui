@@ -1,0 +1,41 @@
+{
+  "name": "phoenix_duskmoon",
+  "version": "0.0.0",
+  "main": "./priv/static/phoenix_duskmoon.js",
+  "exports": {
+    ".": "./priv/static/phoenix_duskmoon.js",
+    "./css": "./priv/static/phoenix_duskmoon.css",
+    "./svg/mdi/*.svg": "./priv/mdi/svg/*.svg",
+    "./svg/bsi/*.svg": "./priv/bsi/svg/*.svg"
+  },
+  "scripts": {
+    "build": "mix tailwind default && mix esbuild default"
+  },
+  "files": [
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "package.json",
+    "priv/static/",
+    "priv/svg/"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "@gsmlg/lit": "^1.29.5",
+    "lit": "^2.4.1",
+    "lit-element": "^3.2.2",
+    "lit-html": "^2.4.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.5",
+    "@babel/preset-env": "^7.20.2"
+  },
+  "peerDependencies": {
+    "@gsmlg/lit": "^1.29.5",
+    "lit": "^2.4.1",
+    "lit-element": "^3.2.2",
+    "lit-html": "^2.4.0"
+  }
+}

@@ -2,7 +2,7 @@ defmodule PhxWCStorybookWeb.Storybook.Components.Table do
   # :live_component or :page are also available
   use PhoenixStorybook.Story, :component
 
-  def function, do: &Phoenix.WebComponent.Table.wc_table/1
+  def function, do: &PhoenixDuskmoon.Table.wc_table/1
   def description, do: "A table element."
 
   def variations do

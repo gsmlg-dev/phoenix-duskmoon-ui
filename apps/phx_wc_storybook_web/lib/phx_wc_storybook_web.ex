@@ -85,7 +85,7 @@ defmodule PhxWCStorybookWeb do
       # HTML escaping functionality
       import Phoenix.HTML
       # Core UI components and translation
-      use Phoenix.WebComponent
+      use PhoenixDuskmoon
       import PhxWCStorybookWeb.CoreComponents
       import PhxWCStorybookWeb.Gettext
 

@@ -1,4 +1,4 @@
-defmodule Phoenix.WebComponent.Umbrella.MixProject do
+defmodule PhoenixDuskmoon.Umbrella.MixProject do
   use Mix.Project
 
   def project do

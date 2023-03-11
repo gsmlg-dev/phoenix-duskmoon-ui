@@ -33,10 +33,10 @@ config :tailwind,
   default: [
     args: ~w(
       --config=tailwind.config.js
-      --input=css/phoenix_webcomponent.css
-      --output=../priv/static/phoenix_webcomponent.css
+      --input=css/phoenix_duskmoon.css
+      --output=../priv/static/phoenix_duskmoon.css
     ),
-    cd: Path.expand("../apps/phoenix_webcomponent/assets", __DIR__),
+    cd: Path.expand("../apps/phoenix_duskmoon/assets", __DIR__),
     env: %{"NODE_PATH" => "#{Path.expand("../deps", __DIR__)}:#{Path.expand("../apps", __DIR__)}"}
   ],
   storybook: [
@@ -53,8 +53,8 @@ config :tailwind,
 config :esbuild,
   version: "0.14.29",
   default: [
-    args: ~w(js/phoenix_webcomponent.js --target=es2021 --format=iife --outdir=../priv/static/),
-    cd: Path.expand("../apps/phoenix_webcomponent/assets", __DIR__),
+    args: ~w(js/phoenix_duskmoon.js --target=es2021 --format=iife --outdir=../priv/static/),
+    cd: Path.expand("../apps/phoenix_duskmoon/assets", __DIR__),
     env: %{"NODE_PATH" => "#{Path.expand("../apps", __DIR__)}:#{Path.expand("../deps", __DIR__)}"}
   ],
   storybook: [

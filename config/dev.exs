@@ -28,7 +28,7 @@ config :phx_wc_storybook_web, PhxWCStorybookWeb.Endpoint,
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/phoenix_webcomponent/.*(ex)$",
+      ~r"lib/phoenix_duskmoon/.*(ex)$",
       ~r"lib/phx_wc_storybook_web/(live|views)/.*(ex)$",
       ~r"lib/phx_wc_storybook_web/templates/.*(eex)$"
     ]

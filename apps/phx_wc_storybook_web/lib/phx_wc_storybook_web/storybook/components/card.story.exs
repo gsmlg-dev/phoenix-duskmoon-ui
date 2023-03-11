@@ -2,7 +2,7 @@ defmodule PhxWCStorybookWeb.Storybook.Components.Card do
   # :live_component or :page are also available
   use PhoenixStorybook.Story, :component
 
-  def function, do: &Phoenix.WebComponent.Card.wc_card/1
+  def function, do: &PhoenixDuskmoon.Card.wc_card/1
   def description, do: "A card element."
 
   def variations do

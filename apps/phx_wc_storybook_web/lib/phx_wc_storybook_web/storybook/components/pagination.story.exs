@@ -2,7 +2,7 @@ defmodule PhxWCStorybookWeb.Storybook.Components.Pagination do
   # :live_component or :page are also available
   use PhoenixStorybook.Story, :component
 
-  def function, do: &Phoenix.WebComponent.Pagination.wc_pagination/1
+  def function, do: &PhoenixDuskmoon.Pagination.wc_pagination/1
   def description, do: "A pagination element."
 
   def variations do

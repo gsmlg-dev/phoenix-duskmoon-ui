@@ -23,7 +23,7 @@ import "phoenix_html";
 // Establish Phoenix Socket and LiveView configuration.
 import {Socket} from "phoenix";
 import {LiveSocket} from "phoenix_live_view";
-import "phoenix_webcomponent";
+import "phoenix_duskmoon";
 import topbar from "../vendor/topbar";
 
 const PhxWCHook = window.__PhxWCHook__;
@@ -44,4 +44,4 @@ liveSocket.connect();
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket;
 
-import 'phoenix_webcomponent';
+import 'phoenix_duskmoon';

@@ -1,0 +1,31 @@
+repositoryUrl: https://github.com/gsmlg-dev/phoenix_duskmoon.git
+branches:
+  - +([0-9])?(.{+([0-9]),x}).x
+  - {name: '2.x', range: '2.x.x'}
+  - main
+  - next
+  - next-major
+  - {name: 'beta', prerelease: true}
+  - {name: 'alpha', prerelease: true}
+plugins:
+  - '@semantic-release/commit-analyzer'
+  - '@semantic-release/release-notes-generator'
+  - '@semantic-release/changelog'
+  - - '@semantic-release/git'
+    - 'assets':
+        - 'CHANGELOG.md'
+      'message': 'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}'
+  - '@semantic-release/github'
+  - - '@semantic-release/exec'
+    - 'prepareCmd' : |
+        echo ${nextRelease.version};
+        sed -i 's%@version "[0-9\.]\+"%@version "${nextRelease.version}"%' mix.exs;
+        mix deps.get;
+        npm install;
+        sed -i 's%"version": "[0-9\.]\+"%"version": "${nextRelease.version}"%' package.json;
+        npm config set '//registry.npmjs.org/:_authToken' $NPM_TOKEN;
+        mix prepublish;
+        test -z "${nextRelease.channel}" && npm publish || npm publish --tag "${nextRelease.channel}";
+      'publishCmd' : |
+        echo publish phoenix_duskmoon ${nextRelease.version};
+        mix hex.publish --yes

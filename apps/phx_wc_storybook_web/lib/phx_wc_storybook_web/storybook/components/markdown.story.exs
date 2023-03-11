@@ -2,7 +2,7 @@ defmodule PhxWCStorybookWeb.Storybook.Components.Markdown do
   # :live_component or :page are also available
   use PhoenixStorybook.Story, :component
 
-  def function, do: &Phoenix.WebComponent.Markdown.wc_markdown/1
+  def function, do: &PhoenixDuskmoon.Markdown.wc_markdown/1
   def description, do: "A markdown render element."
 
   def variations do
