@@ -1,0 +1,137 @@
+<div class="rainbow"></div>
+<%= if assigns[:mode] == "app" do %>
+  <.wc_simple_appbar
+    title={"Duskmoon UI"}
+    class="bg-blue-600 text-slate-200"
+  >
+    <:menu to={~p"/storybook"}>
+      Storybook
+    </:menu>
+    <:logo>
+      <logo-gsmlg-dev />
+    </:logo>
+    <:user_profile>
+      <.wc_link href={"https://github.com/gsmlg-dev/phoenix-duskmoon-ui"}>
+        <.wc_mdi name="github" class="w-12 h-12" color="white" />
+      </.wc_link>
+    </:user_profile>
+  </.wc_simple_appbar>
+<% else %>
+  <.wc_appbar
+    title={"Duskmoon UI"}
+  >
+    <:menu to={~p"/storybook"}>
+      Storybook
+    </:menu>
+    <:logo>
+      <logo-gsmlg-dev />
+    </:logo>
+    <:user_profile>
+      <.wc_link href={"https://github.com/gsmlg-dev/phoenix-duskmoon-ui"}>
+        <.wc_mdi name="github" class="w-12 h-12" color="white" />
+      </.wc_link>
+    </:user_profile>
+  </.wc_appbar>
+<% end %>
+
+<main class="container min-h-[calc(100vh-56px)] flex flex-row justify-start items-start overflow-hidden">
+  <.flash_group flash={@flash} />
+  <.wc_left_menu
+    class="w-48 min-h-[calc(100vh-56px)] bg-slate-100"
+    active={assigns[:active_menu]}
+  >
+    <:title class="text-slate-400 font-bold">
+      WebComponent
+    </:title>
+    <:menu>
+      <.wc_left_menu_group active={assigns[:active_menu]}>
+        <:title>Page</:title>
+        <:menu id="page" to={~p"/"}>
+          <.wc_mdi name={"page-layout-header"} class="w-4 h-4" />
+          Page
+        </:menu>
+      </.wc_left_menu_group>
+    </:menu>
+    <:menu>
+      <.wc_left_menu_group active={assigns[:active_menu]}>
+        <:title>Hook</:title>
+        <:menu id="phx-wc-hook" to={~p"/hook"}>
+          <.wc_mdi name={"webhook"} class="w-4 h-4" />
+          PhxWCHook
+        </:menu>
+      </.wc_left_menu_group>
+    </:menu>
+    <:menu>
+      <.wc_left_menu_group active={assigns[:active_menu]}>
+        <:title>Icon</:title>
+        <:menu id="mdi" to={~p"/mdi"}>
+          <.wc_mdi name={"material-design"} class="w-4 h-4" />
+          MD Icon
+        </:menu>
+        <:menu id="bsi" to={~p"/bsi"}>
+          <.wc_bsi name={"bootstrap"} class="w-4 h-4" />
+          BS Icon
+        </:menu>
+      </.wc_left_menu_group>
+    </:menu>
+    <:menu>
+      <.wc_left_menu_group active={assigns[:active_menu]}>
+        <:title>Components</:title>
+        <:menu id="actionbar" to="/storybook/components/actionbar">
+          <.wc_bsi name={"tools"} class="w-4 h-4" />
+          Actionbar
+        </:menu>
+        <:menu id="breadcrumb" to="/storybook/components/breadcrumb">
+          <.wc_bsi name={"segmented-nav"} class="w-4 h-4" />
+          Breadcrumb
+        </:menu>
+        <:menu id="card" to="/storybook/components/card">
+          <.wc_bsi name={"card-text"} class="w-4 h-4" />
+          Card
+        </:menu>
+        <:menu id="left_menu" to="/storybook/components/left_menu">
+          <.wc_bsi name={"layout-sidebar"} class="w-4 h-4" />
+          Left Menu
+        </:menu>
+        <:menu id="markdown" to="/storybook/components/markdown">
+          <.wc_bsi name={"markdown"} class="w-4 h-4" />
+          Markdown
+        </:menu>
+        <:menu id="modal" to="/storybook/components/modal">
+          <.wc_bsi name={"chat-square"} class="w-4 h-4" />
+          Modal
+        </:menu>
+        <:menu id="pagination" to="/storybook/components/pagination">
+          <.wc_mdi name={"book-open-page-variant-outline"} class="w-4 h-4" />
+          Pagination
+        </:menu>
+        <:menu id="table" to="/storybook/components/table">
+          <.wc_mdi name={"table"} class="w-4 h-4" />
+          Table
+        </:menu>
+      </.wc_left_menu_group>
+    </:menu>
+  </.wc_left_menu>
+  <div class="flex flex-col flex-auto">
+  <%= @inner_content %>
+  </div>
+</main>
+
+<.wc_page_footer
+  class={["bg-gradient-to-br from-cyan-500 to-blue-500 text-slate-100"]}
+>
+  <:section title="Web Sites" body_class="text-slate-300">
+    <.link href="https://github.com/gsmlg-dev">Github Repos</.link>
+    <.link href="https://gsmlg.org/blogs">Blog</.link>
+    <.link href="https://gsmlg.org/tools">Tools</.link>
+  </:section>
+  <:section title="Other Libraries" body_class="text-slate-300">
+    <.link href="https://gsmlg-dev.github.io/yew-duskmoon-ui/">Yew Duskmoon UI</.link>
+    <.link href="https://gsmlg-dev.github.io/lit">Web Component</.link>
+    <.link href="https://gsmlg-dev.github.io/react">React Component</.link>
+    <.link href="https://gsmlg-dev.github.io/three-fiber">3D Component</.link>
+  </:section>
+  <:copyright title="Copyright - GSMLG.dev">
+    Made with ❤️ for building a better Web.
+  </:copyright>
+</.wc_page_footer>

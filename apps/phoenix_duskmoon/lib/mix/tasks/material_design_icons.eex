@@ -1,0 +1,28 @@
+defmodule PhoenixDuskmoon.MaterialDesignIcons do
+  @moduledoc """
+  Render 7000+ Material Design Icons
+  """
+  use PhoenixDuskmoon, :html
+
+  # alias Phoenix.LiveView.JS
+
+  @icons ~W(<%= icons |> Enum.join(" ") %>)
+
+  @spec icons() :: [String.t()]
+  def icons(), do: @icons
+
+  <%= for name <- icons do %>
+  def <%= String.replace(name, "-", "_") %>(assigns) do
+    assigns =
+      assigns
+      |> assign_new(:id, fn -> false end)
+      |> assign_new(:class, fn -> false end)
+
+    ~H"""
+    <svg xmlns="http://www.w3.org/2000/svg" id={@id} class={@class} viewBox="0 0 24 24">
+      <%= File.read!(Application.app_dir(:phoenix_duskmoon, "priv/mdi/svg/#{name}.svg")) |> String.replace(~r/<svg[^>]+>/, "") |> String.replace("</svg>", "") %>
+    </svg>
+    """
+  end
+  <% end %>
+end

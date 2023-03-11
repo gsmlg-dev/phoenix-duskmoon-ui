@@ -1,4 +1,4 @@
-defmodule Phoenix.WebComponent.Umbrella.MixProject do
+defmodule PhoenixDuskmoon.Umbrella.MixProject do
   use Mix.Project
 
   def project do
@@ -9,7 +9,7 @@ defmodule Phoenix.WebComponent.Umbrella.MixProject do
       deps: deps(),
       releases: [
         storybook: [
-          applications: [phx_wc_storybook_web: :permanent]
+          applications: [duskmoon_storybook_web: :permanent]
         ]
       ],
       aliases: aliases()

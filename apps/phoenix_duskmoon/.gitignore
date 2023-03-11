@@ -1,0 +1,10 @@
+/_build
+/cover
+/node_modules
+/package-lock.json
+/deps
+/doc
+/priv/static/
+/.elixir_ls
+erl_crash.dump
+*.ez

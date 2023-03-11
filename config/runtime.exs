@@ -17,7 +17,7 @@ import Config
 # Alternatively, you can use `mix phx.gen.release` to generate a `bin/server`
 # script that automatically sets the env var above.
 if System.get_env("PHX_SERVER") do
-  config :phx_wc_storybook_web, PhxWCStorybookWeb.Endpoint, server: true
+  config :duskmoon_storybook_web, DuskmoonStorybookWeb.Endpoint, server: true
 end
 
 if config_env() == :prod do
@@ -33,7 +33,7 @@ if config_env() == :prod do
       You can generate one by calling: mix phx.gen.secret
       """
 
-  config :phx_wc_storybook_web, PhxWCStorybookWeb.Endpoint,
+  config :duskmoon_storybook_web, DuskmoonStorybookWeb.Endpoint,
     http: [
       # Enable IPv6 and bind on all interfaces.
       # Set it to  {0, 0, 0, 0, 0, 0, 0, 1} for local network only access.

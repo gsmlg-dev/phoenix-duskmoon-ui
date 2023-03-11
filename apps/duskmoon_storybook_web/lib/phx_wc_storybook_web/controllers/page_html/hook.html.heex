@@ -1,0 +1,45 @@
+<.wc_breadcrumb class="bg-white h-6 text-slate-400">
+    <:crumb>Hooks</:crumb>
+    <:crumb>PhxWCHook</:crumb>
+</.wc_breadcrumb>
+<.wc_card class="w-[100%_!important] h-[calc(100vh-56px-2em)_!important] overflow-auto">
+    <:title class="flex flex-row justify-center items-center">
+        <span class="text-4xl text-blue-600 hover:text-blue-400">
+            PhxWCHook
+        </span>
+    </:title>
+    <.wc_markdown content={"""
+
+    Custom hook `PhxWCHook` for connect custom elements to phoenix.
+    This will send and receive event to live view.
+
+    ```js
+    import "phoenix_duskmoon";
+    const PhxWCHook = window.__PhxWCHook__;
+    const liveSocket = new LiveSocket("/live", Socket, {hooks: { PhxWCHook }});
+    ```
+
+    Send custom events to live view:
+    ```html
+    <Element phx-wc-send-sync-content="load_content" phx-hook="PhxWCHook" />
+    <Element phx-wc-send-sync-content="load_content;loadAccepted" phx-hook="PhxWCHook" />
+    ```
+    - In the first element, when element trigger customEvents `sync-content`, also use `pushEvent` send `load_content` to live view.
+    - Second element are same as first, but will call `loadAccepted` on element when receive server send feedback.
+
+    Receive live view event:
+    ```html
+    <Element phx-wc-receive-update_content="updateContent" phx-hook="PhxWCHook" />
+    <!-- equal  -->
+    <Element phx-wc-receive="update_content;updateContent" phx-hook="PhxWCHook" />
+    ```
+    - In this case, when live view fire `update_content` event, also trigger `updateContent` method on elmenet.
+    - If value(`updateContent`) is empty, trigger a same event `update_content` on element.
+
+    Also add css
+    ```css
+    import "phoenix_duskmoon/priv/static/phoenix_duskmoon.css"
+    ```
+
+    """} />
+</.wc_card>
