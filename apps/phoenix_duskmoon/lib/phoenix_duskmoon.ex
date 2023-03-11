@@ -14,7 +14,14 @@ defmodule PhoenixDuskmoon do
 
   To use the web component, you must load `priv/static/phoenix_duskmoon.js`
   into your build tool. Or through npm by install `phoenix_duskmoon`.
-  The difference is npm version is not bundled.
+
+  ### Using js library in hex package:
+
+  We need to run npm install in hex package
+
+  ```
+  npm install --prefix <path to root>/deps/phoenix/duskmoon
+  ```
 
   """
 
