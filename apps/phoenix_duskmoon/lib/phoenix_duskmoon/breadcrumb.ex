@@ -8,10 +8,10 @@ defmodule PhoenixDuskmoon.Breadcrumb do
   @doc """
   Generates webcomponent breadcrumb
   ## Example
-      <.wc_breadcrumb>
+      <.dm_breadcrumb>
         <:crumb>Menu1</:crumb>
         <:crumb>Menu2</:crumb>
-      </.wc_breadcrumb>
+      </.dm_breadcrumb>
   """
   @doc type: :component
   attr(:id, :any,
@@ -46,7 +46,7 @@ defmodule PhoenixDuskmoon.Breadcrumb do
     attr(:to, :string)
   end
 
-  def wc_breadcrumb(assigns) do
+  def dm_breadcrumb(assigns) do
     ~H"""
     <div id={@id} class={[
       "flex flex-row justify-start items-center gap-2",
@@ -56,7 +56,7 @@ defmodule PhoenixDuskmoon.Breadcrumb do
       <%= if length(@icon) > 0 do %>
       <%= render_slot(@icon) %>
       <% else %>
-      <PhoenixDuskmoon.Icons.wc_mdi name="home" class="w-4 h-4" />
+      <PhoenixDuskmoon.Icons.dm_mdi name="home" class="w-4 h-4" />
       <% end %>
       <%= for {crumb, i} <- Enum.with_index(@crumb) do %>
       <span class="flex flex-row">

@@ -2,7 +2,7 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Breadcrumb do
   # :live_component or :page are also available
   use PhoenixStorybook.Story, :component
 
-  def function, do: &PhoenixDuskmoon.Breadcrumb.wc_breadcrumb/1
+  def function, do: &PhoenixDuskmoon.Breadcrumb.dm_breadcrumb/1
   def description, do: "A breadcrumb element."
 
   def variations do
@@ -31,7 +31,7 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Breadcrumb do
         slots: [
           """
           <:icon>
-          <PhoenixDuskmoon.Icons.wc_mdi name="home-assistant" class="w-4 h-4" />
+          <PhoenixDuskmoon.Icons.dm_mdi name="home-assistant" class="w-4 h-4" />
           </:icon>
           """,
           """

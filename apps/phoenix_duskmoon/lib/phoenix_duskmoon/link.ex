@@ -10,24 +10,24 @@ defmodule PhoenixDuskmoon.Link do
   [INSERT LVATTRDOCS]
   ## Examples
   ```heex
-  <.wc_link href="/">Regular anchor link</.wc_link>
+  <.dm_link href="/">Regular anchor link</.dm_link>
   ```
   ```heex
-  <.wc_link navigate={Routes.page_path(@socket, :index)} class="underline">home</.wc_link>
+  <.dm_link navigate={Routes.page_path(@socket, :index)} class="underline">home</.dm_link>
   ```
   ```heex
-  <.wc_link navigate={Routes.live_path(@socket, MyLive, dir: :asc)} replace={false}>
+  <.dm_link navigate={Routes.live_path(@socket, MyLive, dir: :asc)} replace={false}>
     Sort By Price
-  </.wc_link>
+  </.dm_link>
   ```
   ```heex
-  <.wc_link patch={Routes.page_path(@socket, :index, :details)}>view details</.wc_link>
+  <.dm_link patch={Routes.page_path(@socket, :index, :details)}>view details</.dm_link>
   ```
   ```heex
-  <.wc_link href={URI.parse("https://elixir-lang.org")}>hello</.wc_link>
+  <.dm_link href={URI.parse("https://elixir-lang.org")}>hello</.dm_link>
   ```
   ```heex
-  <.wc_link href="/the_world" method={:delete} data-confirm="Really?">delete</.wc_link>
+  <.dm_link href="/the_world" method={:delete} data-confirm="Really?">delete</.dm_link>
   ```
   ## JavaScript dependency
   In order to support links where `:method` is not `:get` or use the above data attributes,
@@ -140,7 +140,7 @@ defmodule PhoenixDuskmoon.Link do
     """
   )
 
-  def wc_link(%{navigate: to} = assigns) when is_binary(to) do
+  def dm_link(%{navigate: to} = assigns) when is_binary(to) do
     ~H"""
     <wc-button
       href={@navigate}
@@ -151,7 +151,7 @@ defmodule PhoenixDuskmoon.Link do
     """
   end
 
-  def wc_link(%{patch: to} = assigns) when is_binary(to) do
+  def dm_link(%{patch: to} = assigns) when is_binary(to) do
     ~H"""
     <wc-button
       href={@patch}
@@ -162,8 +162,8 @@ defmodule PhoenixDuskmoon.Link do
     """
   end
 
-  def wc_link(%{href: href} = assigns) when href != "#" and not is_nil(href) do
-    href = Phoenix.LiveView.Utils.valid_destination!(href, "<.wc_link>")
+  def dm_link(%{href: href} = assigns) when href != "#" and not is_nil(href) do
+    href = Phoenix.LiveView.Utils.valid_destination!(href, "<.dm_link>")
     assigns = assign(assigns, :href, href)
 
     ~H"""
@@ -177,7 +177,7 @@ defmodule PhoenixDuskmoon.Link do
     """
   end
 
-  def wc_link(%{} = assigns) do
+  def dm_link(%{} = assigns) do
     ~H"""
     <wc-button href="#" {@rest}><%= render_slot(@inner_block) %></wc-button>
     """

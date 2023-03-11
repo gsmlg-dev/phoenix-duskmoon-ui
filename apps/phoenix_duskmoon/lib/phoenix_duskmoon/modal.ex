@@ -7,7 +7,7 @@ defmodule PhoenixDuskmoon.Modal do
   slot(:body, doc: "Modal content", required: true)
   slot(:button, doc: "Modal buttons, displayed in footer")
 
-  def wc_modal(assigns) do
+  def dm_modal(assigns) do
     ~H"""
     <div id="modal-overlay" class="hidden z-10 fixed inset-0 backdrop-blur-lg bg-black/20"></div>
     <div id="modal-container" class="hidden fixed inset-0 z-20 overflow-y-auto">
@@ -19,7 +19,7 @@ defmodule PhoenixDuskmoon.Modal do
       >
         <div
           id="modal-content"
-          phx-click-away={wc_hide_modal()}
+          phx-click-away={dm_hide_modal()}
           class={[
             "relative bg-white rounded-lg",
             "px-4 pt-5 pb-4",
@@ -54,7 +54,7 @@ defmodule PhoenixDuskmoon.Modal do
     """
   end
 
-  def wc_hide_modal() do
+  def dm_hide_modal() do
     %JS{}
     |> JS.remove_class("overflow-hidden", to: "body")
     |> JS.hide(to: "#modal-overlay")
@@ -69,7 +69,7 @@ defmodule PhoenixDuskmoon.Modal do
     |> JS.hide(to: "#modal-container")
   end
 
-  def wc_show_modal(js \\ %JS{}) do
+  def dm_show_modal(js \\ %JS{}) do
     js
     |> JS.add_class("overflow-hidden", to: "body")
     |> JS.show(to: "#modal-container")

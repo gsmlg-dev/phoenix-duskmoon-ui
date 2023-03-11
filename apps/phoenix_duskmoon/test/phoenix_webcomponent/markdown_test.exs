@@ -6,7 +6,7 @@ defmodule PhoenixDuskmoon.MarkdownTest do
   import PhoenixDuskmoon.Markdown
 
   test "remark empty" do
-    assert render_component(&wc_markdown/1, content: "value") ==
+    assert render_component(&dm_markdown/1, content: "value") ==
              ~s[<remark-element class="">value</remark-element>]
   end
 end

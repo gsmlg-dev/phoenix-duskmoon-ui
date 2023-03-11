@@ -1,16 +1,16 @@
 defmodule DuskmoonStorybookWeb.Storybook.Components.Modal do
   use PhoenixStorybook.Story, :component
 
-  def function, do: &PhoenixDuskmoon.Modal.wc_modal/1
+  def function, do: &PhoenixDuskmoon.Modal.dm_modal/1
 
   def imports do
-    [{PhoenixDuskmoon.Modal, wc_show_modal: 0}]
+    [{PhoenixDuskmoon.Modal, dm_show_modal: 0}]
   end
 
   def template do
     """
     <div>
-      <button type="button" class="btn" phx-click={wc_show_modal()}>
+      <button type="button" class="btn" phx-click={dm_show_modal()}>
         Open modal
       </button>
       <.lsb-variation />

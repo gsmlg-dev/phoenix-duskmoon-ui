@@ -7,14 +7,14 @@ defmodule PhoenixDuskmoon.LeftMenu do
   @doc """
   Generates left menu
   ## Example
-      <.wc_left_menu
+      <.dm_left_menu
         class="w-[200px] bg-[rgba(255,255,255,.7)] text-[14px]"
         active="actionbar"
       >
         <:title class="text-[#A1A7C4]">Phx WebComponents</:title>
         <:menu>actionbar</:menu>
         <:menu>appbar</:menu>
-      </.wc_left_menu>
+      </.dm_left_menu>
   """
   @doc type: :component
   attr(:id, :any,
@@ -56,7 +56,7 @@ defmodule PhoenixDuskmoon.LeftMenu do
     attr(:class, :any)
   end
 
-  def wc_left_menu(assigns) do
+  def dm_left_menu(assigns) do
     ~H"""
     <nav
       id={@id}
@@ -94,11 +94,11 @@ defmodule PhoenixDuskmoon.LeftMenu do
   @doc """
   Generates left menu Group
   ## Example
-      <.wc_left_menu_group active={"mdi"}>
+      <.dm_left_menu_group active={"mdi"}>
         <:title>Icons</:title>
         <:menu id="mdi" to={~p"/icons/mdi"}>MD Icon</:menu>
         <:menu id="bsi" to={~p"/icons/bsi"}>BS Icon</:menu>
-      </.wc_left_menu_group>
+      </.dm_left_menu_group>
   """
   @doc type: :component
   attr(:id, :any,
@@ -149,7 +149,7 @@ defmodule PhoenixDuskmoon.LeftMenu do
     attr(:to, :string)
   end
 
-  def wc_left_menu_group(assigns) do
+  def dm_left_menu_group(assigns) do
     assigns =
       assigns
       |> assign_new(:title, fn -> nil end)

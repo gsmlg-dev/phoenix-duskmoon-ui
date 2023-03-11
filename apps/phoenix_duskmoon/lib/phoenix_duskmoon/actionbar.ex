@@ -10,14 +10,14 @@ defmodule PhoenixDuskmoon.Actionbar do
   ## Examples
 
   ```heex
-  <.wc_actionbar class="shadow">
+  <.dm_actionbar class="shadow">
     <:left>
       Star Wars
     </:left>
     <:right>
       <button>action</button>
     </:right>
-  </.wc_actionbar>
+  </.dm_actionbar>
   ```
 
   """
@@ -50,7 +50,7 @@ defmodule PhoenixDuskmoon.Actionbar do
     """
   )
 
-  def wc_actionbar(assigns) do
+  def dm_actionbar(assigns) do
     assigns =
       assigns
       |> assign_new(:left, fn -> [] end)

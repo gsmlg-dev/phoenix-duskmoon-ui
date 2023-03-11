@@ -13,7 +13,7 @@ defmodule PhoenixDuskmoon.Appbar do
 
   ## Example
 
-      <.wc_appbar
+      <.dm_appbar
         title={"PhoenixDuskmoon"}
       >
         <:menu to={~p"/storybook"}>
@@ -25,7 +25,7 @@ defmodule PhoenixDuskmoon.Appbar do
         <:user_profile>
           (^_^)
         </:user_profile>
-      </.wc_appbar>
+      </.dm_appbar>
 
   """
   @doc type: :component
@@ -74,7 +74,7 @@ defmodule PhoenixDuskmoon.Appbar do
     """
   )
 
-  def wc_appbar(assigns) do
+  def dm_appbar(assigns) do
     assigns =
       assigns
       |> assign_new(:logo, fn -> [] end)
@@ -86,13 +86,13 @@ defmodule PhoenixDuskmoon.Appbar do
         <%= render_slot(@logo) %>
       </nav>
       <%= for menu <- @menu do %>
-        <.wc_link
+        <.dm_link
           navigate={Map.get(menu, :to, "")}
           class={Map.get(menu, :class, "")}
           slot="nav"
         >
         <%= render_slot(menu) %>
-        </.wc_link>
+        </.dm_link>
       <% end %>
       <span slot="user">
         <%= render_slot(@user_profile) %>
@@ -106,7 +106,7 @@ defmodule PhoenixDuskmoon.Appbar do
 
   ## Example
 
-      <.wc_simple_appbar
+      <.dm_simple_appbar
         title={"PhoenixDuskmoon"}
       >
         <:menu to={~p"/storybook"}>
@@ -118,7 +118,7 @@ defmodule PhoenixDuskmoon.Appbar do
         <:user_profile>
           (^_^)
         </:user_profile>
-      </.wc_simple_appbar>
+      </.dm_simple_appbar>
 
   """
   @doc type: :component
@@ -167,7 +167,7 @@ defmodule PhoenixDuskmoon.Appbar do
     """
   )
 
-  def wc_simple_appbar(assigns) do
+  def dm_simple_appbar(assigns) do
     assigns =
       assigns
       |> assign_new(:logo, fn -> [] end)
@@ -216,7 +216,7 @@ defmodule PhoenixDuskmoon.Appbar do
             ]}
             onclick="document.getElementById('header-md-menu').classList.toggle('hidden')"
           >
-            <.wc_mdi name="menu" class="w-8 h-8" />
+            <.dm_mdi name="menu" class="w-8 h-8" />
           </button>
         </div>
       </div>

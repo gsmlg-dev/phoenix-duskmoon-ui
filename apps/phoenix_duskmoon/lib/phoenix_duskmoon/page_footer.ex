@@ -11,14 +11,14 @@ defmodule PhoenixDuskmoon.PageFooter do
 
   ## Example
 
-      <.wc_page_footer>
+      <.dm_page_footer>
         <:section class="">
           ABC
         </:section>
         <:copyright>
           (^_^)
         </:copyright>
-      </.wc_page_footer>
+      </.dm_page_footer>
 
   """
   @doc type: :component
@@ -60,7 +60,7 @@ defmodule PhoenixDuskmoon.PageFooter do
     attr(:body_class, :string)
   end
 
-  def wc_page_footer(assigns) do
+  def dm_page_footer(assigns) do
     ~H"""
 
     <footer class={[

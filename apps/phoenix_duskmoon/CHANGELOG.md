@@ -67,7 +67,7 @@
 
 ### Bug Fixes
 
-* Add color attribute to wc_mdi. ([00ad870](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/00ad87073ae5fbb159d55438a08adffcd9fdfb18))
+* Add color attribute to dm_mdi. ([00ad870](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/00ad87073ae5fbb159d55438a08adffcd9fdfb18))
 * Add exports in package.json. ([c2b4df1](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/c2b4df1db019c4d7f0c1d12eb6c5e527d038c570))
 * Add new link storybbok. ([2234b3d](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/2234b3dbe84e0c99b48507a6c92c6acd3a1ae2ab))
 * Fix @gsmlg/lit. ([ababf12](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/ababf129ca57883ed51f3cc87b19885dbf7718ad))
@@ -101,8 +101,8 @@
 * Add bootstrap icons. ([21d76e1](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/21d76e18b91d075ded072067a12d123b2050a8da))
 * Add Breadcrumb component. ([72b1812](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/72b1812d4568c98abe48cdea05445e7184823f14))
 * Add material design icons community version. ([2ee18ad](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/2ee18adbeee0c2cb164f6177752af6e586b2349f))
-* Add new appbar wc_simple_appbar. ([4101601](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/4101601b24f09e9f4133f8c07f423a632025a641))
-* Add wc_modal. ([2b2a951](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/2b2a95107e9c55066084694bab7695cbc98ad8dc))
+* Add new appbar dm_simple_appbar. ([4101601](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/4101601b24f09e9f4133f8c07f423a632025a641))
+* Add dm_modal. ([2b2a951](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/2b2a95107e9c55066084694bab7695cbc98ad8dc))
 * Refactor left_menu. ([575fa11](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/575fa111d6ad4f513ad8ce5730d75eb20293353e))
 * Support live story book 0.4.0. ([0c5ff02](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/0c5ff0269bbe16822c7c633eac5bee42e07e5bf1))
 
@@ -123,7 +123,7 @@
 
 ### Features
 
-* Add wc_modal. ([2b2a951](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/2b2a95107e9c55066084694bab7695cbc98ad8dc))
+* Add dm_modal. ([2b2a951](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/2b2a95107e9c55066084694bab7695cbc98ad8dc))
 * Refactor left_menu. ([575fa11](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/575fa111d6ad4f513ad8ce5730d75eb20293353e))
 
 # [2.6.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v2.5.4...v2.6.0) (2022-12-08)
@@ -161,7 +161,7 @@
 
 ### Bug Fixes
 
-* Add color attribute to wc_mdi. ([00ad870](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/00ad87073ae5fbb159d55438a08adffcd9fdfb18))
+* Add color attribute to dm_mdi. ([00ad870](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/00ad87073ae5fbb159d55438a08adffcd9fdfb18))
 * Fix test. ([8490170](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/8490170d7becea97061c8842e6274c1dc9174cc0))
 
 # [2.5.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v2.4.0...v2.5.0) (2022-12-03)
@@ -176,7 +176,7 @@
 
 ### Features
 
-* Add new appbar wc_simple_appbar. ([4101601](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/4101601b24f09e9f4133f8c07f423a632025a641))
+* Add new appbar dm_simple_appbar. ([4101601](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/4101601b24f09e9f4133f8c07f423a632025a641))
 
 ## [2.3.6](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v2.3.5...v2.3.6) (2022-11-30)
 
@@ -254,7 +254,7 @@
 
 ### Bug Fixes
 
-* Fix wc_card width and storybook. ([3585d8f](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/3585d8f047d90b81e50f338a2f2a3ed9ac287647))
+* Fix dm_card width and storybook. ([3585d8f](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/3585d8f047d90b81e50f338a2f2a3ed9ac287647))
 
 ## [2.1.3](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v2.1.2...v2.1.3) (2022-09-28)
 
@@ -283,14 +283,14 @@
 
 ### Bug Fixes
 
-* Fix wc_table. ([689913c](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/689913cfe2e58f651c0902856115702f3475a960))
+* Fix dm_table. ([689913c](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/689913cfe2e58f651c0902856115702f3475a960))
 
 
 ### Features
 
 * Add  action bar. ([6726b25](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/6726b257ebecd60446e5a59b0a3f53708035007d))
-* Add wc_card. ([f50230a](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/f50230a58c8d5bbaaed3baadf410eece21b12b8d))
-* Add wc_left_menu. ([a48ac09](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/a48ac09c5a0feb31223f531365d3a9bcffd9508d))
+* Add dm_card. ([f50230a](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/f50230a58c8d5bbaaed3baadf410eece21b12b8d))
+* Add dm_left_menu. ([a48ac09](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/a48ac09c5a0feb31223f531365d3a9bcffd9508d))
 
 # [2.0.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v1.6.3...v2.0.0) (2022-09-21)
 
@@ -377,7 +377,7 @@ Co-authored-by: Jonathan Gao <gsmlg.com@gmail.com>
 
 ### Features
 
-* Refactor wc_switch, using my custom element. ([8f911c4](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/8f911c4d8305e8a13cf25b8a65a22684d0a114bb))
+* Refactor dm_switch, using my custom element. ([8f911c4](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/8f911c4d8305e8a13cf25b8a65a22684d0a114bb))
 
 ## [1.5.1](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v1.5.0...v1.5.1) (2022-04-30)
 
@@ -486,7 +486,7 @@ Co-authored-by: Jonathan Gao <gsmlg.com@gmail.com>
 
 ### Bug Fixes
 
-* Remove duplicate form attribute to wc_date_input. ([b91ddaa](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/b91ddaaf1dc87d4a63a46eb46f4e2118fba306f2))
+* Remove duplicate form attribute to dm_date_input. ([b91ddaa](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/b91ddaaf1dc87d4a63a46eb46f4e2118fba306f2))
 
 
 ### Features
@@ -499,7 +499,7 @@ Co-authored-by: Jonathan Gao <gsmlg.com@gmail.com>
 ### Bug Fixes
 
 * Fix build. ([53891e8](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/53891e88c9f699c103269897b7af558fc817e89d))
-* Set unelevated to wc_submit. ([07f706e](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/07f706e5b95c247c6e0af6f6c018c5c6321f1c69))
+* Set unelevated to dm_submit. ([07f706e](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/07f706e5b95c247c6e0af6f6c018c5c6321f1c69))
 
 
 ### Features
@@ -512,7 +512,7 @@ Co-authored-by: Jonathan Gao <gsmlg.com@gmail.com>
 ### Bug Fixes
 
 * Fix build. ([53891e8](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/53891e88c9f699c103269897b7af558fc817e89d))
-* Set unelevated to wc_submit. ([07f706e](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/07f706e5b95c247c6e0af6f6c018c5c6321f1c69))
+* Set unelevated to dm_submit. ([07f706e](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/07f706e5b95c247c6e0af6f6c018c5c6321f1c69))
 
 
 ### Features
@@ -524,7 +524,7 @@ Co-authored-by: Jonathan Gao <gsmlg.com@gmail.com>
 
 ### Bug Fixes
 
-* Set unelevated to wc_submit. ([07f706e](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/07f706e5b95c247c6e0af6f6c018c5c6321f1c69))
+* Set unelevated to dm_submit. ([07f706e](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/07f706e5b95c247c6e0af6f6c018c5c6321f1c69))
 
 
 ### Features
@@ -536,7 +536,7 @@ Co-authored-by: Jonathan Gao <gsmlg.com@gmail.com>
 
 ### Bug Fixes
 
-* Set unelevated to wc_submit. ([07f706e](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/07f706e5b95c247c6e0af6f6c018c5c6321f1c69))
+* Set unelevated to dm_submit. ([07f706e](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/07f706e5b95c247c6e0af6f6c018c5c6321f1c69))
 
 
 ### Features
@@ -554,7 +554,7 @@ Co-authored-by: Jonathan Gao <gsmlg.com@gmail.com>
 
 ### Features
 
-* Add wc_top_app_bar component. ([fb292af](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/fb292af1171a85f02ecfb275a1a0aaf72d758721))
+* Add dm_top_app_bar component. ([fb292af](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/fb292af1171a85f02ecfb275a1a0aaf72d758721))
 
 ## [1.1.1](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v1.1.0...v1.1.1) (2022-04-16)
 
@@ -644,7 +644,7 @@ Co-authored-by: Jonathan Gao <gsmlg.com@gmail.com>
 
 ### Features
 
-* Add live view link helper, `wc_live_patch`, `wc_live_redirect`. ([323347f](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/323347fa858ab209f3649b50f2fbad9719d9cf2a))
+* Add live view link helper, `dm_live_patch`, `dm_live_redirect`. ([323347f](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/323347fa858ab209f3649b50f2fbad9719d9cf2a))
 
 # [1.0.0-beta.3](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2022-04-16)
 
@@ -694,7 +694,7 @@ Co-authored-by: Jonathan Gao <gsmlg.com@gmail.com>
 
 ### Features
 
-* Add `wc_remark`. ([9714a45](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/9714a454aefa5a51964242a3166f8a387e814908))
+* Add `dm_remark`. ([9714a45](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/9714a454aefa5a51964242a3166f8a387e814908))
 * Add phoenix_html to deps. ([d8ea8a4](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/d8ea8a4903018bd29432f365e4c5f4b283158f43))
 * Initital package. ([090475d](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/090475d2be5b290d9de1f24a4854f3b1d9bfa91a))
 * Into beta, optimize input, start make it more reliable and more useful. ([adf4133](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/adf4133d02ab15182ac0b0b83b8f20d8ca23f894))
@@ -705,7 +705,7 @@ Co-authored-by: Jonathan Gao <gsmlg.com@gmail.com>
 
 ### Features
 
-* Add `wc_remark`. ([9714a45](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/9714a454aefa5a51964242a3166f8a387e814908))
+* Add `dm_remark`. ([9714a45](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/9714a454aefa5a51964242a3166f8a387e814908))
 
 # 1.0.0-alpha.1 (2022-04-15)
 

@@ -11,14 +11,14 @@ defmodule PhoenixDuskmoon.PageHeader do
 
   ## Example
 
-      <.wc_page_header>
+      <.dm_page_header>
         <:menu to={~p"/storybook"}>
           Storybook
         </:menu>
         <:user_profile>
           (^_^)
         </:user_profile>
-      </.wc_page_header>
+      </.dm_page_header>
 
   """
   @doc type: :component
@@ -67,7 +67,7 @@ defmodule PhoenixDuskmoon.PageHeader do
     """
   )
 
-  def wc_page_header(assigns) do
+  def dm_page_header(assigns) do
     ~H"""
     <nav
       id={@nav_id}

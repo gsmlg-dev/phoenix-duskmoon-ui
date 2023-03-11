@@ -1,19 +1,19 @@
-<.wc_breadcrumb class="bg-white h-6 text-slate-400">
+<.dm_breadcrumb class="bg-white h-6 text-slate-400">
     <:crumb>Icon</:crumb>
     <:crumb>Bootstrap Icon</:crumb>
-</.wc_breadcrumb>
-<.wc_card class="w-[100%_!important] h-[calc(100vh-56px-2em)_!important] overflow-auto">
+</.dm_breadcrumb>
+<.dm_card class="w-[100%_!important] h-[calc(100vh-56px-2em)_!important] overflow-auto">
     <:title class="flex flex-row justify-center items-center">
         <span class="text-4xl text-blue-600 hover:text-blue-400">
             Bootstrap Icons
         </span>
     </:title>
-    <.wc_markdown content={"""
+    <.dm_markdown content={"""
     ## Example
 
     ```html
     <!-- icon_name is bootstrap icon name -->
-    <.wc_bsi name={icon_name} class="w-12 h-12" />
+    <.dm_bsi name={icon_name} class="w-12 h-12" />
     ```
     """} />
     <div class="flex flex-row mt-4 mb-2">
@@ -27,9 +27,9 @@
         <div class="border flex flex-col w-40 h-40 items-center justify-center">
             <div class="text-blue-400"><embed><%= icon_name %></embed></div>
             <div class="flex items-center justify-center">
-                <.wc_bsi name={icon_name} class="w-24 h-24" />
+                <.dm_bsi name={icon_name} class="w-24 h-24" />
             </div>
         </div>
         <% end %>
     </div>
-</.wc_card>
+</.dm_card>

@@ -11,7 +11,7 @@ defmodule PhoenixDuskmoon.Card do
 
   ## Example
 
-      <.wc_card>
+      <.dm_card>
         <:title>
         Star Wars
         </:title>
@@ -19,7 +19,7 @@ defmodule PhoenixDuskmoon.Card do
         franchise created by George Lucas,
         which began with the eponymous 1977 film and
         quickly became a worldwide pop-culture phenomenon.
-      </.wc_card>
+      </.dm_card>
 
   """
   @doc type: :component
@@ -46,7 +46,7 @@ defmodule PhoenixDuskmoon.Card do
     attr(:class, :any, doc: "title class")
   end
 
-  def wc_card(assigns) do
+  def dm_card(assigns) do
     assigns =
       assigns
       |> assign_new(:title, fn -> nil end)
@@ -56,7 +56,7 @@ defmodule PhoenixDuskmoon.Card do
       id={@id}
       class={[
         "m-4 p-6 flex flex-col",
-        "bg-white shadow-lg dark:bg-black dark:shadow-slate-600",
+        "shadow-lg dark:shadow-slate-600",
         @class
       ]}
     >

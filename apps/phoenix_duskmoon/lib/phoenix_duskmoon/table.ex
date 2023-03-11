@@ -10,7 +10,7 @@ defmodule PhoenixDuskmoon.Table do
   ## Examples
 
   ```heex
-  <.wc_table rows={[
+  <.dm_table rows={[
     %{
       name: "Shmi Skywalker",
       portrayal: "Pernilla August (Episodes I-II)"
@@ -25,7 +25,7 @@ defmodule PhoenixDuskmoon.Table do
     <:col let={r} label="Portrayal">
       <%= r.portrayal %>
     </:col>
-  </.wc_table>
+  </.dm_table>
   ```
 
   """
@@ -67,7 +67,7 @@ defmodule PhoenixDuskmoon.Table do
     attr(:label, :string, doc: "table column title")
   end
 
-  def wc_table(assigns) do
+  def dm_table(assigns) do
     ~H"""
     <table
       id={@id}

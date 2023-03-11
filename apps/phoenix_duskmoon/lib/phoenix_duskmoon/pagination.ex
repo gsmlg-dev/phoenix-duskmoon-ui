@@ -10,7 +10,7 @@ defmodule PhoenixDuskmoon.Pagination do
 
   ## Examples
 
-      <.wc_pagination page_num={5} page_size={15} total={100} update_event="update-page"/>
+      <.dm_pagination page_num={5} page_size={15} total={100} update_event="update-page"/>
 
   """
   @doc type: :component
@@ -56,7 +56,7 @@ defmodule PhoenixDuskmoon.Pagination do
     """
   )
 
-  def wc_pagination(assigns) do
+  def dm_pagination(assigns) do
     max_page =
       if assigns.total > 0 do
         (assigns.total / assigns.page_size) |> ceil

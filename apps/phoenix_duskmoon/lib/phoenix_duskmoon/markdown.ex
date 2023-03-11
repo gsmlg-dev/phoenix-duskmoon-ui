@@ -17,10 +17,10 @@ defmodule PhoenixDuskmoon.Markdown do
 
   ## Examples
 
-      <.wc_markdown class="dark"># Hello</.wc_markdown>
+      <.dm_markdown class="dark"># Hello</.dm_markdown>
       #=> <remark-element class="dark"># Hello</remark-element>
 
-      <.wc_markdown class="btn"># Hello</.wc_markdown>
+      <.dm_markdown class="btn"># Hello</.dm_markdown>
       #=> <remark-element class="btn"># Hello</remark-element>
 
   """
@@ -53,7 +53,7 @@ defmodule PhoenixDuskmoon.Markdown do
     """
   )
 
-  def wc_markdown(assigns) do
+  def dm_markdown(assigns) do
     ~H"""
     <remark-element id={@id} debug={@debug} class={@class}><%= @content %></remark-element>
     """
