@@ -1,6 +1,6 @@
 # PhoenixDuskmoon
 
-[![release](https://github.com/gsmlg-dev/phoenix_duskmoon/actions/workflows/test-and-release.yml/badge.svg)](https://github.com/gsmlg-dev/phoenix_duskmoon/actions/workflows/test-and-release.yml)
+[![release](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/actions/workflows/test-and-release.yml/badge.svg)](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/actions/workflows/test-and-release.yml)
 
 Collection of helpers to generate and manipulate Web Component.
 

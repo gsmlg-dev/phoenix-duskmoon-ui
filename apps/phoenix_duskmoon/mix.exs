@@ -2,7 +2,7 @@ defmodule PhoenixDuskmoon.Mixfile do
   use Mix.Project
 
   # Also change package.json version
-  @source_url "https://github.com/gsmlg-dev/phoenix_duskmoon.git"
+  @source_url "https://github.com/gsmlg-dev/phoenix-duskmoon-ui.git"
   @version "0.0.0"
 
   def project do
