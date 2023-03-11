@@ -13,7 +13,7 @@ defmodule PhoenixDuskmoon.Icons do
 
   @doc """
   Return all names of available Material Design Icons.
-  Can be found at [Material Design Icons](https://phoenix-webcomponent.gsmlg.org/mdi)
+  Can be found at [Material Design Icons](https://duskmoon-storybook.gsmlg.org/mdi)
 
       > PhoenixDuskmoon.Icons.mdi_icons()
         #=> [
@@ -87,7 +87,7 @@ defmodule PhoenixDuskmoon.Icons do
 
   @doc """
   Return all names of available Bootstrap Icons.
-  Can be found at [Bootstrap Icons](https://phoenix-webcomponent.gsmlg.org/bsi)
+  Can be found at [Bootstrap Icons](https://duskmoon-storybook.gsmlg.org/bsi)
 
       > PhoenixDuskmoon.Icons.bsi_icons()
         #=> [
