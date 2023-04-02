@@ -1,3 +1,10 @@
+# [4.1.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.0.0...v4.1.0) (2023-04-02)
+
+
+### Features
+
+* Add new loading effect. ([822ba08](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/822ba0824c39d0a75acefd1f0ad68c3e14d2aa49))
+
 # [4.0.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v3.2.4...v4.0.0) (2023-03-11)
 
 
