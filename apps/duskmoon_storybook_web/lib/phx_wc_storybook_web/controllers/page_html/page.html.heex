@@ -1,6 +1,7 @@
 <.dm_page_header
   class={[
     "bg-gradient-to-br from-[#ff6f61] to-[#639]",
+    "aniamite-bg",
     "text-slate-200 h-[680px] py-6"
   ]}
   nav_class={["bg-gradient-to-br from-[#ff6f61] to-[#639] text-slate-200 shadow"]}
@@ -125,6 +126,10 @@
           <.dm_bsi name={"layout-sidebar"} class="w-4 h-4" />
           Left Menu
         </.link>
+        <.link class="flex flex-row items-center text-2xl text-blue-500 gap-4" id="loading" href="/storybook/components/loading">
+          <.dm_mdi name={"loading"} class="w-4 h-4 animate-spin" />
+          Loading
+        </.link>
         <.link class="flex flex-row items-center text-2xl text-blue-500 gap-4" id="markdown" href="/storybook/components/markdown">
           <.dm_bsi name={"markdown"} class="w-4 h-4" />
           Markdown
@@ -144,12 +149,6 @@
       </div>
     </div>
   </div>
-</div>
-<div style="  width: 100%;
-  height: 50em;
-  display: grid;
-  place-items: center;">
-  <.dm_loading_ex size={44} item_count={99} speed={"2s"} />
 </div>
 <.dm_page_footer
   class={["bg-gradient-to-br from-cyan-500 to-blue-500 text-slate-100"]}
