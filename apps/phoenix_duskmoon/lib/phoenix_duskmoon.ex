@@ -88,6 +88,7 @@ defmodule PhoenixDuskmoon do
       import PhoenixDuskmoon.Icons
       import PhoenixDuskmoon.PageHeader
       import PhoenixDuskmoon.PageFooter
+      import PhoenixDuskmoon.Loading
     end
   end
 
