@@ -38,13 +38,12 @@ defmodule PhoenixDuskmoon.Mixfile do
 
   defp deps do
     [
-      {:phoenix, "~> 1.7.1"},
+      {:phoenix, "~> 1.7"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_view, "~> 0.18"},
       {:plug, "~> 1.5", optional: true},
-      {:jason, "~> 1.0"},
-      {:esbuild, "~> 0.2", runtime: true},
-      {:tailwind, "~> 0.1.6", runtime: Mix.env() == :dev},
+      {:esbuild, "~> 0.7", runtime: Mix.env() == :dev},
+      {:tailwind, "~> 0.2.0", runtime: Mix.env() == :dev},
       {:ex_doc, ">= 0.0.0", only: :prod, runtime: false}
     ]
   end
