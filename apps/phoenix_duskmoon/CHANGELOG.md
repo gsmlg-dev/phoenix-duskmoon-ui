@@ -1,3 +1,10 @@
+# [4.2.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.1.1...v4.2.0) (2023-04-07)
+
+
+### Features
+
+* Update dependencies. ([c96562f](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/c96562fa07d90c07eb8d93e132caf2212c83705e))
+
 ## [4.1.1](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.1.0...v4.1.1) (2023-04-02)
 
 
