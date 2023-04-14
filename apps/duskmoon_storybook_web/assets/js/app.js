@@ -44,4 +44,3 @@ liveSocket.connect();
 // >> liveSocket.disableLatencySim()
 window.liveSocket = liveSocket;
 
-import 'phoenix_duskmoon';
