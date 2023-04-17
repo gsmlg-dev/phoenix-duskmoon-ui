@@ -1,3 +1,17 @@
+# [4.3.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.2.0...v4.3.0) (2023-04-17)
+
+
+### Bug Fixes
+
+* Fix duplicate import. ([4dd5134](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/4dd5134f40b73686819c3729427a5b39bf2cf954))
+* Fix modal style and docs. ([18a4a63](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/18a4a63bde1951b1b052c7024bb0d0cba04ab19a))
+* Fix tab styles. ([3fd932d](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/3fd932d9bbf9250be2b0fcade67d3c9df44e84dc))
+
+
+### Features
+
+* Add tab and change modal use html dialog. ([8a85659](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/8a856591c3610863e2525a222dee96dedebfa935))
+
 # [4.2.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.1.1...v4.2.0) (2023-04-07)
 
 
