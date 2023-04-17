@@ -1,3 +1,10 @@
+## [4.3.2](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.3.1...v4.3.2) (2023-04-17)
+
+
+### Bug Fixes
+
+* Fix docker. ([1cdcdce](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/1cdcdced71cf192347ae9fef9cd056e43629a1d0))
+
 ## [4.3.1](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.3.0...v4.3.1) (2023-04-17)
 
 
