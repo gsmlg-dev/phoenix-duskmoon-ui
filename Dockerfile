@@ -32,10 +32,6 @@ ENV PORT=80 \
     PHX_SERVER=true \
     SECRET_KEY_BASE=duskmoon_storybook
 
-RUN apk update \
-    && apk add openssl bash libstdc++ \
-    && rm -rf /var/cache/apk/*
-
 COPY --from=builder /app /app
 
 EXPOSE 80
