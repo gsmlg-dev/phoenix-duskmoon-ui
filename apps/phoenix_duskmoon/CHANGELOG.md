@@ -1,3 +1,10 @@
+## [4.3.1](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.3.0...v4.3.1) (2023-04-17)
+
+
+### Bug Fixes
+
+* Remove @gsmlg/lit from package. ([686f0c3](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/686f0c3dcf0c29d8eb446f00b28aed316aa7034a))
+
 # [4.3.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.2.0...v4.3.0) (2023-04-17)
 
 
