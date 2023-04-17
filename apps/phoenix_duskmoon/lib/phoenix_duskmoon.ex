@@ -60,6 +60,7 @@ defmodule PhoenixDuskmoon do
       alias PhoenixDuskmoon.Table
       alias PhoenixDuskmoon.PageHeader
       alias PhoenixDuskmoon.PageFooter
+      alias PhoenixDuskmoon.Tab
     end
   end
 
@@ -75,20 +76,21 @@ defmodule PhoenixDuskmoon do
 
   defp components do
     quote do
-      import PhoenixDuskmoon.Link
       import PhoenixDuskmoon.Actionbar
       import PhoenixDuskmoon.Appbar
       import PhoenixDuskmoon.Breadcrumb
       import PhoenixDuskmoon.Card
+      import PhoenixDuskmoon.Icons
       import PhoenixDuskmoon.LeftMenu
+      import PhoenixDuskmoon.Link
+      import PhoenixDuskmoon.Loading
       import PhoenixDuskmoon.Markdown
       import PhoenixDuskmoon.Modal
       import PhoenixDuskmoon.Pagination
-      import PhoenixDuskmoon.Table
-      import PhoenixDuskmoon.Icons
       import PhoenixDuskmoon.PageHeader
       import PhoenixDuskmoon.PageFooter
-      import PhoenixDuskmoon.Loading
+      import PhoenixDuskmoon.Tab
+      import PhoenixDuskmoon.Table
     end
   end
 

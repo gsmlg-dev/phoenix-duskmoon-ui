@@ -1,5 +1,30 @@
 import '@gsmlg/lit';
 
+window.addEventListener('modal:open', (evt) => {
+    const modal = evt.target;
+    if (modal.open) {
+        return;
+    }
+    const x = evt.pageX;
+    const y = evt.pageY;
+    modal.style.setProperty("--x", `calc(-50vw + ${x}px)`);
+    modal.style.setProperty("--y", `calc(-50vh + ${y}px)`);
+    modal.showModal();
+    modal.addEventListener('modal:close', (evt) => {
+        modal.setAttribute("closing", "");
+        modal.addEventListener(
+            "animationend",
+            () => {
+            modal.removeAttribute("closing");
+            modal.close();
+            },
+            { once: true }
+        );
+    }, {
+        once: true
+    });
+});
+
 export const WebComponentHook = {
     mounted() {
         const attrs = this.el.attributes;

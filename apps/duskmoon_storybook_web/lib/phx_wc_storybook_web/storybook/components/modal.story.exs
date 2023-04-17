@@ -7,22 +7,18 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Modal do
     [{PhoenixDuskmoon.Modal, dm_show_modal: 0}]
   end
 
-  def template do
-    """
-    <div>
-      <button type="button" class="btn" phx-click={dm_show_modal()}>
-        Open modal
-      </button>
-      <.lsb-variation />
-    </div>
-    """
-  end
-
   def variations do
     [
       %Variation{
         id: :default,
+        attributes: %{
+        },
         slots: [
+          """
+          <:trigger let={f}>
+            <button phx-click={f}>Open</button>
+          </:trigger>
+          """,
           "<:title>PhoenixDuskmoon</:title>",
           "<:body>PhoenixDuskmoon Storybook</:body>"
         ]
@@ -30,6 +26,11 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Modal do
       %Variation{
         id: :with_buttons,
         slots: [
+          """
+          <:trigger let={f}>
+            <button phx-click={f}>Open</button>
+          </:trigger>
+          """,
           """
           <:title>
             PhoenixDuskmoon
@@ -42,18 +43,14 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Modal do
           </:body>
           """,
           """
-          <:button>
+          <:footer>
             <button type="button" class="btn">
               Cancel
             </button>
-          </:button>
-          """,
-          """
-          <:button>
             <button type="button" class="btn">
               OK
             </button>
-          </:button>
+          </:footer>
           """
         ]
       },
@@ -61,16 +58,21 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Modal do
         id: :without_title,
         slots: [
           """
+          <:trigger let={f}>
+            <button phx-click={f}>Open</button>
+          </:trigger>
+          """,
+          """
           <:body>
             PhoenixDuskmoonb Is Awesome
           </:body>
           """,
           """
-          <:button>
+          <:footer>
             <button type="button" class="btn">
               OK
             </button>
-          </:button>
+          </:footer>
           """
         ]
       }

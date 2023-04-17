@@ -2,85 +2,79 @@ defmodule PhoenixDuskmoon.Modal do
   use PhoenixDuskmoon, :html
 
   alias Phoenix.LiveView.JS
+  import PhoenixDuskmoon.Icons
 
-  slot(:title, doc: "Modal title")
+  @doc """
+  Open ad dialog modal.
+
+  ## Examples
+
+  ```heex
+  <.dm_modal>
+    <:trigger let={f}>
+      <button phx-click={f}>Open</button>
+    </:trigger>
+    <:title>PhoenixDuskmoon</:title>
+    <:body>PhoenixDuskmoon Storybook</:body>
+  </.dm_modal>
+  ```
+
+  """
+  @doc type: :component
+  attr(:id, :any,
+    doc: "Modal id")
+  attr(:class, :any,
+    default: "",
+    doc: "Modal class")
+
+  slot(:trigger, doc: "Modal trigger")
+  slot(:title, doc: "Modal title") do
+    attr(:class, :any, doc: "html class")
+  end
   slot(:body, doc: "Modal content", required: true)
-  slot(:button, doc: "Modal buttons, displayed in footer")
+  slot(:footer, doc: "Modal footer, buttons") do
+    attr(:class, :any, doc: "html class")
+  end
 
   def dm_modal(assigns) do
+    assigns = assigns
+      |> assign_new(:id, fn -> "modal-#{Enum.random(0..999999)}" end)
+
     ~H"""
-    <div id="modal-overlay" class="hidden z-10 fixed inset-0 backdrop-blur-lg bg-black/20"></div>
-    <div id="modal-container" class="hidden fixed inset-0 z-20 overflow-y-auto">
-      <div
-        class={[
-          "flex items-end sm:items-center justify-center",
-          "min-h-full p-4 text-center sm:p-0",
-        ]}
-      >
-        <div
-          id="modal-content"
-          phx-click-away={dm_hide_modal()}
-          class={[
-            "relative bg-white rounded-lg",
-            "px-4 pt-5 pb-4",
-            "text-left overflow-hidden shadow-xl",
-            "transform transition-all",
-            "sm:my-8 sm:max-w-sm sm:w-full sm:p-6"
-          ]}
-        >
-          <div>
-            <div class="mt-3 text-center sm:mt-5">
-              <h3
-                :for={t <- @title}
-                class="text-lg leading-6 font-medium text-gray-900"
-              ><%= render_slot(t) %></h3>
-              <div class="mt-2">
-                <p class="text-sm text-gray-500">
-                  <%= render_slot(@body) %>
-                </p>
-              </div>
-            </div>
-          </div>
-          <%= if assigns[:button] do %>
-            <div class="mt-5 sm:mt-6 flex justify-end space-x-2">
-              <%= for button <- @button do %>
-                <%= render_slot(button) %>
-              <% end %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
+    <%= if length(@trigger) > 0 do %>
+      <%= render_slot(@trigger, JS.dispatch("modal:open", to: "##{@id}")) %>
+    <% end %>
+    <dialog
+      id={@id}
+      class={[
+        "modal relative",
+        "p-4 min-h-[200px] min-w-[420px]",
+        @class
+      ]}
+    >
+      <a class="absolute right-2 top-2 cursor-pointer" phx-click={JS.dispatch("modal:close", to: "##{@id}")}>
+        <.dm_mdi name={"window-close"} class="w-4 h-4" />
+      </a>
+      <section class="flex flex-col absolute inset-4">
+        <%= if length(@title) > 0 do %>
+          <header :for={title <- @title} class={[
+            "flex flex-row font-bold",
+            Map.get(title, "class", "")
+          ]}>
+            <%= render_slot(@title) %>
+          </header>
+        <% end %>
+        <%= render_slot(@body) %>
+        <%= if length(@footer) > 0 do %>
+          <footer :for={footer <- @footer} class={[
+            "justify-self-end	",
+            Map.get(footer, "class", "")
+          ]}>
+          <%= render_slot(@footer) %>
+          </footer>
+        <% end %>
+      </section>
+    </dialog>
     """
-  end
-
-  def dm_hide_modal() do
-    %JS{}
-    |> JS.remove_class("overflow-hidden", to: "body")
-    |> JS.hide(to: "#modal-overlay")
-    |> JS.hide(
-      transition: {
-        "ease-in duration-200",
-        "opacity-100 translate-y-0 md:scale-100",
-        "opacity-0 translate-y-4 md:translate-y-0 md:scale-95"
-      },
-      to: "#modal-content"
-    )
-    |> JS.hide(to: "#modal-container")
-  end
-
-  def dm_show_modal(js \\ %JS{}) do
-    js
-    |> JS.add_class("overflow-hidden", to: "body")
-    |> JS.show(to: "#modal-container")
-    |> JS.show(to: "#modal-overlay")
-    |> JS.show(
-      transition: {
-        "transition ease-in-out duration-200",
-        "opacity-0 translate-y-4",
-        "opacity-100 translate-y-0"
-      },
-      to: "#modal-content"
-    )
   end
 end
