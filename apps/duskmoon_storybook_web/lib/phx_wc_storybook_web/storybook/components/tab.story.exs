@@ -3,24 +3,31 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Tab do
 
   def function, do: &PhoenixDuskmoon.Tab.dm_tab/1
 
-  def template do
-    """
-    <div>
-      <.lsb-variation />
-    </div>
-    """
-  end
-
   def variations do
     [
       %Variation{
         id: :default,
         attributes: %{
-          active_tab: 0
+          active_tab_name: "Luke"
         },
         slots: [
-          ~s(<:tab>Tab 1</:tab>),
-          ~s(<:tab>Tab 2</:tab>)
+          ~s(<:tab name="Luke">Luke</:tab>),
+          ~s(<:tab name="Anakin">Anakin</:tab>),
+          ~s(<:tab_content name="Luke">Luke Skywalker, brother of Prince Leia Organa</:tab_content>),
+          ~s(<:tab_content name="Anakin">Anakin Skywalker, aka. Darth Vador</:tab_content>),
+        ]
+      },
+      %Variation{
+        id: :vertical,
+        attributes: %{
+          active_tab_name: "Anakin",
+          orientation: "vertical"
+        },
+        slots: [
+          ~s(<:tab name="Luke">Luke</:tab>),
+          ~s(<:tab name="Anakin">Anakin</:tab>),
+          ~s(<:tab_content name="Luke">Luke Skywalker, brother of Prince Leia Organa</:tab_content>),
+          ~s(<:tab_content name="Anakin">Anakin Skywalker, aka. Darth Vador</:tab_content>),
         ]
       },
     ]
