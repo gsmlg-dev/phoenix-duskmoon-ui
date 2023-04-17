@@ -28,6 +28,11 @@ defmodule PhoenixDuskmoon.Modal do
     doc: "Modal class"
   )
 
+  attr(:hide_close, :boolean,
+    default: false,
+    doc: "Hide top right close button"
+  )
+
   slot(:trigger, doc: "Modal trigger")
 
   slot(:title, doc: "Modal title") do
@@ -52,32 +57,35 @@ defmodule PhoenixDuskmoon.Modal do
     <dialog
       id={@id}
       class={[
-        "modal relative",
-        "p-4 min-h-[200px] min-w-[420px]",
+        "modal",
+        "p-4",
         @class
       ]}
     >
+      <%= unless @hide_close do %>
       <a class="absolute right-2 top-2 cursor-pointer" phx-click={JS.dispatch("modal:close", to: "##{@id}")}>
         <.dm_mdi name={"window-close"} class="w-4 h-4" />
       </a>
-      <section class="flex flex-col absolute inset-4">
-        <%= if length(@title) > 0 do %>
-          <header :for={title <- @title} class={[
-            "flex flex-row font-bold",
-            Map.get(title, "class", "")
-          ]}>
-            <%= render_slot(@title) %>
-          </header>
-        <% end %>
-        <%= render_slot(@body) %>
-        <%= if length(@footer) > 0 do %>
-          <footer :for={footer <- @footer} class={[
-            "justify-self-end	",
-            Map.get(footer, "class", "")
-          ]}>
-          <%= render_slot(@footer) %>
-          </footer>
-        <% end %>
+      <% end %>
+      <section class="flex flex-col min-h-[200px] min-w-[420px]">
+        <header :for={title <- @title} class={[
+          "flex flex-row font-bold w-full text-2xl",
+          Map.get(title, :class, "")
+        ]}>
+          <%= render_slot(title, JS.dispatch("modal:close", to: "##{@id}")) %>
+        </header>
+        <div :for={body <- @body} class={[
+          "flex flex-1",
+          Map.get(body, :class, "")
+        ]}>
+          <%= render_slot(body, JS.dispatch("modal:close", to: "##{@id}")) %>
+        </div>
+        <footer :for={footer <- @footer} class={[
+          "flex justify-end gap-4",
+          Map.get(footer, :class, "")
+        ]}>
+          <%= render_slot(footer, JS.dispatch("modal:close", to: "##{@id}")) %>
+        </footer>
       </section>
     </dialog>
     """

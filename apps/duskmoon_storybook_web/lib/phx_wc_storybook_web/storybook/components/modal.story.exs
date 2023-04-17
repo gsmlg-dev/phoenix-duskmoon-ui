@@ -42,11 +42,11 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Modal do
           </:body>
           """,
           """
-          <:footer>
-            <button type="button" class="btn">
+          <:footer let={f}>
+            <button class="btn" phx-click={f}>
               Cancel
             </button>
-            <button type="button" class="btn">
+            <button class="btn">
               OK
             </button>
           </:footer>
@@ -54,7 +54,10 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Modal do
         ]
       },
       %Variation{
-        id: :without_title,
+        id: :without_title_and_close,
+        attributes: %{
+          hide_close: true
+        },
         slots: [
           """
           <:trigger let={f}>
@@ -62,16 +65,9 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Modal do
           </:trigger>
           """,
           """
-          <:body>
-            PhoenixDuskmoonb Is Awesome
+          <:body let={close} class="flex justify-center items-center text-4xl text-rose-600">
+            <button phx-click={close}>PhoenixDuskmoonb Is Awesome...</button>
           </:body>
-          """,
-          """
-          <:footer>
-            <button type="button" class="btn">
-              OK
-            </button>
-          </:footer>
           """
         ]
       }
