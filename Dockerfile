@@ -9,9 +9,9 @@ WORKDIR /build
 
 RUN apk update \
     && mix do deps.get, compile \
-    && mix tailwind.install \
+    && cd apps/phoenix_duskmoon && mix tailwind.install && cd ../.. \
     && cd apps/phoenix_duskmoon && npm install && mix prepublish && cd ../.. \
-    && cd apps/duskmoon_storybook_web && mix assets.deploy && cd ../.. \
+    && cd apps/duskmoon_storybook_web && npm install --prefix assets && mix assets.deploy && cd ../.. \
     && mix release storybook --version "${RELEASE_VERSION}" \
     && cp -r _build/prod/rel/storybook /app
 

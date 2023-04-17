@@ -1,5 +1,3 @@
-import '@gsmlg/lit';
-
 window.addEventListener('modal:open', (evt) => {
     const modal = evt.target;
     if (modal.open) {

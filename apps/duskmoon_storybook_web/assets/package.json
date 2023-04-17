@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "@gsmlg/lit": "^1.29.5"
+    "@gsmlg/lit": "1.29.5"
   }
 }

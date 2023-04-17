@@ -24,6 +24,7 @@ import "phoenix_html";
 import {Socket} from "phoenix";
 import {LiveSocket} from "phoenix_live_view";
 import "phoenix_duskmoon";
+import "@gsmlg/lit";
 import topbar from "../vendor/topbar";
 
 const WebComponentHook = window.__WebComponentHook__;
