@@ -21,24 +21,29 @@ defmodule PhoenixDuskmoon.Modal do
 
   """
   @doc type: :component
-  attr(:id, :any,
-    doc: "Modal id")
+  attr(:id, :any, doc: "Modal id")
+
   attr(:class, :any,
     default: "",
-    doc: "Modal class")
+    doc: "Modal class"
+  )
 
   slot(:trigger, doc: "Modal trigger")
+
   slot(:title, doc: "Modal title") do
     attr(:class, :any, doc: "html class")
   end
+
   slot(:body, doc: "Modal content", required: true)
+
   slot(:footer, doc: "Modal footer, buttons") do
     attr(:class, :any, doc: "html class")
   end
 
   def dm_modal(assigns) do
-    assigns = assigns
-      |> assign_new(:id, fn -> "modal-#{Enum.random(0..999999)}" end)
+    assigns =
+      assigns
+      |> assign_new(:id, fn -> "modal-#{Enum.random(0..999_999)}" end)
 
     ~H"""
     <%= if length(@trigger) > 0 do %>

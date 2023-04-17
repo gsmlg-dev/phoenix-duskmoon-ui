@@ -11,8 +11,7 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Modal do
     [
       %Variation{
         id: :default,
-        attributes: %{
-        },
+        attributes: %{},
         slots: [
           """
           <:trigger let={f}>

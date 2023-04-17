@@ -14,7 +14,7 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Tab do
           ~s(<:tab name="Luke">Luke</:tab>),
           ~s(<:tab name="Anakin">Anakin</:tab>),
           ~s(<:tab_content name="Luke">Luke Skywalker, brother of Prince Leia Organa</:tab_content>),
-          ~s(<:tab_content name="Anakin">Anakin Skywalker, aka. Darth Vador</:tab_content>),
+          ~s(<:tab_content name="Anakin">Anakin Skywalker, aka. Darth Vador</:tab_content>)
         ]
       },
       %Variation{
@@ -27,9 +27,9 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Tab do
           ~s(<:tab name="Luke">Luke</:tab>),
           ~s(<:tab name="Anakin">Anakin</:tab>),
           ~s(<:tab_content name="Luke">Luke Skywalker, brother of Prince Leia Organa</:tab_content>),
-          ~s(<:tab_content name="Anakin">Anakin Skywalker, aka. Darth Vador</:tab_content>),
+          ~s(<:tab_content name="Anakin">Anakin Skywalker, aka. Darth Vador</:tab_content>)
         ]
-      },
+      }
     ]
   end
 end

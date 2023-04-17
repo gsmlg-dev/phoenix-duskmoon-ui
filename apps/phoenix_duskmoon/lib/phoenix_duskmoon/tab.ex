@@ -71,9 +71,9 @@ defmodule PhoenixDuskmoon.Tab do
     Render tab
     """
   ) do
-    attr :id, :any
-    attr :class, :any
-    attr :name, :string
+    attr(:id, :any)
+    attr(:class, :any)
+    attr(:name, :string)
   end
 
   slot(:tab_content,
@@ -82,19 +82,22 @@ defmodule PhoenixDuskmoon.Tab do
     Render tab content
     """
   ) do
-    attr :id, :any
-    attr :class, :any
-    attr :name, :string
+    attr(:id, :any)
+    attr(:class, :any)
+    attr(:name, :string)
   end
 
   def dm_tab(assigns) do
-    assigns = assigns |> assign_new(:active_tab_class, fn() ->
-      if assigns[:orientation] == "horizontal" do
-        "text-blue-400 border-x-0 border-t-0 border-b border-solid border-blue-400"
-      else
-        "text-blue-400 border-y-0 border-l-0 border-r border-solid border-blue-400"
-      end
-    end)
+    assigns =
+      assigns
+      |> assign_new(:active_tab_class, fn ->
+        if assigns[:orientation] == "horizontal" do
+          "text-blue-400 border-x-0 border-t-0 border-b border-solid border-blue-400"
+        else
+          "text-blue-400 border-y-0 border-l-0 border-r border-solid border-blue-400"
+        end
+      end)
+
     ~H"""
     <section
       id={@id}
