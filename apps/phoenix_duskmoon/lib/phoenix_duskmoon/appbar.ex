@@ -168,12 +168,6 @@ defmodule PhoenixDuskmoon.Appbar do
   )
 
   def dm_simple_appbar(assigns) do
-    assigns =
-      assigns
-      |> assign_new(:logo, fn -> [] end)
-      |> assign_new(:home, fn -> false end)
-      |> assign_new(:user_profile, fn -> [] end)
-
     ~H"""
     <header
       id={@id}

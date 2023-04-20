@@ -10,6 +10,7 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Table do
       %Variation{
         id: :default,
         attributes: %{
+          class: "w-full",
           rows: [
             %{
               name: "Shmi Skywalker",
@@ -43,13 +44,16 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Table do
         },
         slots: [
           """
-          <:col let={r} label="Name">
+          <:caption class="text-2xl text-slate-700 py-4">Skywalker House</:caption>
+          """,
+          """
+          <:col :let={r} label="Name" label_class="text-sky-600" class="align-top">
             <%= r.name %>
           </:col>
-          <:col let={r} label="Portrayal">
+          <:col :let={r} label="Portrayal" class="align-top">
             <%= r.portrayal %>
           </:col>
-          <:col let={r} label="Description">
+          <:col :let={r} label="Description" class="align-top">
             <%= r.description %>
           </:col>
           """

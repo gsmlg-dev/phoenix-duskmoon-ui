@@ -14,7 +14,7 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Modal do
         attributes: %{},
         slots: [
           """
-          <:trigger let={f}>
+          <:trigger :let={f}>
             <button phx-click={f}>Open</button>
           </:trigger>
           """,
@@ -26,7 +26,7 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Modal do
         id: :with_buttons,
         slots: [
           """
-          <:trigger let={f}>
+          <:trigger :let={f}>
             <button phx-click={f}>Open</button>
           </:trigger>
           """,
@@ -42,7 +42,7 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Modal do
           </:body>
           """,
           """
-          <:footer let={f}>
+          <:footer :let={f}>
             <button class="btn" phx-click={f}>
               Cancel
             </button>
@@ -60,12 +60,12 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Modal do
         },
         slots: [
           """
-          <:trigger let={f}>
+          <:trigger :let={f}>
             <button phx-click={f}>Open</button>
           </:trigger>
           """,
           """
-          <:body let={close} class="flex justify-center items-center text-4xl text-rose-600">
+          <:body :let={close} class="flex justify-center items-center text-4xl text-rose-600">
             <button phx-click={close}>PhoenixDuskmoonb Is Awesome...</button>
           </:body>
           """

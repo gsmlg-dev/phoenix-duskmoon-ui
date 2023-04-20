@@ -65,6 +65,13 @@ defmodule PhoenixDuskmoon.Tab do
     """
   )
 
+  attr(:content_class, :any,
+    default: "",
+    doc: """
+    tab_content html attribute class
+    """
+  )
+
   slot(:tab,
     required: false,
     doc: """
@@ -110,7 +117,7 @@ defmodule PhoenixDuskmoon.Tab do
     >
       <header
         class={[
-          "flex justify-start items-center gap-2",
+          "flex justify-start items-center gap-2 sticky top-0",
           if(@orientation == "horizontal", do: "flex-row", else: "flex-col"),
           @header_class
         ]}
@@ -139,11 +146,15 @@ defmodule PhoenixDuskmoon.Tab do
       <%= for {tab_content, i} <- Enum.with_index(@tab_content) do %>
         <%= if @active_tab_name != "" do %>
           <%= if @active_tab_name == Map.get(tab_content, :name, "") do %>
+            <div id={Map.get(tab_content, :id, false)} class={Map.get(tab_content, :class, "")}>
             <%= render_slot(tab_content) %>
+            </div>
           <% end %>
         <% else %>
           <%= if @active_tab_index == i do %>
+            <div id={Map.get(tab_content, :id, false)} class={Map.get(tab_content, :class, "")}>
             <%= render_slot(tab_content) %>
+            </div>
           <% end %>
         <% end %>
       <% end %>

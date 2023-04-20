@@ -11,7 +11,7 @@ defmodule PhoenixDuskmoon.Modal do
 
   ```heex
   <.dm_modal>
-    <:trigger let={f}>
+    <:trigger :let={f}>
       <button phx-click={f}>Open</button>
     </:trigger>
     <:title>PhoenixDuskmoon</:title>

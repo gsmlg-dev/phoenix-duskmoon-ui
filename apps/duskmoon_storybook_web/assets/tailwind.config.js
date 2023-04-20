@@ -6,6 +6,7 @@ let plugin = require('tailwindcss/plugin')
 module.exports = {
   content: [
     './js/**/*.js',
+    '../lib/**/*.exs',
     '../lib/*_web.ex',
     '../lib/*_web/**/*.*ex'
   ],
