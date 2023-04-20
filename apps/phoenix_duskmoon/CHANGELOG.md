@@ -1,3 +1,11 @@
+# [4.4.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.3.2...v4.4.0) (2023-04-20)
+
+
+### Features
+
+* Add responsive feature to table, fix let to :let, fix tab styles. ([037ca1b](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/037ca1bd87204b1b85a6fd98a6c7cf73cd2be679))
+* Rename table rows to data, change actionbar struct. ([9cb0c85](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/9cb0c858a6c322a4c82d1cd5c58ee7b2691e3fe1))
+
 ## [4.3.2](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.3.1...v4.3.2) (2023-04-17)
 
 
