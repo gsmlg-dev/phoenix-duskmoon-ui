@@ -10,7 +10,7 @@ defmodule PhoenixDuskmoon.Table do
   ## Examples
 
   ```heex
-  <.dm_table rows={[
+  <.dm_table data={[
     %{
       name: "Shmi Skywalker",
       portrayal: "Pernilla August (Episodes I-II)"
@@ -46,7 +46,7 @@ defmodule PhoenixDuskmoon.Table do
     """
   )
 
-  attr(:rows, :list,
+  attr(:data, :list,
     default: [],
     doc: """
     table data list
@@ -105,9 +105,10 @@ defmodule PhoenixDuskmoon.Table do
         class={Map.get(caption, :class, "")}
       ><%= render_slot(caption) %></caption>
       <thead role="row-group" class="hidden md:table-header-group sticky top-0">
-        <tr class="bg-slate-100 h-8">
+        <tr role="row" class="bg-slate-100 h-8">
           <th
             :for={col <- @col}
+            role="columnheader"
             class={[
               "px-4 py-2",
               "font-bold",
@@ -118,12 +119,14 @@ defmodule PhoenixDuskmoon.Table do
       </thead>
       <tbody role="row-group">
         <tr
-          :for={row <- @rows}
+          :for={row <- @data}
+          role="row"
           class={"bg-slate-50 even:bg-white h-8"}
         >
           <td
             :for={col <- @col}
             data-label={col.label}
+            role="cell"
             class={[
               "px-4 py-2",
               "grid before:content-[attr(data-label)] before:font-bold grid-cols-[6em_auto] gap-x-2 gap-y-4",
