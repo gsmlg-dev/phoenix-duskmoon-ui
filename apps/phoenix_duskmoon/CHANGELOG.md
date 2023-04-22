@@ -1,3 +1,10 @@
+## [4.4.1](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.4.0...v4.4.1) (2023-04-22)
+
+
+### Bug Fixes
+
+* Fix page header and page footer responsive design. ([5bb5ed6](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/5bb5ed6de68db74b586007359d91fd14a736ed0d))
+
 # [4.4.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.3.2...v4.4.0) (2023-04-20)
 
 
