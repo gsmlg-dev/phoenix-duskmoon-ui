@@ -65,7 +65,9 @@ defmodule PhoenixDuskmoon.PageHeader do
     doc: """
     Appbar right side user_profile.
     """
-  )
+  ) do
+    attr(:class, :string)
+  end
 
   def dm_page_header(assigns) do
     ~H"""
@@ -79,7 +81,12 @@ defmodule PhoenixDuskmoon.PageHeader do
         @nav_class
       ]}
     >
-      <div class={["container mx-auto", "flex flex-row justify-between items-center"]}>
+      <div
+        class={[
+          "container mx-auto",
+          "hidden lg:flex flex-row justify-between items-center"
+        ]}
+      >
         <div class="flex flex-row gap-4">
           <a
             :for={menu <- @menu}
@@ -94,8 +101,54 @@ defmodule PhoenixDuskmoon.PageHeader do
             <%= render_slot(menu) %>
           </a>
         </div>
-        <div class="flex">
-          <%= render_slot(@user_profile) %>
+        <div
+            :for={user_profile <- @user_profile}
+            class={["flex", Map.get(user_profile, :class, "")]}
+          >
+            <%= render_slot(user_profile) %>
+          </div>
+      </div>
+      <div
+        class={[
+          "container px-8 h-full relative",
+          "flex lg:hidden flex-col justify-center items-center"
+        ]}
+      >
+        <label for="mobile-menu">
+          <PhoenixDuskmoon.Icons.dm_mdi name="menu" class="w-8 h-8" />
+        </label>
+        <input class="hidden peer" id="mobile-menu" type="checkbox" />
+        <div
+          class={[
+            "hidden peer-checked:flex flex-col items-center",
+            "absolute top-12 left-0 right-0",
+            @nav_class
+          ]}
+        >
+          <a
+            :for={menu <- @menu}
+            class={[
+              "py-2 px-12 w-full",
+              "text-lg font-semibold leading-6 text-center",
+              "hover:opacity-50",
+              Map.get(menu, :class, "")
+            ]}
+            href={Map.get(menu, :to, false)}
+          >
+            <%= render_slot(menu) %>
+          </a>
+          <hr />
+          <div
+            :for={user_profile <- @user_profile}
+            class={[
+              "py-2 px-12 w-full",
+              "text-lg font-semibold leading-6",
+              "hover:opacity-50 flex justify-center",
+              Map.get(user_profile, :class, "")
+            ]}
+          >
+            <%= render_slot(user_profile) %>
+          </div>
         </div>
       </div>
     </nav>
@@ -108,8 +161,13 @@ defmodule PhoenixDuskmoon.PageHeader do
       ]}
     >
       <nav class={["w-full h-12", "flex items-center flex-none"]}>
-        <div class={["container mx-auto", "flex flex-row justify-between items-center"]}>
-          <div class="flex flex-row gap-4">
+        <div
+          class={[
+            "container mx-auto",
+            "hidden lg:flex flex-row justify-between items-center"
+          ]}
+        >
+          <div class={["flex flex-row gap-4"]}>
             <a
               :for={menu <- @menu}
               class={[
@@ -123,8 +181,53 @@ defmodule PhoenixDuskmoon.PageHeader do
               <%= render_slot(menu) %>
             </a>
           </div>
-          <div class="flex">
-            <%= render_slot(@user_profile) %>
+          <div
+            :for={user_profile <- @user_profile}
+            class={["flex", Map.get(user_profile, :class, "")]}
+          >
+            <%= render_slot(user_profile) %>
+          </div>
+        </div>
+        <div
+          class={[
+            "container px-8 relative",
+            "flex lg:hidden flex-row justify-between items-center"
+          ]}
+        >
+          <label for="dm-mobile-menu-control">
+            <PhoenixDuskmoon.Icons.dm_mdi name="menu" class="w-8 h-8" />
+          </label>
+          <input class="hidden peer" id="dm-mobile-menu-control" type="checkbox" />
+          <div
+            class={[
+              "hidden peer-checked:flex flex-col items-start",
+              "absolute top-12 left-0 right-0",
+              @class
+            ]}
+          >
+            <a
+              :for={menu <- @menu}
+              class={[
+                "py-2 px-12 w-full",
+                "text-lg font-semibold leading-6",
+                "hover:opacity-50",
+                Map.get(menu, :class, "")
+              ]}
+              href={Map.get(menu, :to, false)}
+            >
+              <%= render_slot(menu) %>
+            </a>
+            <div
+              :for={user_profile <- @user_profile}
+              class={[
+                "py-2 px-12 w-full",
+                "text-lg font-semibold leading-6",
+                "hover:opacity-50",
+                Map.get(user_profile, :class, "")
+              ]}
+            >
+              <%= render_slot(user_profile) %>
+            </div>
           </div>
         </div>
       </nav>

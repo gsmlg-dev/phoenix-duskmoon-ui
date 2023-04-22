@@ -70,12 +70,11 @@ defmodule PhoenixDuskmoon.PageFooter do
       @class
     ]}>
       <div class={[
-        "container mx-auto",
+        "container mx-auto px-4",
         "flex flex-col",
       ]}>
         <div class={[
-          "flex flex-row",
-          "justify-between items-start",
+          "grid grid-cols-2 md:grid-cols-3 gap-4",
           "w-full"
         ]}>
           <div

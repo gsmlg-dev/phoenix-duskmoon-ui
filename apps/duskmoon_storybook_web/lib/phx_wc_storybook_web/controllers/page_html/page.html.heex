@@ -19,19 +19,19 @@
   </:user_profile>
 
   <h1 class={[
-    "text-center text-8xl font-bold text-slate-300 select-none",
+    "text-center text-4xl md:text-8xl font-bold text-slate-300 select-none",
     "bg-clip-text bg-gradient-to-tl from-[#fac2b0] to-[#b4e3da]",
     "darkmoon-hero-text"
   ]}>
     Duskmoon UI
   </h1>
   <p class={[
-    "text-center text-4xl mx-auto my-8 select-none",
+    "text-center text-2xl md:text-4xl mx-auto my-8 select-none",
     "darkmoon-hero-p-text"
   ]}>
     Duskmoon UI for Phoenix Framework
   </p>
-  <.link href="/#hook" class="my-4 px-6 py-2 text-2xl bg-rose-400 rounded-lg shadow-md hover:shadow-2xl">
+  <.link href="/#hook" class="my-2 md:my-4 px-6 py-2 text-xl md:text-2xl bg-rose-400 rounded-lg shadow-md hover:shadow-2xl">
     Learn More
   </.link>
 </.dm_page_header>
@@ -42,7 +42,7 @@
   "border-b-2 border-slate-300"
 ]}>
   <a name="hook" />
-  <div class="container mx-auto flex flex-row justify-around">
+  <div class="container mx-auto px-4 flex flex-row justify-around">
     <div class="flex flex-col justify-center">
       <h3 class="font-bold text-4xl my-4">Component Mount Hook - <i class="text-rose-500">WebComponentHook</i></h3>
       <p class="my-2 text-lg text-violet-500	">
@@ -53,7 +53,7 @@
       </p>
     </div>
     <div class="flex justify-center items-center">
-      <.dm_mdi name="webhook" class="w-72 h-72" />
+      <.dm_mdi name="webhook" class="w-full aspect-square" />
     </div>
   </div>
 </div>
@@ -63,8 +63,8 @@
   "flex flex-col",
   "border-b-2 border-slate-300"
 ]}>
-  <div class="container mx-auto flex flex-row justify-around">
-    <div class="w-full py-32 flex flex-col justify-center items-center border-r-2 border-slate-300 text-blue-500">
+  <div class="flex flex-col lg:flex-row justify-around">
+    <div class="w-full px-4 py-16 md:py-32 flex flex-col justify-center items-center border-b-2 lg:border-b-0 lg:border-r-2 border-slate-300 text-blue-500">
       <h3 class="font-bold text-4xl my-4 flex flex-row gap-4 items-center">
         <.dm_mdi name="material-design" class="w-12 h-12" />
         Material Design Icons
@@ -73,7 +73,7 @@
         Includs 7000+ Material Design Commmunity Icons.
       </p>
     </div>
-    <div class="w-full py-32 flex flex-col justify-center items-center text-violet-900">
+    <div class="w-full px-4 py-16 md:py-32 flex flex-col justify-center items-center text-violet-900">
       <h3 class="font-bold text-4xl my-4 flex flex-row gap-4 items-center">
         <.dm_bsi name="bootstrap" class="w-12 h-12" />
         Bootstrap Icons
