@@ -1,3 +1,10 @@
+## [4.4.2](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.4.1...v4.4.2) (2023-05-02)
+
+
+### Bug Fixes
+
+* Fix z-index. ([d9face9](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/d9face9005799095b63119d291efd8bdb66e738c))
+
 ## [4.4.1](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.4.0...v4.4.1) (2023-04-22)
 
 
