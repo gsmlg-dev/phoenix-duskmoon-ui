@@ -30,7 +30,9 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
-    "@babel/preset-env": "^7.20.2"
+    "@babel/preset-env": "^7.20.2",
+    "daisyui": "^4.4.6",
+    "postcss": "^8.4.31"
   },
   "peerDependencies": {
     "@gsmlg/lit": "1.29.5",

@@ -44,7 +44,8 @@ defmodule PhoenixDuskmoon.Mixfile do
       {:plug, "~> 1.5", optional: true},
       {:esbuild, "~> 0.7", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.2.0", runtime: Mix.env() == :dev},
-      {:ex_doc, ">= 0.0.0", only: :prod, runtime: false}
+      {:earmark_parser, "~> 1.4.20"},
+      {:ex_doc, "~> 0.27.0", only: :prod, runtime: false}
     ]
   end
 

@@ -30,11 +30,8 @@ defmodule PhoenixDuskmoon.Shimmer do
   )
 
   def dm_shimmer(assigns) do
-    assigns = assigns |> assign(:random_inner, Enum.random(10_000..100_000))
-
     ~H"""
-    <div id={@id} class={["shimmer-#{@random_inner}", @class]}>
-    </div>
+    <div id={@id} class={["skeleton", @class]}></div>
     """
   end
 end
