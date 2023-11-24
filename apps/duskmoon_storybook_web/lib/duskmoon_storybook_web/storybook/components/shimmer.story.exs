@@ -9,12 +9,15 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Shimmer do
     [
       %Variation{
         id: :default,
+        attributes: %{
+          class: "w-24 h-24 rounded-full"
+        },
         slots: []
       },
       %Variation{
         id: :with_attributes,
         attributes: %{
-          class: "w-32 h-24",
+          class: "w-32 h-24"
         },
         slots: []
       }
