@@ -150,9 +150,6 @@ defmodule PhoenixDuskmoon.LeftMenu do
   end
 
   def dm_left_menu_group(assigns) do
-    assigns =
-      assigns
-      |> assign_new(:title, fn -> nil end)
 
     ~H"""
     <div
