@@ -24,12 +24,8 @@ config :duskmoon_storybook_web, DuskmoonStorybookWeb.Endpoint,
   pubsub_server: DuskmoonStorybook.PubSub,
   live_view: [signing_salt: "HkF5qV0r"]
 
-config :duskmoon_storybook_web, DuskmoonStorybookWeb.Storybook,
-  js_path: "/assets/app.js",
-  css_path: "/assets/app.css"
-
 config :tailwind,
-  version: "3.1.6",
+  version: "3.3.5",
   default: [
     args: ~w(
       --config=tailwind.config.js
