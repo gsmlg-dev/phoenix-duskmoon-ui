@@ -17,6 +17,10 @@ config :duskmoon_storybook_web,
   namespace: DuskmoonStorybookWeb,
   generators: [context_app: :duskmoon_storybook]
 
+config :duskmoon_storybook_web, DuskmoonStorybookWeb.Storybook,
+  js_path: "/assets/app.js",
+  css_path: "/assets/app.css"
+
 # Configures the endpoint
 config :duskmoon_storybook_web, DuskmoonStorybookWeb.Endpoint,
   url: [host: "localhost"],
