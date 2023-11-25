@@ -17,7 +17,7 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Shimmer do
       %Variation{
         id: :with_attributes,
         attributes: %{
-          class: "w-32 h-24"
+          class: "w-32 h-24 skelenton"
         },
         slots: []
       }

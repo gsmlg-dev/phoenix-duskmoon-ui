@@ -11,6 +11,15 @@ defmodule DuskmoonStorybookWeb.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :storybook do
+    plug :accepts, ["html"]
+    plug :fetch_session
+    plug :fetch_live_flash
+    plug :put_root_layout, {DuskmoonStorybookWeb.Layouts, false}
+    plug :protect_from_forgery
+    plug :put_secure_browser_headers
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -28,6 +37,11 @@ defmodule DuskmoonStorybookWeb.Router do
 
     get "/mdi", PageController, :mdi
     get "/bsi", PageController, :bsi
+
+  end
+
+  scope "/", DuskmoonStorybookWeb do
+    pipe_through :storybook
 
     live_storybook("/storybook", backend_module: DuskmoonStorybookWeb.Storybook)
   end

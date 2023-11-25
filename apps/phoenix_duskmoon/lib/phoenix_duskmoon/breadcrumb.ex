@@ -49,15 +49,19 @@ defmodule PhoenixDuskmoon.Breadcrumb do
   def dm_breadcrumb(assigns) do
     ~H"""
     <div id={@id} class={[
-      "flex flex-row justify-start items-center gap-2",
-      "w-full px-4",
+      "breadcrumbs",
       @class,
     ]}>
       <%= if length(@icon) > 0 do %>
-      <%= render_slot(@icon) %>
+        <%= render_slot(@icon) %>
       <% else %>
-      <PhoenixDuskmoon.Icons.dm_mdi name="home" class="w-4 h-4" />
+        <PhoenixDuskmoon.Icons.dm_mdi name="home" class="w-4 h-4" />
       <% end %>
+      <ul>
+        <li><a>Home</a></li>
+        <li><a>Documents</a></li>
+        <li>Add Document</li>
+      </ul>
       <%= for {crumb, i} <- Enum.with_index(@crumb) do %>
       <span class="flex flex-row">
         <%= render_slot(crumb) %>
