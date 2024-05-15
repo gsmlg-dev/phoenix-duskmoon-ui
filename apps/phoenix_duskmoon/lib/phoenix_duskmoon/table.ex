@@ -53,6 +53,11 @@ defmodule PhoenixDuskmoon.Table do
     """
   )
 
+  attr(:stream, :boolean,
+    default: false,
+    doc: "stream data"
+  )
+
   slot(:caption,
     required: false,
     doc: """
@@ -94,7 +99,7 @@ defmodule PhoenixDuskmoon.Table do
       role="table"
       id={@id}
       class={[
-        "table-fixed border-collapse border-spacing-0",
+        "table table-fixed border-collapse border-spacing-0",
         @class,
       ]}
     >
@@ -110,16 +115,16 @@ defmodule PhoenixDuskmoon.Table do
             :for={col <- @col}
             role="columnheader"
             class={[
-              "px-4 py-2",
               "font-bold",
               Map.get(col, :label_class, "")
             ]}
           ><%= col.label %></th>
         </tr>
       </thead>
-      <tbody role="row-group">
+      <tbody role="row-group" id="#{@id}-body" phx-update={if(@stream, do: "stream")}>
         <tr
-          :for={row <- @data}
+          :for={if(@stream, do {id, row} <- @data, else: row <- @data)}
+          id={if(@stream, do: "#{id}", else: false)}
           role="row"
           class={"bg-slate-50 even:bg-white h-8"}
         >
@@ -128,9 +133,6 @@ defmodule PhoenixDuskmoon.Table do
             data-label={col.label}
             role="cell"
             class={[
-              "px-4 py-2",
-              "grid before:content-[attr(data-label)] before:font-bold grid-cols-[6em_auto] gap-x-2 gap-y-4",
-              "md:table-cell md:before:hidden",
               Map.get(col, :class, "")
             ]}
           ><%= render_slot(col, row) %></td>
