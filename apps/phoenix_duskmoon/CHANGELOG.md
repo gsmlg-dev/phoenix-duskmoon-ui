@@ -1,3 +1,11 @@
+## [4.4.4](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.4.3...v4.4.4) (2024-05-15)
+
+
+### Bug Fixes
+
+* Add stream support to table. ([6692ef5](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/6692ef5481d414d0d95aeb91b91e25f3548c0637))
+* Add stream support to table. ([bdebd74](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/bdebd74b351befc5e79d695cb011aa6634024381))
+
 ## [4.4.3](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.4.2...v4.4.3) (2024-05-15)
 
 
