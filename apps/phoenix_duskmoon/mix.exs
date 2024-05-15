@@ -39,8 +39,8 @@ defmodule PhoenixDuskmoon.Mixfile do
   defp deps do
     [
       {:phoenix, "~> 1.7"},
-      {:phoenix_html, "~> 3.0"},
-      {:phoenix_live_view, "~> 0.18"},
+      {:phoenix_html, "~> 4.0"},
+      {:phoenix_live_view, "~> 0.20"},
       {:plug, "~> 1.5", optional: true},
       {:esbuild, "~> 0.7", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.2.0", runtime: Mix.env() == :dev},
