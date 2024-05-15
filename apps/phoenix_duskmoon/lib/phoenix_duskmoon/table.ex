@@ -121,23 +121,48 @@ defmodule PhoenixDuskmoon.Table do
           ><%= col.label %></th>
         </tr>
       </thead>
-      <tbody role="row-group" id="#{@id}-body" phx-update={if(@stream, do: "stream")}>
-        <tr
-          :for={if(@stream, do {id, row} <- @data, else: row <- @data)}
-          id={if(@stream, do: "#{id}", else: false)}
-          role="row"
-          class={"bg-slate-50 even:bg-white h-8"}
-        >
-          <td
-            :for={col <- @col}
-            data-label={col.label}
-            role="cell"
-            class={[
-              Map.get(col, :class, "")
-            ]}
-          ><%= render_slot(col, row) %></td>
-        </tr>
-      </tbody>
+      <%= if @stream do %>
+        <tbody role="row-group" id={"@id-stream-body"} phx-update="stream">
+          <tr
+            :for={{row_id, row} <- @data}
+            role="row"
+            id={row_id}
+            class={"bg-slate-50 even:bg-white h-8"}
+          >
+            <td
+              :for={col <- @col}
+              data-label={col.label}
+              role="cell"
+              class={[
+                "px-4 py-2",
+                "grid before:content-[attr(data-label)] before:font-bold grid-cols-[6em_auto] gap-x-2 gap-y-4",
+                "md:table-cell md:before:hidden",
+                Map.get(col, :class, "")
+              ]}
+            ><%= render_slot(col, row) %></td>
+          </tr>
+        </tbody>
+      <% else %>
+        <tbody role="row-group">
+          <tr
+            :for={row <- @data}
+            role="row"
+            class={"bg-slate-50 even:bg-white h-8"}
+          >
+            <td
+              :for={col <- @col}
+              data-label={col.label}
+              role="cell"
+              class={[
+                "px-4 py-2",
+                "grid before:content-[attr(data-label)] before:font-bold grid-cols-[6em_auto] gap-x-2 gap-y-4",
+                "md:table-cell md:before:hidden",
+                Map.get(col, :class, "")
+              ]}
+            ><%= render_slot(col, row) %></td>
+          </tr>
+        </tbody>
+      <%  end %>
     </table>
     """
   end
