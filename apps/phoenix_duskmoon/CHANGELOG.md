@@ -1,3 +1,10 @@
+## [4.5.1](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.5.0...v4.5.1) (2024-07-04)
+
+
+### Bug Fixes
+
+* Fix tailwindcss. ([f675f86](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/f675f86df77a8b08e634e5238767d2e0cd0dad27))
+
 # [4.5.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.4.4...v4.5.0) (2024-07-04)
 
 
