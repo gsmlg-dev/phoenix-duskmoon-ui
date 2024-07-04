@@ -1,3 +1,10 @@
+# [4.5.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.4.4...v4.5.0) (2024-07-04)
+
+
+### Features
+
+* Add new form module, async card. ([81cfba2](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/81cfba2866351d3e249d567bdefb683a636ee66b))
+
 ## [4.4.4](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.4.3...v4.4.4) (2024-05-15)
 
 
