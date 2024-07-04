@@ -4,6 +4,8 @@ defmodule PhoenixDuskmoon.Card do
   """
   use PhoenixDuskmoon, :html
 
+  import PhoenixDuskmoon.Icons
+
   # alias Phoenix.LiveView.JS
 
   @doc """
@@ -73,6 +75,41 @@ defmodule PhoenixDuskmoon.Card do
       </div>
       <%= render_slot(@inner_block) %>
     </div>
+    """
+  end
+
+  @doc """
+  Renders a card with async value.
+
+  ## Examples
+
+      <.dm_async_card :let={data} assign={@data}>
+      </.dm_async_card>
+
+  """
+  attr(:id, :any, default: nil)
+  attr(:class, :any, default: "")
+  attr(:assign, :any, default: nil)
+  slot(:inner_block, required: true)
+
+  def dm_async_card(assigns) do
+    ~H"""
+    <.async_result assign={@assign}>
+      <:loading>
+        <.dm_card>
+          <div class="skeleton w-full min-h-32"></div>
+        </.dm_card>
+      </:loading>
+      <:failed :let={reason}>
+        <div role="alert" class="alert alert-error shrink-0">
+          <.dm_bsi name="exclamation-circle" class="w-5 h-5" />
+          <div class="flex flex-col">
+            <span class=""><%= reason |> inspect() %></span>
+          </div>
+        </div>
+      </:failed>
+      <%= render_slot(@inner_block, Map.get(@assign, :result)) %>
+    </.async_result>
     """
   end
 end

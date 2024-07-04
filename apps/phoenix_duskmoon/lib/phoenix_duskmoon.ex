@@ -61,6 +61,7 @@ defmodule PhoenixDuskmoon do
       alias PhoenixDuskmoon.PageHeader
       alias PhoenixDuskmoon.PageFooter
       alias PhoenixDuskmoon.Tab
+      alias PhoenixDuskmoon.Form
     end
   end
 
@@ -91,6 +92,7 @@ defmodule PhoenixDuskmoon do
       import PhoenixDuskmoon.PageFooter
       import PhoenixDuskmoon.Tab
       import PhoenixDuskmoon.Table
+      import PhoenixDuskmoon.Form
     end
   end
 

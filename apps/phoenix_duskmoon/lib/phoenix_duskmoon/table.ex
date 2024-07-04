@@ -147,7 +147,7 @@ defmodule PhoenixDuskmoon.Table do
           <tr
             :for={row <- @data}
             role="row"
-            class={"bg-slate-50 even:bg-white h-8"}
+            class={"bg-base-200 even:bg-base-100"}
           >
             <td
               :for={col <- @col}
