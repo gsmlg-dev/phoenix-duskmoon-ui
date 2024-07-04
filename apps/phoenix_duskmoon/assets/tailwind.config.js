@@ -1,8 +1,6 @@
 // See the Tailwind configuration guide for advanced usage
 // https://tailwindcss.com/docs/configuration
 
-let plugin = require('tailwindcss/plugin')
-
 module.exports = {
   content: [
     './js/**/*.js',
@@ -13,6 +11,7 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    require('@tailwindcss/forms'),
+    require("@tailwindcss/typography"),
+    require("daisyui"),
   ]
 }
