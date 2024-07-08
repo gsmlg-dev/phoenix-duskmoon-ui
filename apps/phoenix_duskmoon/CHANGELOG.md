@@ -1,3 +1,11 @@
+## [4.5.2](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.5.1...v4.5.2) (2024-07-08)
+
+
+### Bug Fixes
+
+* Add expand to table. ([1dd3282](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/1dd3282fc47bdda7b955881bad45f65607c2aa75))
+* Fix style. ([f7a5624](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/f7a56244514e4814ec0daa0ed0650ea255d8bfb1))
+
 ## [4.5.1](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.5.0...v4.5.1) (2024-07-04)
 
 
