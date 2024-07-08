@@ -1,3 +1,16 @@
+# [4.6.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.5.2...v4.6.0) (2024-07-08)
+
+
+### Bug Fixes
+
+* Fix styles. ([aac7a9d](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/aac7a9d569e6a59fb066d95d1a0c6707959ce774))
+* Optimize with daisyui. ([0dcc9be](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/0dcc9beebf3419877b60510d6072accd0fd7c389))
+
+
+### Features
+
+* Rename PhoenixDuskmoon => PhoenixDuskmoon.Component. ([5325239](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/53252395d99b4b586a0eeb15c77f497c124182b6))
+
 ## [4.5.2](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.5.1...v4.5.2) (2024-07-08)
 
 
