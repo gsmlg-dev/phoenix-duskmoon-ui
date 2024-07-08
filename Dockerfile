@@ -11,7 +11,7 @@ RUN apk update \
     && mix do deps.get, compile \
     && cd apps/phoenix_duskmoon && mix tailwind.install && cd ../.. \
     && cd apps/phoenix_duskmoon && npm install && mix prepublish && cd ../.. \
-    && cd apps/duskmoon_storybook_web && npm install --prefix assets && mix assets.deploy && cd ../.. \
+    && cd apps/duskmoon_storybook_web && npm install && mix assets.deploy && cd ../.. \
     && mix release storybook --version "${RELEASE_VERSION}" \
     && cp -r _build/prod/rel/storybook /app
 
@@ -21,6 +21,10 @@ ARG RELEASE_VERSION=0.1.0
 
 LABEL maintainer="GSMLG <gsmlg.com@gmail.com>"
 LABEL RELEASE_VERSION="${RELEASE_VERSION}"
+
+LABEL org.opencontainers.image.source="https://github.com/gsmlg-dev/phoenix-duskmoon-ui"
+LABEL org.opencontainers.image.description="Duskmoon UI Demo and Storybook"
+LABEL org.opencontainers.image.licenses=MIT
 
 ENV PORT=80 \
     REPLACE_OS_VARS=true \
