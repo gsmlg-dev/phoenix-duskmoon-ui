@@ -22,7 +22,7 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Link do
         id: :primary,
         attributes: %{
           href: "/",
-          mode: "primary"
+          class: "btn-primary"
         },
         slots: [
           """
@@ -34,7 +34,7 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Link do
         id: :round,
         attributes: %{
           href: "/",
-          mode: "round"
+          class: "btn-round"
         },
         slots: [
           """

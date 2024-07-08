@@ -20,6 +20,22 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Card do
           quickly became a worldwide pop-culture phenomenon.
           """
         ]
+      },
+      %Variation{
+        id: :card_second,
+        attributes: %{
+          class: "w-full shadow-xl"
+        },
+        slots: [
+          """
+          <:title>
+          Star Wars
+          </:title>
+          <div class="skeleton w-full min-h-32">
+
+          </div>
+          """
+        ]
       }
     ]
   end

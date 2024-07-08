@@ -51,42 +51,49 @@ defmodule PhoenixDuskmoon.Modal do
       |> assign_new(:id, fn -> "modal-#{Enum.random(0..999_999)}" end)
 
     ~H"""
-    <%= if length(@trigger) > 0 do %>
-      <%= render_slot(@trigger, JS.dispatch("modal:open", to: "##{@id}")) %>
-    <% end %>
+    <%= render_slot(@trigger, @id) %>
     <dialog
       id={@id}
       class={[
         "modal",
-        "p-4",
         @class
       ]}
     >
-      <%= unless @hide_close do %>
-      <a class="absolute right-2 top-2 cursor-pointer" phx-click={JS.dispatch("modal:close", to: "##{@id}")}>
-        <.dm_mdi name={"window-close"} class="w-4 h-4" />
-      </a>
-      <% end %>
-      <section class="flex flex-col min-h-[200px] min-w-[420px]">
-        <header :for={title <- @title} class={[
-          "flex flex-row font-bold w-full text-2xl",
-          Map.get(title, :class, "")
-        ]}>
-          <%= render_slot(title, JS.dispatch("modal:close", to: "##{@id}")) %>
-        </header>
-        <div :for={body <- @body} class={[
-          "flex flex-1",
-          Map.get(body, :class, "")
-        ]}>
-          <%= render_slot(body, JS.dispatch("modal:close", to: "##{@id}")) %>
-        </div>
-        <footer :for={footer <- @footer} class={[
-          "flex justify-end gap-4",
-          Map.get(footer, :class, "")
-        ]}>
-          <%= render_slot(footer, JS.dispatch("modal:close", to: "##{@id}")) %>
-        </footer>
-      </section>
+      <div class="modal-box">
+        <%= unless @hide_close do %>
+        <form
+          class="absolute right-2 top-2 cursor-pointer"
+          method="dialog"
+        >
+          <button class="btn btn-ghost"><.dm_mdi name={"window-close"} class="w-4 h-4" /></button>
+        </form>
+        <% end %>
+        <section class="flex flex-col min-h-[200px] min-w-[420px]">
+          <header :for={title <- @title} class={[
+            "flex flex-row font-bold w-full text-2xl",
+            Map.get(title, :class, "")
+          ]}>
+            <%= render_slot(title) %>
+          </header>
+          <div :for={body <- @body}
+            class={[
+              "flex flex-1",
+              Map.get(body, :class, "")
+            ]}
+          >
+            <%= render_slot(body) %>
+          </div>
+          <footer
+            :for={footer <- @footer}
+            class={[
+              "modal-action",
+              Map.get(footer, :class, "")
+            ]}
+          >
+            <%= render_slot(footer) %>
+          </footer>
+        </section>
+      </div>
     </dialog>
     """
   end

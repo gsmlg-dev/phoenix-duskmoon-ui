@@ -57,23 +57,22 @@ defmodule PhoenixDuskmoon.Card do
     <div
       id={@id}
       class={[
-        "m-4 p-6 flex flex-col",
-        "shadow-lg dark:shadow-slate-600",
+        "card",
         @class
       ]}
     >
-      <div
-        :for={{title, _i} <- Enum.with_index(@title)}
-        class={[
-          "w-full text-xl",
-          "flex flex-row justify-start items-center",
-          "h-10 mb-4",
-          Map.get(title, :class, ""),
-        ]}
-      >
-        <%= render_slot(title) %>
+      <div class="card-body">
+        <div
+          :for={title <- @title}
+          class={[
+            "card-title",
+            Map.get(title, :class, ""),
+          ]}
+        >
+          <%= render_slot(title) %>
+        </div>
+        <%= render_slot(@inner_block) %>
       </div>
-      <%= render_slot(@inner_block) %>
     </div>
     """
   end

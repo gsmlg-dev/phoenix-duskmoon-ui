@@ -10,6 +10,7 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.LeftMenu do
       %Variation{
         id: :default,
         attributes: %{
+          class: "shadow-xl",
           active: "left_menu",
           menus: [
             {"Components",

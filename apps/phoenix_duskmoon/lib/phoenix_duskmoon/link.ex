@@ -78,6 +78,8 @@ defmodule PhoenixDuskmoon.Link do
   By default, CSRF tokens are generated through `Plug.CSRFProtection`.
   """
   @doc type: :component
+  attr(:id, :any, default: nil)
+  attr(:class, :any, default: nil)
   attr(:navigate, :string,
     doc: """
     Navigates from a LiveView to a new LiveView.
@@ -142,23 +144,27 @@ defmodule PhoenixDuskmoon.Link do
 
   def dm_link(%{navigate: to} = assigns) when is_binary(to) do
     ~H"""
-    <wc-button
+    <a
+      id={@id}
+      class={["btn btn-link", @class]}
       href={@navigate}
       data-phx-link="redirect"
       data-phx-link-state={if @replace, do: "replace", else: "push"}
       {@rest}
-    ><%= render_slot(@inner_block) %></wc-button>
+    ><%= render_slot(@inner_block) %></a>
     """
   end
 
   def dm_link(%{patch: to} = assigns) when is_binary(to) do
     ~H"""
-    <wc-button
+    <a
+      id={@id}
+      class={["btn btn-link", @class]}
       href={@patch}
       data-phx-link="patch"
       data-phx-link-state={if @replace, do: "replace", else: "push"}
       {@rest}
-    ><%= render_slot(@inner_block) %></wc-button>
+    ><%= render_slot(@inner_block) %></a>
     """
   end
 
@@ -167,19 +173,24 @@ defmodule PhoenixDuskmoon.Link do
     assigns = assign(assigns, :href, href)
 
     ~H"""
-    <wc-button
+    <a
+      id={@id}
+      class={["btn btn-link", @class]}
       href={@href}
       data-method={if @method != "get", do: @method}
       data-csrf={if @method != "get", do: csrf_token(@csrf_token, @href)}
       data-to={if @method != "get", do: @href}
       {@rest}
-    ><%= render_slot(@inner_block) %></wc-button>
+    ><%= render_slot(@inner_block) %></a>
     """
   end
 
   def dm_link(%{} = assigns) do
     ~H"""
-    <wc-button href="#" {@rest}><%= render_slot(@inner_block) %></wc-button>
+    <a
+      id={@id}
+      class={["btn btn-link", @class]}
+      href="#" {@rest}><%= render_slot(@inner_block) %></a>
     """
   end
 

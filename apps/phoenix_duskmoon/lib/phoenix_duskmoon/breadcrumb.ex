@@ -28,13 +28,6 @@ defmodule PhoenixDuskmoon.Breadcrumb do
     """
   )
 
-  slot(:icon,
-    required: false,
-    doc: """
-    Render Icon
-    """
-  )
-
   slot(:crumb,
     required: true,
     doc: """
@@ -48,26 +41,18 @@ defmodule PhoenixDuskmoon.Breadcrumb do
 
   def dm_breadcrumb(assigns) do
     ~H"""
-    <div id={@id} class={[
-      "flex flex-row justify-start items-center gap-2",
-      "w-full px-4",
-      @class,
-    ]}>
-      <%= if length(@icon) > 0 do %>
-      <%= render_slot(@icon) %>
-      <% else %>
-      <PhoenixDuskmoon.Icons.dm_mdi name="home" class="w-4 h-4" />
-      <% end %>
-      <%= for {crumb, i} <- Enum.with_index(@crumb) do %>
-      <span class="flex flex-row">
-        <%= render_slot(crumb) %>
-      </span>
-      <%= if i + 1 < length(@crumb) do %>
-      <span class="flex flex-row">
-        /
-      </span>
-      <% end %>
-      <% end %>
+    <div
+      id={@id}
+      class={[
+        "breadcrumbs",
+        @class,
+      ]}
+    >
+      <ul>
+        <li :for={crumb <- @crumb} class={Map.get(crumb, :class, nil)}>
+          <%= render_slot(crumb) %>
+        </li>
+      </ul>
     </div>
     """
   end

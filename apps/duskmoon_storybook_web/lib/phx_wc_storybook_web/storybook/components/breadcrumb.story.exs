@@ -10,11 +10,12 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Breadcrumb do
       %Variation{
         id: :default,
         attributes: %{
-          class: "shadow"
+          class: "shadow px-8"
         },
         slots: [
           """
-          <:crumb>
+          <:crumb class="flex gap-2">
+            <PhoenixDuskmoon.Icons.dm_mdi name="home" class="w-4 h-4" />
             <a href="/">Home</a>
           </:crumb>
           <:crumb>
@@ -26,14 +27,9 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Breadcrumb do
       %Variation{
         id: :custom_icon,
         attributes: %{
-          class: "bg-white text-slate-600"
+          class: "shadow w-full px-2"
         },
         slots: [
-          """
-          <:icon>
-          <PhoenixDuskmoon.Icons.dm_mdi name="home-assistant" class="w-4 h-4" />
-          </:icon>
-          """,
           """
           <:crumb>
             <a href="/">Home</a>

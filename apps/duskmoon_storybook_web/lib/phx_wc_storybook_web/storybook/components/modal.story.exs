@@ -15,7 +15,7 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Modal do
         slots: [
           """
           <:trigger :let={f}>
-            <button phx-click={f}>Open</button>
+            <button class="btn btn-primary" onclick={"document.getElementById('\#{f}').showModal()"}>Open</button>
           </:trigger>
           """,
           "<:title>PhoenixDuskmoon</:title>",
@@ -27,7 +27,7 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Modal do
         slots: [
           """
           <:trigger :let={f}>
-            <button phx-click={f}>Open</button>
+            <button class="btn btn-secondary" onclick={"document.getElementById('\#{f}').showModal()"}>Open</button>
           </:trigger>
           """,
           """
@@ -42,10 +42,12 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Modal do
           </:body>
           """,
           """
-          <:footer :let={f}>
-            <button class="btn" phx-click={f}>
+          <:footer >
+            <form method="dialog">
+            <button class="btn">
               Cancel
             </button>
+            </form>
             <button class="btn">
               OK
             </button>
@@ -61,12 +63,14 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Modal do
         slots: [
           """
           <:trigger :let={f}>
-            <button phx-click={f}>Open</button>
+            <button class="btn btn-accent" onclick={"document.getElementById('\#{f}').showModal()"}>Open</button>
           </:trigger>
           """,
           """
-          <:body :let={close} class="flex justify-center items-center text-4xl text-rose-600">
-            <button phx-click={close}>PhoenixDuskmoonb Is Awesome...</button>
+          <:body class="flex justify-center items-center text-4xl text-rose-600">
+            <form method="dialog">
+              <button>PhoenixDuskmoonb Is Awesome...</button>
+            </form>
           </:body>
           """
         ]
