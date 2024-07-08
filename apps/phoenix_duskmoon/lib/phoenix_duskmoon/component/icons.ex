@@ -1,8 +1,8 @@
-defmodule PhoenixDuskmoon.Icons do
+defmodule PhoenixDuskmoon.Component.Icons do
   @moduledoc """
   Render 7000+ Material Design Icons
   """
-  use PhoenixDuskmoon, :html
+  use PhoenixDuskmoon.Component, :html
 
   # alias Phoenix.LiveView.JS
 
@@ -15,7 +15,7 @@ defmodule PhoenixDuskmoon.Icons do
   Return all names of available Material Design Icons.
   Can be found at [Material Design Icons](https://duskmoon-storybook.gsmlg.dev/mdi)
 
-      > PhoenixDuskmoon.Icons.mdi_icons()
+      > PhoenixDuskmoon.Component.Icons.mdi_icons()
         #=> [
         #=>   "abacus.svg",
         #=>   "abjad-arabic.svg",
@@ -89,7 +89,7 @@ defmodule PhoenixDuskmoon.Icons do
   Return all names of available Bootstrap Icons.
   Can be found at [Bootstrap Icons](https://duskmoon-storybook.gsmlg.dev/bsi)
 
-      > PhoenixDuskmoon.Icons.bsi_icons()
+      > PhoenixDuskmoon.Component.Icons.bsi_icons()
         #=> [
           "0-circle-fill.svg",
           "0-circle.svg",

@@ -1,10 +1,10 @@
-defmodule PhoenixDuskmoon.Card do
+defmodule PhoenixDuskmoon.Component.Card do
   @moduledoc """
   Render card.
   """
-  use PhoenixDuskmoon, :html
+  use PhoenixDuskmoon.Component, :html
 
-  import PhoenixDuskmoon.Icons
+  import PhoenixDuskmoon.Component.Icons
 
   # alias Phoenix.LiveView.JS
 

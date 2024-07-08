@@ -1,9 +1,9 @@
-defmodule PhoenixDuskmoon.Link do
+defmodule PhoenixDuskmoon.Component.Link do
   @moduledoc """
   render appbar
 
   """
-  use PhoenixDuskmoon, :html
+  use PhoenixDuskmoon.Component, :html
 
   @doc """
   Generates a link for live and href navigation.
@@ -80,6 +80,7 @@ defmodule PhoenixDuskmoon.Link do
   @doc type: :component
   attr(:id, :any, default: nil)
   attr(:class, :any, default: nil)
+
   attr(:navigate, :string,
     doc: """
     Navigates from a LiveView to a new LiveView.

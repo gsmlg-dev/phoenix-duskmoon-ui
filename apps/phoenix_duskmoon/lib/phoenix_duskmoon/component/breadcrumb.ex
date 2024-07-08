@@ -1,9 +1,9 @@
-defmodule PhoenixDuskmoon.Breadcrumb do
+defmodule PhoenixDuskmoon.Component.Breadcrumb do
   @moduledoc """
   render appbar
 
   """
-  use PhoenixDuskmoon, :html
+  use PhoenixDuskmoon.Component, :html
 
   @doc """
   Generates webcomponent breadcrumb

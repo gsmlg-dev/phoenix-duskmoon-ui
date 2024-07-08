@@ -1,10 +1,10 @@
-defmodule PhoenixDuskmoon.PageFooter do
+defmodule PhoenixDuskmoon.Component.PageFooter do
   @moduledoc """
 
   render Page footer
 
   """
-  use PhoenixDuskmoon, :html
+  use PhoenixDuskmoon.Component, :html
 
   @doc """
   Generates a Page footer.

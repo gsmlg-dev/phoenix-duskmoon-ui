@@ -85,7 +85,7 @@ defmodule DuskmoonStorybookWeb do
       # HTML escaping functionality
       import Phoenix.HTML
       # Core UI components and translation
-      use PhoenixDuskmoon
+      use PhoenixDuskmoon.Component
       import DuskmoonStorybookWeb.CoreComponents
       import DuskmoonStorybookWeb.Gettext
 

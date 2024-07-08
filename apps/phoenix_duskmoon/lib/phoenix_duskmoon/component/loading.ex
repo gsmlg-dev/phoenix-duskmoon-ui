@@ -1,8 +1,8 @@
-defmodule PhoenixDuskmoon.Loading do
+defmodule PhoenixDuskmoon.Component.Loading do
   @moduledoc """
   Render table.
   """
-  use PhoenixDuskmoon, :html
+  use PhoenixDuskmoon.Component, :html
 
   @doc """
   Generates Loading.

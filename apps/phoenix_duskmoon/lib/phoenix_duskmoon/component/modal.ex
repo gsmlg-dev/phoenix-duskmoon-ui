@@ -1,8 +1,7 @@
-defmodule PhoenixDuskmoon.Modal do
-  use PhoenixDuskmoon, :html
+defmodule PhoenixDuskmoon.Component.Modal do
+  use PhoenixDuskmoon.Component, :html
 
-  alias Phoenix.LiveView.JS
-  import PhoenixDuskmoon.Icons
+  import PhoenixDuskmoon.Component.Icons
 
   @doc """
   Open ad dialog modal.

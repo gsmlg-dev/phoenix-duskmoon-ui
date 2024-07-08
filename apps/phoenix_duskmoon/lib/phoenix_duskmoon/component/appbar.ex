@@ -1,12 +1,12 @@
-defmodule PhoenixDuskmoon.Appbar do
+defmodule PhoenixDuskmoon.Component.Appbar do
   @moduledoc """
   render appbar
 
   """
-  use PhoenixDuskmoon, :html
+  use PhoenixDuskmoon.Component, :html
 
-  import PhoenixDuskmoon.Link
-  import PhoenixDuskmoon.Icons
+  import PhoenixDuskmoon.Component.Link
+  import PhoenixDuskmoon.Component.Icons
 
   @doc """
   Generates a html customElement appbar.

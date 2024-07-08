@@ -1,4 +1,4 @@
-defmodule PhoenixDuskmoon do
+defmodule PhoenixDuskmoon.Component do
   @moduledoc """
   Provides a suit of html custom component for phoenix.
 
@@ -56,7 +56,7 @@ defmodule PhoenixDuskmoon do
     end
   end
 
-  def components do
+  def component do
     quote do
       import PhoenixDuskmoon.Component.Actionbar
       import PhoenixDuskmoon.Component.Appbar
@@ -86,20 +86,17 @@ defmodule PhoenixDuskmoon do
 
   ### Internal use Only
 
-  - `use PhoenixDuskmoon, :component`
-  - `use PhoenixDuskmoon, :live_component`
+  - `use PhoenixDuskmoon.Component`
+  - `use PhoenixDuskmoon.Component, :live_component`
 
   """
-  @deprecated "Use `use PhoenixDuskmoon.Component` instead"
-  defmacro __using__(_)
-
   defmacro __using__(which) when is_atom(which) do
     apply(__MODULE__, which, [])
   end
 
   defmacro __using__(_) do
     quote do
-      unquote(components())
+      unquote(component())
     end
   end
 end

@@ -1,9 +1,9 @@
-defmodule PhoenixDuskmoon.Pagination do
+defmodule PhoenixDuskmoon.Component.Pagination do
   @moduledoc """
   Render pagination.
 
   """
-  use PhoenixDuskmoon, :html
+  use PhoenixDuskmoon.Component, :html
 
   @doc """
   Generates a pagination.

@@ -1,9 +1,9 @@
-defmodule PhoenixDuskmoon.Tab do
+defmodule PhoenixDuskmoon.Component.Tab do
   @moduledoc """
   render tab
 
   """
-  use PhoenixDuskmoon, :html
+  use PhoenixDuskmoon.Component, :html
 
   @doc """
   Generates tabs

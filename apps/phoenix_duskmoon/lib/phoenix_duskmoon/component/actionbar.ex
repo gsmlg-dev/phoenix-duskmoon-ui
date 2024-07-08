@@ -1,8 +1,8 @@
-defmodule PhoenixDuskmoon.Actionbar do
+defmodule PhoenixDuskmoon.Component.Actionbar do
   @moduledoc """
   Render actionbar.
   """
-  use PhoenixDuskmoon, :html
+  use PhoenixDuskmoon.Component, :html
 
   @doc """
   Generates a actionbar.

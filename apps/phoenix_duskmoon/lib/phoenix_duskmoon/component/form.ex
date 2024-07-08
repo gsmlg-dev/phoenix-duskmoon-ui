@@ -1,11 +1,11 @@
-defmodule PhoenixDuskmoon.Form do
+defmodule PhoenixDuskmoon.Component.Form do
   @moduledoc """
   render appbar
 
   """
-  use PhoenixDuskmoon, :html
+  use PhoenixDuskmoon.Component, :html
 
-  import PhoenixDuskmoon.Icons
+  import PhoenixDuskmoon.Component.Icons
 
   @doc """
   Renders a simple form.

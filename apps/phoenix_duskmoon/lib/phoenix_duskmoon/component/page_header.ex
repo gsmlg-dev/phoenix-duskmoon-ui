@@ -1,10 +1,10 @@
-defmodule PhoenixDuskmoon.PageHeader do
+defmodule PhoenixDuskmoon.Component.PageHeader do
   @moduledoc """
 
   render Page Header
 
   """
-  use PhoenixDuskmoon, :html
+  use PhoenixDuskmoon.Component, :html
 
   @doc """
   Generates a Page header.
@@ -115,7 +115,7 @@ defmodule PhoenixDuskmoon.PageHeader do
         ]}
       >
         <label for="mobile-menu">
-          <PhoenixDuskmoon.Icons.dm_mdi name="menu" class="w-8 h-8" />
+          <PhoenixDuskmoon.Component.Icons.dm_mdi name="menu" class="w-8 h-8" />
         </label>
         <input class="hidden peer" id="mobile-menu" type="checkbox" />
         <div
@@ -195,7 +195,7 @@ defmodule PhoenixDuskmoon.PageHeader do
           ]}
         >
           <label for="dm-mobile-menu-control">
-            <PhoenixDuskmoon.Icons.dm_mdi name="menu" class="w-8 h-8" />
+            <PhoenixDuskmoon.Component.Icons.dm_mdi name="menu" class="w-8 h-8" />
           </label>
           <input class="hidden peer" id="dm-mobile-menu-control" type="checkbox" />
           <div

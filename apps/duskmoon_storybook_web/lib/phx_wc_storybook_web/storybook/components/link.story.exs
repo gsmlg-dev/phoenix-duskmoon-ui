@@ -2,7 +2,7 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Link do
   # :live_component or :page are also available
   use PhoenixStorybook.Story, :component
 
-  def function, do: &PhoenixDuskmoon.Link.dm_link/1
+  def function, do: &PhoenixDuskmoon.Component.Link.dm_link/1
   def description, do: "Recreate Phoenix.Component.link with custom element."
 
   def variations do

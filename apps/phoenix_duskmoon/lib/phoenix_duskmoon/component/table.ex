@@ -1,8 +1,8 @@
-defmodule PhoenixDuskmoon.Table do
+defmodule PhoenixDuskmoon.Component.Table do
   @moduledoc """
   Render table.
   """
-  use PhoenixDuskmoon, :html
+  use PhoenixDuskmoon.Component, :html
 
   @doc """
   Generates a table.

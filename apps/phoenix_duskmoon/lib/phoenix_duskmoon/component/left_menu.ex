@@ -1,8 +1,8 @@
-defmodule PhoenixDuskmoon.LeftMenu do
+defmodule PhoenixDuskmoon.Component.LeftMenu do
   @moduledoc """
   Render left menu.
   """
-  use PhoenixDuskmoon, :html
+  use PhoenixDuskmoon.Component, :html
 
   @doc """
   Generates left menu

@@ -1,4 +1,4 @@
-defmodule PhoenixDuskmoon.Markdown do
+defmodule PhoenixDuskmoon.Component.Markdown do
   @moduledoc """
   Render markdown in to remark-element.
 
@@ -8,7 +8,7 @@ defmodule PhoenixDuskmoon.Markdown do
     * charts render by mermaid.js
 
   """
-  use PhoenixDuskmoon, :html
+  use PhoenixDuskmoon.Component, :html
 
   @doc """
   Generates a html customElement remark-element to preview markdown.

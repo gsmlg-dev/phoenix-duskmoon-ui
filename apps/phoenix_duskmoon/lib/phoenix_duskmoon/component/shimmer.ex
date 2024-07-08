@@ -1,8 +1,8 @@
-defmodule PhoenixDuskmoon.Shimmer do
+defmodule PhoenixDuskmoon.Component.Shimmer do
   @moduledoc """
   Render table.
   """
-  use PhoenixDuskmoon, :html
+  use PhoenixDuskmoon.Component, :html
 
   @doc """
   Generates Shimmer.
