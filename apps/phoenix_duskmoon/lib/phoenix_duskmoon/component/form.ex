@@ -20,6 +20,8 @@ defmodule PhoenixDuskmoon.Component.Form do
         </:actions>
       </.dm_form>
   """
+  attr(:id, :any, default: nil)
+  attr(:class, :any, default: nil)
   attr(:for, :any, required: true, doc: "the datastructure for the form")
   attr(:as, :any, default: nil, doc: "the server side parameter to collect all input under")
 
@@ -33,7 +35,14 @@ defmodule PhoenixDuskmoon.Component.Form do
 
   def dm_form(assigns) do
     ~H"""
-    <.form :let={f} for={@for} as={@as} {@rest}>
+    <.form
+      id={@id}
+      class={["dm-form", @class]}
+      :let={f}
+      for={@for}
+      as={@as}
+      {@rest}
+    >
       <%= render_slot(@inner_block, f) %>
       <div :for={action <- @actions} class="mt-2 flex items-center justify-between gap-6">
         <%= render_slot(action, f) %>
@@ -67,6 +76,7 @@ defmodule PhoenixDuskmoon.Component.Form do
       <.dm_input field={@form[:email]} type="email" />
       <.dm_input name="my-input" errors={["oh no!"]} />
   """
+  attr(:field_class, :any, default: nil)
   attr(:id, :any, default: nil)
   attr(:class, :any, default: nil)
   attr(:name, :any)
@@ -113,7 +123,7 @@ defmodule PhoenixDuskmoon.Component.Form do
       end)
 
     ~H"""
-    <div phx-feedback-for={@name}>
+    <div class={["input-field", @field_class]} phx-feedback-for={@name}>
       <label class="flex items-center gap-4 text-sm leading-6 text-zinc-600">
         <input type="hidden" name={@name} value="false" />
         <input
@@ -134,101 +144,120 @@ defmodule PhoenixDuskmoon.Component.Form do
 
   def dm_input(%{type: "select"} = assigns) do
     ~H"""
-    <div phx-feedback-for={@name}>
+    <div class={["input-field", @field_class]} phx-feedback-for={@name}>
       <.dm_label for={@id}><%= @label %></.dm_label>
-      <select
-        id={@id}
-        name={@name}
-        class="select select-bordered w-full"
-        multiple={@multiple}
-        {@rest}
-      >
-        <option :if={@prompt} value=""><%= @prompt %></option>
-        <%= Phoenix.HTML.Form.options_for_select(@options, @value) %>
-      </select>
-      <.dm_error :for={msg <- @errors}><%= msg %></.dm_error>
+      <div class="flex flex-col gap-2">
+        <select
+          id={@id}
+          name={@name}
+          class={[
+            "select select-bordered",
+            @class
+          ]}
+          multiple={@multiple}
+          {@rest}
+        >
+          <option :if={@prompt} value=""><%= @prompt %></option>
+          <%= Phoenix.HTML.Form.options_for_select(@options, @value) %>
+        </select>
+        <.dm_error :for={msg <- @errors}><%= msg %></.dm_error>
+      </div>
     </div>
     """
   end
 
   def dm_input(%{type: "checkbox_group"} = assigns) do
     ~H"""
-    <div phx-feedback-for={@name}>
+    <div class={["input-field", @field_class]} phx-feedback-for={@name}>
       <.dm_label for={@id}><%= @label %></.dm_label>
-      <div class="flex gap-6">
-        <label class="inline-flex items-center gap-2" :for={{opt_label, opt_value} <- @options}>
-          <input
-            type="checkbox"
-            class="checkbox"
-            name={"#{@name}[]"}
-            checked={Enum.member?(if(is_list(@value), do: @value, else: []), opt_value)}
-            value={opt_value}
-          />
-          <%= opt_label %>
-        </label>
+      <div class="flex flex-col gap-2">
+        <div class="flex gap-6">
+          <label class="inline-flex items-center gap-2" :for={{opt_label, opt_value} <- @options}>
+            <input
+              type="checkbox"
+              class={[
+                "checkbox",
+                @class
+              ]}
+              name={"#{@name}[]"}
+              checked={Enum.member?(if(is_list(@value), do: @value, else: []), opt_value)}
+              value={opt_value}
+            />
+            <%= opt_label %>
+          </label>
+        </div>
+        <.dm_error :for={msg <- @errors}><%= msg %></.dm_error>
       </div>
-      <.dm_error :for={msg <- @errors}><%= msg %></.dm_error>
     </div>
     """
   end
 
   def dm_input(%{type: "radio_group"} = assigns) do
     ~H"""
-    <div phx-feedback-for={@name}>
+    <div class={["input-field", @field_class]} phx-feedback-for={@name}>
       <.dm_label for={@id}><%= @label %></.dm_label>
-      <div class="flex gap-6">
-        <label class="inline-flex items-center gap-2" :for={{opt_label, opt_value} <- @options}>
-          <input
-            type="radio"
-            class="radio"
-            name={@name}
-            checked={to_string(@value) == to_string(opt_value)}
-            value={opt_value}
-          />
-          <%= opt_label %>
-        </label>
+      <div class="flex flex-col gap-2">
+        <div class="flex gap-6">
+          <label class="inline-flex items-center gap-2" :for={{opt_label, opt_value} <- @options}>
+            <input
+              type="radio"
+              class={[
+                "radio",
+                @class
+              ]}
+              name={@name}
+              checked={to_string(@value) == to_string(opt_value)}
+              value={opt_value}
+            />
+            <%= opt_label %>
+          </label>
+        </div>
+        <.dm_error :for={msg <- @errors}><%= msg %></.dm_error>
       </div>
-      <.dm_error :for={msg <- @errors}><%= msg %></.dm_error>
     </div>
     """
   end
 
   def dm_input(%{type: "textarea"} = assigns) do
     ~H"""
-    <div phx-feedback-for={@name} class="form-control w-full">
+    <div class={["input-field", @field_class]} phx-feedback-for={@name}>
       <.dm_label for={@id}><%= @label %></.dm_label>
-      <textarea
-        id={@id}
-        name={@name}
-        class={[
-          @class,
-          "textarea textarea-bordered w-full",
-          @errors != [] && "border-error focus:border-error"
-        ]}
-        {@rest}
-      ><%= Phoenix.HTML.Form.normalize_value("textarea", @value) %></textarea>
-      <.dm_error :for={msg <- @errors}><%= msg %></.dm_error>
+      <div class="flex flex-col gap-2">
+        <textarea
+          id={@id}
+          name={@name}
+          class={[
+            "textarea textarea-bordered",
+            @class,
+            @errors != [] && "border-error focus:border-error"
+          ]}
+          {@rest}
+        ><%= Phoenix.HTML.Form.normalize_value("textarea", @value) %></textarea>
+        <.dm_error :for={msg <- @errors}><%= msg %></.dm_error>
+      </div>
     </div>
     """
   end
 
   def dm_input(%{type: "file"} = assigns) do
     ~H"""
-    <div phx-feedback-for={@name} class="form-control w-full">
+    <div class={["input-field", @field_class]} phx-feedback-for={@name}>
       <.dm_label for={@id}><%= @label %></.dm_label>
-      <input
-        id={@id}
-        type="file"
-        name={@name}
-        value={Phoenix.HTML.Form.normalize_value(@type, @value)}
-        class={[
-          @class,
-          "file-input file-input-bordered w-full max-w-xs",
-          @errors != [] && "border-error focus:border-error"
-        ]}
-        {@rest}
-      />
-      <.dm_error :for={msg <- @errors}><%= msg %></.dm_error>
+      <div class="flex flex-col gap-2">
+        <input
+          id={@id}
+          type="file"
+          name={@name}
+          value={Phoenix.HTML.Form.normalize_value(@type, @value)}
+          class={[
+            @class,
+            "file-input file-input-bordered",
+            @errors != [] && "border-error focus:border-error"
+          ]}
+          {@rest}
+        />
+        <.dm_error :for={msg <- @errors}><%= msg %></.dm_error>
+      </div>
     </div>
     """
   end
@@ -236,21 +265,23 @@ defmodule PhoenixDuskmoon.Component.Form do
   # All other inputs text, datetime-local, url, password, etc. are handled here...
   def dm_input(assigns) do
     ~H"""
-    <div phx-feedback-for={@name} class="form-control w-full">
+    <div class={["input-field", @field_class]} phx-feedback-for={@name}>
       <.dm_label for={@id}><%= @label %></.dm_label>
-      <input
-        type={@type}
-        name={@name}
-        id={@id}
-        value={Phoenix.HTML.Form.normalize_value(@type, @value)}
-        class={[
-          @class,
-          "input input-bordered w-full",
-          @errors != [] && "border-error focus:border-error"
-        ]}
-        {@rest}
-      />
-      <.dm_error :for={msg <- @errors}><%= msg %></.dm_error>
+      <div class="flex flex-col gap-2">
+        <input
+          type={@type}
+          name={@name}
+          id={@id}
+          value={Phoenix.HTML.Form.normalize_value(@type, @value)}
+          class={[
+            @class,
+            "input input-bordered",
+            @errors != [] && "border-error focus:border-error"
+          ]}
+          {@rest}
+        />
+        <.dm_error :for={msg <- @errors}><%= msg %></.dm_error>
+      </div>
     </div>
     """
   end

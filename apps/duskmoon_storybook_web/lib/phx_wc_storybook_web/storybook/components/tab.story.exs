@@ -1,7 +1,7 @@
 defmodule DuskmoonStorybookWeb.Storybook.Components.Tab do
   use PhoenixStorybook.Story, :component
 
-  def function, do: &PhoenixDuskmoon.Tab.dm_tab/1
+  def function, do: &PhoenixDuskmoon.Component.Tab.dm_tab/1
 
   def variations do
     [

@@ -2,7 +2,7 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.LeftMenu do
   # :live_component or :page are also available
   use PhoenixStorybook.Story, :component
 
-  def function, do: &PhoenixDuskmoon.LeftMenu.dm_left_menu/1
+  def function, do: &PhoenixDuskmoon.Component.LeftMenu.dm_left_menu/1
   def description, do: "A left menu element."
 
   def variations do

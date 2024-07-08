@@ -1,7 +1,7 @@
 defmodule DuskmoonStorybookWeb.Storybook.Components.Modal do
   use PhoenixStorybook.Story, :component
 
-  def function, do: &PhoenixDuskmoon.Modal.dm_modal/1
+  def function, do: &PhoenixDuskmoon.Component.Modal.dm_modal/1
 
   def imports do
     [{PhoenixDuskmoon.Modal, dm_show_modal: 0}]

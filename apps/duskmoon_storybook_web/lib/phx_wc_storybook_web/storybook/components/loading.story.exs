@@ -2,7 +2,7 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Loading do
   # :live_component or :page are also available
   use PhoenixStorybook.Story, :component
 
-  def function, do: &PhoenixDuskmoon.Loading.dm_loading_ex/1
+  def function, do: &PhoenixDuskmoon.Component.Loading.dm_loading_ex/1
   def description, do: "Loading Effect EX."
 
   def variations do

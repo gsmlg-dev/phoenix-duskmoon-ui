@@ -2,7 +2,7 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Breadcrumb do
   # :live_component or :page are also available
   use PhoenixStorybook.Story, :component
 
-  def function, do: &PhoenixDuskmoon.Breadcrumb.dm_breadcrumb/1
+  def function, do: &PhoenixDuskmoon.Component.Breadcrumb.dm_breadcrumb/1
   def description, do: "A breadcrumb element."
 
   def variations do

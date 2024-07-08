@@ -1,10 +1,10 @@
-<.dm_breadcrumb class="bg-white h-6 text-slate-400">
+<.dm_breadcrumb class="px-4">
   <:crumb>Icon</:crumb>
   <:crumb>Bootstrap Icon</:crumb>
 </.dm_breadcrumb>
+
 <.dm_card class={[
   "w-full h-full overflow-auto",
-  "text-slate-900 bg-slate-50 dark:text-slate-50 dark:bg-slate-900",
 ]}>
   <:title class="flex flex-row justify-center items-center">
     <span class="text-4xl text-blue-600 hover:text-blue-400">
@@ -26,15 +26,16 @@
   </div>
   <div class="flex flex-row mt-4 mb-2">
     <.form for={@conn} action={~p"/bsi"} method="get" class={["flex flex-row gap-2"]}>
-      <.dm_input label="Icon Name" name="filter" value={@filter} />
-      <.button type="submit">Search</.button>
+      <.dm_input field_class="flex" label="Icon Name" name="filter" value={@filter} />
+      <button type="submit" class="btn btn-primary">Search</button>
     </.form>
   </div>
   <div class="flex flex-row flex-wrap gap-4">
     <div 
       :for={icon_name <- @bsi_icons} 
-      class="border flex flex-col w-40 h-40 items-center justify-center">
-      <div class="text-blue-400"><embed><%= icon_name %></embed></div>
+      class="border flex flex-col w-40 h-40 items-center justify-center p-4"
+    >
+      <div class="text-primary"><embed><%= icon_name %></embed></div>
       <div class="flex items-center justify-center">
         <.dm_bsi name={icon_name} class="w-24 h-24" />
       </div>
