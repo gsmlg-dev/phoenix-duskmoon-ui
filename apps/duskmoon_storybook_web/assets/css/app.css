@@ -3,7 +3,7 @@
 @import "tailwindcss/utilities";
 
 /* This file is for your main application CSS */
-@import "../../../phoenix_duskmoon/priv/static/phoenix_duskmoon.css";
+/* @import "../../../phoenix_duskmoon/priv/static/phoenix_duskmoon.css"; */
 
 .rainbow {
   z-index: -1;

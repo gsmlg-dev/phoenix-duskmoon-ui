@@ -46,6 +46,13 @@ defmodule PhoenixDuskmoon.Table do
     """
   )
 
+  attr(:border, :boolean,
+    default: false,
+    doc: """
+    show table border
+    """
+  )
+
   attr(:data, :list,
     default: [],
     doc: """
@@ -93,13 +100,33 @@ defmodule PhoenixDuskmoon.Table do
     attr(:class, :any, doc: "table row column class")
   end
 
+  slot(:expand,
+    required: false,
+    doc: """
+    render a one column row after each row of table.
+
+    Example
+    ```heex
+    <:expand :let={r} label="Name">
+      <pre>
+        <%= r.description %>
+      </pre>
+    </:expand>
+    ```
+    """
+  ) do
+    attr(:id, :any, doc: "table row expand id")
+    attr(:class, :any, doc: "table row expand class")
+  end
+
   def dm_table(assigns) do
     ~H"""
     <table
       role="table"
       id={@id}
       class={[
-        "table table-fixed border-collapse border-spacing-0",
+        "table border-collapse border-spacing-0",
+        if(@border, do: "border"),
         @class,
       ]}
     >
@@ -116,6 +143,7 @@ defmodule PhoenixDuskmoon.Table do
             role="columnheader"
             class={[
               "font-bold",
+              if(@border, do: "border"),
               Map.get(col, :label_class, "")
             ]}
           ><%= col.label %></th>
@@ -127,7 +155,7 @@ defmodule PhoenixDuskmoon.Table do
             :for={{row_id, row} <- @data}
             role="row"
             id={row_id}
-            class={"bg-slate-50 even:bg-white h-8"}
+            class={"table-row"}
           >
             <td
               :for={col <- @col}
@@ -135,6 +163,7 @@ defmodule PhoenixDuskmoon.Table do
               role="cell"
               class={[
                 "px-4 py-2",
+                if(@border, do: "border"),
                 "grid before:content-[attr(data-label)] before:font-bold grid-cols-[6em_auto] gap-x-2 gap-y-4",
                 "md:table-cell md:before:hidden",
                 Map.get(col, :class, "")
@@ -144,23 +173,44 @@ defmodule PhoenixDuskmoon.Table do
         </tbody>
       <% else %>
         <tbody role="row-group">
-          <tr
-            :for={row <- @data}
-            role="row"
-            class={"bg-base-200 even:bg-base-100"}
-          >
-            <td
-              :for={col <- @col}
-              data-label={col.label}
-              role="cell"
+          <%= for row <- @data do %>
+            <tr
+              role="row"
+              class={"table-row"}
+            >
+              <td
+                :for={col <- @col}
+                data-label={col.label}
+                role="cell"
+                class={[
+                  "px-4 py-2",
+                  if(@border, do: "border"),
+                  "grid before:content-[attr(data-label)] before:font-bold grid-cols-[6em_auto] gap-x-2 gap-y-4",
+                  "md:table-cell md:before:hidden",
+                  Map.get(col, :class, "")
+                ]}
+              ><%= render_slot(col, row) %></td>
+            </tr>
+            <tr
+              role="row"
               class={[
-                "px-4 py-2",
-                "grid before:content-[attr(data-label)] before:font-bold grid-cols-[6em_auto] gap-x-2 gap-y-4",
-                "md:table-cell md:before:hidden",
-                Map.get(col, :class, "")
+                "table-row-expand",
+                Map.get(expand, :class, "")
               ]}
-            ><%= render_slot(col, row) %></td>
-          </tr>
+              :if={length(@expand) > 0}
+              :for={expand <- @expand}
+              id={Map.get(expand, :id, false)}
+            >
+              <td
+                colspan={length(@col)}
+                role="cell"
+                class={[
+                  "px-4 py-2",
+                  if(@border, do: "border"),
+                ]}
+              ><%= render_slot(expand, row) %></td>
+            </tr>
+          <% end %>
         </tbody>
       <%  end %>
     </table>

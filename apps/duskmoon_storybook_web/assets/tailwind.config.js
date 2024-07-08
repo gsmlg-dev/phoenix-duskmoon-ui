@@ -8,7 +8,8 @@ module.exports = {
     './js/**/*.js',
     '../lib/**/*.exs',
     '../lib/*_web.ex',
-    '../lib/*_web/**/*.*ex'
+    '../lib/*_web/**/*.*ex',
+    '../../phoenix_duskmoon/lib/**/*.*ex'
   ],
   theme: {
     extend: {},

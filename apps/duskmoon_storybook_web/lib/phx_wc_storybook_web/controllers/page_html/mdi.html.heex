@@ -3,7 +3,7 @@
     <:crumb>Material Design Icon</:crumb>
 </.dm_breadcrumb>
 <.dm_card class={[
-    "w-[100%_!important] h-[calc(100vh-56px-2em)_!important] overflow-auto",
+    "w-full h-full overflow-auto",
     "text-slate-900 bg-slate-50 dark:text-slate-50 dark:bg-slate-900",
 ]}>
     <:title class="flex flex-row justify-center items-center">
@@ -11,14 +11,19 @@
             Material Design Icons
         </span>
     </:title>
-    <.dm_markdown content={"""
-    ## Example
+    <div class="mockup-window bg-base-300 border">
+        <.dm_markdown
+            class="mx-6"
+            content={"""
+            ## Example
 
-    ```html
-    <!-- icon_name is matrial icon name -->
-    <.dm_mdi name={icon_name} class="w-12 h-12" />
-    ```
-    """} />
+            ```html
+            <!-- icon_name is matrial icon name -->
+            <.dm_mdi name={icon_name} class="w-12 h-12" />
+            ```
+            """}
+        />
+    </div>
     <div class="flex flex-row mt-4 mb-2">
         <.form for={@conn} action={~p"/mdi"} method="get" class={["flex flex-row gap-2"]}>
             <.input label="Icon Name" name="filter" value={@filter} />

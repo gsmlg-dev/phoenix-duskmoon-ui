@@ -11,6 +11,7 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Table do
         id: :default,
         attributes: %{
           class: "w-full",
+          border: true,
           data: table_data()
         },
         slots: [
@@ -24,9 +25,16 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Table do
           <:col :let={r} label="Portrayal" class="align-top">
             <%= r.portrayal %>
           </:col>
-          <:col :let={r} label="Description" class="align-top">
-            <%= r.description %>
+          <:col :let={r} label="" class="align-top">
+            <button class="btn" phx-click={JS.toggle_class("hidden", to: "tr:has(#description-#\{Map.get(r, :id)\})")}>
+              Expand
+            </button>
           </:col>
+          <:expand :let={r} class={["align-top", "hidden"]}>
+            <pre id={"description-#\{Map.get(r, :id)\}"} class="p-4 whitespace-break-spaces">
+              <%= r.description %>
+            </pre>
+          </:expand>
           """
         ]
       }
@@ -36,6 +44,7 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Table do
   defp table_data() do
     [
       %{
+        id: "r1",
         name: "Shmi Skywalker",
         portrayal: """
         Pernilla August (Episodes I-II)
@@ -52,6 +61,7 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Table do
         """
       },
       %{
+        id: "r2",
         name: "Luke Skywalker",
         portrayal: """
         Mark Hamill (Episodes IV-IX, The Mandalorian, The Book of Boba Fett), Aidan Barton (Episode III), Grant Feely (Obi-Wan Kenobi)
