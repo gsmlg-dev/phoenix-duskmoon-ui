@@ -162,10 +162,6 @@ defmodule PhoenixDuskmoon.Component.Table do
               data-label={col.label}
               role="cell"
               class={[
-                "px-4 py-2",
-                if(@border, do: "border"),
-                "grid before:content-[attr(data-label)] before:font-bold grid-cols-[6em_auto] gap-x-2 gap-y-4",
-                "md:table-cell md:before:hidden",
                 Map.get(col, :class, "")
               ]}
             ><%= render_slot(col, row) %></td>
@@ -183,10 +179,6 @@ defmodule PhoenixDuskmoon.Component.Table do
                 data-label={col.label}
                 role="cell"
                 class={[
-                  "px-4 py-2",
-                  if(@border, do: "border"),
-                  "grid before:content-[attr(data-label)] before:font-bold grid-cols-[6em_auto] gap-x-2 gap-y-4",
-                  "md:table-cell md:before:hidden",
                   Map.get(col, :class, "")
                 ]}
               ><%= render_slot(col, row) %></td>
@@ -205,7 +197,7 @@ defmodule PhoenixDuskmoon.Component.Table do
                 colspan={length(@col)}
                 role="cell"
                 class={[
-                  "px-4 py-2",
+                  "p-0",
                   if(@border, do: "border"),
                 ]}
               ><%= render_slot(expand, row) %></td>
