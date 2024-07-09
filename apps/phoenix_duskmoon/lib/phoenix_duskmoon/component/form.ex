@@ -12,9 +12,9 @@ defmodule PhoenixDuskmoon.Component.Form do
 
   ## Examples
 
-      <.dm_form for={@form} phx-change="validate" phx-submit="save">
-        <.dm_input field={@form[:email]} label="Email"/>
-        <.dm_input field={@form[:username]} label="Username" />
+      <.dm_form :let={f} for={@form} phx-change="validate" phx-submit="save">
+        <.dm_input field={f[:email]} label="Email"/>
+        <.dm_input field={f[:username]} label="Username" />
         <:actions>
           <.button>Save</.button>
         </:actions>
@@ -132,7 +132,7 @@ defmodule PhoenixDuskmoon.Component.Form do
           name={@name}
           value="true"
           checked={@checked}
-          class="rounded border-zinc-300 text-zinc-900 focus:ring-0"
+          class="checkbox"
           {@rest}
         />
         <%= @label %>
