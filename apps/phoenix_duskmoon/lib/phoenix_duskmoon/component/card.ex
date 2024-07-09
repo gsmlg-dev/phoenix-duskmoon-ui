@@ -207,7 +207,7 @@ defmodule PhoenixDuskmoon.Component.Card do
               Map.get(action, :class, ""),
             ]}
           >
-            <%= render_slot(action) %>
+            <%= render_slot(action, Map.get(@assign, :result)) %>
           </div>
         </div>
       </div>
