@@ -1,3 +1,10 @@
+## [4.6.3](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.6.2...v4.6.3) (2024-07-09)
+
+
+### Bug Fixes
+
+* Fix table. ([37c5220](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/37c5220ace8437e81c2a062eafba7fcd073c0fc0))
+
 ## [4.6.2](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.6.1...v4.6.2) (2024-07-09)
 
 
