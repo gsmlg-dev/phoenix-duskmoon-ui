@@ -1,3 +1,10 @@
+## [4.6.1](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.6.0...v4.6.1) (2024-07-09)
+
+
+### Bug Fixes
+
+* Fix card and async card. ([87c9b5a](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/87c9b5a1b3aadc44a196ac66308e20c06aaa17ab))
+
 # [4.6.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.5.2...v4.6.0) (2024-07-08)
 
 
