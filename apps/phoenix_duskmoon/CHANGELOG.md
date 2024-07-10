@@ -1,3 +1,10 @@
+## [4.6.4](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.6.3...v4.6.4) (2024-07-10)
+
+
+### Bug Fixes
+
+* Fix table border. ([55d0596](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/55d0596e20372fedc7bf0d82f87694b9dc74d030))
+
 ## [4.6.3](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.6.2...v4.6.3) (2024-07-09)
 
 
