@@ -162,6 +162,7 @@ defmodule PhoenixDuskmoon.Component.Table do
               data-label={col.label}
               role="cell"
               class={[
+                if(@border, do: "border"),
                 Map.get(col, :class, "")
               ]}
             ><%= render_slot(col, row) %></td>
@@ -179,6 +180,7 @@ defmodule PhoenixDuskmoon.Component.Table do
                 data-label={col.label}
                 role="cell"
                 class={[
+                  if(@border, do: "border"),
                   Map.get(col, :class, "")
                 ]}
               ><%= render_slot(col, row) %></td>
