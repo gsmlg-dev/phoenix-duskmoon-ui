@@ -1,3 +1,14 @@
+## [4.6.5](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.6.4...v4.6.5) (2024-08-01)
+
+
+### Bug Fixes
+
+* Add dm_pagination_thin with loading and jumper. ([d1c013a](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/d1c013ad2908746c514bb82e6bdaf3a2bbc1500d))
+* Add flash. ([2c1594c](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/2c1594c5b307c0ce09fbc6654efcb905d536a6d8))
+* Fix style. ([2e44767](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/2e44767209047eea69324f47dacc81341a4f6bed))
+* Fix style. ([a9f8b9c](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/a9f8b9c5f1c2404ec9212eea5d686a647e8929ca))
+* Fix. ([a1bb3d0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/a1bb3d03739819b25b9c2f94cb32f596ed07f714))
+
 ## [4.6.4](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.6.3...v4.6.4) (2024-07-10)
 
 
