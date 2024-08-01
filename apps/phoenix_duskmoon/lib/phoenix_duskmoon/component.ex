@@ -74,6 +74,7 @@ defmodule PhoenixDuskmoon.Component do
       import PhoenixDuskmoon.Component.Tab
       import PhoenixDuskmoon.Component.Table
       import PhoenixDuskmoon.Component.Form
+      import PhoenixDuskmoon.Component.Flash
     end
   end
 
