@@ -29,7 +29,7 @@ defmodule PhoenixDuskmoon.Component.Flash do
       phx-mounted={@autoshow && JS.show(to: "##{@id}")}
       phx-click={JS.push("lv:clear-flash", value: %{key: @kind}) |> JS.hide(to: "##{@id}")}
       role="alert"
-      class={"w-80 sm:w-96 toast toast-top toast-end"}
+      class={"hidden w-80 sm:w-96 toast toast-top toast-end z-[1000]"}
       {@rest}
     >
       <div class={["flex flex-col gap-2 relative alert", if(@kind == :info, do: "alert-info"), if(@kind == :error, do: "alert-error")]}>
