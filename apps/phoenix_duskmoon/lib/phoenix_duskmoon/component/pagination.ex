@@ -392,7 +392,7 @@ defmodule PhoenixDuskmoon.Component.Pagination do
                 min={1}
                 max={@max_page}
                 phx-debounce={300}
-                oninput={"this.value = Math.round(this.value);if(this.value<1){this.value=1}if(this.value>#{@max_page}){this.value=#{max_page}}"}
+                oninput={"this.value = Math.round(this.value);if(this.value<1){this.value=1}if(this.value>#{@max_page}){this.value=#{@max_page}}"}
                 value={@page_num}
               />
             </form>
