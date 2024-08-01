@@ -74,7 +74,7 @@ defmodule PhoenixDuskmoon.Component.Flash do
       phx-disconnected={JS.show(to: "#disconnected")}
       phx-connected={JS.hide(to: "#disconnected")}
     >
-      Attempting to reconnect <.dm_bsi name="arrow-repeat" class="ml-1 w-3 h-3 animate-spin" />
+      Attempting to reconnect <.dm_bsi name="arrow-repeat" class="inline ml-1 w-3 h-3 animate-spin" />
     </.dm_flash>
     """
   end
