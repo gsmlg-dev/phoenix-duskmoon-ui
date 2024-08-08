@@ -67,7 +67,7 @@ defmodule PhoenixDuskmoon.Component.Modal do
           <button class="btn btn-ghost"><.dm_mdi name={"window-close"} class="w-4 h-4" /></button>
         </form>
         <% end %>
-        <section class="flex flex-col min-h-[200px] min-w-[420px]">
+        <section class="flex flex-col min-h-22 min-w-36">
           <header :for={title <- @title} class={[
             "flex flex-row font-bold w-full text-2xl",
             Map.get(title, :class, "")

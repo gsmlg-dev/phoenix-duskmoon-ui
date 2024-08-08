@@ -137,7 +137,7 @@ defmodule PhoenixDuskmoon.Component.Table do
         class={Map.get(caption, :class, "")}
       ><%= render_slot(caption) %></caption>
       <thead role="row-group" class="hidden md:table-header-group sticky top-0">
-        <tr role="row" class="bg-slate-100 h-8">
+        <tr role="row" class="table-row table-header-row">
           <th
             :for={col <- @col}
             role="columnheader"
