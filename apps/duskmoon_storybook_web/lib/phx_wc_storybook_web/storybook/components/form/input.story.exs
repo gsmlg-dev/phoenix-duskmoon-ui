@@ -13,8 +13,8 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Form.Input do
           type: "text",
           label: "Username",
           name: "name",
-          value: nil,
-        },
+          value: nil
+        }
       },
       %Variation{
         id: :password,
@@ -22,8 +22,8 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Form.Input do
           type: "password",
           label: "Password",
           name: "password",
-          value: nil,
-        },
+          value: nil
+        }
       },
       %Variation{
         id: :email,
@@ -32,16 +32,16 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Form.Input do
           label: "Email",
           name: "email",
           value: nil,
-          class: "input-sm",
-        },
+          class: "input-sm"
+        }
       },
       %Variation{
         id: :checkbox,
         attributes: %{
           type: "checkbox",
           label: "Checkbox",
-          name: "checkbox",
-        },
+          name: "checkbox"
+        }
       },
       %Variation{
         id: :toggle,
@@ -49,8 +49,8 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Form.Input do
           type: "toggle",
           label: "Auto",
           name: "auto",
-          value: nil,
-        },
+          value: nil
+        }
       },
       %Variation{
         id: :select,
@@ -61,13 +61,14 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Form.Input do
           value: nil,
           options: [
             {"New York", "new_york"},
-            {"California", [
-              {"San Diego", "san_diego"},
-              {"San Francisco", "san_francisco"},
-              {"Los Angeles", "los_angeles"},
-            ]},
+            {"California",
+             [
+               {"San Diego", "san_diego"},
+               {"San Francisco", "san_francisco"},
+               {"Los Angeles", "los_angeles"}
+             ]}
           ]
-        },
+        }
       },
       %Variation{
         id: :select_multiple,
@@ -79,13 +80,14 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Form.Input do
           multiple: true,
           options: [
             {"New York", "new_york"},
-            {"California", [
-              {"San Diego", "san_diego"},
-              {"San Francisco", "san_francisco"},
-              {"Los Angeles", "los_angeles"},
-            ]},
+            {"California",
+             [
+               {"San Diego", "san_diego"},
+               {"San Francisco", "san_francisco"},
+               {"Los Angeles", "los_angeles"}
+             ]}
           ]
-        },
+        }
       },
       %Variation{
         id: :checkbox_group,
@@ -99,9 +101,9 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Form.Input do
             {"United States", "us"},
             {"United Kigndom", "uk"},
             {"Franch", "fr"},
-            {"German", "ge"},
+            {"German", "ge"}
           ]
-        },
+        }
       },
       %Variation{
         id: :radio_group,
@@ -114,9 +116,9 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Form.Input do
             {"United States", "us"},
             {"United Kigndom", "uk"},
             {"Franch", "fr"},
-            {"German", "ge"},
+            {"German", "ge"}
           ]
-        },
+        }
       },
       %Variation{
         id: :textarea,
@@ -124,8 +126,8 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Form.Input do
           type: "textarea",
           label: "Story",
           name: "story",
-          value: nil,
-        },
+          value: nil
+        }
       },
       %Variation{
         id: :file,
@@ -133,9 +135,9 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Form.Input do
           type: "file",
           label: "Attachment",
           name: "attachment",
-          value: nil,
-        },
-      },
+          value: nil
+        }
+      }
     ]
   end
 end

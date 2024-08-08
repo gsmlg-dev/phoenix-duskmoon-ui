@@ -12,14 +12,14 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Form do
         attributes: %{
           class: "shadow",
           for: %{},
-          as: "",
+          as: ""
         },
         slots: [
           """
           <h3>Duskmoon Form</h3>
-          """,
+          """
         ]
-      },
+      }
     ]
   end
 end
