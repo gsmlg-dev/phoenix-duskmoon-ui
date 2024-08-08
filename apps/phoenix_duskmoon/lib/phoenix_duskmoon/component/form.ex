@@ -132,12 +132,39 @@ defmodule PhoenixDuskmoon.Component.Form do
           name={@name}
           value="true"
           checked={@checked}
-          class="checkbox"
+          class={["checkbox", @class]}
           {@rest}
         />
         <%= @label %>
       </label>
       <.dm_error :for={msg <- @errors}><%= msg %></.dm_error>
+    </div>
+    """
+  end
+
+  def dm_input(%{type: "toggle", value: value} = assigns) do
+    assigns =
+      assign_new(assigns, :checked, fn -> Phoenix.HTML.Form.normalize_value("checkbox", value) end)
+
+    ~H"""
+    <div class={["input-field", @field_class]} phx-feedback-for={@name}>
+      <.dm_label for={@id}><%= @label %></.dm_label>
+      <div class="flex flex-col justify-center gap-2">
+        <input type="hidden" name={@name} value="false" />
+        <input
+          type="checkbox"
+          id={@id}
+          class={[
+            "toggle",
+            @class
+          ]}
+          name={@name}
+          value="true"
+          checked={@checked}
+          {@rest}
+        />
+        <.dm_error :for={msg <- @errors}><%= msg %></.dm_error>
+      </div>
     </div>
     """
   end
