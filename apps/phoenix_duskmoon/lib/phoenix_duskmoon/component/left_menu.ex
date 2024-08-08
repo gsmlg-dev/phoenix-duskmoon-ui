@@ -62,31 +62,28 @@ defmodule PhoenixDuskmoon.Component.LeftMenu do
       id={@id}
       class={[
         "flex flex-col justify-start items-start",
-        "h-full pt-4",
         @class,
       ]}
     >
-    <%= if length(@title) > 0 do %>
       <div
         :for={{title, _i} <- Enum.with_index(@title)}
         class={[
-          "flex flex-row justify-start items-center",
-          "px-10 py-4 w-full",
+          "flex px-4 py-2",
           Map.get(title, :class, ""),
         ]}
       >
         <%= render_slot(title) %>
       </div>
-    <% end %>
-      <div
-        :for={{m, _i} <- Enum.with_index(@menu)}
-        class={[
-          "flex flex-col justify-start items-start w-full",
-          Map.get(m, :class, "")
-        ]}
-      >
-        <%= render_slot(m) %>
-      </div>
+      <ul class="menu w-full">
+        <li
+          :for={{m, _i} <- Enum.with_index(@menu)}
+          class={[
+            Map.get(m, :class)
+          ]}
+        >
+          <%= render_slot(m) %>
+        </li>
+      </ul>
     </nav>
     """
   end

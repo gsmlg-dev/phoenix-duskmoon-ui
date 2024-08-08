@@ -24,7 +24,35 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.LeftMenu do
              ]}
           ]
         },
-        slots: ["<:title>Menu Demo Components</:title>"]
+        slots: [
+          "<:title>Menu Demo Components</:title>",
+          "<:menu><a>Dashboard</a></:menu>",
+          """
+          <:menu>
+            <h2 class="menu-title">Title</h2>
+            <ul>
+              <li><a>Submenu 1</a></li>
+              <li><a>Submenu 2</a></li>
+            </ul>
+          </:menu>
+          <:menu>
+          <a>Parent</a>
+          <ul>
+            <li><a>Submenu 1</a></li>
+            <li><a>Submenu 2</a></li>
+          </ul>
+          </:menu>
+          <:menu>
+          <details open>
+            <summary>Parent</summary>
+            <ul>
+              <li><a>Submenu 1</a></li>
+              <li><a>Submenu 2</a></li>
+            </ul>
+          </details>
+          </:menu>
+          """
+        ]
       }
     ]
   end
