@@ -1,3 +1,16 @@
+## [4.6.6](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.6.5...v4.6.6) (2024-08-09)
+
+
+### Bug Fixes
+
+* Add input toggle and storybook. ([ad531ee](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/ad531eec357abbc04be954a12989df54fdd9ac22))
+* Fix format. ([5da5d3e](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/5da5d3ed2ecc930b75f68dc05764858e5e64c7e3))
+* Fix format. ([b8fbb53](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/b8fbb53f31ac6c0c88effc1b9ef05103f0da3cda))
+* Fix leftmenu. ([0a9591f](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/0a9591f8c417b02620720fb7442187a63ca48c1c))
+* Fix link and storybook. ([79b76fd](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/79b76fdd7cd7e1b7d417b472d070df495c5cd26e))
+* Fix table. ([6ea2b1c](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/6ea2b1c5b75a51bf62b07959a30927ca25970bce))
+* Ignore warning as error. ([4e839c0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/4e839c0017c1af1f990ad5a9473b51c61b4dbe07))
+
 ## [4.6.5](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.6.4...v4.6.5) (2024-08-01)
 
 
