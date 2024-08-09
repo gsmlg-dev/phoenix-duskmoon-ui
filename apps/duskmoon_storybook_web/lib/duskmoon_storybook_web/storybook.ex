@@ -1,7 +1,6 @@
 defmodule DuskmoonStorybookWeb.Storybook do
   use PhoenixStorybook,
     otp_app: :duskmoon_storybook_web,
-
     content_path: Path.expand("storybook", __DIR__),
 
     # Story compilation mode, can be either `:eager` or `:lazy`.
