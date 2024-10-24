@@ -119,13 +119,6 @@ defmodule PhoenixDuskmoon.Component.LeftMenu do
     """
   )
 
-  attr(:active_class, :any,
-    default: "bg-blue-100 text-blue-500 dark:bg-blue-900 dark:text-blue-100",
-    doc: """
-    active menu html attribute class
-    """
-  )
-
   slot(:title,
     required: true,
     doc: """
@@ -152,42 +145,24 @@ defmodule PhoenixDuskmoon.Component.LeftMenu do
       |> assign_new(:title, fn -> nil end)
 
     ~H"""
-    <div
-      id={@id}
-      class={[
-        "flex flex-col justify-start items-start",
-        "w-full",
-        @class,
-      ]}
+    <h2
+      :for={{title, _i} <- Enum.with_index(@title)}
+      class="menu-title"
     >
-      <div
-        :for={{title, _i} <- Enum.with_index(@title)}
-        class={[
-          "px-10 py-4 w-full",
-          Map.get(title, :class, ""),
-        ]}
+      <%= render_slot(title) %>
+    </h2>
+    <ul>
+      <li
+        :for={{m, _i} <- Enum.with_index(@menu)}
       >
-        <%= render_slot(@title) %>
-      </div>
-      <div class="px-4 w-full">
         <.link
-          :for={{m, _i} <- Enum.with_index(@menu)}
-          class={[
-            "flex flex-row justify-start items-center",
-            "px-6 py-4 rounded-lg w-full cursor-pointer",
-            if Map.get(m, :id, "") == @active do
-              @active_class
-            end,
-            Map.get(m, :class, "")
-          ]}
-          navigate={Map.get(m, :to, "")}
+          class={if(Map.get(m, :id, false) == assigns[:active], do: "active")}
+          navigate={Map.get(m, :to, "#")}
         >
-          <span class="indent-2.5 flex flex-row justify-start items-center">
-            <%= render_slot(m) %>
-          </span>
+          <%= render_slot(m) %>
         </.link>
-      </div>
-    </div>
+      </li>
+    </ul>
     """
   end
 end
