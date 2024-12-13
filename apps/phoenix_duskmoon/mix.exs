@@ -40,10 +40,10 @@ defmodule PhoenixDuskmoon.Mixfile do
     [
       {:phoenix, "~> 1.7"},
       {:phoenix_html, "~> 4.0"},
-      {:phoenix_live_view, "~> 0.20"},
+      {:phoenix_live_view, "~> 1.0"},
       {:plug, "~> 1.5", optional: true},
       {:esbuild, "~> 0.7", runtime: Mix.env() == :dev},
-      {:tailwind, "~> 0.2.0", runtime: Mix.env() == :dev},
+      {:tailwind, "~> 0.2", runtime: Mix.env() == :dev},
       {:ex_doc, ">= 0.0.0", only: :prod, runtime: false}
     ]
   end
