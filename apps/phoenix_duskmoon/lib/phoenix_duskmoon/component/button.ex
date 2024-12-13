@@ -21,7 +21,12 @@ defmodule PhoenixDuskmoon.Component.Button do
   @doc type: :component
   attr(:id, :string, required: true)
   attr(:class, :any, default: nil, doc: "the class of the button")
-  attr(:confirm_class, :any, default: nil, doc: "the class of the confirm action button in dialog")
+
+  attr(:confirm_class, :any,
+    default: nil,
+    doc: "the class of the confirm action button in dialog"
+  )
+
   attr(:cancel_class, :any, default: nil, doc: "the class of the cancel action button in dialog")
   attr(:confirm_title, :string, default: "")
   attr(:confirm, :string, default: "")

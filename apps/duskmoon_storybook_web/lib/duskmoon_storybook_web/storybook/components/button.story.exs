@@ -25,7 +25,7 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Button do
           confirm_title: "Attention!",
           confirm: "Do you really want to remove it?",
           confirm_class: "btn-error btn-sm",
-          cancel_class: "btn-ghost btn-sm",
+          cancel_class: "btn-ghost btn-sm"
         },
         slots: [
           """
@@ -39,7 +39,7 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Button do
           class: "btn-info",
           confirm: "Are you sure you want to export?",
           confirm_class: "btn-info btn-sm",
-          cancel_class: "btn-ghost btn-sm",
+          cancel_class: "btn-ghost btn-sm"
         },
         slots: [
           """
