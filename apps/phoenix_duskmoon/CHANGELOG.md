@@ -1,3 +1,21 @@
+# [5.0.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.6.6...v5.0.0) (2024-12-13)
+
+
+### Bug Fixes
+
+* Format code. ([c45a594](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/c45a59431d50206d7a0742231dca55cb63144ea3))
+
+
+### Features
+
+* Add button with confirm. ([3a5491c](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/3a5491cfc59c8ac0083682a0d3f31d9ba9750d5c))
+* Update phoenix_live_view to 1.0 ([7f04b3a](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/7f04b3a74c9ce4665ae97f2349ab0d691ce1f950))
+
+
+### BREAKING CHANGES
+
+* * phoenix_live_view version up to 1.0, can not compatible to previous version
+
 ## [4.6.6](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.6.5...v4.6.6) (2024-08-09)
 
 
