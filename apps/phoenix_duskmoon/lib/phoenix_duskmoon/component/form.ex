@@ -22,7 +22,7 @@ defmodule PhoenixDuskmoon.Component.Form do
   """
   attr(:id, :any, default: nil)
   attr(:class, :any, default: nil)
-  attr(:for, :any, required: true, doc: "the datastructure for the form")
+  attr(:for, :any, doc: "the datastructure for the form")
   attr(:as, :any, default: nil, doc: "the server side parameter to collect all input under")
 
   attr(:rest, :global,
@@ -34,6 +34,8 @@ defmodule PhoenixDuskmoon.Component.Form do
   slot(:actions, doc: "the slot for form actions, such as a submit button")
 
   def dm_form(assigns) do
+    assigns = assigns |> assign_new(:for, fn -> to_form(%{}) end)
+
     ~H"""
     <.form
       id={@id}
@@ -87,7 +89,7 @@ defmodule PhoenixDuskmoon.Component.Form do
     default: "text",
     values: ~w(checkbox color date datetime-local email file hidden month number password
                range radio search select tel text textarea time url week checkbox_group
-               radio_group)
+               radio_group toggle)
   )
 
   attr(:field, Phoenix.HTML.FormField,
