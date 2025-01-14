@@ -1,3 +1,10 @@
+## [5.0.1](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v5.0.0...v5.0.1) (2025-01-14)
+
+
+### Bug Fixes
+
+* Fix form and dm_input type. ([0896d5b](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/0896d5bc466a2078a299ce8c22c677cd7b0ca0e2))
+
 # [5.0.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v4.6.6...v5.0.0) (2024-12-13)
 
 
