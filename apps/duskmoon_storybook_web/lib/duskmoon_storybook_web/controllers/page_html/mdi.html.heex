@@ -24,13 +24,13 @@
     />
   </div>
   <div class="flex flex-row mt-4 mb-2">
-    <.form for={@conn} action={~p"/mdi"} method="get" class={["flex flex-row gap-2"]}>
-      <.dm_input field_class="flex" label="Icon Name" name="filter" value={@filter} />
-      <button type="submit" class="btn btn-primary">Search</button>
+    <.form for={@conn} action={~p"/mdi"} method="get" class={["join"]}>
+      <.dm_input field_class="flex join-item" label="Icon Name" name="filter" value={@filter} />
+      <button type="submit" class="btn btn-primary join-item">Search</button>
     </.form>
   </div>
   <div class="flex flex-row flex-wrap gap-4">
-    <div 
+    <div
       :for={icon_name <- @mdi_icons}
       class="border flex flex-col w-40 h-40 items-center justify-center p-4"
     >

@@ -10,6 +10,7 @@
   <:menu to={~p"/hook"} class="opacity-60">Hook</:menu>
   <:menu to={~p"/mdi"} class="opacity-60">MDI</:menu>
   <:menu to={~p"/bsi"} class="opacity-60">BSI</:menu>
+  <:menu to={~p"/fun"} class="opacity-60">Fun</:menu>
   <:menu to={~p"/storybook"} class="opacity-60">Storybook</:menu>
 
   <:user_profile>
@@ -97,7 +98,7 @@
         <div class="mx-12">|</div>
         <.link href="https://hexdocs.pm/phoenix_duskmoon/">HEX Document</.link>
       </div>
-      <div class="my-4 flex flex-col gap-8">
+      <div class="my-4 gap-8 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6">
         <.link class="flex flex-row items-center text-2xl text-blue-300 gap-4">
           <.dm_mdi name={"page-layout-header"} class="w-4 h-4" />
           PageHeader

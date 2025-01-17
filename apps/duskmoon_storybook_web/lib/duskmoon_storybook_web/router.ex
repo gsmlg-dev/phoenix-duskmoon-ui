@@ -29,6 +29,8 @@ defmodule DuskmoonStorybookWeb.Router do
     get "/mdi", PageController, :mdi
     get "/bsi", PageController, :bsi
 
+    get "/fun", FunController, :page
+
     live_storybook("/storybook", backend_module: DuskmoonStorybookWeb.Storybook)
   end
 end

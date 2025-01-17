@@ -1,0 +1,71 @@
+<.dm_page_header
+  class={[
+    "bg-gradient-to-br from-[#ff6f61] to-[#639]",
+    "aniamite-bg",
+    "text-slate-200 h-[380px] py-6"
+  ]}
+  nav_class={["bg-gradient-to-br from-[#ff6f61] to-[#639] text-slate-200 shadow"]}
+>
+  <:menu to={~p"/"} class="opacity-60">Home</:menu>
+  <:menu to={~p"/hook"} class="opacity-60">Hook</:menu>
+  <:menu to={~p"/mdi"} class="opacity-60">MDI</:menu>
+  <:menu to={~p"/bsi"} class="opacity-60">BSI</:menu>
+  <:menu to={~p"/fun"} class="border-b-2 border-slate-50">Fun</:menu>
+  <:menu to={~p"/storybook"} class="opacity-60">Storybook</:menu>
+
+  <:user_profile>
+    <.link href={"https://github.com/gsmlg-dev/phoenix-duskmoon-ui"}>
+      <.dm_mdi name="github" class="w-12 h-12" />
+    </.link>
+  </:user_profile>
+
+  <h1 class={[
+    "text-center text-3xl md:text-4xl font-bold text-slate-300 select-none",
+    "bg-clip-text bg-gradient-to-tl from-[#fac2b0] to-[#b4e3da]",
+    "darkmoon-hero-text"
+  ]}>
+    Duskmoon UI Fun Components
+  </h1>
+</.dm_page_header>
+
+<div class={[
+  "w-full py-32",
+  "flex flex-col",
+  "border-b-2 border-slate-300"
+]}>
+  <a name="hook" />
+  <div class="container mx-auto px-4 flex flex-row justify-around">
+    <div class="flex flex-col justify-center">
+      <h3 class="font-bold text-4xl my-4">Spotlight Search</h3>
+      <p class="my-2 text-lg text-violet-500	">
+        Use <kbd class="kbd kbd-sm">⌘</kbd> + <kbd class="kbd kbd-sm">K</kbd> to open spotlight search.
+      </p>
+      <p class="my-2 text-lg text-violet-500	">
+        Binding phoenix live events to custom element's custom action.
+      </p>
+      <PhoenixDuskmoon.Fun.Spotlight.dmf_spotlight />
+    </div>
+    <div class="flex justify-center items-center">
+      <.dm_mdi name="spotlight" class="w-full aspect-square" />
+    </div>
+  </div>
+</div>
+
+<.dm_page_footer
+  class={["bg-gradient-to-br from-cyan-500 to-blue-500 text-slate-100"]}
+>
+  <:section title="Web Sites" body_class="text-slate-300">
+    <.link href="https://github.com/gsmlg-dev">Github Repos</.link>
+    <.link href="https://gsmlg.org/blogs">Blog</.link>
+    <.link href="https://gsmlg.org/tools">Tools</.link>
+  </:section>
+  <:section title="Other Libraries" body_class="text-slate-300">
+    <.link href="https://gsmlg-dev.github.io/yew-duskmoon-ui/">Yew Duskmoon UI</.link>
+    <.link href="https://gsmlg-dev.github.io/lit">Web Component</.link>
+    <.link href="https://gsmlg-dev.github.io/react">React Component</.link>
+    <.link href="https://gsmlg-dev.github.io/three-fiber">3D Component</.link>
+  </:section>
+  <:copyright title="Copyright - GSMLG.dev">
+    Made with ❤️ for building a better Web.
+  </:copyright>
+</.dm_page_footer>
