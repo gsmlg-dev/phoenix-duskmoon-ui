@@ -44,7 +44,7 @@ defmodule DuskmoonStorybookWeb do
         layouts: [html: DuskmoonStorybookWeb.Layouts]
 
       import Plug.Conn
-      import DuskmoonStorybookWeb.Gettext
+      use Gettext, backend: DuskmoonStorybookWeb.Gettext
 
       unquote(verified_routes())
     end
@@ -87,7 +87,7 @@ defmodule DuskmoonStorybookWeb do
       # Core UI components and translation
       use PhoenixDuskmoon.Component
       import DuskmoonStorybookWeb.CoreComponents
-      import DuskmoonStorybookWeb.Gettext
+      use Gettext, backend: DuskmoonStorybookWeb.Gettext
 
       # Shortcut for generating JS commands
       alias Phoenix.LiveView.JS

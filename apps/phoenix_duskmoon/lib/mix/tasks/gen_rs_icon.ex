@@ -1,4 +1,4 @@
-defmodule Mix.Tasks.PhxWc.GenRsIcons do
+defmodule Mix.Tasks.PhoenixDuskmoon.GenRsIcons do
   # Generate Material Design Icons and Bootstrap Icons to yew components
 
   @moduledoc """
@@ -118,6 +118,6 @@ defmodule Mix.Tasks.PhxWc.GenRsIcons do
   end
 
   def run(_) do
-    IO.puts("Use `mix phx_wc.gen_rs_icons bsi` or `mix phx_wc.gen_rs_icons mdi`")
+    IO.puts("Use `mix phoenix_duskmoon.gen_rs_icons bsi` or `mix phoenix_duskmoon.gen_rs_icons mdi`")
   end
 end

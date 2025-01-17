@@ -11,7 +11,7 @@ defmodule DuskmoonStorybookWeb.CoreComponents do
   use Phoenix.Component
 
   alias Phoenix.LiveView.JS
-  import DuskmoonStorybookWeb.Gettext
+  use Gettext, backend: DuskmoonStorybookWeb.Gettext
 
   @doc """
   Renders a modal.
