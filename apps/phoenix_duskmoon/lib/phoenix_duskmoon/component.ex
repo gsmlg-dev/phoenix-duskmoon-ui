@@ -25,6 +25,10 @@ defmodule PhoenixDuskmoon.Component do
 
   """
 
+  def generate_id() do
+    "random-#{:crypto.strong_rand_bytes(8) |> Base.encode16()}"
+  end
+
   def live_component do
     quote do
       use Phoenix.LiveComponent

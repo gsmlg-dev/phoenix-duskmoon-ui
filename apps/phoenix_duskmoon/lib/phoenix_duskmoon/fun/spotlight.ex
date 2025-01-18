@@ -23,7 +23,6 @@ defmodule PhoenixDuskmoon.Fun.Spotlight do
   """
   @doc type: :component
   attr(:id, :any,
-    default: false,
     doc: """
     html attribute id
     """
@@ -36,47 +35,56 @@ defmodule PhoenixDuskmoon.Fun.Spotlight do
     """
   )
 
-  slot(:section,
+  attr(:loading, :boolean,
+    default: false,
+    doc: """
+    Loading state
+    """
+  )
+
+  attr(:sugguestions, :list,
     required: false,
     doc: """
     Page footer section
     """
-  ) do
-    attr(:class, :string)
-    attr(:title, :string)
-    attr(:title_class, :string)
-    attr(:body_class, :string)
-  end
-
-  slot(:copyright,
-    required: false,
-    doc: """
-    Page footer right side copyright.
-    """
-  ) do
-    attr(:class, :string)
-    attr(:title, :string)
-    attr(:title_class, :string)
-    attr(:body_class, :string)
-  end
+  )
 
   def dmf_spotlight(assigns) do
+    assigns =assigns |> assign_new(:id, fn -> PhoenixDuskmoon.Component.generate_id() end)
     ~H"""
     <dialog
-      id="spotlight-search-dialog"
-      class="spotlight-search modal-backdrop"
+      id={@id}
+      class={["spotlight-search", @class]}
     >
       <label class="input input-bordered input-primary spotlight-input">
         <input
-          id="spotlight-ipt"
           type="search"
-          class="w-full text-base-content"
+          class="w-full"
           placeholder="Type to search..."
         >
         <kbd class="kbd kbd-sm text-base-content">⌘</kbd>
         <kbd class="kbd kbd-sm text-base-content">↵</kbd>
       </label>
+      <div :if={@loading} class="spotlight-loading"></div>
+      <div :if={is_list(assigns[:sugguestions])} class="spotlight-suggestion-list">
+        <div :for={sug <- @sugguestions} class="item"></div>
+      </div>
     </dialog>
+    <script type="module">
+    const ssd = document.getElementById('<%= @id %>');
+    window.addEventListener('keydown', (evt) => {
+      if (evt.metaKey && evt.code == 'KeyK') {
+        ssd.showModal();
+        const cb = (evt) => {
+          if (evt.code === 'Escape') {
+            ssd.close();
+          }
+          window.removeEventListener('keydown', cb);
+        };
+        window.addEventListener('keydown', cb);
+      }
+    });
+    </script>
     """
   end
 end
