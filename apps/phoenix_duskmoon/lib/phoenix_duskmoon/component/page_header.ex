@@ -115,7 +115,7 @@ defmodule PhoenixDuskmoon.Component.PageHeader do
         ]}
       >
         <label for="mobile-menu">
-          <PhoenixDuskmoon.Component.Icons.dm_mdi name="menu" class="w-8 h-8" />
+          <PhoenixDuskmoon.Component.Icons.dm_mdi name="menu" class="w-8 h-8 cursor-pointer" />
         </label>
         <input class="hidden peer" id="mobile-menu" type="checkbox" />
         <div
