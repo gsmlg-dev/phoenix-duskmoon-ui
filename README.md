@@ -16,7 +16,7 @@ About at [Web Component](https://developer.mozilla.org/en-US/docs/Web/Web_Compon
 
 Add deps in `mix.exs`
 ```elixir
-    {:phoenix_duskmoon, "~> 4.0"},
+    {:phoenix_duskmoon, "~> 5.0"},
 ```
 
 Include in phoenix view helpers
@@ -25,10 +25,7 @@ Include in phoenix view helpers
  defp html_helpers do
     quote do
         # import all helper functions
-        use PhoenixDuskmoon
-
-        # or 
-        use PhoenixDuskmoon, :alias
+        use PhoenixDuskmoon.Component
         ...
     end
 end
