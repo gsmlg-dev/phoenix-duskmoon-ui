@@ -15,7 +15,7 @@ defmodule PhoenixDuskmoon.Component.Button do
   <.dm_btn id="show-btn">Show</.dm_btn>
   ```
   ```heex
-  <.dm_btn id="remove-btn">Remove</.dm_btn>
+  <.dm_btn id="remove-btn" confirm_action={JS.push("remove", value: %{"id" => @id})}>Remove</.dm_btn>
   ```
   """
   @doc type: :component
@@ -30,6 +30,8 @@ defmodule PhoenixDuskmoon.Component.Button do
   attr(:cancel_class, :any, default: nil, doc: "the class of the cancel action button in dialog")
   attr(:confirm_title, :string, default: "")
   attr(:confirm, :string, default: "")
+
+  attr(:confirm_action, :string, doc: "the action of the confirm action button in dialog")
 
   attr(:rest, :global,
     doc: """
