@@ -11,7 +11,7 @@ defmodule PhoenixDuskmoon.Component.Modal do
   ```heex
   <.dm_modal>
     <:trigger :let={dialog_id}>
-      <button onclick={"#{dialog_id}.showModal()"}>Open</button>
+      <button onclick={"\#{dialog_id}.showModal()"}>Open</button>
     </:trigger>
     <:title>PhoenixDuskmoon</:title>
     <:body>PhoenixDuskmoon Storybook</:body>
