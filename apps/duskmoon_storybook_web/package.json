@@ -1,10 +1,11 @@
 {
   "dependencies": {
-    "@gsmlg/lit": "1.29.5"
+    "@gsmlg/lit": "1.30.3"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.12",
-    "daisyui": "^4.9.0",
-    "postcss": "^8.4.38"
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/typography": "^0.5.16",
+    "daisyui": "^4.12.23",
+    "postcss": "^8.5.1"
   }
 }
