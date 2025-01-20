@@ -61,6 +61,7 @@ defmodule PhoenixDuskmoon do
       import PhoenixDuskmoon.Component.Actionbar
       import PhoenixDuskmoon.Component.Appbar
       import PhoenixDuskmoon.Component.Breadcrumb
+      import PhoenixDuskmoon.Component.Button
       import PhoenixDuskmoon.Component.Card
       import PhoenixDuskmoon.Component.Icons
       import PhoenixDuskmoon.Component.LeftMenu
