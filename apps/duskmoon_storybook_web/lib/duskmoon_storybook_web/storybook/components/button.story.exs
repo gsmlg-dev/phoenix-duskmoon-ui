@@ -44,6 +44,11 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Button do
         slots: [
           """
           Export
+          <:confirm_action>
+          <form method="dialog">
+            <button class="btn btn-sm btn-info" phx-click="export">Export CSV</button>
+          </form>
+          </:confirm_action>
           """
         ]
       }
