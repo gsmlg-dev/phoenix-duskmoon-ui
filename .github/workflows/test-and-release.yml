@@ -15,11 +15,11 @@ jobs:
     strategy:
       matrix:
         include:
-          - elixir: 1.14
-            otp: 25
-            lint: lint
           - elixir: 1.16
             otp: 26
+            lint: lint
+          - elixir: 1.18
+            otp: 27
             lint: lint
 
     runs-on: ubuntu-latest
@@ -117,6 +117,7 @@ jobs:
       - name: Install Deps
         run: |
           mix deps.get
+          npm config set '//registry.npmjs.org/:_authToken' ${{ secrets.NPM_TOKEN }}
           npm install
 
       - name: 🚀 Release

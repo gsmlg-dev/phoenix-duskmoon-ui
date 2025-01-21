@@ -18,8 +18,6 @@ plugins:
   - '@semantic-release/github'
   - - '@semantic-release/exec'
     - 'prepareCmd' : |
-        npm config set '//registry.npmjs.org/:_authToken' $NPM_TOKEN;
-        npm whoami
         echo ${nextRelease.version};
         sed -i 's%@version "[0-9\.]\+"%@version "${nextRelease.version}"%' mix.exs;
         sed -i 's%"version": "[0-9\.]\+"%"version": "${nextRelease.version}"%' package.json;
