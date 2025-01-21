@@ -63,19 +63,19 @@ defmodule PhoenixDuskmoon.Component do
       import PhoenixDuskmoon.Component.Breadcrumb
       import PhoenixDuskmoon.Component.Button
       import PhoenixDuskmoon.Component.Card
+      import PhoenixDuskmoon.Component.Form
+      import PhoenixDuskmoon.Component.Flash
       import PhoenixDuskmoon.Component.Icons
       import PhoenixDuskmoon.Component.LeftMenu
       import PhoenixDuskmoon.Component.Link
       import PhoenixDuskmoon.Component.Loading
       import PhoenixDuskmoon.Component.Markdown
       import PhoenixDuskmoon.Component.Modal
-      import PhoenixDuskmoon.Component.Pagination
-      import PhoenixDuskmoon.Component.PageHeader
       import PhoenixDuskmoon.Component.PageFooter
+      import PhoenixDuskmoon.Component.PageHeader
+      import PhoenixDuskmoon.Component.Pagination
       import PhoenixDuskmoon.Component.Tab
       import PhoenixDuskmoon.Component.Table
-      import PhoenixDuskmoon.Component.Form
-      import PhoenixDuskmoon.Component.Flash
     end
   end
 
