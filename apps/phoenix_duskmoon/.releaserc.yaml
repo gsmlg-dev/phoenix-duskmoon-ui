@@ -8,21 +8,26 @@ branches:
   - {name: 'beta', prerelease: true}
   - {name: 'alpha', prerelease: true}
 plugins:
-  - '@semantic-release/commit-analyzer'
-  - '@semantic-release/release-notes-generator'
-  - '@semantic-release/changelog'
-  - - '@semantic-release/git'
-    - 'assets':
-        - 'CHANGELOG.md'
-      'message': 'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}'
-  - '@semantic-release/github'
-  - - '@semantic-release/exec'
-    - 'prepareCmd' : |
+  - "@semantic-release/commit-analyzer"
+  - "@semantic-release/release-notes-generator"
+  - "@semantic-release/changelog"
+  - - "@semantic-release/git"
+    - "assets":
+        - "CHANGELOG.md"
+      "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+  - "@semantic-release/github"
+  - - "@semantic-release/exec"
+    - "prepareCmd" : |
         echo ${nextRelease.version};
         sed -i 's%@version "[0-9\.]\+"%@version "${nextRelease.version}"%' mix.exs;
         sed -i 's%"version": "[0-9\.]\+"%"version": "${nextRelease.version}"%' package.json;
         mix prepublish;
-      'publishCmd' : |
+      "publishCmd" : |
         echo publish phoenix_duskmoon ${nextRelease.version};
-        mix hex.publish --yes
-        test -z "${nextRelease.channel}" && npm publish || npm publish --tag "${nextRelease.channel}";
+        mix hex.publish --yes;
+        if test -z "${nextRelease.channel}";
+        then 
+          npm publish;
+        else
+          npm publish --tag "${nextRelease.channel}";
+        fi
