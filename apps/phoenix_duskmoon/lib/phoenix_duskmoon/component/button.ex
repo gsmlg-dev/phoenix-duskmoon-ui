@@ -31,8 +31,6 @@ defmodule PhoenixDuskmoon.Component.Button do
   attr(:confirm_title, :string, default: "")
   attr(:confirm, :string, default: "")
 
-  attr(:confirm_action, :string, doc: "the action of the confirm action button in dialog")
-
   attr(:rest, :global,
     doc: """
     Additional attributes to confirm action button.
@@ -45,6 +43,10 @@ defmodule PhoenixDuskmoon.Component.Button do
     The content rendered inside of the `button` tag.
     """
   )
+
+  slot(:confirm_action,
+    required: false,
+    doc: "the action of the confirm action button in dialog")
 
   def dm_btn(%{confirm: confirm} = assigns) when confirm != "" do
     ~H"""
@@ -71,11 +73,15 @@ defmodule PhoenixDuskmoon.Component.Button do
           <%= @confirm %>
         </p>
         <div class="modal-action">
-          <form method="dialog">
-            <button class={["btn", @confirm_class]} {@rest}>
-              Yes
-            </button>
-          </form>
+          <%= if length(@confirm_action) > 0 do %>
+            <%= render_slot(@confirm_action) %>
+          <% else %>
+            <form method="dialog">
+              <button class={["btn", @confirm_class]} {@rest}>
+                Yes
+              </button>
+            </form>
+          <% end %>
           <form method="dialog">
             <button class={["btn", @cancel_class]}>
               No
