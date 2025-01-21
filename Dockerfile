@@ -1,23 +1,30 @@
-FROM gsmlg/phoenix:alpine AS builder
+FROM ghcr.io/gsmlg-dev/phoenix:alpine AS builder
 
 ARG MIX_ENV=prod
 ARG NAME=duskmoon_storybook
-ARG RELEASE_VERSION=0.1.0
+ARG RELEASE_VERSION=1.0.0
 
 COPY . /build
 WORKDIR /build
 
-RUN apk update \
-    && mix do deps.get, compile \
-    && cd apps/phoenix_duskmoon && mix tailwind.install && cd ../.. \
-    && cd apps/phoenix_duskmoon && npm install && mix prepublish && cd ../.. \
-    && cd apps/duskmoon_storybook_web && npm install && mix assets.deploy && cd ../.. \
-    && mix release storybook --version "${RELEASE_VERSION}" \
-    && cp -r _build/prod/rel/storybook /app
+RUN <<EOF
+apk update
+mix deps.get
+npm install
+export project_dir=$(pwd)
+cd $project_dir/apps/phoenix_duskmoon
+mix tailwind.install
+mix prepublish
+cd $project_dir/apps/duskmoon_storybook_web
+mix assets.deploy
+cd $project_dir
+mix release storybook --version "${RELEASE_VERSION}"
+cp -r _build/prod/rel/storybook /app
+EOF
 
-FROM gsmlg/alpine:latest
+FROM ghcr.io/gsmlg-dev/alpine:latest
 
-ARG RELEASE_VERSION=0.1.0
+ARG RELEASE_VERSION=1.0.0
 
 LABEL maintainer="GSMLG <gsmlg.com@gmail.com>"
 LABEL RELEASE_VERSION="${RELEASE_VERSION}"
@@ -26,15 +33,15 @@ LABEL org.opencontainers.image.source="https://github.com/gsmlg-dev/phoenix-dusk
 LABEL org.opencontainers.image.description="Duskmoon UI Demo and Storybook"
 LABEL org.opencontainers.image.licenses=MIT
 
-ENV PORT=80 \
-    REPLACE_OS_VARS=true \
-    ERL_EPMD_PORT=4369 \
-    POD_IP=127.0.0.1 \
-    ERLCOOKIE=duskmoon_storybook \
-    HOST=duskmoon-storybook.gsmlg.dev \
-    POOL_SIZE=10 \
-    PHX_SERVER=true \
-    SECRET_KEY_BASE=duskmoon_storybook
+ENV PORT=80
+ENV REPLACE_OS_VARS=true
+ENV ERL_EPMD_PORT=4369
+ENV POD_IP=127.0.0.1
+ENV ERLCOOKIE=duskmoon_storybook
+ENV HOST=duskmoon-storybook.gsmlg.dev
+ENV POOL_SIZE=10
+ENV PHX_SERVER=true
+ENV SECRET_KEY_BASE=duskmoon_storybook
 
 COPY --from=builder /app /app
 

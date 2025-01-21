@@ -62,6 +62,7 @@ defmodule PhoenixDuskmoon.Mixfile do
 
   defp aliases do
     [
+      "assets.deploy": ["tailwind default --minify", "esbuild default --minify"],
       prepublish: ["tailwind default", "esbuild default"]
     ]
   end
