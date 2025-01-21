@@ -26,13 +26,13 @@ jobs:
 
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up Elixir
-      uses: erlef/setup-elixir@v1
+      uses: erlef/setup-beam@v1
       with:
-        elixir-version: ${{ matrix.elixir }}
         otp-version: ${{ matrix.otp }}
+        elixir-version: ${{ matrix.elixir }}
 
     - name: Restore deps and _build cache
       uses: actions/cache@v3
@@ -97,12 +97,22 @@ jobs:
           otp-version: '26'
           elixir-version: '1.17.3'
 
+      - name: Restore deps and _build cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            deps
+            _build
+          key: deps-${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-${{ hashFiles('**/mix.lock') }}
+          restore-keys: |
+            deps-${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}
+
       - name: ⎔ Setup node
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'npm'
           always-auth: true
+          # cache: 'npm'
 
       - name: Install Deps
         run: |
