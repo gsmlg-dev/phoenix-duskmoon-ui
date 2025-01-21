@@ -102,6 +102,11 @@ jobs:
         with:
           node-version: 22
 
+      - name: Install Deps
+        run: |
+          mix deps.get
+          npm install
+
       - name: 🚀 Release
         uses: cycjimmy/semantic-release-action@v4
         id: semantic
