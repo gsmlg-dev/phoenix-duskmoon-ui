@@ -95,15 +95,15 @@ jobs:
         uses: erlef/setup-beam@v1
         with:
           otp-version: '26'
-          elixir-version: '1.16.3'
+          elixir-version: '1.17.3'
 
       - name: ⎔ Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 22
 
       - name: 🚀 Release
-        uses: cycjimmy/semantic-release-action@v3
+        uses: cycjimmy/semantic-release-action@v4
         id: semantic
         with:
           semantic_version: 19
