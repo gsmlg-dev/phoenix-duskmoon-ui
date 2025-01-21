@@ -19,7 +19,7 @@ defmodule PhoenixDuskmoon.Component.Button do
   ```
   """
   @doc type: :component
-  attr(:id, :string, required: true)
+  attr(:id, :string, required: false)
   attr(:class, :any, default: nil, doc: "the class of the button")
 
   attr(:confirm_class, :any,
@@ -28,6 +28,8 @@ defmodule PhoenixDuskmoon.Component.Button do
   )
 
   attr(:cancel_class, :any, default: nil, doc: "the class of the cancel action button in dialog")
+  attr(:show_cancel_action, :boolean, default: true)
+
   attr(:confirm_title, :string, default: "")
   attr(:confirm, :string, default: "")
 
@@ -46,9 +48,14 @@ defmodule PhoenixDuskmoon.Component.Button do
 
   slot(:confirm_action,
     required: false,
-    doc: "the action of the confirm action button in dialog")
+    doc: "the action of the confirm action button in dialog"
+  )
 
   def dm_btn(%{confirm: confirm} = assigns) when confirm != "" do
+    assigns =
+      assigns
+      |> assign_new(:id, fn -> "btn-#{Enum.random(0..999_999)}" end)
+
     ~H"""
     <button
       id={@id}
@@ -82,9 +89,9 @@ defmodule PhoenixDuskmoon.Component.Button do
               </button>
             </form>
           <% end %>
-          <form method="dialog">
+          <form :if={@show_cancel_action} method="dialog">
             <button class={["btn", @cancel_class]}>
-              No
+              Cancel
             </button>
           </form>
         </div>
