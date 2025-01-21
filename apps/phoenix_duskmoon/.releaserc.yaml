@@ -22,8 +22,6 @@ plugins:
         npm whoami
         echo ${nextRelease.version};
         sed -i 's%@version "[0-9\.]\+"%@version "${nextRelease.version}"%' mix.exs;
-        mix deps.get;
-        npm install;
         sed -i 's%"version": "[0-9\.]\+"%"version": "${nextRelease.version}"%' package.json;
         mix prepublish;
       'publishCmd' : |
