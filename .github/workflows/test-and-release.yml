@@ -101,6 +101,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 22
+          cache: 'npm'
+          always-auth: true
 
       - name: Install Deps
         run: |
