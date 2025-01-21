@@ -1,3 +1,15 @@
+# [5.1.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v5.0.6...v5.1.0) (2025-01-21)
+
+
+### Bug Fixes
+
+* Fix. ([5272c03](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/5272c035271ba83059a0be3ffc701660d15ef58f))
+
+
+### Features
+
+* add confirm slot to btn. ([50d22f8](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/50d22f87aee724e0041a48289cbc21474fde6104))
+
 ## [5.0.6](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v5.0.5...v5.0.6) (2025-01-21)
 
 
