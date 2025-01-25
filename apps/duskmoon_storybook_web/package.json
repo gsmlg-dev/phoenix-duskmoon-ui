@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "phoenix_duskmoon": "file:../phoenix_duskmoon",
     "@gsmlg/lit": "1.30.3"
   },
   "devDependencies": {
