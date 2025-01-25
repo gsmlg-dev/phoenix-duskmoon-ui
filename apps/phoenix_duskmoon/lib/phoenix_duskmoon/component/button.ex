@@ -19,7 +19,7 @@ defmodule PhoenixDuskmoon.Component.Button do
   ```
   """
   @doc type: :component
-  attr(:id, :string, required: false)
+  attr(:id, :any, required: false)
   attr(:class, :any, default: nil, doc: "the class of the button")
 
   attr(:confirm_class, :any,
@@ -101,6 +101,10 @@ defmodule PhoenixDuskmoon.Component.Button do
   end
 
   def dm_btn(%{} = assigns) do
+    assigns =
+      assigns
+      |> assign_new(:id, fn -> nil end)
+
     ~H"""
     <button
       id={@id}

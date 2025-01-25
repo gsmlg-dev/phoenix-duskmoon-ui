@@ -84,7 +84,7 @@ jobs:
       channel: ${{ steps.semantic.outputs.new_release_channel }}
     steps:
       - name: 🛑 Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.9.1
+        uses: styfle/cancel-workflow-action@0.12.1
         with:
           access_token: ${{ secrets.GITHUB_TOKEN }}
 
@@ -117,8 +117,6 @@ jobs:
       - name: Install Deps
         run: |
           mix deps.get
-          npm config set '//registry.npmjs.org/:_authToken' ${{ secrets.NPM_TOKEN }}
-          npm install
 
       - name: 🚀 Release
         uses: cycjimmy/semantic-release-action@v4
