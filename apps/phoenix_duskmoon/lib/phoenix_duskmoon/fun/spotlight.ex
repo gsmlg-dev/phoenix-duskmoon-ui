@@ -1,24 +1,19 @@
 defmodule PhoenixDuskmoon.Fun.Spotlight do
   @moduledoc """
 
-  render Page footer
+  Render Spotlight search dialog
 
   """
   use PhoenixDuskmoon.Component, :html
 
   @doc """
-  Generates a Page footer.
+  Generates a spotlight style search.
 
   ## Example
 
-      <.dmf_spotlight>
-        <:section class="">
-          ABC
-        </:section>
-        <:copyright>
-          (^_^)
-        </:copyright>
-      </.dmf_spotlight>
+  ```heex
+      <PhoenixDuskmoon.Fun.Spotlight.dmf_spotlight />
+  ```
 
   """
   @doc type: :component
@@ -42,10 +37,10 @@ defmodule PhoenixDuskmoon.Fun.Spotlight do
     """
   )
 
-  attr(:sugguestions, :list,
+  slot(:sugguestion,
     required: false,
     doc: """
-    Page footer section
+    Search sugguestion slot
     """
   )
 
@@ -66,8 +61,10 @@ defmodule PhoenixDuskmoon.Fun.Spotlight do
         <kbd class="kbd kbd-sm text-base-content">↵</kbd>
       </label>
       <div :if={@loading} class="spotlight-loading"></div>
-      <div :if={is_list(assigns[:sugguestions])} class="spotlight-suggestion-list">
-        <div :for={sug <- @sugguestions} class="item"></div>
+      <div :if={length(assigns[:sugguestion]) > 0} class="spotlight-suggestion-list">
+        <div :for={sug <- @sugguestion} class="item">
+          {render_slot(sug)}
+        </div>
       </div>
     </dialog>
     <script type="module">
