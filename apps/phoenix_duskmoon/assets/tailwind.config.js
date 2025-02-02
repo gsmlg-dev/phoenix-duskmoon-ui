@@ -13,7 +13,6 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/typography"),
-    require("daisyui"),
     plugin(function ({ matchUtilities, theme }) {
       matchUtilities(
         {

@@ -29,7 +29,7 @@ config :duskmoon_storybook_web, DuskmoonStorybookWeb.Storybook,
   css_path: "/assets/app.css"
 
 config :tailwind,
-  version: "3.4.17",
+  version: "4.0.3",
   default: [
     args: ~w(
       --config=tailwind.config.js

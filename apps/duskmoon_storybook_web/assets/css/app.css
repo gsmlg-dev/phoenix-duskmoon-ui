@@ -1,8 +1,6 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'tailwindcss';
 
-@import "phoenix_duskmoon/assets/css/phoenix_duskmoon.css";
+@import 'phoenix_duskmoon/assets/css/phoenix_duskmoon.css' layer(component);
 
 .rainbow {
   z-index: -1;
