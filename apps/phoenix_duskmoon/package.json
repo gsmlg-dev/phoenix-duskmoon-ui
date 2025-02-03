@@ -1,10 +1,11 @@
 {
   "name": "phoenix_duskmoon",
   "version": "0.0.0",
-  "main": "./priv/static/phoenix_duskmoon.js",
+  "type": "module",
   "exports": {
     ".": "./priv/static/phoenix_duskmoon.js",
     "./css": "./priv/static/phoenix_duskmoon.css",
+    "./components": "./assets/css/components.css",
     "./svg/mdi/*.svg": "./priv/mdi/svg/*.svg",
     "./svg/bsi/*.svg": "./priv/bsi/svg/*.svg"
   },
@@ -16,6 +17,8 @@
     "CHANGELOG.md",
     "LICENSE",
     "package.json",
+    "assets/css/components.css",
+    "assets/css/components/",
     "priv/static/",
     "priv/svg/"
   ],
@@ -31,8 +34,10 @@
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
+    "@mdi/svg": "^7.4.47",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/typography": "^0.5.16",
+    "bootstrap-icons": "^1.11.3",
     "daisyui": "^5.0.0-beta.6",
     "postcss": "^8.5.1"
   },
