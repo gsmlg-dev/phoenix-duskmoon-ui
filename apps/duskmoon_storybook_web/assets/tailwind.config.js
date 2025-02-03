@@ -4,8 +4,8 @@ module.exports = {
   content: [
     './js/**/*.js',
     '../lib/**/*.exs',
-    '../lib/*_web.ex',
-    '../lib/*_web/**/*.*ex',
+    '../lib/**/*.*ex',
+    '../../phoenix_duskmoon/assets/**/*.css',
     '../../phoenix_duskmoon/lib/**/*.*ex'
   ],
   theme: {
@@ -13,7 +13,6 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/typography"),
-    require("daisyui"),
     plugin(function ({ matchUtilities, theme }) {
       matchUtilities(
         {

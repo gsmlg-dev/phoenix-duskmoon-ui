@@ -1,6 +1,10 @@
-@import 'tailwindcss';
+@config "../tailwind.config.js";
 
-@import 'phoenix_duskmoon/assets/css/phoenix_duskmoon.css' layer(component);
+@import "tailwindcss";
+@plugin "daisyui";
+@import "phoenix_duskmoon/components";
+
+/* @import 'phoenix_duskmoon/assets/css/phoenix_duskmoon.css' layer(component); */
 
 .rainbow {
   z-index: -1;
@@ -181,3 +185,12 @@ app-bar {
   height: fit-content;
 }
 
+@layer components {
+  .fun-page-section-group {
+    @apply flex flex-col gap-1 bg-base-300 mb-24;
+
+    .fun-page-section {
+      @apply w-full py-16 flex flex-col bg-base-100 text-base-content;
+    }
+  }
+}

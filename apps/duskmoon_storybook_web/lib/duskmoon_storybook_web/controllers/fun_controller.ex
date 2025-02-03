@@ -4,5 +4,4 @@ defmodule DuskmoonStorybookWeb.FunController do
   def page(conn, _params) do
     render(conn, :page, layout: false, active_menu: "page")
   end
-
 end

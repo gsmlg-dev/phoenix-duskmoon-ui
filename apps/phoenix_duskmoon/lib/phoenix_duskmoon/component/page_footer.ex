@@ -69,6 +69,7 @@ defmodule PhoenixDuskmoon.Component.PageFooter do
       "py-20",
       @class
     ]}>
+      <%= render_slot(@inner_block) %>
       <div class={[
         "container mx-auto px-4",
         "flex flex-col",

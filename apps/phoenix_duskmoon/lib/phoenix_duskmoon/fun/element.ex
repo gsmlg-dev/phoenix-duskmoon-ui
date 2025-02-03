@@ -91,16 +91,21 @@ defmodule PhoenixDuskmoon.Fun.Element do
     """
   )
 
+  attr(:show_base, :boolean,
+    default: false,
+    doc: """
+    show base of plasma ball
+    """
+  )
+
   def dmf_plasma_ball(assigns) do
     ~H"""
     <div class="plasma-ball" style={"--size: #{@size};"}>
-      <input type="checkbox" class="switcher" checked="checked" />
+      <input type="checkbox" class={["switcher", if(@show_base, do: "", else: "hidden")]} checked="checked" />
       <div class="glassball">
         <div class="electrode"></div>
         <div class="rays">
-          <div class="ray">
-            <span></span><span></span><span></span>
-          </div>
+          <div class="ray"><span></span><span></span><span></span></div>
           <div class="ray bigwave"><span></span><span></span></div>
           <div class="ray"><span></span><span></span><span></span></div>
           <div class="ray bigwave"><span></span><span></span></div>
@@ -139,11 +144,12 @@ defmodule PhoenixDuskmoon.Fun.Element do
         </div>
 
       </div>
-      <div class="base">
+      <div :if={@show_base} class="base">
         <div></div>
-        <div></div><span></span>
+        <div></div>
+        <span></span>
       </div>
-      <div class="switch"></div>
+      <div :if={@show_base} class="switch"></div>
     </div>
     """
   end
@@ -238,6 +244,72 @@ defmodule PhoenixDuskmoon.Fun.Element do
     <% end %>
     </style>
     <div :for={n <- 0..@count} class={["snowflake", "snowflake-#{n}", @class]} />
+    """
+  end
+
+  @doc """
+  Generates a snow effect
+
+  ## Example
+
+  ```heex
+  <PhoenixDuskmoon.Fun.Element.dmf_snow />
+  ```
+
+  """
+  @doc type: :component
+  attr(:id, :any,
+    default: nil,
+    doc: """
+    html attribute id
+    """
+  )
+
+  attr(:class, :any,
+    default: "",
+    doc: """
+    html attribute class for bubbles container
+    """
+  )
+
+  attr(:color, :string,
+    default: "#fff",
+    doc: """
+    bubble color
+    """
+  )
+
+  attr(:count, :integer,
+    default: 128,
+    doc: """
+    snowflake count
+    """
+  )
+  def dmf_footer_bubbles(assigns) do
+    assigns = assigns |> assign_new(:blob_id, fn ->
+      "footer-bubbles-blob-#{Enum.random(0..999_999_999_999)}"
+    end)
+    ~H"""
+    <div
+      id={@id}
+      class={["footer-bubbles", @class]}
+      style={"--footer-bg-color: #{@color}; filter: url(\"##{@blob_id}\");"}
+    >
+      <div
+        :for={_n <- 1..@count}
+        class="bubble"
+        style={"--size: #{2 + Enum.random(0..999_999_999_999) * 1.0e-12 * 4}rem; --distance: #{6 + Enum.random(0..999_999_999_999) * 1.0e-12  * 4}rem; --position: min(calc(100% - var(--size) / 2), #{-5 + Enum.random(0..999_999_999_999) * 1.0e-12  * 110}%); --time: #{2 + Enum.random(0..999_999_999_999) * 1.0e-12  * 2}s; --delay: #{-1 * (2 + Enum.random(0..999_999_999_999) * 1.0e-12  * 2)}s;"}
+      ></div>
+    </div>
+    <svg style="position: fixed; top: 100vh">
+      <defs>
+        <filter id={@blob_id}>
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur>
+          <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="blob"></feColorMatrix>
+          <!--feComposite(in="SourceGraphic" in2="blob" operator="atop") //After reviewing this after years I can't remember why I added this but it isn't necessary for the blob effect-->
+        </filter>
+      </defs>
+    </svg>
     """
   end
 end

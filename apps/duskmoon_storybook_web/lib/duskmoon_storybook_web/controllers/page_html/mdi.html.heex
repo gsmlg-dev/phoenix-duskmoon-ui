@@ -24,9 +24,9 @@
     />
   </div>
   <div class="flex flex-row mt-4 mb-2">
-    <.form for={@conn} action={~p"/mdi"} method="get" class={["join"]}>
-      <.dm_input field_class="flex join-item" label="Icon Name" name="filter" value={@filter} />
-      <button type="submit" class="btn btn-primary join-item">Search</button>
+    <.form for={@conn} action={~p"/mdi"} method="get" class="input input-bordered pr-0">
+      <.dm_input field_class="flex" label="Icon Name" name="filter" value={@filter} classic={true} />
+      <button type="submit" class="btn btn-primary">Search</button>
     </.form>
   </div>
   <div class="grid grid-cols-auto-fill-[10rem] auto-fill-[10rem] gap-4">

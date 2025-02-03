@@ -81,6 +81,7 @@ defmodule PhoenixDuskmoon.Component.Form do
   attr(:field_class, :any, default: nil)
   attr(:id, :any, default: nil)
   attr(:class, :any, default: nil)
+  attr(:classic, :boolean, default: false)
   attr(:name, :any)
   attr(:label, :string, default: nil)
   attr(:value, :any)
@@ -134,7 +135,7 @@ defmodule PhoenixDuskmoon.Component.Form do
           name={@name}
           value="true"
           checked={@checked}
-          class={["checkbox", @class]}
+          class={[if(!@classic, do: "checkbox"), @class]}
           {@rest}
         />
         <%= @label %>
@@ -157,7 +158,7 @@ defmodule PhoenixDuskmoon.Component.Form do
           type="checkbox"
           id={@id}
           class={[
-            "toggle",
+            if(!@classic, do: "toggle"),
             @class
           ]}
           name={@name}
@@ -180,7 +181,7 @@ defmodule PhoenixDuskmoon.Component.Form do
           id={@id}
           name={@name}
           class={[
-            "select select-bordered",
+            if(!@classic, do: "select select-bordered"),
             @class
           ]}
           multiple={@multiple}
@@ -205,7 +206,7 @@ defmodule PhoenixDuskmoon.Component.Form do
             <input
               type="checkbox"
               class={[
-                "checkbox",
+                if(!@classic, do: "checkbox"),
                 @class
               ]}
               name={"#{@name}[]"}
@@ -231,7 +232,7 @@ defmodule PhoenixDuskmoon.Component.Form do
             <input
               type="radio"
               class={[
-                "radio",
+                if(!@classic, do: "radio"),
                 @class
               ]}
               name={@name}
@@ -256,7 +257,7 @@ defmodule PhoenixDuskmoon.Component.Form do
           id={@id}
           name={@name}
           class={[
-            "textarea textarea-bordered",
+            if(!@classic, do: "textarea textarea-bordered"),
             @class,
             @errors != [] && "border-error focus:border-error"
           ]}
@@ -280,7 +281,7 @@ defmodule PhoenixDuskmoon.Component.Form do
           value={Phoenix.HTML.Form.normalize_value(@type, @value)}
           class={[
             @class,
-            "file-input file-input-bordered",
+            if(!@classic, do: "file-input file-input-bordered"),
             @errors != [] && "border-error focus:border-error"
           ]}
           {@rest}
@@ -304,7 +305,7 @@ defmodule PhoenixDuskmoon.Component.Form do
           value={Phoenix.HTML.Form.normalize_value(@type, @value)}
           class={[
             @class,
-            "input input-bordered",
+            if(!@classic, do: "input input-bordered"),
             @errors != [] && "border-error focus:border-error"
           ]}
           {@rest}
