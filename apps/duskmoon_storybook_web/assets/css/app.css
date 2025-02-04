@@ -187,7 +187,7 @@ app-bar {
 
 @layer components {
   .page-section-group {
-    @apply flex flex-col gap-1 bg-base-300 mb-24;
+    @apply flex flex-col gap-1 bg-base-content mb-24;
     color: var(--color-neutral);
 
     .page-section {
@@ -196,7 +196,7 @@ app-bar {
   }
 
   .fun-page-section-group {
-    @apply flex flex-col gap-1 bg-base-300 mb-24;
+    @apply flex flex-col gap-1 bg-base-content mb-24;
     color: var(--color-neutral);
 
     .fun-page-section {
