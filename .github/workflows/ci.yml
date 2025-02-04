@@ -14,10 +14,8 @@ jobs:
         include:
           - elixir: 1.16
             otp: 26
-            lint: lint
           - elixir: 1.18
             otp: 27
-            lint: lint
 
     runs-on: ubuntu-latest
 
@@ -48,22 +46,14 @@ jobs:
 
     - name: Check source code format
       run: mix format --check-formatted
-      if: ${{ matrix.lint }}
       env:
         MIX_ENV: test
 
     - name: Remove compiled application files
       run: mix clean
 
-    - name: Compile dependencies
-      run: mix compile
-      if: ${{ !matrix.lint }}
-      env:
-        MIX_ENV: test
-
     - name: Compile & lint dependencies
       run: mix compile --warnings-as-errors
-      if: ${{ matrix.lint }}
       env:
         MIX_ENV: test
 
