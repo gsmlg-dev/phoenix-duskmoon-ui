@@ -118,6 +118,8 @@ defmodule Mix.Tasks.PhoenixDuskmoon.GenRsIcons do
   end
 
   def run(_) do
-    IO.puts("Use `mix phoenix_duskmoon.gen_rs_icons bsi` or `mix phoenix_duskmoon.gen_rs_icons mdi`")
+    IO.puts(
+      "Use `mix phoenix_duskmoon.gen_rs_icons bsi` or `mix phoenix_duskmoon.gen_rs_icons mdi`"
+    )
   end
 end

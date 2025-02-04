@@ -58,7 +58,6 @@ defmodule PhoenixDuskmoon.Fun.Element do
     """
   end
 
-
   @doc """
   Generates a plasma ball effect
 
@@ -98,12 +97,19 @@ defmodule PhoenixDuskmoon.Fun.Element do
     """
   )
 
+  attr(:show_electrode, :boolean,
+    default: true,
+    doc: """
+    show electrode of plasma ball
+    """
+  )
+
   def dmf_plasma_ball(assigns) do
     ~H"""
     <div class="plasma-ball" style={"--size: #{@size};"}>
       <input type="checkbox" class={["switcher", if(@show_base, do: "", else: "hidden")]} checked="checked" />
       <div class="glassball">
-        <div class="electrode"></div>
+        <div class={["electrode", if(!@show_electrode, do: "hide-electrode")]}></div>
         <div class="rays">
           <div class="ray"><span></span><span></span><span></span></div>
           <div class="ray bigwave"><span></span><span></span></div>
@@ -185,6 +191,7 @@ defmodule PhoenixDuskmoon.Fun.Element do
     size
     """
   )
+
   def dmf_atom(assigns) do
     ~H"""
     <div id={@id} class={["atom", @class]}, style={"--atom-size: #{@size};"}>
@@ -194,7 +201,6 @@ defmodule PhoenixDuskmoon.Fun.Element do
     </div>
     """
   end
-
 
   @doc """
   Generates a snow effect
@@ -220,6 +226,28 @@ defmodule PhoenixDuskmoon.Fun.Element do
     snowflake count
     """
   )
+
+  attr(:color, :string,
+    default: "#fff",
+    doc: """
+    snowflake color
+    """
+  )
+
+  attr(:size, :string,
+    default: "10px",
+    doc: """
+    snowflake size
+    """
+  )
+
+  attr(:unicode, :boolean,
+    default: false,
+    doc: """
+    show snowflake by using unicode character [❆]
+    """
+  )
+
   def dmf_snow(assigns) do
     ~H"""
     <style>
@@ -233,7 +261,7 @@ defmodule PhoenixDuskmoon.Fun.Element do
       }
 
       @keyframes snowflake-fall-<%= n %> {
-        #{Enum.random(30000..80000) / 1000}% {
+        <%= Enum.random(30000..80000) / 1000 %>% {
           transform: translate(<%= random_x + random_offset %>vw, <%= Enum.random(30000..80000) / 1000 %>vh) scale(<%= Enum.random(1..10000) * 0.0001 %>);
         }
 
@@ -243,7 +271,11 @@ defmodule PhoenixDuskmoon.Fun.Element do
       }
     <% end %>
     </style>
-    <div :for={n <- 0..@count} class={["snowflake", "snowflake-#{n}", @class]} />
+    <div
+      :for={n <- 0..@count}
+      class={["snowflake", "snowflake-#{n}", @class, if(@unicode, do: "snowflake-unicode")]}
+      style={"--snowflake-color: #{@color}; --snowflake-size: #{@size};"}
+    />
     """
   end
 
@@ -285,10 +317,14 @@ defmodule PhoenixDuskmoon.Fun.Element do
     snowflake count
     """
   )
+
   def dmf_footer_bubbles(assigns) do
-    assigns = assigns |> assign_new(:blob_id, fn ->
-      "footer-bubbles-blob-#{Enum.random(0..999_999_999_999)}"
-    end)
+    assigns =
+      assigns
+      |> assign_new(:blob_id, fn ->
+        "footer-bubbles-blob-#{Enum.random(0..999_999_999_999)}"
+      end)
+
     ~H"""
     <div
       id={@id}

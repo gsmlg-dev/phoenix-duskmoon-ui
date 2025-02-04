@@ -45,7 +45,8 @@ defmodule PhoenixDuskmoon.Fun.Spotlight do
   )
 
   def dmf_spotlight(assigns) do
-    assigns =assigns |> assign_new(:id, fn -> PhoenixDuskmoon.Component.generate_id() end)
+    assigns = assigns |> assign_new(:id, fn -> PhoenixDuskmoon.Component.generate_id() end)
+
     ~H"""
     <dialog
       id={@id}

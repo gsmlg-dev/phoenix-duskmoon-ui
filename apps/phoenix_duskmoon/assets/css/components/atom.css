@@ -166,17 +166,3 @@
   }
 
 }
-
-@layer components {
-  .snowflake {
-    --color: #FFFFFF;
-    --snowflake-size: 10px;
-    filter: drop-shadow(0 0 var(--snowflake-size) var(--color));
-    position: absolute;
-    width: var(--snowflake-size);
-    height: var(--snowflake-size);
-    background: var(--color);
-    border-radius: 50%;
-    pointer-events: none;
-  }
-}

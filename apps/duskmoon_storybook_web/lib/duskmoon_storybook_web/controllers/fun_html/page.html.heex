@@ -2,9 +2,10 @@
   class={[
     "bg-gradient-to-br from-[#ff6f61] to-[#639]",
     "aniamite-bg",
-    "text-slate-200 h-[380px] py-6"
+    "text-slate-200 h-[380px] py-6",
+    "z-10"
   ]}
-  nav_class={["bg-gradient-to-br from-[#ff6f61] to-[#639] text-slate-200 shadow"]}
+  nav_class={["bg-gradient-to-br from-[#ff6f61] to-[#639] text-slate-200 shadow z-10"]}
 >
   <:menu to={~p"/"} class="opacity-60">Home</:menu>
   <:menu to={~p"/hook"} class="opacity-60">Hook</:menu>
@@ -63,7 +64,7 @@
         </div>
       </div>
       <div class="flex justify-center items-center relative">
-        <div class="signature [--size:5rem]" data-content="Sign"></div>
+        <div class="signature [--size:5rem]" data-content="BITW"></div>
       </div>
     </div>
   </div>
@@ -98,7 +99,7 @@
         </div>
       </div>
       <div class="flex justify-start items-center relative">
-        <PhoenixDuskmoon.Fun.Element.dmf_plasma_ball size="15rem" show_base={false} />
+        <PhoenixDuskmoon.Fun.Element.dmf_plasma_ball size="15rem" show_base={false} show_electrode={false} />
       </div>
     </div>
   </div>
@@ -132,7 +133,7 @@
         </div>
       </div>
       <div class="flex justify-start items-center relative w-2/3 h-64 overflow-hidden">
-        <PhoenixDuskmoon.Fun.Element.dmf_snow count={200} />
+        <PhoenixDuskmoon.Fun.Element.dmf_snow count={200} color={"var(--color-base-content)"} unicode={true} />
       </div>
     </div>
   </div>

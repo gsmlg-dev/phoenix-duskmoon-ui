@@ -234,13 +234,15 @@
       background: #03a9f4;
     }
     .electrode {
-      background: linear-gradient(75deg, #3a3a3a 20%, #2d2d2d);
       width: calc(var(--size) * 16 / 350);
       height: calc(var(--size) * 140 / 350);
       bottom: calc(var(--size) * 20 / 350);
-      position: absolute;
       left: calc(50% - 0.5em);
+      position: absolute;
       overflow: visible;
+    }
+    .electrode:not(.hide-electrode) {
+      background: linear-gradient(75deg, #3a3a3a 20%, #2d2d2d);
       border-bottom: 1px solid #657882;
       border-radius: 0 0 6px 5px;
     }
@@ -256,7 +258,7 @@
       border: 1px solid #758e99;
       box-sizing: border-box;
     }
-    .electrode:after {
+    .electrode:not(.hide-electrode):after {
       position: absolute;
       left: calc(var(--size) * -3 / 350);
       bottom: calc(var(--size) * -11 / 350);
