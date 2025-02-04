@@ -1,4 +1,4 @@
-defmodule DuskmoonStorybookWeb.Storybook.Components.LeftMenu do
+defmodule Storybook.Components.LeftMenu do
   # :live_component or :page are also available
   use PhoenixStorybook.Story, :component
 

@@ -1,4 +1,4 @@
-defmodule DuskmoonStorybookWeb.Storybook.Components.Actionbar do
+defmodule Storybook.Components.Actionbar do
   # :live_component or :page are also available
   use PhoenixStorybook.Story, :component
 

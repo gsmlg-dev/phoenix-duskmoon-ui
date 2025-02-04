@@ -1,4 +1,4 @@
-defmodule DuskmoonStorybookWeb.Storybook.Components.PaginationThin do
+defmodule Storybook.Components.PaginationThin do
   # :live_component or :page are also available
   use PhoenixStorybook.Story, :component
 

@@ -1,4 +1,4 @@
-defmodule DuskmoonStorybookWeb.Storybook do
+defmodule Storybook do
   use PhoenixStorybook,
     otp_app: :duskmoon_storybook_web,
     content_path: Path.expand("storybook", __DIR__),

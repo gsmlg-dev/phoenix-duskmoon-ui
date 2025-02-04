@@ -1,4 +1,4 @@
-defmodule DuskmoonStorybookWeb.Storybook.Components.Loading do
+defmodule Storybook.Components.Loading do
   # :live_component or :page are also available
   use PhoenixStorybook.Story, :component
 

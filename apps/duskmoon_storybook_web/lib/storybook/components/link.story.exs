@@ -1,4 +1,4 @@
-defmodule DuskmoonStorybookWeb.Storybook.Components.Link do
+defmodule Storybook.Components.Link do
   # :live_component or :page are also available
   use PhoenixStorybook.Story, :component
 

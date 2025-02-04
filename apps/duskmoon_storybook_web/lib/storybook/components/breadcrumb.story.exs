@@ -1,4 +1,4 @@
-defmodule DuskmoonStorybookWeb.Storybook.Components.Breadcrumb do
+defmodule Storybook.Components.Breadcrumb do
   # :live_component or :page are also available
   use PhoenixStorybook.Story, :component
 

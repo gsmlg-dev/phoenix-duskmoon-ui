@@ -24,7 +24,7 @@ config :duskmoon_storybook_web, DuskmoonStorybookWeb.Endpoint,
   pubsub_server: DuskmoonStorybook.PubSub,
   live_view: [signing_salt: "HkF5qV0r"]
 
-config :duskmoon_storybook_web, DuskmoonStorybookWeb.Storybook,
+config :duskmoon_storybook_web, Storybook,
   js_path: "/assets/app.js",
   css_path: "/assets/app.css"
 

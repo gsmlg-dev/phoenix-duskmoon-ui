@@ -1,4 +1,4 @@
-defmodule DuskmoonStorybookWeb.Storybook.Components.Form.CompactInput do
+defmodule Storybook.Components.Form.CompactInput do
   # :live_component or :page are also available
   use PhoenixStorybook.Story, :component
 
