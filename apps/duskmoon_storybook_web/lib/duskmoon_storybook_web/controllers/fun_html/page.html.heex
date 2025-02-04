@@ -38,10 +38,10 @@
     <div class="container mx-auto px-4 flex flex-row justify-around">
       <div class="flex flex-col justify-center flex-1">
         <h3 class="font-bold text-4xl my-4">Spotlight Search</h3>
-        <p class="my-2 text-lg text-violet-500	">
+        <p class="my-2 text-lg text-info">
           Use <kbd class="kbd kbd-sm">⌘</kbd> + <kbd class="kbd kbd-sm">K</kbd> to open spotlight search.
         </p>
-        <p class="my-2 text-lg text-violet-500	">
+        <p class="my-2 text-lg text-info">
           Binding phoenix live events to custom element's custom action.
         </p>
         <PhoenixDuskmoon.Fun.Spotlight.dmf_spotlight />
@@ -116,7 +116,11 @@
         </div>
       </div>
       <div class="flex justify-start items-center">
-        <PhoenixDuskmoon.Fun.Element.dmf_atom size="15rem" />
+        <PhoenixDuskmoon.Fun.Element.dmf_atom
+          size="15rem"
+          atom_color="var(--color-primary)"
+          electron_color="var(--color-primary-content)"
+        />
       </div>
     </div>
   </div>
@@ -133,7 +137,7 @@
         </div>
       </div>
       <div class="flex justify-start items-center relative w-2/3 h-64 overflow-hidden">
-        <PhoenixDuskmoon.Fun.Element.dmf_snow count={200} color={"var(--color-base-content)"} unicode={true} />
+        <PhoenixDuskmoon.Fun.Element.dmf_snow count={200} color={"var(--color-base-content)"} size={"1rem"} unicode={true} />
       </div>
     </div>
   </div>

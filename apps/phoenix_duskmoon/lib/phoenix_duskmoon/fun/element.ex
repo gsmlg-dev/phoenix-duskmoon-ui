@@ -192,9 +192,23 @@ defmodule PhoenixDuskmoon.Fun.Element do
     """
   )
 
+  attr(:atom_color, :string,
+    default: "#00d8ff",
+    doc: """
+    atom color
+    """
+  )
+
+  attr(:electron_color, :string,
+    default: "#99f8ff",
+    doc: """
+    electron color
+    """
+  )
+
   def dmf_atom(assigns) do
     ~H"""
-    <div id={@id} class={["atom", @class]}, style={"--atom-size: #{@size};"}>
+    <div id={@id} class={["atom", @class]}, style={"--atom-size: #{@size};--atom-color: #{@atom_color};--electron-color: #{@electron_color};"}>
       <div class="electron"></div>
       <div class="electron-alpha"></div>
       <div class="electron-omega"></div>

@@ -2,10 +2,9 @@
 @layer components {
   .atom {
     --atom-size: 360px;
-    --atom-color-hex: #00d8ff;
-    --atom-color-rgb: 0, 216, 255;
+    --atom-color: #00d8ff;
     --nucleus-size: calc(var(--atom-size) / 5);
-    --electron-color-hex: #99f8ff;
+    --electron-color: #99f8ff;
     --electron-size : calc(var(--atom-size) / 25);
     --electron-orbit-size : calc(var(--atom-size) / 2.5);
     --electron-speed : 1.2s;
@@ -43,9 +42,9 @@
     height: var(--nucleus-size);
     margin-top: calc(var(--nucleus-size) / -2);
     margin-left: calc(var(--nucleus-size) / -2);
-    background: rgb(var(--atom-color-rgb));
+    background: color-mix(in srgb, var(--atom-color) 70%, transparent);
     border-radius: 100%;
-    box-shadow: 0 0 3px 0 rgb(var(--atom-color-rgb));
+    box-shadow: 0 0 3px 0 color-mix(in srgb, var(--atom-color) 70%, transparent);
     animation: 2s nucleus infinite cubic-bezier(.65, 0, .35, 1);
   }
   @keyframes nucleus {
@@ -57,10 +56,10 @@
   }
 
   .atom > [class^="electron"] {
-    border-top: solid rgba(var(--atom-color-rgb), .5) 1px;
-    border-right: solid rgba(var(--atom-color-rgb), .35) 2px;
-    border-bottom: solid rgba(var(--atom-color-rgb), .2) 4px;
-    border-left: solid rgba(var(--atom-color-rgb), 0) 2px;
+    border-top: solid color-mix(in srgb, var(--atom-color) 50%, transparent) 1px;
+    border-right: solid color-mix(in srgb, var(--atom-color) 35%, transparent) 2px;
+    border-bottom: solid color-mix(in srgb, var(--atom-color) 20%, transparent) 4px;
+    border-left: solid color-mix(in srgb, var(--atom-color) 0%, transparent) 2px;
     border-radius: 100%;
     width: 100%;
     height: var(--electron-orbit-size);
@@ -79,34 +78,34 @@
   }
   @keyframes electron-orbit {
     0% {
-        border-top: solid rgba(var(--atom-color-rgb), .5) 1px;
-        border-right: solid rgba(var(--atom-color-rgb), .35) 2px;
-        border-bottom: solid rgba(var(--atom-color-rgb), .2) 4px;
-        border-left: solid rgba(var(--atom-color-rgb), 0) 2px;
+        border-top: solid color-mix(in srgb, var(--atom-color) 50%, transparent) 1px;
+        border-right: solid color-mix(in srgb, var(--atom-color) 35%, transparent) 2px;
+        border-bottom: solid color-mix(in srgb, var(--atom-color) 20%, transparent) 4px;
+        border-left: solid color-mix(in srgb, var(--atom-color) 0%, transparent) 2px;
     }
     25% {
-        border-top: solid rgba(var(--atom-color-rgb), .35) 1px;
-        border-right: solid rgba(var(--atom-color-rgb), .2) 2px;
-        border-bottom: solid rgba(var(--atom-color-rgb), 0) 4px;
-        border-left: solid rgba(var(--atom-color-rgb), .5) 2px;
+        border-top: solid color-mix(in srgb, var(--atom-color) 35%, transparent) 1px;
+        border-right: solid color-mix(in srgb, var(--atom-color) 20%, transparent) 2px;
+        border-bottom: solid color-mix(in srgb, var(--atom-color) 0%, transparent) 4px;
+        border-left: solid color-mix(in srgb, var(--atom-color) 50%, transparent) 2px;
     }
     50% {
-        border-top: solid rgba(var(--atom-color-rgb), .2) 1px;
-        border-right: solid rgba(var(--atom-color-rgb), 0) 2px;
-        border-bottom: solid rgba(var(--atom-color-rgb), .5) 4px;
-        border-left: solid rgba(var(--atom-color-rgb), .35) 2px;
+        border-top: solid color-mix(in srgb, var(--atom-color) 20%, transparent) 1px;
+        border-right: solid color-mix(in srgb, var(--atom-color) 0%, transparent) 2px;
+        border-bottom: solid color-mix(in srgb, var(--atom-color) 50%, transparent) 4px;
+        border-left: solid color-mix(in srgb, var(--atom-color) 35%, transparent) 2px;
     }
     75% {
-        border-top: solid rgba(var(--atom-color-rgb), 0) 1px;
-        border-right: solid rgba(var(--atom-color-rgb), .5) 2px;
-        border-bottom: solid rgba(var(--atom-color-rgb), .35) 4px;
-        border-left: solid rgba(var(--atom-color-rgb), .2) 2px;
+        border-top: solid color-mix(in srgb, var(--atom-color) 0%, transparent) 1px;
+        border-right: solid color-mix(in srgb, var(--atom-color) 50%, transparent) 2px;
+        border-bottom: solid color-mix(in srgb, var(--atom-color) 35%, transparent) 4px;
+        border-left: solid color-mix(in srgb, var(--atom-color) 20%, transparent) 2px;
     }
     100% {
-        border-top: solid rgba(var(--atom-color-rgb), .5) 1px;
-        border-right: solid rgba(var(--atom-color-rgb), .35) 2px;
-        border-bottom: solid rgba(var(--atom-color-rgb), .2) 4px;
-        border-left: solid rgba(var(--atom-color-rgb), 0) 2px;
+        border-top: solid color-mix(in srgb, var(--atom-color) 50%, transparent) 1px;
+        border-right: solid color-mix(in srgb, var(--atom-color) 35%, transparent) 2px;
+        border-bottom: solid color-mix(in srgb, var(--atom-color) 20%, transparent) 4px;
+        border-left: solid color-mix(in srgb, var(--atom-color) 0%, transparent) 2px;
     }
   }
 
@@ -115,7 +114,7 @@
     display: block;
     width: var(--electron-size);
     height: var(--electron-size);
-    background: var(--electron-color-hex);
+    background: var(--electron-color);
     border-radius: 50%;
     margin-top: calc(var(--electron-size) / -2);
     position: absolute;

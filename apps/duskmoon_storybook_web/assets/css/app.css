@@ -186,6 +186,14 @@ app-bar {
 }
 
 @layer components {
+  .page-section-group {
+    @apply flex flex-col gap-1 bg-base-300 mb-24;
+
+    .page-section {
+      @apply w-full py-16 flex flex-col bg-base-100 text-base-content;
+    }
+  }
+
   .fun-page-section-group {
     @apply flex flex-col gap-1 bg-base-300 mb-24;
 
