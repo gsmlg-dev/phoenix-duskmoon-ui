@@ -120,7 +120,6 @@ jobs:
           npm install semantic-release @semantic-release/changelog @semantic-release/exec @semantic-release/git
 
       - name: 🚀 Release
-        uses: cycjimmy/semantic-release-action@v4
         id: semantic
         run: |
           npx semantic-release
