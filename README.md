@@ -46,7 +46,11 @@ npm install @gsmlg/lit
 Import `css`
 
 ```css
-@import 'phoenix_duskmoon/priv/static/phoenix_duskmoon.css';
+@config "../tailwind.config.js";
+
+@import "tailwindcss";
+@plugin "daisyui";
+@import "phoenix_duskmoon/components";
 ```
 
 Use custom hook
@@ -58,26 +62,36 @@ const liveSocket = new LiveSocket("/live", Socket, {hooks: { WebComponentHook }}
 ```
 
 Send custom events to live view:
+
 ```html
 <Element darkmoon-send-sync-content="load_content" phx-hook="WebComponentHook" />
 <Element darkmoon-send-sync-content="load_content;loadAccepted" phx-hook="WebComponentHook" />
 ```
+
 - In the first element, when element trigger customEvents `sync-content`, also use `pushEvent` send `load_content` to live view.
+
 - Second element are same as first, but will call `loadAccepted` on element when receive server send feedback.
 
 Receive live view event:
+
 ```html
 <Element darkmoon-receive-update_content="updateContent" phx-hook="WebComponentHook" />
 <!-- equal  -->
 <Element darkmoon-receive="update_content;updateContent" phx-hook="WebComponentHook" />
 ```
+
 - In this case, when live view fire `update_content` event, also trigger `updateContent` method on elmenet.
+
 - If value(`updateContent`) is empty, trigger a same event `update_content` on element.
 
 Import CSS
 
 ```css
-import "phoenix_duskmoon/priv/static/phoenix_duskmoon.css"
+@config "../tailwind.config.js";
+
+@import "tailwindcss";
+@plugin "daisyui";
+@import "phoenix_duskmoon/components";
 ```
 
 ## Live Storybook
