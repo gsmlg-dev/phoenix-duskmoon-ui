@@ -1,3 +1,12 @@
+# [5.2.0-beta.3](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v5.2.0-beta.2...v5.2.0-beta.3) (2025-02-04)
+
+
+### Bug Fixes
+
+* Fix storybook name. ([20ef181](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/20ef181df1b9892f5e5886220e23ebed4de0388b))
+* Fix. ([a9bb7b4](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/a9bb7b45482ee54c158bf06e046b76c68a77a807))
+* Fix. ([e16f8fd](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/e16f8fd8971be38143873bf901c167b6ac02d6b3))
+
 # [5.2.0-beta.2](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v5.2.0-beta.1...v5.2.0-beta.2) (2025-02-04)
 
 
