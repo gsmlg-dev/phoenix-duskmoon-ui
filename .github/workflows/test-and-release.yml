@@ -117,17 +117,14 @@ jobs:
       - name: Install Deps
         run: |
           mix deps.get
+          npm install semantic-release @semantic-release/changelog @semantic-release/exec @semantic-release/git
 
       - name: 🚀 Release
         uses: cycjimmy/semantic-release-action@v4
         id: semantic
-        with:
-          semantic_version: 19
-          extra_plugins: |
-            @semantic-release/changelog
-            @semantic-release/exec
-            @semantic-release/git
-          working_directory: apps/phoenix_duskmoon
+        run: |
+          npx semantic-release
+        working-directory: apps/phoenix_duskmoon
         env:
           MIX_ENV: prod
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
