@@ -51,6 +51,19 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Button do
           </:confirm_action>
           """
         ]
+      },
+      %Variation{
+        id: :with_noise,
+        attributes: %{
+          class: "",
+          noise: true,
+          content: "Waiting for noise"
+        },
+        slots: [
+          """
+          Primary Action
+          """
+        ]
       }
     ]
   end

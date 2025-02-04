@@ -20,10 +20,7 @@ config :duskmoon_storybook_web, DuskmoonStorybookWeb.Endpoint,
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:storybook, ~w(--watch)]},
     esbuild: {Esbuild, :install_and_run, [:storybook, ~w(--sourcemap --watch)]}
-  ]
-
-# Watch static and templates for browser reloading.
-config :duskmoon_storybook_web, DuskmoonStorybookWeb.Endpoint,
+  ],
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
@@ -33,6 +30,10 @@ config :duskmoon_storybook_web, DuskmoonStorybookWeb.Endpoint,
       ~r"lib/duskmoon_storybook_web/templates/.*(eex)$"
     ]
   ]
+
+config :duskmoon_storybook_web, DuskmoonStorybookWeb.Storybook,
+  compilation_mode: :lazy,
+  compilation_debug: true
 
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"

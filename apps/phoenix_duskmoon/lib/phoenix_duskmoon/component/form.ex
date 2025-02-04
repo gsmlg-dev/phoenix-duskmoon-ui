@@ -429,20 +429,18 @@ defmodule PhoenixDuskmoon.Component.Form do
       <label for={@id} class={["label", @errors != [] && "text-error"]}>
         <%= @label %>
       </label>
-      <div class="flex flex-col gap-2">
-        <select
-          id={@id}
-          name={@name}
-          class={[
-            "compact-select",
-          ]}
-          multiple={@multiple}
-          {@rest}
-        >
-          <option :if={@prompt} value=""><%= @prompt %></option>
-          <%= Phoenix.HTML.Form.options_for_select(@options, @value) %>
-        </select>
-      </div>
+      <select
+        id={@id}
+        name={@name}
+        class={[
+          "compact-select",
+        ]}
+        multiple={@multiple}
+        {@rest}
+      >
+        <option :if={@prompt} value=""><%= @prompt %></option>
+        <%= Phoenix.HTML.Form.options_for_select(@options, @value) %>
+      </select>
     </div>
     <.dm_error :for={msg <- @errors}><%= msg %></.dm_error>
     """
