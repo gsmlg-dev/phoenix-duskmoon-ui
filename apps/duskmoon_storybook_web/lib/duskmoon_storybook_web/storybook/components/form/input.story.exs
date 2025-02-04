@@ -36,6 +36,16 @@ defmodule DuskmoonStorybookWeb.Storybook.Components.Form.Input do
         }
       },
       %Variation{
+        id: :input_error,
+        attributes: %{
+          type: "search",
+          label: "Search",
+          name: "search",
+          value: nil,
+          errors: ["Search is required"]
+        }
+      },
+      %Variation{
         id: :checkbox,
         attributes: %{
           type: "checkbox",
