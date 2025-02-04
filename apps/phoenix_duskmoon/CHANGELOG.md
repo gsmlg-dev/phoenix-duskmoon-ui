@@ -1,3 +1,48 @@
+# [5.2.0-beta.1](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v5.1.0...v5.2.0-beta.1) (2025-02-04)
+
+
+### Bug Fixes
+
+* Add fun spotlight. ([8fdd70e](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/8fdd70e259af9fa39bfd13f18b08a1a75cd8cb15))
+* Add fun spotlight. ([693f6dd](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/693f6dd1bbfd01c89cb18438d010efe98d75c027))
+* Fix atom and snow. ([5a6c85f](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/5a6c85fcbdebf4d47b87b212fc017564026e5b1a))
+* Fix atom overflow. ([fc7753a](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/fc7753a1ed5df69bbfb3773cb0ff6d8fa1964ecd))
+* Fix build. ([f80a79e](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/f80a79e5808625291570f73db3d5f55ef91e71fa))
+* Fix build. ([51547e2](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/51547e2b68146381fb909da21b34ec203660cfea))
+* Fix button [@id](https://github.com/id). ([1ca0bbc](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/1ca0bbc21da7ce213997fc6daa66e483678ff0ed))
+* Fix button [@id](https://github.com/id). ([e544f0c](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/e544f0cd5dfc1f340f2bf0877c0532b7391a55d3))
+* Fix ci version. ([7f2005e](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/7f2005e3c92061ddfe50e6081699ed4706f26a5e))
+* Fix ci. ([75c4bcd](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/75c4bcdb79697279f8e155d750051fdaa003ceee))
+* Fix ci. ([6085fcd](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/6085fcd1220bbba25322d4804fd59a065d8d4f3b))
+* Fix ci. ([bf15d5d](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/bf15d5d66c72e62f3bb904adc72b4573704f4c2e))
+* Fix gettext. ([c9a1419](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/c9a1419c53224128abeddd987092595005995301))
+* Fix order. ([79d0b20](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/79d0b208b0535f271056692c5a5e2750ccbf59b0))
+* Fix pagination. ([492b810](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/492b810047db09e420b2e7fa80927e32b163b7b2))
+* Fix spotlight. ([71abaa3](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/71abaa3a7f75404462bb41007d299226ee94e2d0))
+* Fix. ([c7839d7](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/c7839d79533e2aa77a9265c09003637174c3d385))
+* Fix. ([ad83066](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/ad83066583e9513ab2550a8f5e9dc651b936a018))
+* Fix. ([cc3f899](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/cc3f899791ca20b7be501d3b1038094f950d85e7))
+* Fix. ([0617096](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/061709601de8ad750138ee755665135fd0c5ea34))
+* Fix. ([7940600](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/79406000c0b3ab4ce2a7b6b56eb2aaca3417fca6))
+* Fix. ([ab9fbd3](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/ab9fbd34162f8439f9030e576a3f7ec5659e4f86))
+* Fix. ([2f4cfe4](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/2f4cfe4cdc7942326eb752fda9b9dce6845882c6))
+* Fix. ([fc7cb0b](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/fc7cb0b49b7faff5e475cce15b52da0ec3ac5ef1))
+* Fix. ([6e8366c](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/6e8366c21b3b6562137b17827a20d13f82307b11))
+* Fix. ([7f0a6f0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/7f0a6f0812d3f3255539aa28379f8f79daf34315))
+* Fix. ([7edb06e](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/7edb06ee7c386cd1e47dd5bfb9bf7a2fec1bd152))
+* Update bsi bootstrap icons. ([cb9354a](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/cb9354ad20c4d04303291f07af7319b4d959c059))
+* Update mdi material design icons. ([598222a](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/598222a45081989bb9106d6f63ef544819b21203))
+* Update new tailwind css. ([b9253df](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/b9253df07ccafdc87e05eb10dc91da21ba123866))
+* Update tailwind and daisyui. ([5129da5](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/5129da5963bda3fa0047940946a73b62f42a4760))
+* Use npm workspace. ([e5fa0a2](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/e5fa0a2254cee3f6071ee5da86692d5968479474))
+
+
+### Features
+
+* add confirm slot to btn. ([c839278](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/c839278b8c61a5bd277dd340717efae65196931e))
+* Add dm_compact_input. ([821849a](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/821849a5e5b2cd49e84d7526258e792609173d66))
+* Add fun element. ([db3a22b](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/db3a22bcd881af1e8176b4ed5cc89a5a994befa0))
+
 ## [5.1.1](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v5.1.0...v5.1.1) (2025-01-25)
 
 
