@@ -348,7 +348,13 @@ defmodule PhoenixDuskmoon.Fun.Element do
       <div
         :for={_n <- 1..@count}
         class="bubble"
-        style={"--size: #{2 + Enum.random(0..999_999_999_999) * 1.0e-12 * 4}rem; --distance: #{6 + Enum.random(0..999_999_999_999) * 1.0e-12  * 4}rem; --position: min(calc(100% - var(--size) / 2), #{-5 + Enum.random(0..999_999_999_999) * 1.0e-12  * 110}%); --time: #{2 + Enum.random(0..999_999_999_999) * 1.0e-12  * 2}s; --delay: #{-1 * (2 + Enum.random(0..999_999_999_999) * 1.0e-12  * 2)}s;"}
+        style={[
+          "--size: #{2 + Enum.random(0..999_999_999_999) * 1.0e-12 * 4}rem;",
+          "--distance: #{6 + Enum.random(0..999_999_999_999) * 1.0e-12  * 4}rem;",
+          "--position: min(calc(100% - var(--size) / 2), #{-5 + Enum.random(0..999_999_999_999) * 1.0e-12  * 110}%);",
+          "--time: #{2 + Enum.random(0..999_999_999_999) * 1.0e-12  * 2}s;",
+          "--delay: #{-1 * (2 + Enum.random(0..999_999_999_999) * 1.0e-12  * 2)}s;"
+          ] |> Enum.join("")}
       ></div>
     </div>
     <svg style="position: fixed; top: 100vh">
@@ -356,7 +362,6 @@ defmodule PhoenixDuskmoon.Fun.Element do
         <filter id={@blob_id}>
           <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"></feGaussianBlur>
           <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="blob"></feColorMatrix>
-          <!--feComposite(in="SourceGraphic" in2="blob" operator="atop") //After reviewing this after years I can't remember why I added this but it isn't necessary for the blob effect-->
         </filter>
       </defs>
     </svg>

@@ -15,9 +15,10 @@
     height: var(--atom-size);
     animation: 8s atom infinite cubic-bezier(1, .25, 0, .75);
     box-sizing: border-box;
+    overflow: hidden;
 
-    *, *:before, *::after { 
-      box-sizing: border-box; 
+    *, *:before, *::after {
+      box-sizing: border-box;
     }
   }
   @keyframes atom {
