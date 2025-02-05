@@ -1,10 +1,12 @@
 defmodule PhoenixDuskmoon.Umbrella.MixProject do
   use Mix.Project
 
+  @version "0.0.0"
+
   def project do
     [
       apps_path: "apps",
-      version: "0.1.0",
+      version: @version,
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       releases: [

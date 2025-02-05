@@ -2,21 +2,18 @@
 
 [![release](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/actions/workflows/test-and-release.yml/badge.svg)](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/actions/workflows/test-and-release.yml)
 
-Collection of helpers to generate and manipulate Web Component.
+Provides Duskmoon UI for Phoenix project.
 
-Although this project was originally extracted from Phoenix,
-it does not depend on Phoenix and can be used with any Plug
-application (or even without Plug).
+Require `tailwindcss >= 4.0` and `daisyui >= 5.0`
 
 See the [docs](https://hexdocs.pm/phoenix_duskmoon/) for more information.
 
-About at [Web Component](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
 
 ## Install
 
 Add deps in `mix.exs`
 ```elixir
-    {:phoenix_duskmoon, "~> 5.0"},
+    {:phoenix_duskmoon, "~> 6.0"},
 ```
 
 Include in phoenix view helpers
@@ -24,9 +21,10 @@ Include in phoenix view helpers
 ```elixir
 defp html_helpers do
   quote do
-    # import all helper functions
+    # import all duskmoon ui component
     use PhoenixDuskmoon.Component
-    ...
+    # import all duskmoon ui fun component
+    use PhoenixDuskmoon.Fun
   end
 end
 ```

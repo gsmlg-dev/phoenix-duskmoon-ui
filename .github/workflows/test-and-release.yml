@@ -34,15 +34,15 @@ jobs:
         otp-version: ${{ matrix.otp }}
         elixir-version: ${{ matrix.elixir }}
 
-    - name: Restore deps and _build cache
-      uses: actions/cache@v3
-      with:
-        path: |
-          deps
-          _build
-        key: deps-${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-${{ hashFiles('**/mix.lock') }}
-        restore-keys: |
-          deps-${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}
+    # - name: Restore deps and _build cache
+    #   uses: actions/cache@v3
+    #   with:
+    #     path: |
+    #       deps
+    #       _build
+    #     key: mix-deps-build-${{ hashFiles('**/mix.lock') }}
+    #     restore-keys: |
+    #       mix-deps-build-${{ hashFiles('**/mix.lock') }}
 
     - name: Install dependencies
       run: mix deps.get --only test
@@ -97,15 +97,15 @@ jobs:
           otp-version: '26'
           elixir-version: '1.17.3'
 
-      - name: Restore deps and _build cache
-        uses: actions/cache@v3
-        with:
-          path: |
-            deps
-            _build
-          key: deps-${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}-${{ hashFiles('**/mix.lock') }}
-          restore-keys: |
-            deps-${{ runner.os }}-${{ matrix.otp }}-${{ matrix.elixir }}
+      # - name: Restore deps and _build cache
+      #   uses: actions/cache@v3
+      #   with:
+      #     path: |
+      #       deps
+      #       _build
+      #     key: mix-deps-build-${{ hashFiles('**/mix.lock') }}
+      #     restore-keys: |
+      #       mix-deps-build-${{ hashFiles('**/mix.lock') }}
 
       - name: ⎔ Setup node
         uses: actions/setup-node@v4
@@ -118,6 +118,12 @@ jobs:
         run: |
           mix deps.get
           npm install semantic-release @semantic-release/changelog @semantic-release/exec @semantic-release/git
+          npm config set "//registry.npmjs.org/:_authToken" "${NPM_TOKEN}"
+        env:
+          MIX_ENV: prod
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
 
       - name: 🚀 Release
         id: semantic

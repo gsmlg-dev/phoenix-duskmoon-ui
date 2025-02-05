@@ -8,7 +8,7 @@ defmodule PhoenixDuskmoon do
 
   Add deps in `mix.exs`
 
-      {:phoenix_duskmoon, "~> 5.0"}
+      {:phoenix_duskmoon, "~> 6.0"}
 
   ## Setup in `Phoenix` project
 

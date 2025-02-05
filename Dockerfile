@@ -8,16 +8,20 @@ COPY . /build
 WORKDIR /build
 
 RUN <<EOF
+set -ex
 apk update
 mix deps.get
 npm install
-export project_dir=$(pwd)
-cd $project_dir/apps/phoenix_duskmoon
-mix tailwind.install
+sed -i 's%@version "[0-9\.]\+"%@version "${RELEASE_VERSION}"%' mix.exs;
+sed -i 's%@version "[0-9\.]\+"%@version "${RELEASE_VERSION}"%' apps/duskmoon_storybook_web/mix.exs;
+sed -i 's%@version "[0-9\.]\+"%@version "${RELEASE_VERSION}"%' apps/duskmoon_storybook/mix.exs;
+sed -i 's%@version "[0-9\.]\+"%@version "${RELEASE_VERSION}"%' apps/phoenix_duskmoon/mix.exs;
+cd /build/apps/phoenix_duskmoon
 mix prepublish
-cd $project_dir/apps/duskmoon_storybook_web
+cd /build/apps/duskmoon_storybook_web
+mix tailwind.install
 mix assets.deploy
-cd $project_dir
+cd /build
 mix release storybook --version "${RELEASE_VERSION}"
 cp -r _build/prod/rel/storybook /app
 EOF
