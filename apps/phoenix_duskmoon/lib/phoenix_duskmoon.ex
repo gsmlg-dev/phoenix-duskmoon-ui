@@ -4,24 +4,6 @@ defmodule PhoenixDuskmoon do
 
   This library add a list of phoneix component.
 
-  ## Form helper
-
-  See `PhoenixDuskmoon.FormHelper`.
-
-  ## JavaScript library
-
-  This project provides javascript that define custom elements.
-
-  To use the web component, you must load `priv/static/phoenix_duskmoon.js`
-  into your build tool. Or through npm by install `phoenix_duskmoon`.
-
-  ### Using js library in hex package:
-
-  We need to run npm install in hex package
-
-  ```
-  npm install --prefix <path to root>/deps/phoenix/duskmoon
-  ```
 
   """
 

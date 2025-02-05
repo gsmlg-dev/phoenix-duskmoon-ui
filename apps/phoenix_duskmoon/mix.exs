@@ -63,7 +63,11 @@ defmodule PhoenixDuskmoon.Mixfile do
   defp aliases do
     [
       "assets.deploy": ["tailwind default --minify", "esbuild default --minify"],
-      prepublish: ["tailwind default", "esbuild default"]
+      prepublish: [
+        "cmd cp #{Path.expand("../../README.md", __DIR__)} #{Path.expand("README.md", __DIR__)}",
+        "tailwind default",
+        "esbuild default"
+      ]
     ]
   end
 end

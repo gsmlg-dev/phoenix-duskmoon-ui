@@ -1,3 +1,0 @@
-# DuskmoonStorybook
-
-**TODO: Add description**
