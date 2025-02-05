@@ -1,3 +1,15 @@
+# [5.2.0-beta.5](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v5.2.0-beta.4...v5.2.0-beta.5) (2025-02-05)
+
+
+### Bug Fixes
+
+* Remove useless css. ([91d1682](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/91d16827299a23f13cc433e7aba742c3e02c1335))
+
+
+### Features
+
+* Add theme. ([2f46764](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/2f46764a13f2dd49bbe9681a482658ac9a97448a))
+
 # [5.2.0-beta.4](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v5.2.0-beta.3...v5.2.0-beta.4) (2025-02-05)
 
 
