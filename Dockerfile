@@ -12,10 +12,11 @@ set -ex
 apk update
 mix deps.get
 npm install
-sed -i 's%@version "[0-9\.]\+"%@version "${RELEASE_VERSION}"%' mix.exs;
-sed -i 's%@version "[0-9\.]\+"%@version "${RELEASE_VERSION}"%' apps/duskmoon_storybook_web/mix.exs;
-sed -i 's%@version "[0-9\.]\+"%@version "${RELEASE_VERSION}"%' apps/duskmoon_storybook/mix.exs;
-sed -i 's%@version "[0-9\.]\+"%@version "${RELEASE_VERSION}"%' apps/phoenix_duskmoon/mix.exs;
+export MATCH_STRING="s%@version \"[0-9\.]\+\"%@version \"${RELEASE_VERSION}\"%"
+sed -i "$MATCH_STRING" mix.exs;
+sed -i "$MATCH_STRING" apps/duskmoon_storybook_web/mix.exs;
+sed -i "$MATCH_STRING" apps/duskmoon_storybook/mix.exs;
+sed -i "$MATCH_STRING" apps/phoenix_duskmoon/mix.exs;
 cd /build/apps/duskmoon_storybook_web
 mix assets.deploy
 cd /build
