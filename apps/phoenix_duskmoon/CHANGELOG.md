@@ -1,3 +1,21 @@
+# [6.0.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v5.1.0...v6.0.0) (2025-02-05)
+
+
+### Bug Fixes
+
+* Fix button [@id](https://github.com/id). ([e544f0c](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/e544f0cd5dfc1f340f2bf0877c0532b7391a55d3))
+
+
+### Features
+
+* Update Tailwind CSS to 4.0 ([#11](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/issues/11)) ([b2974a4](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/b2974a4915fd17df8784ef37dbeade1713ca89d3))
+
+
+### BREAKING CHANGES
+
+* * Update tailwindcss to 4.0 and daisyui to 5.0.
+* Remove legacy `use PhoenixDuskmoon`
+
 # [5.2.0-beta.5](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v5.2.0-beta.4...v5.2.0-beta.5) (2025-02-05)
 
 
