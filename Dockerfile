@@ -1,11 +1,12 @@
 FROM ghcr.io/gsmlg-dev/phoenix:alpine AS builder
 
 ARG MIX_ENV=prod
-ARG NAME=duskmoon_storybook
 ARG RELEASE_VERSION=1.0.0
 
 COPY . /build
 WORKDIR /build
+
+ARG NODE_PATH="/build/apps:/build/deps"
 
 RUN <<EOF
 set -ex
