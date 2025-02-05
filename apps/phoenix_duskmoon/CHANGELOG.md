@@ -1,3 +1,11 @@
+# [5.2.0-beta.4](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v5.2.0-beta.3...v5.2.0-beta.4) (2025-02-05)
+
+
+### Bug Fixes
+
+* Fix docs. ([39d9fb3](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/39d9fb3d24f94b536c517ccf4c1429c7b4cb1c69))
+* Fix README.md. ([81ebcbf](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/81ebcbf5ef62e214def285516be132dc64001393))
+
 # [5.2.0-beta.3](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v5.2.0-beta.2...v5.2.0-beta.3) (2025-02-04)
 
 
