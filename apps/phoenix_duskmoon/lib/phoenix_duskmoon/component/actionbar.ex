@@ -1,6 +1,6 @@
 defmodule PhoenixDuskmoon.Component.Actionbar do
   @moduledoc """
-  Render actionbar.
+  Duskmoon UI Actionbar Component
   """
   use PhoenixDuskmoon.Component, :html
 

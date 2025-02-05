@@ -1,6 +1,6 @@
 defmodule PhoenixDuskmoon.Component.Loading do
   @moduledoc """
-  Render table.
+  Duskmoon UI Loading Component
   """
   use PhoenixDuskmoon.Component, :html
 

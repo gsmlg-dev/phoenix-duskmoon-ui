@@ -1,8 +1,6 @@
 defmodule PhoenixDuskmoon.Fun.Element do
   @moduledoc """
-
-  Render static Element components
-
+  Duskmoon UI Fun Element components
   """
   use PhoenixDuskmoon.Component, :html
 
@@ -12,7 +10,8 @@ defmodule PhoenixDuskmoon.Fun.Element do
   ## Example
 
   ```heex
-  <PhoenixDuskmoon.Fun.Element.dmf_eclipse />
+  <PhoenixDuskmoon.Fun.Element.dmf_eclipse
+  />
   ```
 
   """
@@ -47,7 +46,11 @@ defmodule PhoenixDuskmoon.Fun.Element do
 
   def dmf_eclipse(assigns) do
     ~H"""
-    <div id={@id} class={["eclipse", @class]} style={"--bg-color: #{@background}; --size: #{@size};"}>
+    <div
+      id={@id}
+      class={["eclipse", @class]}
+      style={"--bg-color: #{@background}; --size: #{@size};"}
+    >
       <div class="layer layer-1"></div>
       <div class="layer layer-2"></div>
       <div class="layer layer-3"></div>
@@ -217,7 +220,7 @@ defmodule PhoenixDuskmoon.Fun.Element do
   end
 
   @doc """
-  Generates a snow effect
+  Generates snowflakes, bubbles or unicode `❆`.
 
   ## Example
 
@@ -294,15 +297,16 @@ defmodule PhoenixDuskmoon.Fun.Element do
   end
 
   @doc """
-  Generates a snow effect
+  Generates bubbles fly up from this element.
 
   ## Example
 
   ```heex
-  <PhoenixDuskmoon.Fun.Element.dmf_snow />
+  <PhoenixDuskmoon.Fun.Element.dmf_footer_bubbles />
   ```
 
   """
+
   @doc type: :component
   attr(:id, :any,
     default: nil,
@@ -349,12 +353,12 @@ defmodule PhoenixDuskmoon.Fun.Element do
         :for={_n <- 1..@count}
         class="bubble"
         style={[
-          "--size: #{2 + Enum.random(0..999_999_999_999) * 1.0e-12 * 4}rem;",
-          "--distance: #{6 + Enum.random(0..999_999_999_999) * 1.0e-12  * 4}rem;",
-          "--position: min(calc(100% - var(--size) / 2), #{-5 + Enum.random(0..999_999_999_999) * 1.0e-12  * 110}%);",
-          "--time: #{2 + Enum.random(0..999_999_999_999) * 1.0e-12  * 2}s;",
-          "--delay: #{-1 * (2 + Enum.random(0..999_999_999_999) * 1.0e-12  * 2)}s;"
-          ] |> Enum.join("")}
+          "--size: #{2 + Enum.random(0..999_999_999_999) * 1.0e-12 * 4}rem",
+          "--distance: #{6 + Enum.random(0..999_999_999_999) * 1.0e-12  * 4}rem",
+          "--position: min(calc(100% - var(--size) / 2), #{-5 + Enum.random(0..999_999_999_999) * 1.0e-12  * 110}%)",
+          "--time: #{2 + Enum.random(0..999_999_999_999) * 1.0e-12  * 2}s",
+          "--delay: #{-1 * (2 + Enum.random(0..999_999_999_999) * 1.0e-12  * 2)}s"
+          ] |> Enum.join(";")}
       ></div>
     </div>
     <svg style="position: fixed; top: 100vh">

@@ -1,12 +1,13 @@
 defmodule PhoenixDuskmoon.Component.Breadcrumb do
   @moduledoc """
-  render appbar
+  Duskmoon UI Breadcrumb Component
 
   """
   use PhoenixDuskmoon.Component, :html
 
   @doc """
-  Generates webcomponent breadcrumb
+  Generates breadcrumbs for navigation.
+
   ## Example
       <.dm_breadcrumb>
         <:crumb>Menu1</:crumb>

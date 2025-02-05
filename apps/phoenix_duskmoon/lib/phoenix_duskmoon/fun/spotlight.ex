@@ -1,13 +1,12 @@
 defmodule PhoenixDuskmoon.Fun.Spotlight do
-  @moduledoc """
+  @moduledoc false
 
-  Render Spotlight search dialog
-
-  """
   use PhoenixDuskmoon.Component, :html
 
   @doc """
   Generates a spotlight style search.
+
+  TODO: redesign this module.
 
   ## Example
 

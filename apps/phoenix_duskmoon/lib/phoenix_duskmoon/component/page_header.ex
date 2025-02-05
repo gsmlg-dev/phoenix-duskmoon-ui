@@ -1,8 +1,6 @@
 defmodule PhoenixDuskmoon.Component.PageHeader do
   @moduledoc """
-
-  render Page Header
-
+  Duskmoon UI PageHeader Component
   """
   use PhoenixDuskmoon.Component, :html
 

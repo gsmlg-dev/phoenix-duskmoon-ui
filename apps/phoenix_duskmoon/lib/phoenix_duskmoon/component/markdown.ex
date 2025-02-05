@@ -1,11 +1,28 @@
 defmodule PhoenixDuskmoon.Component.Markdown do
   @moduledoc """
+  Duskmoon UI Markdown Component
+
   Render markdown in to remark-element.
 
   The remark-element supported markdown featrues:
     * github flavor
     * auto highlight code with lowlight.js and auto detect system light/dark themes.
     * charts render by mermaid.js
+
+  Require `remark-element` in your project.
+
+  ```js
+
+      import '@gsmlg/lit/remark-element';
+  ```
+
+  ```html
+
+      <script type="module" src="https://esm.run/@gsmlg/lit"></script>
+      <script type="module">
+        import 'https://esm.run/@gsmlg/lit/remark-element';
+      </script>
+  ```
 
   """
   use PhoenixDuskmoon.Component, :html

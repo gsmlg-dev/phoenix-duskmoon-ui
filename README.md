@@ -22,69 +22,16 @@ Add deps in `mix.exs`
 Include in phoenix view helpers
 
 ```elixir
- defp html_helpers do
-    quote do
-        # import all helper functions
-        use PhoenixDuskmoon.Component
-        ...
-    end
+defp html_helpers do
+  quote do
+    # import all helper functions
+    use PhoenixDuskmoon.Component
+    ...
+  end
 end
 ```
 
-Include `javascript`
-
-```javascript
-import 'phoenix_duskmoon';
-```
-
-Web Componet library is now external
-
-```bash
-npm install @gsmlg/lit
-```
-
 Import `css`
-
-```css
-@config "../tailwind.config.js";
-
-@import "tailwindcss";
-@plugin "daisyui";
-@import "phoenix_duskmoon/components";
-```
-
-Use custom hook
-
-```javascript
-import "phoenix_duskmoon";
-const WebComponentHook = window.__WebComponentHook__;
-const liveSocket = new LiveSocket("/live", Socket, {hooks: { WebComponentHook }});
-```
-
-Send custom events to live view:
-
-```html
-<Element darkmoon-send-sync-content="load_content" phx-hook="WebComponentHook" />
-<Element darkmoon-send-sync-content="load_content;loadAccepted" phx-hook="WebComponentHook" />
-```
-
-- In the first element, when element trigger customEvents `sync-content`, also use `pushEvent` send `load_content` to live view.
-
-- Second element are same as first, but will call `loadAccepted` on element when receive server send feedback.
-
-Receive live view event:
-
-```html
-<Element darkmoon-receive-update_content="updateContent" phx-hook="WebComponentHook" />
-<!-- equal  -->
-<Element darkmoon-receive="update_content;updateContent" phx-hook="WebComponentHook" />
-```
-
-- In this case, when live view fire `update_content` event, also trigger `updateContent` method on elmenet.
-
-- If value(`updateContent`) is empty, trigger a same event `update_content` on element.
-
-Import CSS
 
 ```css
 @config "../tailwind.config.js";

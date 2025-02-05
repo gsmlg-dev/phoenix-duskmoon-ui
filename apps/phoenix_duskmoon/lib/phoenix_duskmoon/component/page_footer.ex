@@ -1,8 +1,6 @@
 defmodule PhoenixDuskmoon.Component.PageFooter do
   @moduledoc """
-
-  render Page footer
-
+  Duskmoon UI PageFooter Component
   """
   use PhoenixDuskmoon.Component, :html
 

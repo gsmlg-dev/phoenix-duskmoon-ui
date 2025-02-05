@@ -1,6 +1,6 @@
 defmodule PhoenixDuskmoon.Component.Form do
   @moduledoc """
-  render appbar
+  Duskmoon UI Form Component
 
   """
   use PhoenixDuskmoon.Component, :html
@@ -9,6 +9,8 @@ defmodule PhoenixDuskmoon.Component.Form do
 
   @doc """
   Renders a simple form.
+
+  Generate default `for` attribute for the form.
 
   ## Examples
 
@@ -330,7 +332,7 @@ defmodule PhoenixDuskmoon.Component.Form do
   def dm_label(assigns) do
     ~H"""
     <label for={@for} id={@id} class={["label", @class]}>
-      <span class="label-text"><%= render_slot(@inner_block) %></span>
+      <%= render_slot(@inner_block) %>
     </label>
     """
   end
@@ -352,7 +354,7 @@ defmodule PhoenixDuskmoon.Component.Form do
   end
 
   @doc """
-  Renders an input with label and error messages.
+  Renders an compact input with label and error messages.
 
   A `Phoenix.HTML.FormField` may be passed as argument,
   which is used to retrieve the input name, id, and values.
@@ -360,35 +362,24 @@ defmodule PhoenixDuskmoon.Component.Form do
 
   ## Types
 
-  This function accepts all HTML input types, considering that:
-
-    * You may also set `type="select"` to render a `<select>` tag
-
-    * `type="checkbox"` is used exclusively to render boolean values
-
-    * For live file uploads, see `Phoenix.Component.live_file_input/1`
-
-  See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input
-  for more information.
+  Only input and select are supported.
 
   ## Examples
 
-      <.dm_input field={@form[:email]} type="email" />
-      <.dm_input name="my-input" errors={["oh no!"]} />
+      <.dm_compact_input field={@form[:email]} type="email" />
+      <.dm_compact_input name="my-input" errors={["oh no!"]} />
   """
   attr(:field_class, :any, default: nil)
   attr(:id, :any, default: nil)
   attr(:class, :any, default: nil)
-  attr(:classic, :boolean, default: false)
   attr(:name, :any)
   attr(:label, :string, default: nil)
   attr(:value, :any)
 
   attr(:type, :string,
     default: "text",
-    values: ~w(checkbox color date datetime-local email file hidden month number password
-               range radio search select tel text textarea time url week checkbox_group
-               radio_group toggle)
+    values: ~w(color date datetime-local email file month number password
+               search select tel text time url week)
   )
 
   attr(:field, Phoenix.HTML.FormField,

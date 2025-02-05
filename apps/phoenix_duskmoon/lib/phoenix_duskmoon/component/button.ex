@@ -1,6 +1,6 @@
 defmodule PhoenixDuskmoon.Component.Button do
   @moduledoc """
-  render button
+  Duskmoon UI Button Component
 
   """
   use PhoenixDuskmoon.Component, :html

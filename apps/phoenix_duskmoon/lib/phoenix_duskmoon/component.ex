@@ -1,34 +1,20 @@
 defmodule PhoenixDuskmoon.Component do
   @moduledoc """
-  Provides a suit of html custom component for phoenix.
+  Provides `Duskmoon UI` component for phoenix.
 
   This library add a list of phoneix component.
 
-  ## Form helper
+  """
 
-  See `PhoenixDuskmoon.FormHelper`.
-
-  ## JavaScript library
-
-  This project provides javascript that define custom elements.
-
-  To use the web component, you must load `priv/static/phoenix_duskmoon.js`
-  into your build tool. Or through npm by install `phoenix_duskmoon`.
-
-  ### Using js library in hex package:
-
-  We need to run npm install in hex package
-
-  ```
-  npm install --prefix <path to root>/deps/phoenix/duskmoon
-  ```
-
+  @doc """
+  Generate a random id format `random-8DFBEE211780394A`
   """
 
   def generate_id() do
     "random-#{:crypto.strong_rand_bytes(8) |> Base.encode16()}"
   end
 
+  @doc false
   def live_component do
     quote do
       use Phoenix.LiveComponent
@@ -37,6 +23,7 @@ defmodule PhoenixDuskmoon.Component do
     end
   end
 
+  @doc false
   def html do
     quote do
       use Phoenix.Component
@@ -60,6 +47,7 @@ defmodule PhoenixDuskmoon.Component do
     end
   end
 
+  @doc false
   def component do
     quote do
       import PhoenixDuskmoon.Component.Actionbar
@@ -83,19 +71,7 @@ defmodule PhoenixDuskmoon.Component do
     end
   end
 
-  @doc """
-  Import helpers for internal usage.
-
-  ## Support:
-
-  - `use PhoenixDuskmoon`
-
-  ### Internal use Only
-
-  - `use PhoenixDuskmoon.Component`
-  - `use PhoenixDuskmoon.Component, :live_component`
-
-  """
+  @doc false
   defmacro __using__(which) when is_atom(which) do
     apply(__MODULE__, which, [])
   end

@@ -1,7 +1,6 @@
 defmodule PhoenixDuskmoon.Component.Pagination do
   @moduledoc """
-  Render pagination.
-
+  Duskmoon UI Pagination Component
   """
   use PhoenixDuskmoon.Component, :html
 

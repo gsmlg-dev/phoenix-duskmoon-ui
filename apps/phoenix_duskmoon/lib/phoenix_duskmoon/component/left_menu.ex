@@ -1,6 +1,6 @@
 defmodule PhoenixDuskmoon.Component.LeftMenu do
   @moduledoc """
-  Render left menu.
+  Duskmoon UI LeftMenu Component
   """
   use PhoenixDuskmoon.Component, :html
 

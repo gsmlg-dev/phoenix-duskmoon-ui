@@ -1,7 +1,6 @@
 defmodule PhoenixDuskmoon.Component.Tab do
   @moduledoc """
-  render tab
-
+  Duskmoon UI Tab Component
   """
   use PhoenixDuskmoon.Component, :html
 

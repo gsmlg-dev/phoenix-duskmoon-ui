@@ -1,4 +1,12 @@
 defmodule PhoenixDuskmoon.Component.Flash do
+  @moduledoc """
+  Duskmoon UI Flash Component
+
+  Use this component to display flash messages.
+  Replace default flash in `Phoenix` project.
+
+      <.dm_flash_group flash={@flash} />
+  """
   use PhoenixDuskmoon.Component, :html
 
   import PhoenixDuskmoon.Component.Icons

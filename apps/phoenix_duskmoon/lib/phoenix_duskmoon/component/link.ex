@@ -1,6 +1,6 @@
 defmodule PhoenixDuskmoon.Component.Link do
   @moduledoc """
-  render appbar
+  Duskmoon UI Link Component
 
   """
   use PhoenixDuskmoon.Component, :html
