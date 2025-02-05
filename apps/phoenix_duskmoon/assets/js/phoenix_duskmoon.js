@@ -9,8 +9,8 @@ export const WebComponentHook = {
         : this.pushEvent;
 
         for (var i = 0; i < attrs.length; i++) {
-            if (/^darkmoon-send-/.test(attrs[i].name)) {
-                const eventName = attrs[i].name.replace(/^darkmoon-send-/, "");
+            if (/^duskmoon-send-/.test(attrs[i].name)) {
+                const eventName = attrs[i].name.replace(/^duskmoon-send-/, "");
                 const [phxEvent, callbackName] = attrs[i].value.split(';');
                 this.el.addEventListener(eventName, ({ detail }) => {
                     pushEvent(phxEvent, detail, (e) => {
@@ -18,8 +18,8 @@ export const WebComponentHook = {
                     });
                 });
             }
-            if (/^darkmoon-receive-/.test(attrs[i].name)) {
-                const eventName = attrs[i].name.replace(/^darkmoon-receive-/, "");
+            if (/^duskmoon-receive-/.test(attrs[i].name)) {
+                const eventName = attrs[i].name.replace(/^duskmoon-receive-/, "");
                 const handler = attrs[i].value;
                 this.handleEvent(eventName, (payload) => {
                     if (handler && this.el[handler]) {
@@ -29,7 +29,7 @@ export const WebComponentHook = {
                     }
                 });
             }
-            if ('darkmoon-receive' === attrs[i].name) {
+            if ('duskmoon-receive' === attrs[i].name) {
                 const [phxEvent, callbackName] = attrs[i].value.split(';');
                 this.handleEvent(phxEvent, (payload) => {
                     this.el[callbackName]?.(payload);
