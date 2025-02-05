@@ -2,6 +2,7 @@
 
 @import "tailwindcss";
 @plugin "daisyui";
+@import "phoenix_duskmoon/theme";
 @import "phoenix_duskmoon/components";
 
 .rainbow {

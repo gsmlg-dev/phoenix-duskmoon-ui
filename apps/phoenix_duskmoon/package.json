@@ -6,6 +6,7 @@
     ".": "./priv/static/phoenix_duskmoon.js",
     "./css": "./priv/static/phoenix_duskmoon.css",
     "./components": "./assets/css/components.css",
+    "./theme": "./assets/css/theme.css",
     "./svg/mdi/*.svg": "./priv/mdi/svg/*.svg",
     "./svg/bsi/*.svg": "./priv/bsi/svg/*.svg"
   },

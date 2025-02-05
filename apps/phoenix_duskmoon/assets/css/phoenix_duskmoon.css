@@ -4,5 +4,6 @@
 @plugin "daisyui";
 @plugin "@tailwindcss/typography";
 
+@import "./theme.css";
 @import "./components.css";
 

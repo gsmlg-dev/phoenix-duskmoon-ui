@@ -34,7 +34,9 @@ defmodule PhoenixDuskmoon do
       @config "../tailwind.config.js";
 
       @import "tailwindcss";
+      @plugin "@tailwindcss/typography";
       @plugin "daisyui";
+      @import "phoenix_duskmoon/theme";
       @import "phoenix_duskmoon/components";
   ```
 
