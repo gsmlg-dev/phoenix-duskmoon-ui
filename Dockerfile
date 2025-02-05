@@ -42,7 +42,6 @@ ENV ERLCOOKIE=duskmoon_storybook
 ENV HOST=duskmoon-storybook.gsmlg.dev
 ENV POOL_SIZE=10
 ENV PHX_SERVER=true
-ENV SECRET_KEY_BASE=duskmoon_storybook
 
 COPY --from=builder /app /app
 
