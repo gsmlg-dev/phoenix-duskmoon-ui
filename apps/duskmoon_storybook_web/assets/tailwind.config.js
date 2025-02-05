@@ -1,13 +1,11 @@
-// See the Tailwind configuration guide for advanced usage
-// https://tailwindcss.com/docs/configuration
-let plugin = require('tailwindcss/plugin')
+const plugin = require('tailwindcss/plugin');
 
 module.exports = {
   content: [
     './js/**/*.js',
     '../lib/**/*.exs',
-    '../lib/*_web.ex',
-    '../lib/*_web/**/*.*ex',
+    '../lib/**/*.*ex',
+    '../../phoenix_duskmoon/assets/**/*.css',
     '../../phoenix_duskmoon/lib/**/*.*ex'
   ],
   theme: {
@@ -15,7 +13,6 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/typography"),
-    require("daisyui"),
     plugin(function ({ matchUtilities, theme }) {
       matchUtilities(
         {

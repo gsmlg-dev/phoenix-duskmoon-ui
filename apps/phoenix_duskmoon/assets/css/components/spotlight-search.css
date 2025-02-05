@@ -1,0 +1,50 @@
+
+@layer components {
+  .spotlight-search {
+    width: 80vw;
+    max-width: 800px;
+    padding: 0rem;
+    /* border-radius: 0.5rem; */
+    background-color: #ff00;
+    box-shadow: 0 0 2rem 0.5rem #6666;
+    display: none;
+    flex-direction: column;
+    margin: auto;
+
+    .spotlight-input {
+      @apply flex items-center gap-2;
+      flex: 0 0 auto;
+      min-width: 100%;
+
+      input {
+        @apply w-full text-base-content;
+      }
+    }
+
+    .spotlight-loading {
+      @apply flex items-center justify-center h-6 loading loading-bars loading-sm;
+      margin: 0 auto;
+    }
+
+    .spotlight-suggestion-list {
+      @apply max-h-56 bg-base-100 shadow-lg flex flex-col overflow-auto rounded;
+
+      .item {
+        @apply h-8 flex items-center text-base-content bg-base-300 px-4;
+        flex: 0 0 2rem;
+      }
+      .item.autocomplete-active {
+        @apply bg-primary text-primary-content;
+      }
+    }
+    .spotlight-suggestion-list:empty {
+      display: none;
+    }
+  }
+  .spotlight-search[open] {
+    display: flex;
+  }
+  .spotlight-search::backdrop {
+    background: #1111;
+  }
+}

@@ -31,3 +31,5 @@ plugins:
         else
           npm publish --tag "${nextRelease.channel}";
         fi
+        echo "new_release_version=${nextRelease.version}" >> "$GITHUB_OUTPUT";
+        echo "new_release_channel=${nextRelease.channel}" >> "$GITHUB_OUTPUT";

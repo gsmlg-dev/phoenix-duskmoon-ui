@@ -1,11 +1,13 @@
 {
   "dependencies": {
-    "@gsmlg/lit": "1.30.3"
+    "@gsmlg/lit": "1.30.3",
+    "phoenix_duskmoon": "file:../phoenix_duskmoon",
+    "tailwindcss": "^4.0.0"
   },
   "devDependencies": {
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/typography": "^0.5.16",
-    "daisyui": "^4.12.23",
+    "daisyui": "^5.0.0-beta.6",
     "postcss": "^8.5.1"
   }
 }

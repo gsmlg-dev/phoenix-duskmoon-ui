@@ -1,4 +1,7 @@
 defmodule PhoenixDuskmoon.Component.Modal do
+  @moduledoc """
+  Duskmoon UI Modal Component
+  """
   use PhoenixDuskmoon.Component, :html
 
   import PhoenixDuskmoon.Component.Icons

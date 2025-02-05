@@ -1,12 +1,11 @@
 defmodule PhoenixDuskmoon.Component.Button do
   @moduledoc """
-  render button
+  Duskmoon UI Button Component
 
   """
   use PhoenixDuskmoon.Component, :html
   import PhoenixDuskmoon.Component.Icons
 
-  @spec dm_btn(map()) :: Phoenix.LiveView.Rendered.t()
   @doc """
   Generates a button.
   [INSERT LVATTRDOCS]
@@ -21,6 +20,9 @@ defmodule PhoenixDuskmoon.Component.Button do
   @doc type: :component
   attr(:id, :any, required: false)
   attr(:class, :any, default: nil, doc: "the class of the button")
+
+  attr(:noise, :boolean, default: false, doc: "the noise of the button")
+  attr(:content, :string, default: "", doc: "the content of noise button")
 
   attr(:confirm_class, :any,
     default: nil,
@@ -51,6 +53,7 @@ defmodule PhoenixDuskmoon.Component.Button do
     doc: "the action of the confirm action button in dialog"
   )
 
+  @spec dm_btn(map()) :: Phoenix.LiveView.Rendered.t()
   def dm_btn(%{confirm: confirm} = assigns) when confirm != "" do
     assigns =
       assigns
@@ -97,6 +100,22 @@ defmodule PhoenixDuskmoon.Component.Button do
         </div>
       </div>
     </dialog>
+    """
+  end
+
+  def dm_btn(%{noise: true} = assigns) do
+    assigns =
+      assigns
+      |> assign_new(:id, fn -> nil end)
+
+    ~H"""
+    <button
+      id={@id}
+      class={["btn-noise", @class]}
+      data-content={@content}
+      style={"--aps: running"}
+      {@rest}
+    ><i :for={_ <- 0..72} /></button>
     """
   end
 

@@ -1,6 +1,6 @@
 defmodule PhoenixDuskmoon.Component.Form do
   @moduledoc """
-  render appbar
+  Duskmoon UI Form Component
 
   """
   use PhoenixDuskmoon.Component, :html
@@ -9,6 +9,8 @@ defmodule PhoenixDuskmoon.Component.Form do
 
   @doc """
   Renders a simple form.
+
+  Generate default `for` attribute for the form.
 
   ## Examples
 
@@ -81,6 +83,7 @@ defmodule PhoenixDuskmoon.Component.Form do
   attr(:field_class, :any, default: nil)
   attr(:id, :any, default: nil)
   attr(:class, :any, default: nil)
+  attr(:classic, :boolean, default: false)
   attr(:name, :any)
   attr(:label, :string, default: nil)
   attr(:value, :any)
@@ -134,7 +137,7 @@ defmodule PhoenixDuskmoon.Component.Form do
           name={@name}
           value="true"
           checked={@checked}
-          class={["checkbox", @class]}
+          class={[if(!@classic, do: "checkbox"), @class]}
           {@rest}
         />
         <%= @label %>
@@ -157,7 +160,7 @@ defmodule PhoenixDuskmoon.Component.Form do
           type="checkbox"
           id={@id}
           class={[
-            "toggle",
+            if(!@classic, do: "toggle"),
             @class
           ]}
           name={@name}
@@ -174,13 +177,13 @@ defmodule PhoenixDuskmoon.Component.Form do
   def dm_input(%{type: "select"} = assigns) do
     ~H"""
     <div class={["input-field", @field_class]} phx-feedback-for={@name}>
-      <.dm_label for={@id}><%= @label %></.dm_label>
+      <.dm_label for={@id} class={@errors != [] && "text-error"}><%= @label %></.dm_label>
       <div class="flex flex-col gap-2">
         <select
           id={@id}
           name={@name}
           class={[
-            "select select-bordered",
+            if(!@classic, do: "select select-bordered"),
             @class
           ]}
           multiple={@multiple}
@@ -200,12 +203,15 @@ defmodule PhoenixDuskmoon.Component.Form do
     <div class={["input-field", @field_class]} phx-feedback-for={@name}>
       <.dm_label for={@id}><%= @label %></.dm_label>
       <div class="flex flex-col gap-2">
-        <div class="flex gap-6">
-          <label class="inline-flex items-center gap-2" :for={{opt_label, opt_value} <- @options}>
+        <div class="flex flex-wrap gap-6">
+          <label
+            class="inline-flex items-center gap-2 min-w-max"
+            :for={{opt_label, opt_value} <- @options}
+          >
             <input
               type="checkbox"
               class={[
-                "checkbox",
+                if(!@classic, do: "checkbox"),
                 @class
               ]}
               name={"#{@name}[]"}
@@ -226,12 +232,12 @@ defmodule PhoenixDuskmoon.Component.Form do
     <div class={["input-field", @field_class]} phx-feedback-for={@name}>
       <.dm_label for={@id}><%= @label %></.dm_label>
       <div class="flex flex-col gap-2">
-        <div class="flex gap-6">
-          <label class="inline-flex items-center gap-2" :for={{opt_label, opt_value} <- @options}>
+        <div class="flex flex-wrap gap-6">
+          <label class="inline-flex items-center gap-2 min-w-max" :for={{opt_label, opt_value} <- @options}>
             <input
               type="radio"
               class={[
-                "radio",
+                if(!@classic, do: "radio"),
                 @class
               ]}
               name={@name}
@@ -250,15 +256,15 @@ defmodule PhoenixDuskmoon.Component.Form do
   def dm_input(%{type: "textarea"} = assigns) do
     ~H"""
     <div class={["input-field", @field_class]} phx-feedback-for={@name}>
-      <.dm_label for={@id}><%= @label %></.dm_label>
+      <.dm_label for={@id} class={@errors != [] && "text-error"}><%= @label %></.dm_label>
       <div class="flex flex-col gap-2">
         <textarea
           id={@id}
           name={@name}
           class={[
-            "textarea textarea-bordered",
+            if(!@classic, do: "textarea textarea-bordered"),
             @class,
-            @errors != [] && "border-error focus:border-error"
+            @errors != [] && "textarea-error"
           ]}
           {@rest}
         ><%= Phoenix.HTML.Form.normalize_value("textarea", @value) %></textarea>
@@ -271,7 +277,7 @@ defmodule PhoenixDuskmoon.Component.Form do
   def dm_input(%{type: "file"} = assigns) do
     ~H"""
     <div class={["input-field", @field_class]} phx-feedback-for={@name}>
-      <.dm_label for={@id}><%= @label %></.dm_label>
+      <.dm_label for={@id} class={@errors != [] && "text-error"}><%= @label %></.dm_label>
       <div class="flex flex-col gap-2">
         <input
           id={@id}
@@ -280,8 +286,8 @@ defmodule PhoenixDuskmoon.Component.Form do
           value={Phoenix.HTML.Form.normalize_value(@type, @value)}
           class={[
             @class,
-            "file-input file-input-bordered",
-            @errors != [] && "border-error focus:border-error"
+            if(!@classic, do: "file-input file-input-bordered"),
+            @errors != [] && "file-input-error"
           ]}
           {@rest}
         />
@@ -295,7 +301,7 @@ defmodule PhoenixDuskmoon.Component.Form do
   def dm_input(assigns) do
     ~H"""
     <div class={["input-field", @field_class]} phx-feedback-for={@name}>
-      <.dm_label for={@id}><%= @label %></.dm_label>
+      <.dm_label for={@id} class={@errors != [] && "text-error"}><%= @label %></.dm_label>
       <div class="flex flex-col gap-2">
         <input
           type={@type}
@@ -304,8 +310,8 @@ defmodule PhoenixDuskmoon.Component.Form do
           value={Phoenix.HTML.Form.normalize_value(@type, @value)}
           class={[
             @class,
-            "input input-bordered",
-            @errors != [] && "border-error focus:border-error"
+            if(!@classic, do: "input input-bordered"),
+            @errors != [] && "input-error"
           ]}
           {@rest}
         />
@@ -318,13 +324,15 @@ defmodule PhoenixDuskmoon.Component.Form do
   @doc """
   Renders a label.
   """
+  attr(:id, :any, default: nil)
+  attr(:class, :any, default: nil)
   attr(:for, :string, default: nil)
   slot(:inner_block, required: true)
 
   def dm_label(assigns) do
     ~H"""
-    <label for={@for} class="label">
-      <span class="label-text"><%= render_slot(@inner_block) %></span>
+    <label for={@for} id={@id} class={["label", @class]}>
+      <%= render_slot(@inner_block) %>
     </label>
     """
   end
@@ -332,14 +340,129 @@ defmodule PhoenixDuskmoon.Component.Form do
   @doc """
   Generates a generic error message.
   """
+  attr(:id, :any, default: nil)
+  attr(:class, :any, default: nil)
   slot(:inner_block, required: true)
 
   def dm_error(assigns) do
     ~H"""
-    <p class="mt-3 flex gap-3 text-sm leading-6 text-error phx-no-feedback:hidden">
-      <.dm_bsi name="exclamation-circle" class="mt-0.5 h-5 w-5 flex-none" />
+    <span class="flex items-center gap-1 text-sm leading-6 text-error">
+      <.dm_bsi name="exclamation-circle" class="h-3 w-3 flex-none" />
       <%= render_slot(@inner_block) %>
-    </p>
+    </span>
+    """
+  end
+
+  @doc """
+  Renders an compact input with label and error messages.
+
+  A `Phoenix.HTML.FormField` may be passed as argument,
+  which is used to retrieve the input name, id, and values.
+  Otherwise all attributes may be passed explicitly.
+
+  ## Types
+
+  Only input and select are supported.
+
+  ## Examples
+
+      <.dm_compact_input field={@form[:email]} type="email" />
+      <.dm_compact_input name="my-input" errors={["oh no!"]} />
+  """
+  attr(:field_class, :any, default: nil)
+  attr(:id, :any, default: nil)
+  attr(:class, :any, default: nil)
+  attr(:name, :any)
+  attr(:label, :string, default: nil)
+  attr(:value, :any)
+
+  attr(:type, :string,
+    default: "text",
+    values: ~w(color date datetime-local email file month number password
+               search select tel text time url week)
+  )
+
+  attr(:field, Phoenix.HTML.FormField,
+    doc: "a form field struct retrieved from the form, for example: @form[:email]"
+  )
+
+  attr(:errors, :list, default: [])
+  attr(:checked, :boolean, doc: "the checked flag for checkbox inputs")
+  attr(:prompt, :string, default: nil, doc: "the prompt for select inputs")
+  attr(:options, :list, doc: "the options to pass to Phoenix.HTML.Form.options_for_select/2")
+  attr(:multiple, :boolean, default: false, doc: "the multiple flag for select inputs")
+
+  attr(:rest, :global,
+    include: ~w(accept autocomplete capture cols disabled form list max maxlength min minlength
+                multiple pattern placeholder readonly required rows size step)
+  )
+
+  slot(:inner_block)
+
+  def dm_compact_input(%{field: %Phoenix.HTML.FormField{} = field} = assigns) do
+    assigns
+    |> assign(field: nil, id: assigns.id || field.id)
+    # |> assign(:errors, Enum.map(field.errors, &translate_error(&1)))
+    |> assign_new(:name, fn -> if assigns.multiple, do: field.name <> "[]", else: field.name end)
+    |> assign_new(:value, fn -> field.value end)
+    |> dm_compact_input()
+  end
+
+  def dm_compact_input(%{type: "select"} = assigns) do
+    ~H"""
+    <div
+      class={[
+        "select select-bordered",
+        @errors != [] && "select-error",
+        @class
+      ]}
+    >
+      <label for={@id} class={["label", @errors != [] && "text-error"]}>
+        <%= @label %>
+      </label>
+      <select
+        id={@id}
+        name={@name}
+        class={[
+          "compact-select",
+        ]}
+        multiple={@multiple}
+        {@rest}
+      >
+        <option :if={@prompt} value=""><%= @prompt %></option>
+        <%= Phoenix.HTML.Form.options_for_select(@options, @value) %>
+      </select>
+    </div>
+    <.dm_error :for={msg <- @errors}><%= msg %></.dm_error>
+    """
+  end
+
+  def dm_compact_input(assigns) do
+    ~H"""
+    <div
+      class={[
+        "input input-bordered",
+        @errors != [] && "input-error",
+        @class
+      ]}
+      phx-feedback-for={@name}
+    >
+      <label for={@id} class={["label", @errors != [] && "text-error"]}>
+        <%= @label %>
+      </label>
+      <input
+        type={@type}
+        name={@name}
+        id={@id}
+        value={Phoenix.HTML.Form.normalize_value(@type, @value)}
+        class={[
+          "compact-input",
+        ]}
+        {@rest}
+      />
+      <%= render_slot(@inner_block) %>
+    </div>
+    <.dm_error :for={msg <- @errors}><%= msg %></.dm_error>
     """
   end
 end

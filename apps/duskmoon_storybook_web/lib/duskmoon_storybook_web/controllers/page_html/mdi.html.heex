@@ -24,21 +24,62 @@
     />
   </div>
   <div class="flex flex-row mt-4 mb-2">
-    <.form for={@conn} action={~p"/mdi"} method="get" class={["flex flex-row gap-2"]}>
-      <.dm_input field_class="flex" label="Icon Name" name="filter" value={@filter} />
+    <.dm_form for={@conn} action={~p"/mdi"} method="get" class="input input-bordered pr-0">
+      <.dm_input field_class="flex" label="Icon Name" name="filter" value={@filter} classic={true} />
       <button type="submit" class="btn btn-primary">Search</button>
-    </.form>
+    </.dm_form>
   </div>
-  <div class="grid grid-cols-auto-fill-[10rem] auto-fill-[10rem] gap-4">
+  <script>
+    function fallbackCopyTextToClipboard(text) {
+      var textArea = document.createElement("textarea");
+      textArea.value = text;
+      
+      // Avoid scrolling to bottom
+      textArea.style.top = "0";
+      textArea.style.left = "0";
+      textArea.style.position = "fixed";
+
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+
+      try {
+        var successful = document.execCommand('copy');
+        var msg = successful ? 'successful' : 'unsuccessful';
+        console.log('Fallback: Copying text command was ' + msg);
+      } catch (err) {
+        console.error('Fallback: Oops, unable to copy', err);
+      }
+
+      document.body.removeChild(textArea);
+    }
+    function copyTextToClipboard(text) {
+      if (!navigator.clipboard) {
+        fallbackCopyTextToClipboard(text);
+        return;
+      }
+      navigator.clipboard.writeText(text).then(function() {
+        console.log('Async: Copying to clipboard was successful!');
+      }, function(err) {
+        console.error('Async: Could not copy text: ', err);
+      });
+    }
+  </script>
+  <div class="grid grid-cols-auto-fill-[6rem] auto-fill-[6rem] gap-4">
     <div 
       :for={icon_name <- @mdi_icons}
-      class="border flex flex-col w-40 h-40 items-center justify-center p-4"
+      class="border flex flex-col w-full h-full items-center justify-between p-4"
     >
-      <div class="text-primary">
-        <embed><%= icon_name %></embed>
+      <div class="text-primary/60 text-sm">
+        <embed class="min-w-max"><%= icon_name %></embed>
+        <a
+          class="btn btn-xs btn-ghost btn-primary"
+          onclick={"copyTextToClipboard('#{icon_name}')"}>
+          <.dm_bsi name="clipboard" class="w-3 aspect-square" />
+        </a>
       </div>
       <div class="flex items-center justify-center">
-        <.dm_mdi name={icon_name} class="w-24 h-24" />
+        <.dm_mdi name={icon_name} class="w-16 aspect-square" />
       </div>
     </div>
   </div>

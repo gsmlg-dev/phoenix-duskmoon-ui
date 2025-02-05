@@ -1,10 +1,12 @@
 {
   "name": "phoenix_duskmoon",
   "version": "0.0.0",
-  "main": "./priv/static/phoenix_duskmoon.js",
+  "type": "module",
   "exports": {
     ".": "./priv/static/phoenix_duskmoon.js",
     "./css": "./priv/static/phoenix_duskmoon.css",
+    "./components": "./assets/css/components.css",
+    "./theme": "./assets/css/theme.css",
     "./svg/mdi/*.svg": "./priv/mdi/svg/*.svg",
     "./svg/bsi/*.svg": "./priv/bsi/svg/*.svg"
   },
@@ -16,6 +18,8 @@
     "CHANGELOG.md",
     "LICENSE",
     "package.json",
+    "assets/css/components.css",
+    "assets/css/components/",
     "priv/static/",
     "priv/svg/"
   ],
@@ -23,17 +27,19 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "@gsmlg/lit": "1.30.3",
-    "lit": "^3.2.1",
-    "lit-element": "^4.1.1",
-    "lit-html": "^3.2.1"
+    "@gsmlg/lit": "1.29.5",
+    "lit": "^2.4.1",
+    "lit-element": "^3.2.2",
+    "lit-html": "^2.4.0"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
+    "@mdi/svg": "^7.4.47",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/typography": "^0.5.16",
-    "daisyui": "^4.12.23",
+    "bootstrap-icons": "^1.11.3",
+    "daisyui": "^5.0.0-beta.6",
     "postcss": "^8.5.1"
   },
   "peerDependencies": {

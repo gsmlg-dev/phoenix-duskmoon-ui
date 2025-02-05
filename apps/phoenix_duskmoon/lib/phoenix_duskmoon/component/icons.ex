@@ -1,28 +1,33 @@
 defmodule PhoenixDuskmoon.Component.Icons do
   @moduledoc """
-  Render 7000+ Material Design Icons
+  Duskmoon UI Icons Component
+
+  Render 7000+ Material Design Icons with [mdi_icons]
+
+  Render 2000+ Bootstrap Icons with [bsi_icons]
+
   """
   use PhoenixDuskmoon.Component, :html
 
-  # alias Phoenix.LiveView.JS
-
   @md_icons File.ls!(Application.app_dir(:phoenix_duskmoon, "priv/mdi/svg"))
+            |> Enum.map(&String.trim(&1))
             |> Enum.filter(&String.ends_with?(&1, ".svg"))
             |> Enum.map(&String.trim(&1, ".svg"))
             |> Enum.sort(:asc)
 
   @doc """
-  Return all names of available Material Design Icons.
+  Return all names of available Material Design Icons (from `npm` `@mdi/svg`).
+
   Can be found at [Material Design Icons](https://duskmoon-storybook.gsmlg.dev/mdi)
 
       > PhoenixDuskmoon.Component.Icons.mdi_icons()
         #=> [
-        #=>   "abacus.svg",
-        #=>   "abjad-arabic.svg",
+        #=>   "abacus",
+        #=>   "abjad-arabic",
         #=>   ...
         #=> ]
   """
-  @spec mdi_icons() :: [String.t()]
+  @spec mdi_icons() :: [binary()]
   def mdi_icons(), do: @md_icons
 
   @doc """
@@ -81,18 +86,20 @@ defmodule PhoenixDuskmoon.Component.Icons do
   end
 
   @bs_icons File.ls!(Application.app_dir(:phoenix_duskmoon, "priv/bsi/svg"))
+            |> Enum.map(&String.trim(&1))
             |> Enum.filter(&String.ends_with?(&1, ".svg"))
             |> Enum.map(&String.trim(&1, ".svg"))
             |> Enum.sort(:asc)
 
   @doc """
-  Return all names of available Bootstrap Icons.
+  Return all names of available Bootstrap Icons (from `npm` `bootstrap-icons`).
+
   Can be found at [Bootstrap Icons](https://duskmoon-storybook.gsmlg.dev/bsi)
 
       > PhoenixDuskmoon.Component.Icons.bsi_icons()
         #=> [
-          "0-circle-fill.svg",
-          "0-circle.svg",
+          "0-circle-fill",
+          "0-circle",
           ...
         ]
   """

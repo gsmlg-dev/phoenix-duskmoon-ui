@@ -1,4 +1,4 @@
-defmodule Mix.Tasks.PhxWc.GenIcons do
+defmodule Mix.Tasks.PhoenixDuskmoon.GenIcons do
   # Generate Material Design Icons
   # try to define with macro, it's too slow
 

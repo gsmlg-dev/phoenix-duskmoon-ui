@@ -1,6 +1,6 @@
 defmodule PhoenixDuskmoon.Component.Card do
   @moduledoc """
-  Render card.
+  Duskmoon UI Card Component
   """
   use PhoenixDuskmoon.Component, :html
 
