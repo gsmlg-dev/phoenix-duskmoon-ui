@@ -8,9 +8,6 @@ module.exports = {
     '../lib/phoenix_duskmoon/*.ex',
     '../lib/phoenix_duskmoon/**/*.ex'
   ],
-  theme: {
-    extend: {},
-  },
   plugins: [
     plugin(function ({ matchUtilities, theme }) {
       matchUtilities(

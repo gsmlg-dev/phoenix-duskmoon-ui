@@ -52,7 +52,7 @@ defmodule PhoenixDuskmoon.Mixfile do
     [
       maintainers: ["Jonathan Gao"],
       licenses: ["MIT"],
-      files: ~w(lib priv CHANGELOG.md LICENSE mix.exs package.json README.md),
+      files: ~w(lib priv CHANGELOG.md LICENSE mix.exs package.json assets README.md),
       links: %{
         Changelog: "https://hexdocs.pm/phoenix_duskmoon/changelog.html",
         GitHub: @source_url

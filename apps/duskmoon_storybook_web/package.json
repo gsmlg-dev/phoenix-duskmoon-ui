@@ -5,7 +5,6 @@
     "tailwindcss": "^4.0.0"
   },
   "devDependencies": {
-    "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/typography": "^0.5.16",
     "daisyui": "^5.0.0-beta.6",
     "postcss": "^8.5.1"

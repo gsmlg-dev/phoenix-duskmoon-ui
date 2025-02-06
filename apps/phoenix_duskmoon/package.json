@@ -28,25 +28,14 @@
     "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
-    "@gsmlg/lit": "1.29.5",
-    "lit": "^2.4.1",
-    "lit-element": "^3.2.2",
-    "lit-html": "^2.4.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.26.0",
-    "@babel/preset-env": "^7.26.0",
     "@mdi/svg": "^7.4.47",
-    "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/typography": "^0.5.16",
     "bootstrap-icons": "^1.11.3",
     "daisyui": "^5.0.0-beta.6",
     "postcss": "^8.5.1"
   },
   "peerDependencies": {
-    "@gsmlg/lit": "1.29.5",
-    "lit": "^2.4.1",
-    "lit-element": "^3.2.2",
-    "lit-html": "^2.4.0"
   }
 }
