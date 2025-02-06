@@ -32,20 +32,18 @@ config :tailwind,
   version: "4.0.3",
   default: [
     args: ~w(
-      --config=tailwind.config.js
-      --input=css/phoenix_duskmoon.css
-      --output=../priv/static/phoenix_duskmoon.css
+      --input=assets/css/phoenix_duskmoon.css
+      --output=priv/static/phoenix_duskmoon.css
     ),
-    cd: Path.expand("../apps/phoenix_duskmoon/assets", __DIR__),
+    cd: Path.expand("../apps/phoenix_duskmoon", __DIR__),
     env: %{"NODE_PATH" => "#{Path.expand("../deps", __DIR__)}:#{Path.expand("../apps", __DIR__)}"}
   ],
   storybook: [
     args: ~w(
-      --config=tailwind.config.js
-      --input=css/app.css
-      --output=../priv/static/assets/app.css
+      --input=assets/css/app.css
+      --output=priv/static/assets/app.css
     ),
-    cd: Path.expand("../apps/duskmoon_storybook_web/assets", __DIR__),
+    cd: Path.expand("../apps/duskmoon_storybook_web", __DIR__),
     env: %{"NODE_PATH" => "#{Path.expand("../deps", __DIR__)}:#{Path.expand("../apps", __DIR__)}"}
   ]
 
@@ -53,14 +51,14 @@ config :tailwind,
 config :esbuild,
   version: "0.24.2",
   default: [
-    args: ~w(js/phoenix_duskmoon.js --target=es2021 --format=iife --outdir=../priv/static/),
-    cd: Path.expand("../apps/phoenix_duskmoon/assets", __DIR__),
+    args: ~w(assets/js/phoenix_duskmoon.js --target=es2021 --format=iife --outdir=priv/static/),
+    cd: Path.expand("../apps/phoenix_duskmoon", __DIR__),
     env: %{"NODE_PATH" => "#{Path.expand("../apps", __DIR__)}:#{Path.expand("../deps", __DIR__)}"}
   ],
   storybook: [
     args:
-      ~w(js/app.js --bundle --format=iife --target=es2021 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
-    cd: Path.expand("../apps/duskmoon_storybook_web/assets", __DIR__),
+      ~w(assets/js/app.js --bundle --format=iife --target=es2021 --outdir=priv/static/assets --external:/fonts/* --external:/images/*),
+    cd: Path.expand("../apps/duskmoon_storybook_web", __DIR__),
     env: %{"NODE_PATH" => "#{Path.expand("../deps", __DIR__)}:#{Path.expand("../apps", __DIR__)}"}
   ]
 
