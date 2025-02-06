@@ -1,3 +1,11 @@
+## [6.0.6](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v6.0.5...v6.0.6) (2025-02-06)
+
+
+### Bug Fixes
+
+* Fix Dockerfile. ([c6d93f0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/c6d93f057265cfe8457effab27a030b76e38049d))
+* Fix. ([9fa74d6](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/9fa74d685340d1ae05b29697354897c1e351057a))
+
 ## [6.0.5](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v6.0.4...v6.0.5) (2025-02-05)
 
 
