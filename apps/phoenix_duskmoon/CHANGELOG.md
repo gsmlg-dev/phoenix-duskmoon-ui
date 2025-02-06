@@ -1,3 +1,10 @@
+## [6.0.8](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v6.0.7...v6.0.8) (2025-02-06)
+
+
+### Bug Fixes
+
+* Fix missing css. ([a709509](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/a70950966ebea82ac858ab7e6e6ec8196fe17e88))
+
 ## [6.0.7](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v6.0.6...v6.0.7) (2025-02-06)
 
 
