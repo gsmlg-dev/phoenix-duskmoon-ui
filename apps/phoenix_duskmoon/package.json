@@ -18,6 +18,7 @@
     "CHANGELOG.md",
     "LICENSE",
     "package.json",
+    "assets/css/theme.css",
     "assets/css/components.css",
     "assets/css/components/",
     "priv/static/",
