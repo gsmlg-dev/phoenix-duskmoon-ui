@@ -18,9 +18,7 @@
     "CHANGELOG.md",
     "LICENSE",
     "package.json",
-    "assets/css/theme.css",
-    "assets/css/components.css",
-    "assets/css/components/",
+    "assets/",
     "priv/static/",
     "priv/svg/"
   ],
