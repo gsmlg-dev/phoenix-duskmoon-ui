@@ -1,3 +1,10 @@
+# [6.1.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v6.0.10...v6.1.0) (2025-02-09)
+
+
+### Features
+
+* Move effect loading to fun component. ([521402a](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/521402af8e250a04ea1e0a9508c20447be9bc189))
+
 ## [6.0.10](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v6.0.9...v6.0.10) (2025-02-09)
 
 
