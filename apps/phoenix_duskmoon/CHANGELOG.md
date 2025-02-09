@@ -1,3 +1,11 @@
+## [6.0.9](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v6.0.8...v6.0.9) (2025-02-09)
+
+
+### Bug Fixes
+
+* Fix package.json files. ([885e8e9](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/885e8e9515e310352f6c65525c2059aea0822977))
+* Fix package.json. ([9db1241](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/9db1241af76fa8e7a7dd195cb9d8ccb163cc7e19))
+
 ## [6.0.8](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v6.0.7...v6.0.8) (2025-02-06)
 
 
