@@ -49,23 +49,28 @@ defmodule PhoenixDuskmoon.Fun.Spotlight do
     ~H"""
     <dialog
       id={@id}
-      class={["spotlight-search", @class]}
+      class={["modal", "dm-fun-spotlight-search", @class]}
     >
-      <label class="input input-bordered input-primary spotlight-input">
-        <input
-          type="search"
-          class="w-full"
-          placeholder="Type to search..."
-        >
-        <kbd class="kbd kbd-sm text-base-content">⌘</kbd>
-        <kbd class="kbd kbd-sm text-base-content">↵</kbd>
-      </label>
-      <div :if={@loading} class="spotlight-loading"></div>
-      <div :if={length(assigns[:sugguestion]) > 0} class="spotlight-suggestion-list">
-        <div :for={sug <- @sugguestion} class="item">
-          {render_slot(sug)}
+      <div class="modal-box">
+        <label class="dm-fun-spotlight-input">
+          <input
+            type="search"
+            class="w-full"
+            placeholder="Type to search..."
+          >
+          <kbd class="kbd kbd-sm text-base-content">⌘</kbd>
+          <kbd class="kbd kbd-sm text-base-content">↵</kbd>
+        </label>
+        <div :if={@loading} class="dm-fun-spotlight-loading"></div>
+        <div :if={length(assigns[:sugguestion]) > 0} class="dm-fun-spotlight-suggestion-list">
+          <div :for={sug <- @sugguestion} class="dm-fun-spotlight-suggestion-list-item">
+            {render_slot(sug)}
+          </div>
         </div>
       </div>
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
     </dialog>
     <script type="module">
     const ssd = document.getElementById('<%= @id %>');

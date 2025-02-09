@@ -15,9 +15,12 @@
       <logo-gsmlg-dev />
     </:logo>
     <:user_profile>
-      <.dm_link href={"https://github.com/gsmlg-dev/phoenix-duskmoon-ui"}>
-        <.dm_mdi name="github" class="w-12 h-12" color="white" />
-      </.dm_link>
+      <div class="flex items-center">
+        <.dm_theme_switcher />
+        <.dm_link href={"https://github.com/gsmlg-dev/phoenix-duskmoon-ui"}>
+          <.dm_mdi name="github" class="w-12 h-12" color="white" />
+        </.dm_link>
+      </div>
     </:user_profile>
   </.dm_simple_appbar>
 <% else %>
@@ -32,9 +35,12 @@
       <logo-gsmlg-dev />
     </:logo>
     <:user_profile>
-      <.dm_link href={"https://github.com/gsmlg-dev/phoenix-duskmoon-ui"}>
-        <.dm_mdi name="github" class="w-12 h-12" color="white" />
-      </.dm_link>
+      <div class="flex items-center">
+        <.dm_theme_switcher />
+        <.dm_link href={"https://github.com/gsmlg-dev/phoenix-duskmoon-ui"}>
+          <.dm_mdi name="github" class="w-12 h-12" color="white" />
+        </.dm_link>
+      </div>
     </:user_profile>
   </.dm_appbar>
 <% end %>

@@ -15,14 +15,17 @@
   <:menu to={~p"/storybook"} class="opacity-60">Storybook</:menu>
 
   <:user_profile>
-    <.link href={"https://github.com/gsmlg-dev/phoenix-duskmoon-ui"}>
-      <.dm_mdi name="github" class="w-12 h-12" />
-    </.link>
+    <div class="flex items-center">
+      <.dm_theme_switcher />
+      <.link href={"https://github.com/gsmlg-dev/phoenix-duskmoon-ui"}>
+        <.dm_mdi name="github" class="w-12 h-12" />
+      </.link>
+    </div>
   </:user_profile>
 
   <h1 class={[
-    "text-center text-3xl md:text-4xl font-bold text-slate-300 select-none",
-    "bg-clip-text bg-gradient-to-tl from-[#fac2b0] to-[#b4e3da]",
+    "text-center text-4xl md:text-6xl font-bold text-primary select-none",
+    "bg-clip-text bg-gradient-to-tl from-primary to-accent",
     "darkmoon-hero-text"
   ]}>
     Duskmoon UI Fun Components
@@ -64,7 +67,7 @@
         </div>
       </div>
       <div class="flex justify-center items-center relative">
-        <div class="signature [--size:5rem]" data-content="BITW"></div>
+        <div class="dm-fun-signature [--size:5rem]" data-content="BITW"></div>
       </div>
     </div>
   </div>
@@ -82,7 +85,7 @@
         </div>
       </div>
       <div class="flex justify-center items-center relative">
-        <PhoenixDuskmoon.Fun.Element.dmf_eclipse background="var(--color-base-100)" />
+        <PhoenixDuskmoon.Fun.Element.dmf_eclipse background="var(--color-base-300)" />
       </div>
     </div>
   </div>

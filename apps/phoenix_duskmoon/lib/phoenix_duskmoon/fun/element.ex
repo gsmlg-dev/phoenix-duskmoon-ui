@@ -48,7 +48,7 @@ defmodule PhoenixDuskmoon.Fun.Element do
     ~H"""
     <div
       id={@id}
-      class={["eclipse", @class]}
+      class={["dm-fun-eclipse", @class]}
       style={"--bg-color: #{@background}; --size: #{@size};"}
     >
       <div class="layer layer-1"></div>
@@ -109,7 +109,7 @@ defmodule PhoenixDuskmoon.Fun.Element do
 
   def dmf_plasma_ball(assigns) do
     ~H"""
-    <div class="plasma-ball" style={"--size: #{@size};"}>
+    <div class="dm-fun-plasma-ball" style={"--size: #{@size};"}>
       <input type="checkbox" class={["switcher", if(@show_base, do: "", else: "hidden")]} checked="checked" />
       <div class="glassball">
         <div class={["electrode", if(!@show_electrode, do: "hide-electrode")]}></div>
@@ -211,7 +211,15 @@ defmodule PhoenixDuskmoon.Fun.Element do
 
   def dmf_atom(assigns) do
     ~H"""
-    <div id={@id} class={["atom", @class]}, style={"--atom-size: #{@size};--atom-color: #{@atom_color};--electron-color: #{@electron_color};"}>
+    <div
+      id={@id}
+      class={["dm-fun-atom", @class]}
+      style={[
+        "--atom-size: #{@size}",
+        "--atom-color: #{@atom_color}",
+        "--electron-color: #{@electron_color};"
+      ] |> Enum.join(";")}
+    >
       <div class="electron"></div>
       <div class="electron-alpha"></div>
       <div class="electron-omega"></div>
@@ -271,13 +279,13 @@ defmodule PhoenixDuskmoon.Fun.Element do
     <%= for n <- 0..@count do %>
       <% random_x = Enum.random(1..1000000) * 0.0001 %>
       <% random_offset = Enum.random(-100000..100000) * 0.0001 %>
-      .snowflake-<%= n %> {
+      .dm-fun-snowflake-<%= n %> {
         opacity: <%= Enum.random(1..10000) * 0.0001 %>;
         transform: translate(<%= random_x %>vw, -10px) scale(<%= Enum.random(1..10000) * 0.0001 %>);
-        animation: snowflake-fall-<%= n %> <%= Enum.random(10..30) * 1 %>s <%= Enum.random(0..30) * -1 %>s linear infinite;
+        animation: dm-fun-snowflake-fall-<%= n %> <%= Enum.random(10..30) * 1 %>s <%= Enum.random(0..30) * -1 %>s linear infinite;
       }
 
-      @keyframes snowflake-fall-<%= n %> {
+      @keyframes dm-fun-snowflake-fall-<%= n %> {
         <%= Enum.random(30000..80000) / 1000 %>% {
           transform: translate(<%= random_x + random_offset %>vw, <%= Enum.random(30000..80000) / 1000 %>vh) scale(<%= Enum.random(1..10000) * 0.0001 %>);
         }
@@ -290,7 +298,7 @@ defmodule PhoenixDuskmoon.Fun.Element do
     </style>
     <div
       :for={n <- 0..@count}
-      class={["snowflake", "snowflake-#{n}", @class, if(@unicode, do: "snowflake-unicode")]}
+      class={["dm-fun-snowflake", "dm-fun-snowflake-#{n}", @class, if(@unicode, do: "snowflake-unicode")]}
       style={"--snowflake-color: #{@color}; --snowflake-size: #{@size};"}
     />
     """
@@ -346,12 +354,12 @@ defmodule PhoenixDuskmoon.Fun.Element do
     ~H"""
     <div
       id={@id}
-      class={["footer-bubbles", @class]}
+      class={["dm-fun-footer-bubbles", @class]}
       style={"--footer-bg-color: #{@color}; filter: url(\"##{@blob_id}\");"}
     >
       <div
         :for={_n <- 1..@count}
-        class="bubble"
+        class="dm-fun-footer-bubble"
         style={[
           "--size: #{2 + Enum.random(0..999_999_999_999) * 1.0e-12 * 4}rem",
           "--distance: #{6 + Enum.random(0..999_999_999_999) * 1.0e-12  * 4}rem",

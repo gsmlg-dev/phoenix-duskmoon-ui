@@ -1,6 +1,6 @@
 
 @layer components {
-  .snowflake {
+  .dm-fun-snowflake {
     position: absolute;
     width: var(--snowflake-size, 10px);
     height: var(--snowflake-size, 10px);
@@ -13,7 +13,7 @@
     }
   }
 
-  .snowflake.snowflake-unicode::after {
+  .dm-fun-snowflake.snowflake-unicode::after {
     content: "\2746";
     color: var(--snowflake-color, #FFFFFF);
     font-size: var(--snowflake-size, 10px);

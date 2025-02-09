@@ -1,7 +1,6 @@
 
 @layer components {
-
-  .plasma-ball {
+  .dm-fun-plasma-ball {
     --size: 350px;
     --base-color: #222222;
     --switch-size: calc(var(--size) * 37 / 350);

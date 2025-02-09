@@ -79,20 +79,18 @@ app-bar {
 
 @layer components {
   .page-section-group {
-    @apply flex flex-col gap-1 bg-base-content mb-24;
-    color: var(--color-neutral);
+    @apply flex flex-col gap-1 py-1;
 
     .page-section {
-      @apply w-full py-16 flex flex-col bg-base-100 text-base-content;
+      @apply w-full py-16 flex flex-col bg-base-300 text-base-content;
     }
   }
 
   .fun-page-section-group {
-    @apply flex flex-col gap-1 bg-base-content mb-24;
-    color: var(--color-neutral);
+    @apply flex flex-col gap-1 py-1;
 
     .fun-page-section {
-      @apply w-full py-16 flex flex-col bg-base-100 text-base-content;
+      @apply w-full py-16 flex flex-col bg-base-300 text-base-content;
     }
   }
 }

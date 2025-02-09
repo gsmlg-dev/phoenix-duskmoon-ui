@@ -68,6 +68,7 @@ defmodule PhoenixDuskmoon.Component do
       import PhoenixDuskmoon.Component.Pagination
       import PhoenixDuskmoon.Component.Tab
       import PhoenixDuskmoon.Component.Table
+      import PhoenixDuskmoon.Component.ThemeSwitcher
     end
   end
 

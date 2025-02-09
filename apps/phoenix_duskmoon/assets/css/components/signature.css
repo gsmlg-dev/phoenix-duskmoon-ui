@@ -1,6 +1,6 @@
 
 @layer components {
-  .signature {
+  .dm-fun-signature {
     --size: 5rem;
     --sign-color: #ff0000aa;
     --rotate: -30deg;
@@ -15,14 +15,14 @@
     right: var(--right, 2rem);
     top: var(--top, 2rem);
   }
-  .signature::before {
+  .dm-fun-signature::before {
     position: absolute;
     inset: 2%;
     border: calc(var(--size) * 0.01) solid var(--sign-color);
     border-radius: 50%;
     content: " ";
   }
-  .signature::after {
+  .dm-fun-signature::after {
     position: absolute;
     inset: 5%;
     border-radius: 50%;
