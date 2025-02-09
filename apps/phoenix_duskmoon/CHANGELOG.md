@@ -1,3 +1,10 @@
+## [6.0.10](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v6.0.9...v6.0.10) (2025-02-09)
+
+
+### Bug Fixes
+
+* Add prefix to fun component, avoid conflict. ([5b52cc0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/5b52cc0c96c9a979b19053f61b9a6a8ea757d714))
+
 ## [6.0.9](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v6.0.8...v6.0.9) (2025-02-09)
 
 
