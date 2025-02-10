@@ -1,3 +1,10 @@
+## [6.1.1](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v6.1.0...v6.1.1) (2025-02-10)
+
+
+### Bug Fixes
+
+* Fix snowflake overflow. ([44c28ae](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/44c28ae9830085b2536a823b441d1e38b2318fff))
+
 # [6.1.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v6.0.10...v6.1.0) (2025-02-09)
 
 
