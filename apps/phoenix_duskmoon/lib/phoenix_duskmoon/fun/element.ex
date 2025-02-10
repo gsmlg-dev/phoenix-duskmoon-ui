@@ -287,11 +287,11 @@ defmodule PhoenixDuskmoon.Fun.Element do
 
       @keyframes dm-fun-snowflake-fall-<%= n %> {
         <%= Enum.random(30000..80000) / 1000 %>% {
-          transform: translate(<%= random_x + random_offset %>vw, <%= Enum.random(30000..80000) / 1000 %>vh) scale(<%= Enum.random(1..10000) * 0.0001 %>);
+          transform: translate(<%= if(random_x + random_offset > 100, do: random_x - random_offset, else: random_x + random_offset) %>vw, <%= Enum.random(30000..80000) / 1000 %>vh) scale(<%= Enum.random(1..10000) * 0.0001 %>);
         }
 
         to {
-          transform: translate(<%= random_x + random_offset / 2 %>vw, 100vh) scale(<%= Enum.random(1..10000) * 0.0001 %>);
+          transform: translate(<%= if(random_x + random_offset / 2 > 100, do: random_x - random_offset / 2, else: random_x + random_offset / 2) %>vw, 100vh) scale(<%= Enum.random(1..10000) * 0.0001 %>);
         }
       }
     <% end %>
