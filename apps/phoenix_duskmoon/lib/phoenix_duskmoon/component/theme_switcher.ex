@@ -51,7 +51,7 @@ defmodule PhoenixDuskmoon.Component.ThemeSwitcher do
           <input
             type="radio"
             name="theme-dropdown"
-            class="theme-controller w-full btn btn-sm btn-outline btn-block btn-ghost justify-center"
+            class="theme-controller w-full btn btn-sm btn-secondary btn-block justify-center"
             aria-label="Auto"
             value="default"
             checked={@theme == "default"}
@@ -61,7 +61,7 @@ defmodule PhoenixDuskmoon.Component.ThemeSwitcher do
           <input
             type="radio"
             name="theme-dropdown"
-            class="theme-controller w-full btn btn-sm btn-outline btn-block btn-ghost justify-center"
+            class="theme-controller w-full btn btn-sm btn-secondary btn-block justify-center"
             aria-label="Sunshine"
             value="sunshine"
             checked={@theme == "sunshine"}
@@ -71,7 +71,7 @@ defmodule PhoenixDuskmoon.Component.ThemeSwitcher do
           <input
             type="radio"
             name="theme-dropdown"
-            class="theme-controller w-full btn btn-sm btn-outline btn-block btn-ghost justify-center"
+            class="theme-controller w-full btn btn-sm btn-secondary btn-block justify-center"
             aria-label="Moonlight"
             value="moonlight"
             checked={@theme == "moonlight"}
@@ -92,7 +92,7 @@ defmodule PhoenixDuskmoon.Component.ThemeSwitcher do
         };
         const serverTheme = "<%= @theme %>";
         let theme = serverTheme || localStorage.getItem("theme") || "default";
-        const themeSwitcher = document.getElementById("theme-switcher-<%= @rid %>");
+        const themeSwitcher = document.getElementById("<%= @id || "theme-switcher-#{@rid}" %>");
         const themeControllers = themeSwitcher.querySelectorAll(".theme-controller");
         themeControllers.forEach(c => c.checked = theme === c.value);
 
