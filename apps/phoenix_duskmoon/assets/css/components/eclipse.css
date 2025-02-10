@@ -2,9 +2,9 @@
 @layer components {
   .dm-fun-eclipse {
     --bg-color: #09090b;
-    --r: 600px;
-    width: var(--r);
-    height: var(--r);
+    --size: 600px;
+    width: var(--size);
+    height: var(--size);
     position: relative;
     overflow: hidden;
 

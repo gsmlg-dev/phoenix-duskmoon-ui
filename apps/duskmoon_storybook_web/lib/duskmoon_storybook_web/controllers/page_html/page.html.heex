@@ -21,14 +21,14 @@
   </:user_profile>
 
   <h1 class={[
-    "text-center text-4xl md:text-8xl font-bold text-slate-300 select-none",
+    "text-center font-bold text-slate-300 select-none",
     "bg-clip-text bg-gradient-to-tl from-[#fac2b0] to-[#b4e3da]",
     "darkmoon-hero-text"
   ]}>
     Duskmoon UI
   </h1>
   <p class={[
-    "text-center text-2xl md:text-4xl mx-auto my-8 select-none",
+    "text-center mx-auto my-8 select-none",
     "darkmoon-hero-p-text"
   ]}>
     Duskmoon UI for Phoenix Framework
@@ -46,7 +46,7 @@
     <a name="hook" />
     <div class="container mx-auto px-4 flex flex-row justify-around">
       <div class="flex flex-col justify-center">
-        <h3 class="font-bold text-4xl my-4">Component Mount Hook - <i class="text-accent">WebComponentHook</i></h3>
+        <h3 class="font-bold text-[clamp(1.25rem,4vw,2.25rem)] my-4">Component Mount Hook - <i class="text-accent">WebComponentHook</i></h3>
         <p class="my-2 text-lg text-info/70	">
           Binding custom element's custom events to phoenix live events.
         </p>
@@ -54,7 +54,7 @@
           Binding phoenix live events to custom element's custom action.
         </p>
       </div>
-      <div class="flex justify-center items-center">
+      <div class="flex justify-center items-center aspect-square min-w-40 [width:clamp(10rem,30vw,20rem)]">
         <.dm_mdi name="webhook" class="w-full aspect-square" />
       </div>
     </div>
@@ -96,60 +96,62 @@
           <div class="divider divider-horizontal"></div>
           <.link href="https://hexdocs.pm/phoenix_duskmoon/">HEX Document</.link>
         </div>
-        <div class="my-4 gap-8 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6">
-          <.link class="flex flex-row items-center text-2xl text-primary/40 gap-4">
+        <div class="w-full my-4 gap-8 grid grid-cols-auto-fit-48 text-[clamp(1rem,2vw,1.5rem)]">
+          <.link class="flex flex-row items-center justify-center gap-4 opacity-60">
             <.dm_mdi name={"page-layout-header"} class="w-4 h-4" />
+
+            
             PageHeader
           </.link>
-          <.link class="flex flex-row items-center text-2xl text-primary/40 gap-4">
+          <.link class="flex flex-row items-center justify-center gap-4 opacity-60">
             <.dm_mdi name={"page-layout-footer"} class="w-4 h-4" />
             PageFooter
           </.link>
-          <.link class="flex flex-row items-center text-2xl text-primary/40 gap-4">
+          <.link class="flex flex-row items-center justify-center gap-4 opacity-60">
             <.dm_mdi name={"page-layout-header"} class="w-4 h-4" />
             Appbar
           </.link>
-          <.link class="flex flex-row items-center text-2xl text-primary gap-4" id="actionbar" href="/storybook/components/actionbar">
+          <.link class="flex flex-row items-center justify-center gap-4" id="actionbar" href="/storybook/components/actionbar">
             <.dm_bsi name={"tools"} class="w-4 h-4" />
             Actionbar
           </.link>
-          <.link class="flex flex-row items-center text-2xl text-primary gap-4" id="breadcrumb" href="/storybook/components/breadcrumb">
+          <.link class="flex flex-row items-center justify-center gap-4" id="breadcrumb" href="/storybook/components/breadcrumb">
             <.dm_bsi name={"segmented-nav"} class="w-4 h-4" />
             Breadcrumb
           </.link>
-          <.link class="flex flex-row items-center text-2xl text-primary gap-4" id="button" href="/storybook/components/button">
+          <.link class="flex flex-row items-center justify-center gap-4" id="button" href="/storybook/components/button">
             <.dm_bsi name={"inbox"} class="w-4 h-4" />
             Button
           </.link>
-          <.link class="flex flex-row items-center text-2xl text-primary gap-4" id="card" href="/storybook/components/card">
+          <.link class="flex flex-row items-center justify-center gap-4" id="card" href="/storybook/components/card">
             <.dm_bsi name={"card-text"} class="w-4 h-4" />
             Card
           </.link>
-          <.link class="flex flex-row items-center text-2xl text-primary gap-4" id="left_menu" href="/storybook/components/left_menu">
+          <.link class="flex flex-row items-center justify-center gap-4" id="left_menu" href="/storybook/components/left_menu">
             <.dm_bsi name={"layout-sidebar"} class="w-4 h-4" />
             Left Menu
           </.link>
-          <.link class="flex flex-row items-center text-2xl text-primary gap-4" id="loading" href="/storybook/components/loading">
+          <.link class="flex flex-row items-center justify-center gap-4" id="loading" href="/storybook/components/loading">
             <span class="loading loading-spinner loading-xs"></span>
             Loading
           </.link>
-          <.link class="flex flex-row items-center text-2xl text-primary gap-4" id="markdown" href="/storybook/components/markdown">
+          <.link class="flex flex-row items-center justify-center gap-4" id="markdown" href="/storybook/components/markdown">
             <.dm_bsi name={"markdown"} class="w-4 h-4" />
             Markdown
           </.link>
-          <.link class="flex flex-row items-center text-2xl text-primary gap-4" id="modal" href="/storybook/components/modal">
+          <.link class="flex flex-row items-center justify-center gap-4" id="modal" href="/storybook/components/modal">
             <.dm_bsi name={"chat-square"} class="w-4 h-4" />
             Modal
           </.link>
-          <.link class="flex flex-row items-center text-2xl text-primary gap-4" id="pagination" href="/storybook/components/pagination">
+          <.link class="flex flex-row items-center justify-center gap-4" id="pagination" href="/storybook/components/pagination">
             <.dm_mdi name={"book-open-page-variant-outline"} class="w-4 h-4" />
             Pagination
           </.link>
-          <.link class="flex flex-row items-center text-2xl text-primary gap-4" id="tab" href="/storybook/components/tab">
+          <.link class="flex flex-row items-center justify-center gap-4" id="tab" href="/storybook/components/tab">
             <.dm_mdi name={"tab"} class="w-4 h-4" />
             Tab
           </.link>
-          <.link class="flex flex-row items-center text-2xl text-primary gap-4" id="table" href="/storybook/components/table">
+          <.link class="flex flex-row items-center justify-center gap-4" id="table" href="/storybook/components/table">
             <.dm_mdi name={"table"} class="w-4 h-4" />
             Table
           </.link>

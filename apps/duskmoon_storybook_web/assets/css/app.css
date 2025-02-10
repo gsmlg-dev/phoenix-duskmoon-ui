@@ -2,82 +2,89 @@
 
 @import "tailwindcss";
 @plugin "daisyui";
+@plugin "@tailwindcss/typography";
 @import "phoenix_duskmoon/theme";
 @import "phoenix_duskmoon/components";
 
-.rainbow {
-  z-index: -1;
-  width: 100vw;
-  height: 100vh;
-  position: fixed;
-  --opt: 0.2;
-  background-image: linear-gradient(
-      -55.62deg,
-      rgba(255, 0, 0, var(--opt)) 0%,
-      rgba(255, 154, 0, var(--opt)) 10%,
-      rgba(208, 222, 33, var(--opt)) 20%,
-      rgba(79, 220, 74, var(--opt)) 30%,
-      rgba(63, 218, 216, var(--opt)) 40%,
-      rgba(47, 201, 226, var(--opt)) 50%,
-      rgba(28, 127, 238, var(--opt)) 60%,
-      rgba(95, 21, 242, var(--opt)) 70%,
-      rgba(186, 12, 248, var(--opt)) 80%,
-      rgba(251, 7, 217, var(--opt)) 90%,
-      rgba(255, 0, 0, var(--opt)) 100%
-  );
-  background-size: 400%;
-  animation: 10s ease-in-out 1s infinite reverse bg-animation;
-}
-
-.aniamite-bg {
-  background-size: 400%;
-  animation: 20s linear 1s infinite alternate bg-animation;
-}
-
-@keyframes bg-animation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.darkmoon-hero-text {
-  text-shadow: #fc0 1px 0 10px;
-  transition: all 1s;
-  background-image: linear-gradient(to top left,  #fac2b0, #b4e3da);
-  background-size: 400%;
-  animation: 4s linear 1s infinite alternate bg-animation;
-}
-.darkmoon-hero-p-text {
-  text-shadow: 1px -2px 2px #222a30;
-}
-
-app-bar {
-  --btn-link: rgb(238, 249, 238);
-}
-
-.invalid-feedback {
-  color: #a94442;
-  display: block;
-  margin: -1rem 0 2rem;
-}
-
-.phx-click-loading {
-  opacity: 0.5;
-  transition: opacity 1s ease-out;
-}
-
-.lsb-sandbox {
-  width: 100%;
-  height: fit-content;
-}
+@variant phx-click-loading ([".phx-click-loading&", ".phx-click-loading &"]);
+@variant phx-submit-loading ([".phx-submit-loading&", ".phx-submit-loading &"]);
+@variant phx-change-loading ([".phx-change-loading&", ".phx-change-loading &"]);
 
 @layer components {
+  .rainbow {
+    z-index: -1;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    --opt: 0.2;
+    background-image: linear-gradient(
+        -55.62deg,
+        rgba(255, 0, 0, var(--opt)) 0%,
+        rgba(255, 154, 0, var(--opt)) 10%,
+        rgba(208, 222, 33, var(--opt)) 20%,
+        rgba(79, 220, 74, var(--opt)) 30%,
+        rgba(63, 218, 216, var(--opt)) 40%,
+        rgba(47, 201, 226, var(--opt)) 50%,
+        rgba(28, 127, 238, var(--opt)) 60%,
+        rgba(95, 21, 242, var(--opt)) 70%,
+        rgba(186, 12, 248, var(--opt)) 80%,
+        rgba(251, 7, 217, var(--opt)) 90%,
+        rgba(255, 0, 0, var(--opt)) 100%
+    );
+    background-size: 400%;
+    animation: 10s ease-in-out 1s infinite reverse bg-animation;
+  }
+
+  .aniamite-bg {
+    background-size: 400%;
+    animation: 20s linear 1s infinite alternate bg-animation;
+  }
+
+  @keyframes bg-animation {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .darkmoon-hero-text {
+    text-shadow: #fc0 1px 0 10px;
+    transition: all 1s;
+    background-image: linear-gradient(to top left,  #fac2b0, #b4e3da);
+    background-size: 400%;
+    animation: 4s linear 1s infinite alternate bg-animation;
+    font-size: clamp(3rem, 6vw, 6rem);
+  }
+  .darkmoon-hero-p-text {
+    text-shadow: 1px -2px 2px #222a30;
+    font-size: clamp(1rem, 3vw, 3rem);
+  }
+
+  app-bar {
+    --btn-link: rgb(238, 249, 238);
+  }
+
+  .invalid-feedback {
+    color: #a94442;
+    display: block;
+    margin: -1rem 0 2rem;
+  }
+
+  .phx-click-loading {
+    opacity: 0.5;
+    transition: opacity 1s ease-out;
+  }
+
+  .lsb-sandbox {
+    width: 100%;
+    height: fit-content;
+  }
+
   .page-section-group {
     @apply flex flex-col gap-1 py-1;
 
@@ -92,5 +99,6 @@ app-bar {
     .fun-page-section {
       @apply w-full py-16 flex flex-col bg-base-300 text-base-content;
     }
+
   }
 }

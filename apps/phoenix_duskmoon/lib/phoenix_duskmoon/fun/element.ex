@@ -408,21 +408,21 @@ defmodule PhoenixDuskmoon.Fun.Element do
   attr(:item_count, :integer,
     default: 88,
     doc: """
-    html attribute class
+    loading effect bubble count
     """
   )
 
   attr(:speed, :string,
     default: "4s",
     doc: """
-    html attribute class
+    loading effect speed
     """
   )
 
-  attr(:size, :integer,
-    default: 21,
+  attr(:size, :string,
+    default: "20rem",
     doc: """
-    html attribute class
+    loading size, css value
     """
   )
 
@@ -433,10 +433,10 @@ defmodule PhoenixDuskmoon.Fun.Element do
     <style data-id={@random_inner}>
     .dm-fun-loader-<%= @random_inner %> {
       --duration: <%= @speed %>;
-      --size: <%= @size %>em;
+      --size: <%= @size %>;
       position: relative;
-      width: var(--size, 21em);
-      height: var(--size, 21em);
+      width: var(--size, 20rem);
+      height: var(--size, 20rem);
     }
 
     .dm-fun-loader-<%= @random_inner %> i {
@@ -463,8 +463,8 @@ defmodule PhoenixDuskmoon.Fun.Element do
     .dm-fun-loader-<%= @random_inner %> i:nth-child(<%= i + 1 %>) {
       --rz: <%= i * (360 / @item_count) %>deg;
       --delay: calc(var(--duration) / <%= @item_count %> * <%= i %> - var(--duration));
-      --tx: <%= Enum.random(1..ceil(1000 * @size / 21)) / 250 %>em;
-      --ty: <%= Enum.random(1..ceil(1000 * @size / 21)) / 125 - 2.5 %>em;
+      --tx: <%= Enum.random(1..1000) / 250 %>em;
+      --ty: <%= Enum.random(1..1000) / 125 - 2.5 %>em;
       --hue: <%= i * (360 / @item_count) %>;
     }
     <% end %>

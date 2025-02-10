@@ -12,7 +12,6 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    require("@tailwindcss/typography"),
     plugin(function ({ matchUtilities, theme }) {
       matchUtilities(
         {
@@ -28,8 +27,5 @@ module.exports = {
         }
       )
     }),
-    plugin(({ addVariant }) => addVariant('phx-click-loading', ['&.phx-click-loading', '.phx-click-loading &'])),
-    plugin(({ addVariant }) => addVariant('phx-submit-loading', ['&.phx-submit-loading', '.phx-submit-loading &'])),
-    plugin(({ addVariant }) => addVariant('phx-change-loading', ['&.phx-change-loading', '.phx-change-loading &']))
   ]
 }
