@@ -1,3 +1,10 @@
+# [6.2.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v6.1.3...v6.2.0) (2025-02-12)
+
+
+### Features
+
+* Add dm_navbar. ([a2f525d](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/a2f525dafafc9f9b0b0262ea2ade213c7307d0a7))
+
 ## [6.1.3](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v6.1.2...v6.1.3) (2025-02-10)
 
 
