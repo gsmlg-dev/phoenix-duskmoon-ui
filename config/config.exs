@@ -29,8 +29,8 @@ config :duskmoon_storybook_web, Storybook,
   css_path: "/assets/app.css"
 
 config :tailwind,
-  version: "4.0.3",
-  default: [
+  version: "4.0.6",
+  duskmoon: [
     args: ~w(
       --input=assets/css/phoenix_duskmoon.css
       --output=priv/static/phoenix_duskmoon.css
@@ -49,8 +49,8 @@ config :tailwind,
 
 # Configure esbuild (the version is required)
 config :esbuild,
-  version: "0.24.2",
-  default: [
+  version: "0.25.0",
+  duskmoon: [
     args: ~w(assets/js/phoenix_duskmoon.js --target=es2021 --format=iife --outdir=priv/static/),
     cd: Path.expand("../apps/phoenix_duskmoon", __DIR__),
     env: %{"NODE_PATH" => "#{Path.expand("../apps", __DIR__)}:#{Path.expand("../deps", __DIR__)}"}

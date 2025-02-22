@@ -16,10 +16,10 @@ config :duskmoon_storybook_web, DuskmoonStorybookWeb.Endpoint,
   secret_key_base: "BM3gjYo7YUKjr9Ye7kqOjj4t4c4dAkezwSbPFN1AJE1Tqi/aw1Kt/fNszzGoSGi9",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    # tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]},
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:duskmoon, ~w(--watch)]},
+    esbuild: {Esbuild, :install_and_run, [:duskmoon, ~w(--sourcemap=inline --watch)]},
     tailwind: {Tailwind, :install_and_run, [:storybook, ~w(--watch)]},
-    esbuild: {Esbuild, :install_and_run, [:storybook, ~w(--sourcemap --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:storybook, ~w(--sourcemap=inline --watch)]}
   ],
   live_reload: [
     patterns: [
