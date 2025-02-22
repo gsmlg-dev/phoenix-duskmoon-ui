@@ -1,3 +1,10 @@
+## [6.2.1](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v6.2.0...v6.2.1) (2025-02-22)
+
+
+### Bug Fixes
+
+* Fix simple_app_bar. ([63108a1](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/63108a1d86223be7f44e680d37ebfb4e5b2bca84))
+
 # [6.2.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v6.1.3...v6.2.0) (2025-02-12)
 
 
