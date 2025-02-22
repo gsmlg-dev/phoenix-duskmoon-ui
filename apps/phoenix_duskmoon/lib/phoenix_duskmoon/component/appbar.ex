@@ -173,11 +173,11 @@ defmodule PhoenixDuskmoon.Component.Appbar do
       id={@id}
       class={[
         "h-14 w-full text-xl",
-        "flex items-center justify-center relative",
+        "flex flex-col md:flex-row items-center justify-start md:justify-center relative",
         @class
       ]}
     >
-      <div class="container h-full flex items-center justify-between select-none">
+      <div class="container min-w-full h-14 flex items-center justify-between flex-[0_0_3.5rem] px-4 select-none">
         <div class="flex flex-row items-center justify-start">
           <%= render_slot(@logo) %>
           <h1 class="select-none text-blod hidden lg:inline-flex">
@@ -217,15 +217,14 @@ defmodule PhoenixDuskmoon.Component.Appbar do
       <div
         id="header-md-menu"
         class={[
-          "absolute z-50 top-14 w-full",
+          "w-full",
           "flex flex-col",
           "md:hidden hidden",
           @class
         ]}
       >
-        <hr />
-        <%= for menu <- @menu do %>
         <a
+          :for={menu <- @menu}
           class={[
             "w-full py-2 px-6",
             "font-semibold leading-6",
@@ -235,10 +234,9 @@ defmodule PhoenixDuskmoon.Component.Appbar do
         >
           <%= render_slot(menu) %>
         </a>
-        <% end %>
-        <hr />
+        <div class="divider m-0" />
         <div
-          class="w-full my-2 text-center flex flex-col justify-start items-center"
+          class="w-full text-center flex flex-col justify-start items-center"
         ><%= render_slot(@user_profile) %></div>
       </div>
     </header>
