@@ -17,8 +17,19 @@ defmodule Storybook.Components.PaginationThin do
         }
       },
       %Variation{
+        id: :show_total,
+        attributes: %{
+          show_total: true,
+          total: 1000,
+          page_num: 5,
+          page_size: 15,
+          update_event: "ignore"
+        }
+      },
+      %Variation{
         id: :show_page_jumper,
         attributes: %{
+          class: "z-10",
           total: 10000,
           page_num: 5,
           page_size: 15,

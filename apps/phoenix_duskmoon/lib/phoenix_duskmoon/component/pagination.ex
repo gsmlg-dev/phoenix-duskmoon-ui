@@ -50,6 +50,13 @@ defmodule PhoenixDuskmoon.Component.Pagination do
     """
   )
 
+  attr(:show_total, :boolean,
+    default: false,
+    doc: """
+    whether show total items count
+    """
+  )
+
   attr(:update_event, :string,
     default: "update_current_page",
     doc: """
@@ -103,7 +110,7 @@ defmodule PhoenixDuskmoon.Component.Pagination do
         @class
       ]}
     >
-      <div class="flex flex-row items-center gap-2">
+      <div :if={@show_total} class="flex flex-row items-center gap-2">
         <.dm_mdi name="view-dashboard" class="w-5 h-5" />
         <code><%= @total %></code>
       </div>
@@ -228,6 +235,13 @@ defmodule PhoenixDuskmoon.Component.Pagination do
     """
   )
 
+  attr(:show_total, :boolean,
+    default: false,
+    doc: """
+    whether show total items count
+    """
+  )
+
   attr(:update_event, :string,
     default: "update_current_page",
     doc: """
@@ -244,77 +258,76 @@ defmodule PhoenixDuskmoon.Component.Pagination do
       |> assign(:pages, pages)
 
     ~H"""
-    <div id={@id} class="flex items-center gap-4">
-      <div class="flex flex-row items-center gap-2">
+    <div
+      id={@id}
+      class={[
+        "flex items-center gap-4",
+        @class
+      ]}
+    >
+      <div :if={@show_total} class={["flex flex-row items-center gap-2"]}>
         <.dm_mdi name="view-dashboard" class="w-5 h-5" />
         <code class="font-medium"><%= @total %></code>
       </div>
-      <div>
-        <nav class="join" aria-label="Pagination">
-          <span
-            phx-click={if(@page_num == 1 || @loading, do: false, else: @update_event)}
-            phx-value-current={if @page_num == 1, do: nil, else: @page_num - 1}
-            disabled={if @page_num == 1, do: true, else: false}
-            class={[
-              if(@page_num == 1, do: "", else: "cursor-pointer"),
-              "join-item btn btn-sm",
-              if(@loading, do: "cursor-wait")
-            ]}
-          >
-            <span class="sr-only">Previous</span>
-            <.dm_mdi name="chevron-left" class="w-5 h-5" />
-          </span>
+      <nav class="join">
+        <span
+          phx-click={if(@page_num == 1 || @loading, do: false, else: @update_event)}
+          phx-value-current={if @page_num == 1, do: nil, else: @page_num - 1}
+          disabled={if @page_num == 1, do: true, else: false}
+          class={[
+            if(@page_num == 1, do: "", else: "cursor-pointer"),
+            "join-item btn btn-sm",
+            if(@loading, do: "cursor-wait")
+          ]}
+        >
+          <span class="sr-only">Previous</span>
+          <.dm_mdi name="chevron-left" class="w-5 h-5" />
+        </span>
 
-          <%= for p <- @pages do %>
-            <%= if is_binary(p) do %>
-              <a disabled="disabled" class="join-item btn btn-sm"><%= p %></a>
-            <% else %>
-              <span
-                phx-click={if(@loading, do: false, else: @update_event)}
-                phx-value-current={p}
-                aria-current={if p == @page_num, do: "page", else: false}
-                class={[
-                  "join-item btn btn-sm",
-                  if(p == @page_num, do: " bg-primary text-primary-content", else: " cursor-pointer"),
-                  if(@loading, do: "cursor-wait")
-                ]}
-              >
-                <%= p %>
-              </span>
-            <% end %>
-          <% end %>
+        <span
+          phx-click={if(@loading, do: false, else: @update_event)}
+          phx-value-current={@page_num}
+          aria-current={"page"}
+          class={[
+            "join-item btn btn-sm",
+            "bg-primary text-primary-content",
+          ]}
+        >
+          <span :if={@loading} class="loading loading-spinner loading-xs"></span>
+          <%= @page_num %>
+        </span>
 
-          <span
-            phx-click={if(@page_num == @max_page || @loading, do: false, else: @update_event)}
-            phx-value-current={if @page_num == @max_page, do: nil, else: @page_num + 1}
-            disabled={if @page_num == @max_page, do: true, else: false}
-            class={[
-              if(@page_num == @max_page, do: "", else: "cursor-pointer"),
-              "join-item btn btn-sm",
-              if(@loading, do: "cursor-wait")
-            ]}
-          >
-            <span class="sr-only">Next</span>
-            <.dm_mdi name="chevron-right" class="w-5 h-5" />
-          </span>
-        </nav>
-      </div>
-      <div :if={@show_page_jumper}>
-        <div class="text-medium flex-nowrap flex items-center gap-2">
-          <span><.dm_mdi name="arrow-right-top" class="w-4 h-4" /></span>
-          <form class="font-medium" phx-change={if(@loading, do: false, else: @update_event)}>
-            <input
-              type="number"
-              name="current"
-              class={["input input-sm w-auto text-right"]}
-              min={1}
-              max={@max_page}
-              phx-debounce={300}
-              oninput={"this.value = Math.round(this.value);if(this.value<1){this.value=1}if(this.value>#{@max_page}){this.value=#{@max_page}}"}
-              value={@page_num}
-            />
-          </form>
-        </div>
+        <span
+          phx-click={if(@page_num == @max_page || @loading, do: false, else: @update_event)}
+          phx-value-current={if @page_num == @max_page, do: nil, else: @page_num + 1}
+          disabled={if @page_num == @max_page, do: true, else: false}
+          class={[
+            if(@page_num == @max_page, do: "", else: "cursor-pointer"),
+            "join-item btn btn-sm",
+            if(@loading, do: "cursor-wait")
+          ]}
+        >
+          <span class="sr-only">Next</span>
+          <.dm_mdi name="chevron-right" class="w-5 h-5" />
+        </span>
+      </nav>
+      <div
+        :if={@show_page_jumper}
+        class="text-medium flex-nowrap flex items-center gap-2"
+      >
+        <span><.dm_mdi name="arrow-right-top" class="w-4 h-4" /></span>
+        <form class="font-medium" phx-change={if(@loading, do: false, else: @update_event)}>
+          <input
+            type="number"
+            name="current"
+            class={["input input-sm w-auto"]}
+            min={1}
+            max={@max_page}
+            phx-debounce={300}
+            oninput={"this.value = Math.round(this.value);if(this.value<1){this.value=1}if(this.value>#{@max_page}){this.value=#{@max_page}}"}
+            value={@page_num}
+          />
+        </form>
       </div>
     </div>
     """
