@@ -13,10 +13,10 @@
   <:menu to={~p"/fun"} class="neumorphic-text-8 text-(--neumorphic-color)">Fun</:menu>
   <:menu to={~p"/storybook"} class="neumorphic-text-8 text-(--neumorphic-color)">Storybook</:menu>
 
-  <:user_profile class="flex items-center">
-    <.dm_theme_switcher class="neumorphic-shadow-12" />
+  <:user_profile class="flex items-center gap-2">
+    <.dm_theme_switcher class="neumorphic-shadow-12 hover:neumorphic-filter-24 hover:*:bg-(--neumorphic-color)" />
     <.link href={"https://github.com/gsmlg-dev/phoenix-duskmoon-ui"}>
-      <.dm_mdi name="github" class="w-12 h-12 neumorphic-filter-8 text-(--neumorphic-color)" />
+      <.dm_mdi name="github" class="w-12 h-12 neumorphic-filter-8 text-(--neumorphic-color) hover:neumorphic-filter-16" />
     </.link>
   </:user_profile>
 
