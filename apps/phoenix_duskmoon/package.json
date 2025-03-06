@@ -7,6 +7,7 @@
     "./css": "./priv/static/phoenix_duskmoon.css",
     "./components": "./assets/css/components.css",
     "./theme": "./assets/css/theme.css",
+    "./neumorphic": "./assets/css/neumorphic.css",
     "./svg/mdi/*.svg": "./priv/mdi/svg/*.svg",
     "./svg/bsi/*.svg": "./priv/bsi/svg/*.svg"
   },
@@ -31,8 +32,8 @@
     "@mdi/svg": "^7.4.47",
     "@tailwindcss/typography": "^0.5.16",
     "bootstrap-icons": "^1.11.3",
-    "daisyui": "^5.0.0-beta.6",
-    "postcss": "^8.5.1"
+    "daisyui": "^5.0.0",
+    "postcss": "^8.5.3"
   },
   "peerDependencies": {
   }

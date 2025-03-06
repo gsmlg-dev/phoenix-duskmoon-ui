@@ -1,0 +1,81 @@
+:root {
+  --neumorphic-color: #aaa;
+  --neumorphic-text-color: #444;
+  --neumorphic-light: #fff8;
+  --neumorphic-dark: #3338;
+
+
+  --neumorphic-size: 1;
+  --neumorphic-shadow: calc(1em * var(--neumorphic-size))
+      calc(1em * var(--neumorphic-size))
+      calc(1em * var(--neumorphic-size) * 1.5) var(--neumorphic-dark),
+    calc(1em * var(--neumorphic-size) * -1)
+      calc(1em * var(--neumorphic-size) * -1)
+      calc(1em * var(--neumorphic-size) * 1.5) var(--neumorphic-light);
+
+  --neumorphic-shadow-inset: inset calc(1em * var(--neumorphic-size))
+      calc(1em * var(--neumorphic-size))
+      calc(1em * var(--neumorphic-size) * 1.5) var(--neumorphic-dark),
+    inset calc(1em * var(--neumorphic-size) * -1)
+      calc(1em * var(--neumorphic-size) * -1)
+      calc(1em * var(--neumorphic-size) * 1.5) var(--neumorphic-light);
+
+  --neumorphic-filter: drop-shadow(
+      calc(1em * var(--neumorphic-size)) calc(1em * var(--neumorphic-size))
+        calc(1em * var(--neumorphic-size) * 1.5) var(--neumorphic-dark)
+    )
+    drop-shadow(
+      calc(1em * var(--neumorphic-size) * -1)
+        calc(1em * var(--neumorphic-size) * -1)
+        calc(1em * var(--neumorphic-size) * 1.5) var(--neumorphic-light)
+    );
+
+  --brShadow: 0.1em 0.1em 0.12em var(--neumorphic-dark);
+  --tlShadow: -0.1em -0.1em 0.12em var(--neumorphic-light);
+}
+
+
+@utility neumorphic-text-* {
+  text-shadow:
+    calc(1rem * 0.01 * --value(integer)) calc(1rem * 0.01 * --value(integer)) calc(1rem * 0.01 * --value(integer)) var(--neumorphic-dark),
+    calc(1rem * 0.01 * --value(integer) * -1) calc(1rem * 0.01 * --value(integer) * -1) calc(1rem * 0.01 * --value(integer)) var(--neumorphic-light);
+}
+
+@utility neumorphic-shadow-* {
+  box-shadow: 
+  calc(1rem * --value(integer) * 0.01)
+    calc(1rem * --value(integer) * 0.01)
+    calc(1rem * --value(integer) * 0.01 * 1.5) 
+    var(--neumorphic-dark),
+  calc(1rem * --value(integer) * 0.01 * -1)
+    calc(1rem * --value(integer) * 0.01 * -1)
+    calc(1rem * --value(integer) * 0.01 * 1.5) 
+    var(--neumorphic-light);
+}
+
+
+@utility neumorphic-shadow-inset-* {
+  box-shadow: 
+    inset calc(1rem * --value(integer) * 0.01)
+      calc(1rem * --value(integer) * 0.01)
+      calc(1rem * --value(integer) * 0.01 * 1.5) var(--neumorphic-dark),
+    inset calc(1rem * --value(integer) * 0.01 * -1)
+      calc(1rem * --value(integer) * 0.01 * -1)
+      calc(1rem * --value(integer) * 0.01 * 1.5) var(--neumorphic-light);
+}
+
+
+@utility neumorphic-filter-* {
+ filter:
+    drop-shadow(
+      calc(1rem * --value(integer) * 0.01) calc(1rem * --value(integer) * 0.01)
+        calc(1rem * --value(integer) * 0.01 * 1.5) var(--neumorphic-dark)
+    )
+    drop-shadow(
+      calc(1rem * --value(integer) * 0.01 * -1)
+        calc(1rem * --value(integer) * 0.01 * -1)
+        calc(1rem * --value(integer) * 0.01 * 1.5) var(--neumorphic-light)
+    );
+}
+
+

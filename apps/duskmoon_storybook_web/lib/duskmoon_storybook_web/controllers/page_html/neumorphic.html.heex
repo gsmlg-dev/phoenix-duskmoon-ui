@@ -1,0 +1,114 @@
+<.dm_page_header
+  class={[
+    "bg-(--neumorphic-color) text-(--neumorphic-text-color)",
+    "h-[680px] py-6"
+  ]}
+  nav_class={["bg-(--neumorphic-color) text-(--neumorphic-text-color)", "neumorphic-shadow-inset-12"]}
+>
+  <:menu to={~p"/"} class="neumorphic-text-8 text-(--neumorphic-color)">Home</:menu>
+  <:menu to={~p"/neumorphic"} class="neumorphic-text-12 text-(--neumorphic-color) border-b-2 border-slate-50">Neumorphic</:menu>
+  <:menu to={~p"/hook"} class="neumorphic-text-8 text-(--neumorphic-color)">Hook</:menu>
+  <:menu to={~p"/mdi"} class="neumorphic-text-8 text-(--neumorphic-color)">MDI</:menu>
+  <:menu to={~p"/bsi"} class="neumorphic-text-8 text-(--neumorphic-color)">BSI</:menu>
+  <:menu to={~p"/fun"} class="neumorphic-text-8 text-(--neumorphic-color)">Fun</:menu>
+  <:menu to={~p"/storybook"} class="neumorphic-text-8 text-(--neumorphic-color)">Storybook</:menu>
+
+  <:user_profile class="flex items-center">
+    <.dm_theme_switcher class="neumorphic-shadow-12" />
+    <.link href={"https://github.com/gsmlg-dev/phoenix-duskmoon-ui"}>
+      <.dm_mdi name="github" class="w-12 h-12 neumorphic-filter-8 text-(--neumorphic-color)" />
+    </.link>
+  </:user_profile>
+
+  <h1 class={[
+    "text-center font-bold select-none",
+    "neumorphic-text-12 text-(--neumorphic-color) text-8xl"
+  ]}>
+    Neumorphic Design
+  </h1>
+  <p class={[
+    "text-center mx-auto my-8 select-none",
+    "neumorphic-text-12 text-(--neumorphic-color) text-4xl"
+  ]}>
+    Neumorphic Design for Duskmoon UI
+  </p>
+  <.link
+    href="/neumorphic#neumorphic"
+    class={[
+      "my-2 md:my-4 px-6 py-2",
+      "text-xl md:text-2xl rounded-lg",
+      "bg-(--neumorphic-color) text-(--neumorphic-light) neumorphic-text-8",
+      "neumorphic-shadow-12 hover:neumorphic-shadow-24 active:neumorphic-shadow-inset-12"
+    ]}
+  >
+    Learn More
+  </.link>
+</.dm_page_header>
+
+<div
+  class={[
+    "w-full page-section-group",
+    "neumorphic-shadow-inset-24 bg-(--neumorphic-color) text-(--neumorphic-text-color)",
+  ]}
+>
+  <a class="hidden" name="neumorphic"></a>
+  <div class="w-2/3 h-96 neumorphic-shadow-24 hover:neumorphic-shadow-48 mx-auto my-8">
+    <div class="flex flex-col gap-6 m-4">
+      <div class="flex gap-6">
+        <label>Filter on Icons</label>
+        <.dm_mdi name="github" class="w-24 h-24 neumorphic-filter-4 text-(--neumorphic-color)" />
+        <.dm_mdi name="github" class="w-24 h-24 neumorphic-filter-8 text-(--neumorphic-color)" />
+        <.dm_mdi name="github" class="w-24 h-24 neumorphic-filter-12 text-(--neumorphic-color)" />
+        <.dm_mdi name="github" class="w-24 h-24 neumorphic-filter-16 text-(--neumorphic-color)" />
+        <.dm_mdi name="github" class="w-24 h-24 neumorphic-filter-20 text-(--neumorphic-color)" />
+        <.dm_mdi name="github" class="w-24 h-24 neumorphic-filter-24 text-(--neumorphic-color)" />
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div
+  class={[
+    "w-full page-section-group",
+    "neumorphic-shadow-inset-24 bg-(--neumorphic-color) text-(--neumorphic-text-color)",
+  ]}
+>
+  <a class="hidden" name="neumorphic"></a>
+  <div class="w-2/3 h-96 neumorphic-shadow-24 hover:neumorphic-shadow-48 mx-auto my-8">
+    <div class="flex flex-col gap-6 m-4">
+      <div class="flex gap-6">
+        <label>Input</label>
+        <input 
+          class={[
+            "w-80 h-8 px-2",
+            "outline-0",
+            "neumorphic-shadow-inset-8 bg-(--neumorphic-color) text-(--neumorphic-text-color)",
+            "focus:neumorphic-shadow-8"
+          ]}
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+<.dm_page_footer
+  class={[
+    "bg-(--neumorphic-color) text-(--neumorphic-text-color)",
+  ]}
+>
+  <:section title="Web Sites" title_class="neumorphic-text-6 text-(--neumorphic-color)" body_class="neumorphic-text-6 text-(--neumorphic-color)">
+    <.link href="https://github.com/gsmlg-dev">Github Repos</.link>
+    <.link href="https://gsmlg.org/blogs">Blog</.link>
+    <.link href="https://gsmlg.org/tools">Tools</.link>
+  </:section>
+  <:section title="Other Libraries" title_class="neumorphic-text-6 text-(--neumorphic-color)" body_class="neumorphic-text-6 text-(--neumorphic-color)">
+    <.link href="https://gsmlg-dev.github.io/yew-duskmoon-ui/">Yew Duskmoon UI</.link>
+    <.link href="https://gsmlg-dev.github.io/lit">Web Component</.link>
+    <.link href="https://gsmlg-dev.github.io/react">React Component</.link>
+    <.link href="https://gsmlg-dev.github.io/three-fiber">3D Component</.link>
+  </:section>
+  <:copyright title="Copyright - GSMLG.dev" class="neumorphic-text-6 text-(--neumorphic-color)">
+    Made with ❤️ for building a better Web.
+  </:copyright>
+</.dm_page_footer>

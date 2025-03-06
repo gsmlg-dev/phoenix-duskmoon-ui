@@ -23,6 +23,7 @@ defmodule DuskmoonStorybookWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :page
+    get "/neumorphic", PageController, :neumorphic
 
     get "/hook", PageController, :hook
 
