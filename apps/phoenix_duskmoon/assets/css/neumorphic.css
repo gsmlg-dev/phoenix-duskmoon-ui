@@ -30,8 +30,8 @@
         calc(1em * var(--neumorphic-size) * 1.5) var(--neumorphic-light)
     );
 
-  --brShadow: 0.1em 0.1em 0.12em var(--neumorphic-dark);
-  --tlShadow: -0.1em -0.1em 0.12em var(--neumorphic-light);
+  --text-dark-shadow: 0.1em 0.1em 0.12em var(--neumorphic-dark);
+  --text-light-shadow: -0.1em -0.1em 0.12em var(--neumorphic-light);
 }
 
 
