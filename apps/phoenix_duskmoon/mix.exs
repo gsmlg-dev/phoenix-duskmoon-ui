@@ -64,8 +64,8 @@ defmodule PhoenixDuskmoon.Mixfile do
     [
       prepublish: [
         "cmd cp #{Path.expand("../../README.md", __DIR__)} #{Path.expand("README.md", __DIR__)}",
-        "tailwind default",
-        "esbuild default"
+        "tailwind duskmoon",
+        "esbuild duskmoon"
       ]
     ]
   end
