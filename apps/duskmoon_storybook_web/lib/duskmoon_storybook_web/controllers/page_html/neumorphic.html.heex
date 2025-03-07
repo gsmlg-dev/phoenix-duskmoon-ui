@@ -6,7 +6,7 @@
   nav_class={["bg-(--neumorphic-color) text-(--neumorphic-text-color)", "neumorphic-shadow-inset-12"]}
 >
   <:menu to={~p"/"} class="neumorphic-text-8 text-(--neumorphic-color)">Home</:menu>
-  <:menu to={~p"/neumorphic"} class="neumorphic-text-12 text-(--neumorphic-color) border-b-2 border-slate-50">Neumorphic</:menu>
+  <:menu to={~p"/neumorphic"} class="neumorphic-text-12 text-slate-50 border-b-2 border-slate-50">Neumorphic</:menu>
   <:menu to={~p"/hook"} class="neumorphic-text-8 text-(--neumorphic-color)">Hook</:menu>
   <:menu to={~p"/mdi"} class="neumorphic-text-8 text-(--neumorphic-color)">MDI</:menu>
   <:menu to={~p"/bsi"} class="neumorphic-text-8 text-(--neumorphic-color)">BSI</:menu>
@@ -54,8 +54,8 @@
   <a class="hidden" name="neumorphic"></a>
   <div class="w-2/3 h-96 neumorphic-shadow-24 hover:neumorphic-shadow-48 mx-auto my-8">
     <div class="flex flex-col gap-6 m-4">
-      <div class="flex gap-6">
-        <label>Filter on Icons</label>
+      <div class="flex gap-6 flex-wrap">
+        <label class="flex items-center min-w-max text-2xl neumorphic-text-inset-4">Filter on Icons</label>
         <.dm_mdi name="github" class="w-24 h-24 neumorphic-filter-4 text-(--neumorphic-color)" />
         <.dm_mdi name="github" class="w-24 h-24 neumorphic-filter-8 text-(--neumorphic-color)" />
         <.dm_mdi name="github" class="w-24 h-24 neumorphic-filter-12 text-(--neumorphic-color)" />
@@ -77,14 +77,70 @@
   <a class="hidden" name="neumorphic"></a>
   <div class="w-2/3 h-96 neumorphic-shadow-24 hover:neumorphic-shadow-48 mx-auto my-8">
     <div class="flex flex-col gap-6 m-4">
+      <div class="text-primary">
+        <h3 class="neumorphic-text-12 text-2xl">From Component</h3>
+      </div>
       <div class="flex gap-6">
-        <label>Input</label>
+        <label class="flex items-center min-w-max text-2xl neumorphic-text-inset-4">Input</label>
         <input 
           class={[
-            "w-80 h-8 px-2",
-            "outline-0",
-            "neumorphic-shadow-inset-8 bg-(--neumorphic-color) text-(--neumorphic-text-color)",
-            "focus:neumorphic-shadow-8"
+            "min-w-xs h-8 px-2 outline-0",
+            "neumorphic-shadow-8 bg-(--neumorphic-color) text-(--neumorphic-text-color)",
+            "neumorphic-text-inset-4",
+            "checked:neumorphic-shadow-inset-8 checked:neumorphic-text-4"
+          ]}
+        />
+      </div>
+      <div class="flex items-center gap-6">
+        <label class="flex items-center min-w-max text-2xl neumorphic-text-inset-4">Checkbox</label>
+        <input
+          type="checkbox"
+          class={[
+            "w-6 h-6 px-2 outline-0 neumorphic-checkbox",
+            "neumorphic-shadow-8 bg-(--neumorphic-color) text-(--neumorphic-text-color)",
+            "neumorphic-text-inset-4",
+            "checked:neumorphic-shadow-inset-8 checked:neumorphic-text-4"
+          ]}
+        />
+        <input
+          type="checkbox"
+          class={[
+            "w-6 h-6 px-2 outline-0 neumorphic-checkbox",
+            "neumorphic-shadow-8 bg-(--neumorphic-color) text-(--neumorphic-text-color)",
+            "neumorphic-text-inset-4",
+            "checked:neumorphic-shadow-inset-8 checked:neumorphic-text-4"
+          ]}
+        />
+        <input
+          type="checkbox"
+          class={[
+            "w-6 h-6 px-2 outline-0 neumorphic-checkbox",
+            "neumorphic-shadow-8 bg-(--neumorphic-color) text-(--neumorphic-text-color)",
+            "neumorphic-text-inset-4",
+            "checked:neumorphic-shadow-inset-8 checked:neumorphic-text-4"
+          ]}
+        />
+      </div>
+      <div class="flex items-center gap-6">
+        <label class="flex items-center min-w-max text-2xl neumorphic-text-inset-4">Radio</label>
+        <input
+          type="radio"
+          name="radio"
+          class={[
+            "w-6 h-6 px-2 outline-0 neumorphic-radio",
+            "neumorphic-shadow-8 bg-(--neumorphic-color) text-(--neumorphic-text-color)",
+            "neumorphic-text-inset-4",
+            "checked:neumorphic-shadow-inset-4 checked:neumorphic-text-4"
+          ]}
+        />
+        <input
+          type="radio"
+          name="radio"
+          class={[
+            "w-6 h-6 px-2 outline-0 neumorphic-radio",
+            "neumorphic-shadow-8 bg-(--neumorphic-color) text-(--neumorphic-text-color)",
+            "neumorphic-text-inset-4",
+            "checked:neumorphic-shadow-inset-4 checked:neumorphic-text-4"
           ]}
         />
       </div>
@@ -97,18 +153,18 @@
     "bg-(--neumorphic-color) text-(--neumorphic-text-color)",
   ]}
 >
-  <:section title="Web Sites" title_class="neumorphic-text-6 text-(--neumorphic-color)" body_class="neumorphic-text-6 text-(--neumorphic-color)">
+  <:section title="Web Sites" title_class="neumorphic-text-6 text-primary" body_class="neumorphic-text-6 text-(--neumorphic-color)">
     <.link href="https://github.com/gsmlg-dev">Github Repos</.link>
     <.link href="https://gsmlg.org/blogs">Blog</.link>
     <.link href="https://gsmlg.org/tools">Tools</.link>
   </:section>
-  <:section title="Other Libraries" title_class="neumorphic-text-6 text-(--neumorphic-color)" body_class="neumorphic-text-6 text-(--neumorphic-color)">
+  <:section title="Other Libraries" title_class="neumorphic-text-6 text-primary" body_class="neumorphic-text-6 text-(--neumorphic-color)">
     <.link href="https://gsmlg-dev.github.io/yew-duskmoon-ui/">Yew Duskmoon UI</.link>
     <.link href="https://gsmlg-dev.github.io/lit">Web Component</.link>
     <.link href="https://gsmlg-dev.github.io/react">React Component</.link>
     <.link href="https://gsmlg-dev.github.io/three-fiber">3D Component</.link>
   </:section>
-  <:copyright title="Copyright - GSMLG.dev" class="neumorphic-text-6 text-(--neumorphic-color)">
+  <:copyright title="Copyright - GSMLG.dev" title_class="text-primary" class="neumorphic-text-6 text-(--neumorphic-color)">
     Made with ❤️ for building a better Web.
   </:copyright>
 </.dm_page_footer>
