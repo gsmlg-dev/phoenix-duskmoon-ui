@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@gsmlg/lit": "1.30.3",
+    "phoenix_html": "file:../../deps/phoenix_html",
     "phoenix_duskmoon": "file:../phoenix_duskmoon"
   },
   "devDependencies": {
