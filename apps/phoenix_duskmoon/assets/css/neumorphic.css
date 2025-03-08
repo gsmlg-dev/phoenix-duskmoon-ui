@@ -1,9 +1,12 @@
 :root {
+  --neumorphic-color: hsl(0, 0%, 66.7%);
   --neumorphic-color: #aaa;
   --neumorphic-text-color: #444;
   --neumorphic-light: #fff8;
   --neumorphic-dark: #3338;
 
+  --neumorphic-concave: linear-gradient(145deg, #999999, #b6b6b6);
+  --neumorphic-convex: linear-gradient(145deg, #b6b6b6, #999999);
 
   --neumorphic-size: 1;
   --neumorphic-shadow: calc(1em * var(--neumorphic-size))
@@ -34,6 +37,27 @@
   --text-light-shadow: -0.1em -0.1em 0.12em var(--neumorphic-light);
 }
 
+@utility neumorphic-surface-concave {
+  background-image: radial-gradient(
+    circle at center,
+    color-mix(in srgb, var(--neumorphic-color) 80%, #000),
+    color-mix(in srgb, var(--neumorphic-color) 90%, #000),
+    var(--neumorphic-color),
+    color-mix(in srgb, var(--neumorphic-color) 90%, #fff),
+    color-mix(in srgb, var(--neumorphic-color) 80%, #fff)
+  );
+}
+
+@utility neumorphic-surface-convex {
+  background-image: radial-gradient(
+    circle at center,
+    color-mix(in srgb, var(--neumorphic-color) 80%, #fff),
+    color-mix(in srgb, var(--neumorphic-color) 90%, #fff),
+    var(--neumorphic-color),
+    color-mix(in srgb, var(--neumorphic-color) 90%, #000),
+    color-mix(in srgb, var(--neumorphic-color) 80%, #000)
+  );
+}
 
 @utility neumorphic-text-* {
   text-shadow:
@@ -264,7 +288,7 @@
       width: var(--range-thumb-size);
       border: var(--range-p) solid;
       appearance: none;
-      webkit-appearance: none;
+      -webkit-appearance: none;
       top: 50%;
       color: var(--range-progress);
       transform: translateY(-50%);
@@ -294,6 +318,36 @@
     &:disabled {
       cursor: not-allowed;
       opacity: 30%;
+    }
+  }
+}
+
+@layer components {
+  .neumorphic-tabel {
+    thead {
+      tr {
+        th {
+          @apply neumorphic-shadow-12;
+          color: var(--neumorphic-text-color);
+          padding: 0.5rem;
+          text-align: left;
+        }
+      }
+    }
+    tbody {
+      tr {
+        &:hover {
+          @apply neumorphic-shadow-6;
+        }
+        td {
+          @apply neumorphic-shadow-inset-6;
+          padding: 0.25rem 0.5rem;
+
+          td:hover {
+            @apply neumorphic-surface-convex;
+          }
+        }
+      }
     }
   }
 }

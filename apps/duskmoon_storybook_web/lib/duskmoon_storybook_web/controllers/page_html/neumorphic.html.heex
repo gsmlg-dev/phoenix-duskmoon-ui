@@ -55,7 +55,31 @@
   <div class="w-2/3 h-auto neumorphic-shadow-24 hover:neumorphic-shadow-48 mx-auto my-8">
     <div class="flex flex-col gap-6 m-4">
       <div class="flex gap-6 flex-wrap">
-        <label class="flex items-center min-w-max text-2xl neumorphic-text-inset-4">Filter on Icons</label>
+        <label class="flex items-center min-w-max text-2xl neumorphic-text-inset-4">Surface</label>
+      </div>
+      <div class="flex gap-6 flex-wrap">
+        <div class="w-24 h-24 neumorphic-shadow-24"></div>
+        <div class="w-24 h-24 neumorphic-surface-concave"></div>
+        <div class="w-24 h-24 neumorphic-surface-convex"></div>
+        <div class="w-24 h-24 neumorphic-shadow-inset-24"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class={[
+    "w-full page-section-group",
+    "neumorphic-shadow-inset-24 bg-(--neumorphic-color) text-(--neumorphic-text-color)",
+  ]}
+>
+  <a class="hidden" name="neumorphic"></a>
+  <div class="w-2/3 h-auto neumorphic-shadow-24 hover:neumorphic-shadow-48 mx-auto my-8">
+    <div class="flex flex-col gap-6 m-4">
+      <div class="flex gap-6 flex-wrap">
+        <label class="flex items-center min-w-max text-2xl neumorphic-text-inset-4">Filter</label>
+      </div>
+      <div class="flex gap-6 flex-wrap">
         <.dm_mdi name="github" class="w-24 h-24 neumorphic-filter-4 text-(--neumorphic-color)" />
         <.dm_mdi name="github" class="w-24 h-24 neumorphic-filter-8 text-(--neumorphic-color)" />
         <.dm_mdi name="github" class="w-24 h-24 neumorphic-filter-12 text-(--neumorphic-color)" />
@@ -87,7 +111,7 @@
             "min-w-xs h-8 px-2 outline-0",
             "neumorphic-shadow-8 bg-(--neumorphic-color) text-(--neumorphic-text-color)",
             "neumorphic-text-inset-4",
-            "checked:neumorphic-shadow-inset-8 checked:neumorphic-text-4"
+            "focus:neumorphic-shadow-inset-8 focus:neumorphic-text-4"
           ]}
         />
       </div>
@@ -159,15 +183,15 @@
       <table class="neumorphic-tabel neumorphic-shadow-12">
         <thead>
           <tr>
-            <th class="neumorphic-shadow-inset-12">Column 1</th>
-            <th class="neumorphic-shadow-inset-12">Column 2</th>
-            <th class="neumorphic-shadow-inset-12">Column 3</th>
-            <th class="neumorphic-shadow-inset-12">Column 4</th>
-            <th class="neumorphic-shadow-inset-12">Column 5</th>
+            <th>Column 1</th>
+            <th>Column 2</th>
+            <th>Column 3</th>
+            <th>Column 4</th>
+            <th>Column 5</th>
           </tr>
         </thead>
         <tbody>
-          <tr class="hover:neumorphic-shadow-12">
+          <tr>
             <td>Cell 1</td>
             <td>Cell 2</td>
             <td>Cell 3</td>
