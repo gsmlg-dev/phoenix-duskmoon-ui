@@ -96,45 +96,29 @@ jobs:
         with:
           otp-version: '26'
           elixir-version: '1.17.3'
-
-      # - name: Restore deps and _build cache
-      #   uses: actions/cache@v3
-      #   with:
-      #     path: |
-      #       deps
-      #       _build
-      #     key: mix-deps-build-${{ hashFiles('**/mix.lock') }}
-      #     restore-keys: |
-      #       mix-deps-build-${{ hashFiles('**/mix.lock') }}
-
-      - name: ⎔ Setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          always-auth: true
-          # cache: 'npm'
+      
+      - uses: oven-sh/setup-bun@v2
 
       - name: Install Deps
         run: |
           mix deps.get
-          npm install semantic-release @semantic-release/changelog @semantic-release/exec @semantic-release/git
-          npm config set "//registry.npmjs.org/:_authToken" "${NPM_TOKEN}"
+          bun install semantic-release @semantic-release/changelog @semantic-release/exec @semantic-release/git
         env:
           MIX_ENV: prod
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
 
       - name: 🚀 Release
         id: semantic
         run: |
-          npx semantic-release
+          bunx semantic-release
         working-directory: apps/phoenix_duskmoon
         env:
           MIX_ENV: prod
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           HEX_API_KEY: ${{ secrets.HEX_API_KEY }}
+          BUN_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   build-demo:
     name: Build demo 

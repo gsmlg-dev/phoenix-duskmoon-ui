@@ -1,4 +1,6 @@
 {
+  "name": "duskmoon_storybook_web",
+  "private": true,
   "dependencies": {
     "@gsmlg/lit": "1.30.3",
     "phoenix_duskmoon": "file:../phoenix_duskmoon"

@@ -44,9 +44,9 @@ defmodule DuskmoonStorybookWeb.MixProject do
       {:phoenix_live_reload, "~> 1.4", only: :dev},
       {:phoenix_live_view, "~> 1.0"},
       {:phoenix_storybook, "~> 0.7"},
-      {:floki, ">= 0.30.0", only: :test},
       {:phoenix_live_dashboard, "~> 0.7"},
-      {:esbuild, "~> 0.7", runtime: Mix.env() == :dev},
+      {:floki, ">= 0.30.0", only: :test},
+      {:bun, "~> 1.4", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.2", runtime: Mix.env() == :dev},
       {:telemetry_metrics, "~> 1.0"},
       {:telemetry_poller, "~> 1.0"},
@@ -64,7 +64,7 @@ defmodule DuskmoonStorybookWeb.MixProject do
   defp aliases do
     [
       setup: ["deps.get"],
-      "assets.deploy": ["tailwind storybook --minify", "esbuild storybook --minify", "phx.digest"]
+      "assets.deploy": ["tailwind storybook --minify", "bun storybook --minify", "phx.digest"]
     ]
   end
 end

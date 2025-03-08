@@ -36,16 +36,16 @@ config :tailwind,
     env: %{"NODE_PATH" => "#{Path.expand("../deps", __DIR__)}:#{Path.expand("../apps", __DIR__)}"}
   ]
 
-config :esbuild,
-  version: "0.25.0",
+config :bun,
+  version: "1.2.0",
   duskmoon: [
-    args: ~w(assets/js/phoenix_duskmoon.js --target=es2021 --format=iife --outdir=priv/static/),
+    args: ~w(build assets/js/phoenix_duskmoon.js --outdir=priv/static/),
     cd: Path.expand("../apps/phoenix_duskmoon", __DIR__),
     env: %{"NODE_PATH" => "#{Path.expand("../apps", __DIR__)}:#{Path.expand("../deps", __DIR__)}"}
   ],
   storybook: [
     args:
-      ~w(assets/js/app.js --bundle --format=iife --target=es2021 --outdir=priv/static/assets --external:/fonts/* --external:/images/*),
+      ~w(build assets/js/app.js --bundle --outdir=priv/static/assets),
     cd: Path.expand("../apps/duskmoon_storybook_web", __DIR__),
     env: %{"NODE_PATH" => "#{Path.expand("../deps", __DIR__)}:#{Path.expand("../apps", __DIR__)}"}
   ]

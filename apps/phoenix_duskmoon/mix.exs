@@ -42,7 +42,7 @@ defmodule PhoenixDuskmoon.Mixfile do
       {:phoenix_html, "~> 4.0"},
       {:phoenix_live_view, "~> 1.0"},
       {:plug, "~> 1.5", optional: true},
-      {:esbuild, "~> 0.7", runtime: Mix.env() == :dev},
+      {:bun, "~> 1.4", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.2", runtime: Mix.env() == :dev},
       {:ex_doc, ">= 0.0.0", only: :prod, runtime: false}
     ]
@@ -65,7 +65,7 @@ defmodule PhoenixDuskmoon.Mixfile do
       prepublish: [
         "cmd cp #{Path.expand("../../README.md", __DIR__)} #{Path.expand("README.md", __DIR__)}",
         "tailwind duskmoon",
-        "esbuild duskmoon"
+        "bun duskmoon"
       ]
     ]
   end
