@@ -1,3 +1,23 @@
+# [6.3.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v6.2.0...v6.3.0) (2025-03-08)
+
+
+### Bug Fixes
+
+* Fix neumorphic form. ([a02cfb2](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/a02cfb2ecad7342779fcd13895693bcb74d45c0c))
+* Fix neumorphic table. ([139b524](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/139b524f7147a346e3ef1e69943d873946dc5c19))
+* Fix pagination. ([3920dcb](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/3920dcbdd50e38ae6026d045c107235988cfff6f))
+* Fix simple_app_bar. ([63108a1](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/63108a1d86223be7f44e680d37ebfb4e5b2bca84))
+* Fix tasks. ([719b3ea](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/719b3ead86f1bcaba7aabba147082d1b928fdc3e))
+* Fix. ([765d62a](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/765d62a98e4580cd303a5cec4785c902fb67c41f))
+* Fix. ([01f271d](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/01f271dd9335cae55b6eb76046ac7089ccaa1616))
+* Fix. ([8549218](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/8549218454639fa42f21a1897ec848c9332fc5fd))
+* Fix. ([9db4a9f](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/9db4a9fb074c8f900d861ff4b5b7fb86f904881b))
+
+
+### Features
+
+* Add neumorphic design. ([8b1c697](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/8b1c697d1689560873a357a1b5bd512dcd153ac0))
+
 # [6.3.0](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v6.2.0...v6.3.0) (2025-03-07)
 
 
