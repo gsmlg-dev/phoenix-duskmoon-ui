@@ -22,7 +22,7 @@
 
   <h1 class={[
     "text-center font-bold select-none",
-    "neumorphic-text-12 text-(--neumorphic-color) text-8xl"
+    "neumorphic-text-12 text-(--neumorphic-color) text-8xl text-primary"
   ]}>
     Neumorphic Design
   </h1>
@@ -54,8 +54,8 @@
   <a class="hidden" name="neumorphic"></a>
   <div class="w-2/3 h-auto neumorphic-shadow-24 hover:neumorphic-shadow-48 mx-auto my-8">
     <div class="flex flex-col gap-6 m-4">
-      <div class="flex gap-6 flex-wrap">
-        <label class="flex items-center min-w-max text-2xl neumorphic-text-inset-4">Surface</label>
+      <div class="text-primary">
+        <h3 class="neumorphic-text-12 text-2xl">Surface</h3>
       </div>
       <div class="flex gap-6 flex-wrap">
         <div class="w-24 h-24 neumorphic-shadow-24"></div>
@@ -76,8 +76,8 @@
   <a class="hidden" name="neumorphic"></a>
   <div class="w-2/3 h-auto neumorphic-shadow-24 hover:neumorphic-shadow-48 mx-auto my-8">
     <div class="flex flex-col gap-6 m-4">
-      <div class="flex gap-6 flex-wrap">
-        <label class="flex items-center min-w-max text-2xl neumorphic-text-inset-4">Filter</label>
+      <div class="text-primary">
+        <h3 class="neumorphic-text-12 text-2xl">Filter</h3>
       </div>
       <div class="flex gap-6 flex-wrap">
         <.dm_mdi name="github" class="w-24 h-24 neumorphic-filter-4 text-(--neumorphic-color)" />
@@ -106,7 +106,7 @@
       </div>
       <div class="flex gap-6">
         <label class="flex items-center min-w-max text-2xl neumorphic-text-inset-4">Input</label>
-        <input 
+        <input
           class={[
             "min-w-xs h-8 px-2 outline-0",
             "neumorphic-shadow-8 bg-(--neumorphic-color) text-(--neumorphic-text-color)",
@@ -231,6 +231,72 @@
           </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+</div>
+
+<div
+  class={[
+    "w-full page-section-group",
+    "neumorphic-shadow-inset-24 bg-(--neumorphic-color) text-(--neumorphic-text-color)",
+  ]}
+>
+  <div class="w-2/3 h-auto neumorphic-shadow-24 hover:neumorphic-shadow-48 mx-auto my-8">
+    <div class="flex flex-col gap-6 m-4">
+      <div class="text-primary">
+        <h3 class="neumorphic-text-12 text-2xl">Button and Dropdown</h3>
+      </div>
+      <div class="flex gap-6 flex-wrap">
+        <button class="neumorphic-button">Button</button>
+        <button class="neumorphic-button btn-primary">Button</button>
+        <button class="neumorphic-button btn-secondary">Button</button>
+        <button class="neumorphic-button btn-accent">Button</button>
+        <button class="neumorphic-button btn-info">Button</button>
+        <button class="neumorphic-button btn-success">Button</button>
+        <button class="neumorphic-button btn-warning">Button</button>
+        <button class="neumorphic-button btn-error">Button</button>
+        <button class="neumorphic-button btn-neutral">Button</button>
+        <button class="neumorphic-button btn-active">Button</button>
+        <button class="neumorphic-button neumorphic-btn-ghost">Button</button>
+      </div>
+      <div class="flex gap-6 flex-col">
+        <div>
+          <details class="dropdown">
+            <summary class="neumorphic-button m-1">open or close</summary>
+            <ul class="menu dropdown-content z-1 min-w-max p-2 bg-neumorphic neumorphic-shadow-12">
+              <li><a class="neumorphic-button neumorphic-btn-ghost">Item 1</a></li>
+              <li><a class="neumorphic-button neumorphic-btn-ghost">Item 2</a></li>
+            </ul>
+          </details>
+        </div>
+        <div>
+          <button
+            class="neumorphic-button"
+            popovertarget="popover-1"
+            style="anchor-name:--anchor-1"
+          >
+            Dropdown
+          </button>
+          <ul
+            class="dropdown menu min-w-max bg-neumorphic neumorphic-shadow-12"
+            popover
+            id="popover-1"
+            style="position-anchor:--anchor-1"
+          >
+            <li><a class="neumorphic-button neumorphic-btn-ghost">Item 1</a></li>
+            <li><a class="neumorphic-button neumorphic-btn-ghost">Item 2</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="dropdown">
+            <div tabindex="0" role="button" class="neumorphic-button m-1">Click</div>
+            <ul tabindex="0" class="dropdown-content menu z-1 min-w-max p-2 bg-neumorphic neumorphic-shadow-12">
+              <li><a class="neumorphic-button neumorphic-btn-ghost">Item 1</a></li>
+              <li><a class="neumorphic-button neumorphic-btn-ghost">Item 2</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
