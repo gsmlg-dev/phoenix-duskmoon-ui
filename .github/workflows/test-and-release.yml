@@ -17,10 +17,8 @@ jobs:
         include:
           - elixir: 1.16
             otp: 26
-            lint: lint
           - elixir: 1.18
             otp: 27
-            lint: lint
 
     runs-on: ubuntu-latest
 
@@ -34,16 +32,6 @@ jobs:
         otp-version: ${{ matrix.otp }}
         elixir-version: ${{ matrix.elixir }}
 
-    # - name: Restore deps and _build cache
-    #   uses: actions/cache@v3
-    #   with:
-    #     path: |
-    #       deps
-    #       _build
-    #     key: mix-deps-build-${{ hashFiles('**/mix.lock') }}
-    #     restore-keys: |
-    #       mix-deps-build-${{ hashFiles('**/mix.lock') }}
-
     - name: Install dependencies
       run: mix deps.get --only test
       env:
@@ -51,24 +39,16 @@ jobs:
 
     - name: Check source code format
       run: mix format --check-formatted
-      if: ${{ matrix.lint }}
       env:
         MIX_ENV: test
 
     - name: Remove compiled application files
       run: mix clean
 
-    - name: Compile dependencies
-      run: mix compile
-      if: ${{ !matrix.lint }}
+    - name: Compile & lint dependencies
+      run: mix compile --warnings-as-errors
       env:
         MIX_ENV: test
-
-    # - name: Compile & lint dependencies
-    #   run: mix compile --warnings-as-errors
-    #   if: ${{ matrix.lint }}
-    #   env:
-    #     MIX_ENV: test
 
     - name: Run tests
       run: mix test
@@ -89,7 +69,7 @@ jobs:
           access_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: ⬇️ Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: 💊 Setup Elixir
         uses: erlef/setup-beam@v1
