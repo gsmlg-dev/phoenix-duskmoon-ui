@@ -14,6 +14,9 @@ config :duskmoon_storybook_web, DuskmoonStorybookWeb.Endpoint,
   live_view: [signing_salt: "HkF5qV0r"]
 
 config :duskmoon_storybook_web, Storybook,
+  content_path: Path.expand("../apps/duskmoon_storybook_web/lib/storybook", __DIR__),
+  otp_app: :duskmoon_storybook_web,
+  title: "Phoenix Duskmoon UI Storybook",
   js_path: "/assets/app.js",
   css_path: "/assets/app.css"
 
