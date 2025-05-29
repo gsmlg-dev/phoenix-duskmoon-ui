@@ -1,3 +1,10 @@
+## [6.3.2](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v6.3.1...v6.3.2) (2025-05-29)
+
+
+### Bug Fixes
+
+* Remove tailwind.config.js, use directive instead. ([5726376](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/commit/57263769b83c6698595ac6ce68f6968539d795c6))
+
 ## [6.3.1](https://github.com/gsmlg-dev/phoenix-duskmoon-ui/compare/v6.3.0...v6.3.1) (2025-05-29)
 
 
