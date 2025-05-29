@@ -130,7 +130,7 @@ defmodule PhoenixDuskmoon.Component.Link do
   )
 
   attr(:rest, :global,
-    include: ~w(download hreflang referrerpolicy rel target type),
+    include: ~w(download hreflang referrerpolicy rel target type disabled),
     doc: """
     Additional HTML attributes added to the `a` tag.
     """
