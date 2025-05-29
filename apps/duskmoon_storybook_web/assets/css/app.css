@@ -1,8 +1,14 @@
-@config "../tailwind.config.js";
+@source "../js/**/*.js";
+@source '../js/**/*.js';
+@source '../../lib/**/*.exs';
+@source '../../lib/**/*.*ex';
+@source '../../../phoenix_duskmoon/assets/**/*.css';
+@source '../../../phoenix_duskmoon/lib/**/*.*ex';
 
-@import "tailwindcss";
 @plugin "daisyui";
 @plugin "@tailwindcss/typography";
+
+@import "tailwindcss";
 @import "phoenix_duskmoon/theme";
 @import "phoenix_duskmoon/components";
 @import "phoenix_duskmoon/neumorphic";

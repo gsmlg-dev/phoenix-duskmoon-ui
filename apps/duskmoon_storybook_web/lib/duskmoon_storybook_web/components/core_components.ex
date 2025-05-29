@@ -587,7 +587,7 @@ defmodule DuskmoonStorybookWeb.CoreComponents do
   width, height, and background color classes.
 
   Icons are extracted from your `priv/hero_icons` directory and bundled
-  within your compiled app.css by the plugin in your `assets/tailwind.config.js`.
+  within your compiled app.css by the plugin of tailwindcss.
 
   ## Examples
 

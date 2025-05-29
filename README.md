@@ -32,7 +32,9 @@ end
 Import `css`
 
 ```css
-@config "../tailwind.config.js";
+@source "../js/**/*.js";
+@source '../../lib/**/*.exs';
+@source '../../lib/**/*.ex';
 
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
