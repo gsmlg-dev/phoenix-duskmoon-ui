@@ -1,5 +1,5 @@
 import "phoenix_html";
-import "@gsmlg/lit";
+// import "@gsmlg/lit";
 // import { Socket } from "phoenix";
 // import { LiveSocket } from "phoenix_live_view";
 
