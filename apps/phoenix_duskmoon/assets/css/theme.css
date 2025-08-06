@@ -1,3 +1,4 @@
+@import "./utility.css";
 
 @plugin "daisyui/theme" {
   name: "sunshine";
@@ -36,7 +37,7 @@
 
 @plugin "daisyui/theme" {
   name: "moonlight";
-  default: false;
+  default: true;
   prefersdark: true;
   color-scheme: "dark";
   --color-base-100: oklch(22% 0.019 237.69);
