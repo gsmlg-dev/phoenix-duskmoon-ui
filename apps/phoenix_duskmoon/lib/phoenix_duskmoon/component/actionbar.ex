@@ -83,7 +83,7 @@ defmodule PhoenixDuskmoon.Component.Actionbar do
         @class,
       ]}
     >
-      <div classs={["flex justify-start items-center", @left_class]}>
+      <div class={["flex justify-start items-center", @left_class]}>
         <div
           :for={left <- @left}
           id={Map.get(left, :id, false)}
@@ -92,7 +92,7 @@ defmodule PhoenixDuskmoon.Component.Actionbar do
           <%= render_slot(left) %>
         </div>
       </div>
-      <div classs={["flex justify-end items-center", @right_class]}>
+      <div class={["flex justify-end items-center", @right_class]}>
         <div
           :for={right <- @right}
           id={Map.get(right, :id, false)}
