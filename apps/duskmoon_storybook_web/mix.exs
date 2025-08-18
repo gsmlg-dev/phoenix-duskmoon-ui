@@ -15,6 +15,7 @@ defmodule DuskmoonStorybookWeb.MixProject do
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: Mix.compilers(),
       start_permanent: Mix.env() == :prod,
+      elixirc_options: [warnings_as_errors: false],
       aliases: aliases(),
       deps: deps()
     ]
